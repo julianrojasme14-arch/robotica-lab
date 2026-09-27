@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.37.1</title>
+<title>Robótica Lab V9.38</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -62,7 +62,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 
 .thumb{position:relative;display:block;width:64px;height:48px}.resistorThumb:before,.resistorThumb:after{content:"";position:absolute;top:23px;width:16px;height:2px;background:#777}.resistorThumb:before{left:0}.resistorThumb:after{right:0}.resistorThumb i{position:absolute;left:15px;top:17px;width:34px;height:14px;border-radius:6px;background:#d6b36b;border:1px solid #8e713e}.resistorThumb b,.resistorThumb em{position:absolute;top:18px;width:4px;height:12px;background:#8a4b20;z-index:2}.resistorThumb b{left:25px}.resistorThumb em{left:35px;background:#d22}.ledThumb i{position:absolute;left:20px;top:2px;width:27px;height:32px;border-radius:16px 16px 7px 7px;background:#d9343e;border:2px solid #9d1e27;box-shadow:inset 6px 4px 6px #fff6}.ledThumb:before,.ledThumb:after{content:"";position:absolute;top:33px;width:3px;background:#888}.ledThumb:before{left:27px;height:15px}.ledThumb:after{left:39px;height:11px}.unoThumb{width:72px;height:46px;background:#0879ad;border-radius:4px;border:2px solid #075c83;color:white;font-size:10px}.unoThumb b{position:absolute;left:27px;top:18px}.unoThumb i{position:absolute;left:5px;top:5px;width:13px;height:12px;background:#bbb}.nanoThumb{width:70px;height:30px;margin-top:8px;background:#1798a0;border-radius:2px;color:white;font-size:8px}.nanoThumb b{position:absolute;left:24px;top:10px}.nanoThumb:before,.nanoThumb:after{content:"";position:absolute;left:4px;right:4px;height:3px;background:repeating-linear-gradient(90deg,#ddd 0 3px,transparent 3px 7px)}.nanoThumb:before{top:2px}.nanoThumb:after{bottom:2px}
 
-/* V9.37.1 authoritative desktop layout */
+/* V9.38 authoritative desktop layout */
 .lab{display:grid!important;grid-template-columns:220px minmax(0,1fr)!important;grid-template-rows:1fr!important;height:calc(100vh - 112px)!important;min-height:0!important}
 .lab>.palette{grid-column:1;grid-row:1;min-width:0!important;width:auto!important;height:100%!important;overflow:hidden!important}
 .lab>.workspace{grid-column:2;grid-row:1;width:auto!important;min-width:0!important;height:100%!important;flex:none!important}
@@ -75,7 +75,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .editorpanel .editorHead{flex:0 0 auto}.editorpanel .editor{flex:1 1 auto!important;min-height:220px!important;width:100%!important}.editorpanel .console{max-height:150px!important}
 @media(max-width:900px){.lab,.lab.code-open{grid-template-columns:190px minmax(0,1fr)!important}.lab.code-open>.editorpanel{position:absolute!important;left:190px;right:0;top:0;bottom:0;z-index:80;min-width:0!important}.lab.code-open>#splitter{display:none!important}}
 
-/* V9.37.1: visual marker fits inside female header; hit target remains classroom-friendly */
+/* V9.38: visual marker fits inside female header; hit target remains classroom-friendly */
 .board>.pin{width:6px!important;height:6px!important;border:1px solid #fff!important;background:#f21d24!important;border-radius:2px!important;transform:translate(-50%,-50%)!important;box-shadow:0 0 0 1px #263746!important;overflow:visible!important}
 .board>.pin::after{content:"";position:absolute;left:50%;top:50%;width:20px;height:20px;transform:translate(-50%,-50%);background:transparent}
 .board>.pin:hover,.board>.pin.sel{opacity:1!important;outline:1px solid #fff!important;box-shadow:0 0 0 2px #263746!important}
@@ -85,7 +85,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .esp32Thumb{width:46px;height:64px;background:#20272d;border-radius:3px;color:#fff;font-size:8px;box-shadow:inset 0 0 0 2px #111}.esp32Thumb b{position:absolute;left:8px;top:27px}.esp32Thumb i{position:absolute;left:9px;top:5px;width:28px;height:18px;background:#c9c9c9;border:1px solid #777}.esp32Thumb:before,.esp32Thumb:after{content:"";position:absolute;top:4px;bottom:4px;width:3px;background:repeating-linear-gradient(180deg,#d7b56d 0 3px,transparent 3px 7px)}.esp32Thumb:before{left:2px}.esp32Thumb:after{right:2px}
 .component.esp32{width:213px;height:401px}.component.esp32 .esp32board{position:absolute;inset:0;background:#1e252b;border:3px solid #151a1e;border-radius:7px;box-shadow:0 0 12px #1597e566;color:#fff}.esp32board .module{position:absolute;left:38px;top:35px;width:137px;height:145px;background:#d3d5d5;border:2px solid #999;border-radius:2px}.esp32board .module:after{content:"ESP-WROOM-32";position:absolute;left:20px;top:74px;font:700 12px Arial;color:#555}.esp32board .usb{position:absolute;left:74px;bottom:-4px;width:64px;height:35px;background:#b9bdc0;border:2px solid #888;border-radius:4px 4px 0 0}.esp32board .chip{position:absolute;left:77px;top:205px;width:60px;height:60px;background:#101214;border-radius:3px}.esp32board .label{position:absolute;left:55px;top:285px;font:700 16px Arial;color:#e9e9e9}.component.esp32>.pin{z-index:8}
 
-/* V9.37.1 realistic educational components */
+/* V9.38 realistic educational components */
 .ledc{width:44px;height:86px;transform-origin:22px 43px}.bulb{left:7px;top:0;width:28px;height:42px;border-radius:16px 16px 7px 7px;border-width:2px}.bulb:after{content:"";position:absolute;left:1px;right:1px;bottom:4px;height:5px;border-radius:50%;border-top:1px solid #7b1f1f88}.leg{top:40px;width:3px;background:linear-gradient(90deg,#777,#e8e8e8,#888)}.leg.a{left:14px;height:42px}.leg.k{left:29px;height:34px}.ledc .terminal.a{left:7px;top:72px}.ledc .terminal.k{left:22px;top:64px}.polarity{font-size:10px}
 .restools{position:absolute;display:none;align-items:center;gap:7px;background:#2d3035;color:white;padding:7px 9px;border-radius:7px;z-index:10000;box-shadow:0 3px 12px #0005;font:12px Arial}.restools.show{display:flex}.restools label{display:flex;align-items:center;gap:5px}.restools input{width:64px;background:#24272b;color:white;border:1px solid #666;border-radius:4px;padding:5px 6px;font:13px Arial}.restools button{height:28px;min-width:30px;border:1px solid #666;border-radius:4px;background:#444;color:white;cursor:pointer;font-size:16px}
 .reswrap{width:130px;height:38px;transform-origin:65px 19px}.component[data-type="resistor"]{width:130px;height:38px}
@@ -98,7 +98,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 
 .ldrtools{position:absolute;display:none;align-items:center;gap:9px;background:#f8f9fb;border:1px solid #c8cdd3;border-radius:22px;padding:7px 11px;z-index:10001;box-shadow:0 3px 12px #0003;color:#333}.ldrtools.show{display:flex}.ldrtools input{width:180px;accent-color:#555;cursor:pointer}.ldrtools .ldrDim{width:17px;height:17px;border-radius:50%;background:#444}.ldrtools .ldrSun{display:inline-block;font-size:34px;line-height:30px;transform-origin:center;transition:transform .12s,opacity .12s}.ldrtools b{min-width:34px;font:11px Arial;color:#555}
 
-/* V9.37.1 ESP32 DevKit V1 - detailed educational board */
+/* V9.38 ESP32 DevKit V1 - detailed educational board */
 .component.esp32{width:190px;height:360px}
 .component.esp32 .esp32board{position:absolute;inset:0;background:#1d1e20;border:2px solid #0b0c0d;border-radius:7px;box-shadow:0 4px 10px #0005;overflow:hidden}
 .esp32board .module{position:absolute;left:35px;top:7px;width:120px;height:150px;background:#aaa;border:2px solid #555;border-radius:2px;box-shadow:inset 0 0 0 3px #888}
@@ -127,7 +127,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 
 .esp32board .espLed{position:absolute;left:50%;bottom:58px;width:16px;height:16px;border-radius:50%;transform:translateX(-50%);background:#455047;border:2px solid #cfd5d0;box-shadow:inset 0 0 4px #000;z-index:5}.esp32board .espLed.on{background:#39e85a;border-color:#9df5aa;box-shadow:0 0 15px 5px #39e85a88,0 0 5px #fff,inset 0 0 2px #fff}.esp32board .espLedLabel{position:absolute;left:50%;bottom:43px;transform:translateX(-50%);color:#fff;font:bold 7px Arial;z-index:5}
 </style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.37.1</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.38</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -155,7 +155,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.37.1 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.38 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,wireDraftPoints=[],wirePointer=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[],dragWirePoint=null;
@@ -458,31 +458,59 @@ $('topSim').onclick=()=>$('simulateBtn')?$('simulateBtn').click():startSimulatio
 let blocklyWorkspace=null,arduinoGen=null;
 function initBlockly(){
  if(!window.Blockly)return;
+ const digitalPins=()=> $('board').value==='esp32'?[["GPIO 23","23"],["GPIO 22","22"],["GPIO 21","21"],["GPIO 19","19"],["GPIO 18","18"],["GPIO 17","17"],["GPIO 16","16"],["GPIO 15","15"],["GPIO 14","14"],["GPIO 13","13"],["GPIO 12","12"],["GPIO 5","5"],["GPIO 4","4"],["GPIO 2 · LED","2"],["GPIO 33","33"],["GPIO 32","32"],["GPIO 27","27"],["GPIO 26","26"],["GPIO 25","25"]]:[["D13","13"],["D12","12"],["D11","11"],["D10","10"],["D9","9"],["D8","8"],["D7","7"],["D6","6"],["D5","5"],["D4","4"],["D3","3"],["D2","2"],["D1 / TX","1"],["D0 / RX","0"],["A0","A0"],["A1","A1"],["A2","A2"],["A3","A3"],["A4","A4"],["A5","A5"]];
+ const analogPins=()=> $('board').value==='esp32'?[["VP / GPIO36","36"],["VN / GPIO39","39"],["GPIO34","34"],["GPIO35","35"],["GPIO32","32"],["GPIO33","33"],["GPIO25","25"],["GPIO26","26"],["GPIO27","27"]]:[["A0","A0"],["A1","A1"],["A2","A2"],["A3","A3"],["A4","A4"],["A5","A5"]];
  Blockly.defineBlocksWithJsonArray([
   {"type":"arduino_setup","message0":"al iniciar %1 %2","args0":[{"type":"input_dummy"},{"type":"input_statement","name":"DO"}],"colour":285},
   {"type":"arduino_loop","message0":"repetir para siempre %1 %2","args0":[{"type":"input_dummy"},{"type":"input_statement","name":"DO"}],"colour":285},
-  {"type":"pin_mode","message0":"configurar pin %1 como %2","args0":[{"type":"field_dropdown","name":"PIN","options":function(){return $('board').value==='esp32'?[["GPIO 23","23"],["GPIO 22","22"],["GPIO 21","21"],["GPIO 19","19"],["GPIO 18","18"],["GPIO 17","17"],["GPIO 16","16"],["GPIO 15","15"],["GPIO 14","14"],["GPIO 13","13"],["GPIO 12","12"],["GPIO 5","5"],["GPIO 4","4"],["GPIO 2 · LED","2"],["GPIO 33","33"],["GPIO 32","32"],["GPIO 27","27"],["GPIO 26","26"],["GPIO 25","25"]]:[["D13","13"],["D12","12"],["D11","11"],["D10","10"],["D9","9"],["D8","8"],["D7","7"],["D6","6"],["D5","5"],["D4","4"],["D3","3"],["D2","2"],["D1 / TX","1"],["D0 / RX","0"],["A0","A0"],["A1","A1"],["A2","A2"],["A3","A3"],["A4","A4"],["A5","A5"]]}},{"type":"field_dropdown","name":"MODE","options":[["SALIDA","OUTPUT"],["ENTRADA","INPUT"]]}],"previousStatement":null,"nextStatement":null,"colour":210},
-  {"type":"digital_write","message0":"establecer pin %1 en %2","args0":[{"type":"field_dropdown","name":"PIN","options":function(){return $('board').value==='esp32'?[["GPIO 23","23"],["GPIO 22","22"],["GPIO 21","21"],["GPIO 19","19"],["GPIO 18","18"],["GPIO 17","17"],["GPIO 16","16"],["GPIO 15","15"],["GPIO 14","14"],["GPIO 13","13"],["GPIO 12","12"],["GPIO 5","5"],["GPIO 4","4"],["GPIO 2 · LED","2"],["GPIO 33","33"],["GPIO 32","32"],["GPIO 27","27"],["GPIO 26","26"],["GPIO 25","25"]]:[["D13","13"],["D12","12"],["D11","11"],["D10","10"],["D9","9"],["D8","8"],["D7","7"],["D6","6"],["D5","5"],["D4","4"],["D3","3"],["D2","2"],["D1 / TX","1"],["D0 / RX","0"],["A0","A0"],["A1","A1"],["A2","A2"],["A3","A3"],["A4","A4"],["A5","A5"]]}},{"type":"field_dropdown","name":"VALUE","options":[["ALTO","HIGH"],["BAJO","LOW"]]}],"previousStatement":null,"nextStatement":null,"colour":210},
+  {"type":"pin_mode","message0":"configurar pin %1 como %2","args0":[{"type":"field_dropdown","name":"PIN","options":digitalPins},{"type":"field_dropdown","name":"MODE","options":[["SALIDA","OUTPUT"],["ENTRADA","INPUT"],["ENTRADA PULLUP","INPUT_PULLUP"]]}],"previousStatement":null,"nextStatement":null,"colour":210},
+  {"type":"digital_write","message0":"definir pin %1 en %2","args0":[{"type":"field_dropdown","name":"PIN","options":digitalPins},{"type":"field_dropdown","name":"VALUE","options":[["ALTA","HIGH"],["BAJA","LOW"]]}],"previousStatement":null,"nextStatement":null,"colour":210},
+  {"type":"digital_read","message0":"leer pin digital %1","args0":[{"type":"field_dropdown","name":"PIN","options":digitalPins}],"output":"Number","colour":125},
+  {"type":"analog_read","message0":"leer pin analógico %1","args0":[{"type":"field_dropdown","name":"PIN","options":analogPins}],"output":"Number","colour":125},
   {"type":"arduino_delay","message0":"esperar %1 ms","args0":[{"type":"field_number","name":"MS","value":1000,"min":1,"max":60000}],"previousStatement":null,"nextStatement":null,"colour":35},
-  {"type":"analog_read","message0":"leer analógico %1","args0":[{"type":"field_dropdown","name":"PIN","options":function(){return $('board').value==='esp32'?[["VP / GPIO36","36"],["VN / GPIO39","39"],["GPIO34","34"],["GPIO35","35"],["GPIO32","32"],["GPIO33","33"],["GPIO25","25"],["GPIO26","26"],["GPIO27","27"]]:[["A0","A0"],["A1","A1"],["A2","A2"],["A3","A3"],["A4","A4"],["A5","A5"]]}}],"output":"Number","colour":160}
+  {"type":"if_else","message0":"si %1 entonces %2 %3 si no %4 %5","args0":[{"type":"input_value","name":"COND","check":"Boolean"},{"type":"input_dummy"},{"type":"input_statement","name":"THEN"},{"type":"input_dummy"},{"type":"input_statement","name":"ELSE"}],"previousStatement":null,"nextStatement":null,"colour":35},
+  {"type":"repeat_n","message0":"repetir %1 veces %2 %3","args0":[{"type":"field_number","name":"N","value":10,"min":1},{"type":"input_dummy"},{"type":"input_statement","name":"DO"}],"previousStatement":null,"nextStatement":null,"colour":35},
+  {"type":"math_number_rl","message0":"%1","args0":[{"type":"field_number","name":"NUM","value":0}],"output":"Number","colour":120},
+  {"type":"compare_rl","message0":"%1 %2 %3","args0":[{"type":"input_value","name":"A"},{"type":"field_dropdown","name":"OP","options":[["=","=="],["≠","!="],["<","<"],["≤","<="],[">",">"],["≥",">="]]},{"type":"input_value","name":"B"}],"inputsInline":true,"output":"Boolean","colour":120},
+  {"type":"logic_rl","message0":"%1 %2 %3","args0":[{"type":"input_value","name":"A","check":"Boolean"},{"type":"field_dropdown","name":"OP","options":[["y","&&"],["o","||"]]},{"type":"input_value","name":"B","check":"Boolean"}],"inputsInline":true,"output":"Boolean","colour":120},
+  {"type":"not_rl","message0":"no %1","args0":[{"type":"input_value","name":"A","check":"Boolean"}],"output":"Boolean","colour":120},
+  {"type":"math_arith_rl","message0":"%1 %2 %3","args0":[{"type":"input_value","name":"A","check":"Number"},{"type":"field_dropdown","name":"OP","options":[["+","+"],["−","-"],["×","*"],["÷","/"],["%","%"]]},{"type":"input_value","name":"B","check":"Number"}],"inputsInline":true,"output":"Number","colour":120},
+  {"type":"var_set_rl","message0":"definir variable %1 en %2","args0":[{"type":"field_input","name":"NAME","text":"valor"},{"type":"input_value","name":"VALUE"}],"previousStatement":null,"nextStatement":null,"colour":285},
+  {"type":"var_get_rl","message0":"variable %1","args0":[{"type":"field_input","name":"NAME","text":"valor"}],"output":null,"colour":285},
+  {"type":"comment_rl","message0":"nota %1","args0":[{"type":"field_input","name":"TEXT","text":"escribe una nota"}],"previousStatement":null,"nextStatement":null,"colour":0}
  ]);
  arduinoGen=new Blockly.Generator('Arduino');
- arduinoGen.forBlock['arduino_setup']=(b,g)=>'void setup() {\\n'+g.statementToCode(b,'DO')+'}'+String.fromCharCode(10)+String.fromCharCode(10);
- arduinoGen.forBlock['arduino_loop']=(b,g)=>'void loop() {\\n'+g.statementToCode(b,'DO')+'}'+String.fromCharCode(10);
- arduinoGen.forBlock['pin_mode']=(b)=>'pinMode('+b.getFieldValue('PIN')+', '+b.getFieldValue('MODE')+');'+String.fromCharCode(10);
- arduinoGen.forBlock['digital_write']=(b)=>'digitalWrite('+b.getFieldValue('PIN')+', '+b.getFieldValue('VALUE')+');'+String.fromCharCode(10);
- arduinoGen.forBlock['arduino_delay']=(b)=>'delay('+b.getFieldValue('MS')+');'+String.fromCharCode(10);
+ const NL=String.fromCharCode(10),val=(g,b,n,d='0')=>g.valueToCode(b,n,0)||d;
+ arduinoGen.forBlock['arduino_setup']=(b,g)=>'void setup() {'+NL+g.statementToCode(b,'DO')+'}'+NL+NL;
+ arduinoGen.forBlock['arduino_loop']=(b,g)=>'void loop() {'+NL+g.statementToCode(b,'DO')+'}'+NL;
+ arduinoGen.forBlock['pin_mode']=(b)=>'pinMode('+b.getFieldValue('PIN')+', '+b.getFieldValue('MODE')+');'+NL;
+ arduinoGen.forBlock['digital_write']=(b)=>'digitalWrite('+b.getFieldValue('PIN')+', '+b.getFieldValue('VALUE')+');'+NL;
+ arduinoGen.forBlock['digital_read']=(b)=>['digitalRead('+b.getFieldValue('PIN')+')',0];
  arduinoGen.forBlock['analog_read']=(b)=>['analogRead('+b.getFieldValue('PIN')+')',0];
+ arduinoGen.forBlock['arduino_delay']=(b)=>'delay('+b.getFieldValue('MS')+');'+NL;
+ arduinoGen.forBlock['if_else']=(b,g)=>'if ('+val(g,b,'COND','false')+') {'+NL+g.statementToCode(b,'THEN')+'} else {'+NL+g.statementToCode(b,'ELSE')+'}'+NL;
+ arduinoGen.forBlock['repeat_n']=(b,g)=>'for (int i=0; i<'+b.getFieldValue('N')+'; i++) {'+NL+g.statementToCode(b,'DO')+'}'+NL;
+ arduinoGen.forBlock['math_number_rl']=(b)=>[String(b.getFieldValue('NUM')),0];
+ arduinoGen.forBlock['compare_rl']=(b,g)=>['('+val(g,b,'A')+' '+b.getFieldValue('OP')+' '+val(g,b,'B')+')',0];
+ arduinoGen.forBlock['logic_rl']=(b,g)=>['('+val(g,b,'A','false')+' '+b.getFieldValue('OP')+' '+val(g,b,'B','false')+')',0];
+ arduinoGen.forBlock['not_rl']=(b,g)=>['(!'+val(g,b,'A','false')+')',0];
+ arduinoGen.forBlock['math_arith_rl']=(b,g)=>['('+val(g,b,'A')+' '+b.getFieldValue('OP')+' '+val(g,b,'B')+')',0];
+ arduinoGen.forBlock['var_set_rl']=(b,g)=>'int '+b.getFieldValue('NAME').replace(/\W/g,'_')+' = '+val(g,b,'VALUE')+';'+NL;
+ arduinoGen.forBlock['var_get_rl']=(b)=>[b.getFieldValue('NAME').replace(/\W/g,'_'),0];
+ arduinoGen.forBlock['comment_rl']=(b)=>'// '+b.getFieldValue('TEXT')+NL;
  arduinoGen.scrub_=function(block,code,thisOnly){const next=block.nextConnection&&block.nextConnection.targetBlock();return code+(thisOnly?'':this.blockToCode(next));};
  const toolbox={kind:'categoryToolbox',contents:[
-  {kind:'category',name:'Control',colour:'#f4a000',contents:[{kind:'block',type:'arduino_setup'},{kind:'block',type:'arduino_loop'},{kind:'block',type:'arduino_delay'}]},
   {kind:'category',name:'Salida',colour:'#3f8ee8',contents:[{kind:'block',type:'pin_mode'},{kind:'block',type:'digital_write'}]},
-  {kind:'category',name:'Entrada',colour:'#32a66b',contents:[{kind:'block',type:'analog_read'}]}
+  {kind:'category',name:'Entrada',colour:'#32a66b',contents:[{kind:'block',type:'digital_read'},{kind:'block',type:'analog_read'}]},
+  {kind:'category',name:'Control',colour:'#f4a000',contents:[{kind:'block',type:'arduino_setup'},{kind:'block',type:'arduino_loop'},{kind:'block',type:'if_else'},{kind:'block',type:'repeat_n'},{kind:'block',type:'arduino_delay'}]},
+  {kind:'category',name:'Matemáticas',colour:'#45ad59',contents:[{kind:'block',type:'math_number_rl'},{kind:'block',type:'compare_rl'},{kind:'block',type:'logic_rl'},{kind:'block',type:'not_rl'},{kind:'block',type:'math_arith_rl'}]},
+  {kind:'category',name:'Variables',colour:'#b74cc5',contents:[{kind:'block',type:'var_set_rl'},{kind:'block',type:'var_get_rl'}]},
+  {kind:'category',name:'Notación',colour:'#8c8c8c',contents:[{kind:'block',type:'comment_rl'}]}
  ]};
  blocklyWorkspace=Blockly.inject('blockArea',{toolbox,trashcan:true,zoom:{controls:true,wheel:true,startScale:.85},grid:{spacing:20,length:3,colour:'#d9e2e8',snap:true}});
- const xml=Blockly.utils.xml.textToDom('<xml><block type="arduino_setup" x="30" y="30"><statement name="DO"><block type="pin_mode"><field name="PIN">13</field><field name="MODE">OUTPUT</field></block></statement></block><block type="arduino_loop" x="30" y="160"><statement name="DO"><block type="digital_write"><field name="PIN">13</field><field name="VALUE">HIGH</field><next><block type="arduino_delay"><field name="MS">1000</field><next><block type="digital_write"><field name="PIN">13</field><field name="VALUE">LOW</field><next><block type="arduino_delay"><field name="MS">1000</field></block></next></block></next></block></next></block></statement></block></xml>');
+ const xml=Blockly.utils.xml.textToDom('<xml><block type="arduino_setup" x="30" y="30"></block><block type="arduino_loop" x="30" y="150"></block></xml>');
  Blockly.Xml.domToWorkspace(xml,blocklyWorkspace);
- const sync=()=>{let generated=arduinoGen.workspaceToCode(blocklyWorkspace);for(let i=0;i<5;i++)generated=generated.replace(/\\+n/g,String.fromCharCode(10));$('code').value=generated};blocklyWorkspace.addChangeListener(sync);sync();
+ const sync=()=>{let generated=arduinoGen.workspaceToCode(blocklyWorkspace);for(let i=0;i<5;i++)generated=generated.replace(/\\+n/g,NL);$('code').value=generated};blocklyWorkspace.addChangeListener(sync);sync();
 }
 document.querySelectorAll('.modebtn').forEach(b=>b.onclick=()=>{document.querySelectorAll('.modebtn').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('code').value=normalizedSketch();let m=b.dataset.mode;$('blockArea').style.display=m==='code'?'none':'block';$('code').style.display=m==='blocks'?'none':'block';if(blocklyWorkspace)setTimeout(()=>Blockly.svgResize(blocklyWorkspace),20)});
 initBlockly();
