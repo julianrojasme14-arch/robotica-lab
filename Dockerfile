@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV ARDUINO_UPDATER_ENABLE_NOTIFICATION=false
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ca-certificates curl xz-utils \
+    && apt-get install -y --no-install-recommends ca-certificates curl xz-utils python3 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /opt/arduino-cli/bin \
