@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.19.1</title>
+<title>Robótica Lab V9.20</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -57,8 +57,8 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 #world{position:absolute;left:0;top:0;width:2000px;height:1400px;transform-origin:0 0}.fitbtn{position:absolute;left:10px;top:10px;z-index:40;width:38px;height:38px;border:1px solid #ccd7df;background:#fff;border-radius:50%;font-size:22px;cursor:pointer}
 #wireLayer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
 @media(max-width:900px){#splitter{display:none}.lab{display:block!important}.editorpanel{display:flex!important}}
-.component[data-type="led"].on .bulb,.component[data-type="led"] .bulb.on{background:#ff2b20!important;box-shadow:0 0 18px #ff3025,0 0 32px #ff6a55!important;filter:brightness(1.7)!important}.board>.pin{width:10px!important;height:10px!important;border:0!important;background:#ff1717!important;opacity:0!important;transform:translate(-50%,-50%)!important;z-index:200!important}.board>.pin:hover,.board>.pin.sel{opacity:1!important;outline:2px solid white!important;box-shadow:0 0 0 3px #222!important}</style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.19.1</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+.component[data-type="led"].on .bulb,.component[data-type="led"] .bulb.on{background:var(--led-color,#e53935)!important;box-shadow:0 0 18px color-mix(in srgb,var(--led-color,#e53935) 75%,transparent),0 0 32px color-mix(in srgb,var(--led-color,#e53935) 50%,transparent)!important;filter:brightness(1.35)!important}.board>.pin{width:10px!important;height:10px!important;border:0!important;background:#ff1717!important;opacity:0!important;transform:translate(-50%,-50%)!important;z-index:200!important}.board>.pin:hover,.board>.pin.sel{opacity:1!important;outline:2px solid white!important;box-shadow:0 0 0 3px #222!important}</style></head><body>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.20</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn" id="partsBtn">＋ Componentes</button><button class="toolbtn" id="undoBtn">↶ Deshacer</button><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><div class="simtop"><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button></div></div>
 <div class="lab">
 <aside class="panel palette" id="partsPalette"><h3>Componentes</h3>
@@ -84,7 +84,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.19.1 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.20 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null;
@@ -107,7 +107,8 @@ function makeBoard(el,type){
  const boardEl=el.firstElementChild;
  customElements.whenDefined(tag).then(()=>requestAnimationFrame(()=>{
    const info=(boardEl.pinInfo||[]).filter(pi=>pi&&!pi.noBreadboard&&Number.isFinite(pi.x)&&Number.isFinite(pi.y));
-   const bounds=type==='uno'?{w:266,h:201}:{w:169.7,h:67.3};
+   const vb=type==='uno'?{x:-4,w:72.58,h:53.34}:{x:-1.4,w:44.9,h:17.8};
+   const pxPerMm=96/25.4;
    info.forEach(pi=>{
      let raw=String(pi.name),logical=raw;
      if(/^\d+$/.test(logical))logical='D'+logical;
@@ -115,9 +116,9 @@ function makeBoard(el,type){
      if(logical.startsWith('RESET.'))logical='RESET';
      if(/\.2$/.test(raw)&&type==='uno')return;
      if(!(/^(D\d+|A\d+|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(logical)))return;
-     const pin=document.createElement('span');
-     pin.className='pin';pin.dataset.port=logical;pin.dataset.rawPort=raw;pin.title=logical;
-     pin.style.left=(pi.x/bounds.w*100)+'%';pin.style.top=(pi.y/bounds.h*100)+'%';
+     const svgX=pi.x/pxPerMm,svgY=pi.y/pxPerMm;
+     const pin=document.createElement('span');pin.className='pin';pin.dataset.port=logical;pin.dataset.rawPort=raw;pin.title=logical;
+     pin.style.left=((svgX-vb.x)/vb.w*100)+'%';pin.style.top=(svgY/vb.h*100)+'%';
      el.appendChild(pin);
    });
    terminals(el);redraw();
@@ -137,6 +138,7 @@ function showLedTools(el){
  box.querySelector('[data-action="reverse"]').onclick=e=>{e.stopPropagation();const a=el.querySelector('.terminal.a'),k=el.querySelector('.terminal.k');const ap=a.dataset.port;a.dataset.port=k.dataset.port;k.dataset.port=ap;el.dataset.reversed=el.dataset.reversed==='1'?'0':'1';el.querySelector('.polA').textContent=el.dataset.reversed==='1'?'K −':'A +';el.querySelector('.polK').textContent=el.dataset.reversed==='1'?'A +':'K −';wires.forEach(w=>{[w.a,w.b].forEach(ep=>{if(ep.root===el)ep.key=key(el,ep.t.dataset.port)})});redraw()};
 }
 function hideLedTools(){const b=$('ledTools');if(b)b.classList.remove('show')}
+document.addEventListener('pointerdown',e=>{const tools=$('ledTools');if(!tools)return;if(!e.target.closest('#ledTools')&&!e.target.closest('.component[data-type="led"]'))hideLedTools()},true);
 function enableMove(el){let sx,sy,ox,oy,moving=false;el.addEventListener('pointerdown',e=>{if(e.target.matches('.pin,.terminal'))return;moving=true;sx=e.clientX;sy=e.clientY;ox=parseFloat(el.style.left);oy=parseFloat(el.style.top);el.setPointerCapture(e.pointerId)});el.addEventListener('pointermove',e=>{if(!moving)return;el.style.left=Math.max(0,ox+(e.clientX-sx)/view.scale)+'px';el.style.top=Math.max(0,oy+(e.clientY-sy)/view.scale)+'px';redraw();if(el.dataset.type==='led')showLedTools(el)});el.addEventListener('pointerup',()=>{moving=false;redraw()});el.addEventListener('click',e=>{if(e.target.matches('.pin,.terminal'))return;document.querySelectorAll('.component').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');window.selectedComponent=el;if(el.dataset.type==='led')showLedTools(el);else hideLedTools()});el.addEventListener('dblclick',()=>{wires=wires.filter(w=>w.a.root!==el&&w.b.root!==el);el.remove();redraw()})}
 
 $('board').onchange=()=>{let old=world.querySelector('.board');if(old){wires=wires.filter(w=>w.a.root!==old&&w.b.root!==old);old.remove()}addComponent($('board').value,120,260);redraw();log('Placa cambiada a Arduino '+($('board').value==='uno'?'Uno':'Nano')+'.','good')};
