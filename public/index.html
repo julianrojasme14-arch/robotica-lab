@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.24</title>
+<title>Robótica Lab V9.25</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -9,7 +9,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .workspace{position:relative;overflow:hidden;background-color:#fff;background-image:linear-gradient(#e6edf2 1px,transparent 1px),linear-gradient(90deg,#e6edf2 1px,transparent 1px);background-size:20px 20px;touch-action:none}
 #wireLayer{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:2}.wirehit{pointer-events:stroke!important}.component{position:absolute;z-index:3;touch-action:none;user-select:none;cursor:move}
 .board{width:390px;height:294.7px;background:#087dad;border:4px solid #05618c;border-radius:15px;color:#fff;box-shadow:0 5px 12px #0002}.board.nano{width:330px;height:130.9px;border-radius:6px}.board>wokwi-arduino-uno,.board>wokwi-arduino-nano{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important}.usb{position:absolute;left:-18px;top:64px;width:58px;height:65px;background:#c3c9cc;border:2px solid #737b80}.nano .usb{top:31px;width:44px;height:48px}.chip{position:absolute;left:135px;top:92px;width:120px;height:32px;background:#161b1f}.nano .chip{left:120px;top:44px;width:85px;height:28px}.boardname{position:absolute;left:125px;top:38px;font-weight:bold;font-size:18px}.nano .boardname{left:100px;top:13px;font-size:14px}
-.pin{position:absolute;width:17px;height:17px;border:3px solid #d4b94d;background:#222;border-radius:50%;z-index:5;cursor:crosshair}.pin:hover,.pin.sel{outline:4px solid #50c7ff}.pinlabel{position:absolute;font-size:9px;color:#fff;transform:translateX(-50%);white-space:nowrap}
+.pin{position:absolute;width:10px;height:10px;border:2px solid #fff;background:#f21d24;border-radius:3px;z-index:5;cursor:crosshair;transform:translate(-50%,-50%);box-shadow:0 0 0 2px #263746}.pin:hover,.pin.sel{outline:4px solid #50c7ff}.pinlabel{position:absolute;font-size:9px;color:#fff;transform:translateX(-50%);white-space:nowrap}
 .ledc{width:54px;height:92px;transform-origin:27px 46px}.bulb{position:absolute;left:8px;top:0;width:36px;height:48px;border-radius:22px 22px 9px 9px;background:color-mix(in srgb,var(--led-color,#e53935) 68%,transparent);border:2px solid color-mix(in srgb,var(--led-color,#e53935) 72%,#333);box-shadow:inset 7px 4px 8px #ffffff55,inset -6px -5px 8px #0003;opacity:.82}.bulb:before{content:"";position:absolute;left:8px;top:5px;width:11px;height:5px;border-radius:50%;background:#fff9;transform:rotate(-25deg)}.bulb.on{background:var(--led-color,#ff3131);box-shadow:0 0 26px 11px color-mix(in srgb,var(--led-color,#ff3131) 55%,transparent),inset 7px 4px 8px #fff8;opacity:1}.leg{position:absolute;top:45px;width:4px;height:42px;background:linear-gradient(90deg,#777,#ddd,#777);border-radius:2px}.leg.a{left:17px;height:44px}.leg.k{left:34px;height:36px}.terminal{position:absolute;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid #333;cursor:crosshair;z-index:5}.ledc .terminal.a{left:11px;top:74px}.ledc .terminal.k{left:28px;top:68px}.ledtools{position:absolute;display:none;gap:4px;align-items:center;background:#2d3035;padding:6px;border-radius:7px;z-index:9999;box-shadow:0 3px 12px #0005}.ledtools.show{display:flex}.ledtools button{width:23px;height:23px;border:1px solid #fff8;border-radius:3px;cursor:pointer;padding:0}.ledtools .tool{width:auto;padding:0 7px;color:white;background:#444;font-size:15px}
 .res{width:130px;height:38px}.resline{position:absolute;left:5px;right:5px;top:18px;height:3px;background:#777}.resbody{position:absolute;left:38px;top:8px;width:55px;height:23px;background:#d6bd80;border-radius:6px;border:1px solid #8d7540}.res .terminal:first-child{left:0;top:12px}.res .terminal:last-child{right:0;top:12px}
 .editorHead{padding:10px}.editor{width:100%;height:50vh;border:0;border-top:1px solid #ddd;border-bottom:1px solid #ddd;padding:10px;font:13px Consolas,monospace;resize:none}.field{width:calc(100% - 18px);margin:0 9px 8px;padding:9px;border:1px solid #ccd8e0;border-radius:7px}.actions{padding:8px;display:flex;gap:5px;flex-wrap:wrap}.btn{border:0;color:#fff;border-radius:7px;padding:9px 11px;font-weight:bold;cursor:pointer}.compile{background:#087bd3}.run{background:#10a04b}.stop{background:#df4039}.clear{background:#697985}.console{margin:0 8px 8px;background:#101419;color:#e8eef2;border-radius:7px;height:150px;padding:8px;overflow:auto;white-space:pre-wrap;font:11px Consolas,monospace}.good{color:#55df91}.warn{color:#ffd166}.bad{color:#ff7770}
@@ -62,7 +62,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 
 .thumb{position:relative;display:block;width:64px;height:48px}.resistorThumb:before,.resistorThumb:after{content:"";position:absolute;top:23px;width:16px;height:2px;background:#777}.resistorThumb:before{left:0}.resistorThumb:after{right:0}.resistorThumb i{position:absolute;left:15px;top:17px;width:34px;height:14px;border-radius:6px;background:#d6b36b;border:1px solid #8e713e}.resistorThumb b,.resistorThumb em{position:absolute;top:18px;width:4px;height:12px;background:#8a4b20;z-index:2}.resistorThumb b{left:25px}.resistorThumb em{left:35px;background:#d22}.ledThumb i{position:absolute;left:20px;top:2px;width:27px;height:32px;border-radius:16px 16px 7px 7px;background:#d9343e;border:2px solid #9d1e27;box-shadow:inset 6px 4px 6px #fff6}.ledThumb:before,.ledThumb:after{content:"";position:absolute;top:33px;width:3px;background:#888}.ledThumb:before{left:27px;height:15px}.ledThumb:after{left:39px;height:11px}.unoThumb{width:72px;height:46px;background:#0879ad;border-radius:4px;border:2px solid #075c83;color:white;font-size:10px}.unoThumb b{position:absolute;left:27px;top:18px}.unoThumb i{position:absolute;left:5px;top:5px;width:13px;height:12px;background:#bbb}.nanoThumb{width:70px;height:30px;margin-top:8px;background:#1798a0;border-radius:2px;color:white;font-size:8px}.nanoThumb b{position:absolute;left:24px;top:10px}.nanoThumb:before,.nanoThumb:after{content:"";position:absolute;left:4px;right:4px;height:3px;background:repeating-linear-gradient(90deg,#ddd 0 3px,transparent 3px 7px)}.nanoThumb:before{top:2px}.nanoThumb:after{bottom:2px}
 
-/* V9.24 authoritative desktop layout */
+/* V9.25 authoritative desktop layout */
 .lab{display:grid!important;grid-template-columns:220px minmax(0,1fr)!important;grid-template-rows:1fr!important;height:calc(100vh - 112px)!important;min-height:0!important}
 .lab>.palette{grid-column:1;grid-row:1;min-width:0!important;width:auto!important;height:100%!important;overflow:hidden!important}
 .lab>.workspace{grid-column:2;grid-row:1;width:auto!important;min-width:0!important;height:100%!important;flex:none!important}
@@ -75,7 +75,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .editorpanel .editorHead{flex:0 0 auto}.editorpanel .editor{flex:1 1 auto!important;min-height:220px!important;width:100%!important}.editorpanel .console{max-height:150px!important}
 @media(max-width:900px){.lab,.lab.code-open{grid-template-columns:190px minmax(0,1fr)!important}.lab.code-open>.editorpanel{position:absolute!important;left:190px;right:0;top:0;bottom:0;z-index:80;min-width:0!important}.lab.code-open>#splitter{display:none!important}}
 </style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.24</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.25</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -100,7 +100,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.24 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.25 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[];
@@ -121,11 +121,13 @@ function makeBoard(el,type){
  const boardEl=el.firstElementChild;
  customElements.whenDefined(tag).then(()=>requestAnimationFrame(()=>{
    const info=(boardEl.pinInfo||[]).filter(pi=>pi&&!pi.noBreadboard&&Number.isFinite(pi.x)&&Number.isFinite(pi.y));
-   const svg=boardEl.shadowRoot&&boardEl.shadowRoot.querySelector('svg');
-   if(!svg){log('No se encontró el SVG interno de la placa.','bad');return}
-   const vb=svg.viewBox.baseVal;
-   const matrix=svg.getScreenCTM();
-   const hostRect=el.getBoundingClientRect();
+   /* pinInfo x/y are screen-space coordinates relative to the element origin.
+      Natural SVG CSS size = physical mm converted at 96 CSS dpi. */
+   const natural=type==='uno'
+     ?{w:72.58*96/25.4,h:53.34*96/25.4}
+     :{w:44.9*96/25.4,h:17.8*96/25.4};
+   const rendered=boardEl.getBoundingClientRect();
+   const sx=rendered.width/natural.w,sy=rendered.height/natural.h;
    info.forEach(pi=>{
      let raw=String(pi.name),logical=raw;
      if(/^\d+$/.test(logical))logical='D'+logical;
@@ -133,13 +135,8 @@ function makeBoard(el,type){
      if(logical.startsWith('RESET.'))logical='RESET';
      if(/\.2$/.test(raw)&&type==='uno')return;
      if(!(/^(D\d+|A\d+|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(logical)))return;
-     /* ElementPin is in 0.1in units. Convert to SVG mm, then let the rendered SVG CTM
-        produce the exact screen point actually used by Wokwi. */
-     const p=svg.createSVGPoint();p.x=pi.x*0.254;p.y=pi.y*0.254;
-     const screen=p.matrixTransform(matrix);
-     const localX=screen.x-hostRect.left,localY=screen.y-hostRect.top;
      const pin=document.createElement('span');pin.className='pin';pin.dataset.port=logical;pin.dataset.rawPort=raw;pin.title=logical;
-     pin.style.left=localX+'px';pin.style.top=localY+'px';pin.dataset.screenAnchor='1';
+     pin.style.left=(pi.x*sx)+'px';pin.style.top=(pi.y*sy)+'px';
      el.appendChild(pin);
    });
    terminals(el);redraw();
