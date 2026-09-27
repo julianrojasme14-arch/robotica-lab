@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.13</title>
+<title>Robótica Lab V9.14</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -8,7 +8,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .palette{padding:9px}.palette h3{margin:3px 0 10px}.part{padding:10px;border:1px solid #dbe5ec;border-radius:8px;margin:7px 0;background:#fff;cursor:grab;user-select:none}.part:hover{background:#eef8ff;border-color:#7bbce6}.hint{font-size:11px;color:#657684;line-height:1.35}
 .workspace{position:relative;overflow:hidden;background-color:#fff;background-image:linear-gradient(#e6edf2 1px,transparent 1px),linear-gradient(90deg,#e6edf2 1px,transparent 1px);background-size:20px 20px;touch-action:none}
 #wireLayer{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:2}.wirehit{pointer-events:stroke!important}.component{position:absolute;z-index:3;touch-action:none;user-select:none;cursor:move}
-.board{width:390px;height:205px;background:#087dad;border:4px solid #05618c;border-radius:15px;color:#fff;box-shadow:0 5px 12px #0002}.board.nano{width:330px;height:120px;border-radius:6px}.usb{position:absolute;left:-18px;top:64px;width:58px;height:65px;background:#c3c9cc;border:2px solid #737b80}.nano .usb{top:31px;width:44px;height:48px}.chip{position:absolute;left:135px;top:92px;width:120px;height:32px;background:#161b1f}.nano .chip{left:120px;top:44px;width:85px;height:28px}.boardname{position:absolute;left:125px;top:38px;font-weight:bold;font-size:18px}.nano .boardname{left:100px;top:13px;font-size:14px}
+.board{width:390px;height:295px;background:#087dad;border:4px solid #05618c;border-radius:15px;color:#fff;box-shadow:0 5px 12px #0002}.board.nano{width:330px;height:120px;border-radius:6px}.board>wokwi-arduino-uno,.board>wokwi-arduino-nano{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important}.usb{position:absolute;left:-18px;top:64px;width:58px;height:65px;background:#c3c9cc;border:2px solid #737b80}.nano .usb{top:31px;width:44px;height:48px}.chip{position:absolute;left:135px;top:92px;width:120px;height:32px;background:#161b1f}.nano .chip{left:120px;top:44px;width:85px;height:28px}.boardname{position:absolute;left:125px;top:38px;font-weight:bold;font-size:18px}.nano .boardname{left:100px;top:13px;font-size:14px}
 .pin{position:absolute;width:17px;height:17px;border:3px solid #d4b94d;background:#222;border-radius:50%;z-index:5;cursor:crosshair}.pin:hover,.pin.sel{outline:4px solid #50c7ff}.pinlabel{position:absolute;font-size:9px;color:#fff;transform:translateX(-50%);white-space:nowrap}
 .ledc{width:46px;height:75px}.bulb{position:absolute;left:9px;top:0;width:30px;height:39px;border-radius:18px 18px 7px 7px;background:#d73535;border:2px solid #a92323}.bulb.on{background:#ff3131;box-shadow:0 0 24px 10px #ff313177}.leg{position:absolute;top:37px;width:3px;height:35px;background:#777}.leg.a{left:17px}.leg.k{left:31px}.terminal{position:absolute;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid #333;cursor:crosshair;z-index:5}.ledc .terminal.a{left:11px;top:59px}.ledc .terminal.k{left:25px;top:59px}
 .res{width:130px;height:38px}.resline{position:absolute;left:5px;right:5px;top:18px;height:3px;background:#777}.resbody{position:absolute;left:38px;top:8px;width:55px;height:23px;background:#d6bd80;border-radius:6px;border:1px solid #8d7540}.res .terminal:first-child{left:0;top:12px}.res .terminal:last-child{right:0;top:12px}
@@ -58,7 +58,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 #wireLayer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
 @media(max-width:900px){#splitter{display:none}.lab{display:block!important}.editorpanel{display:flex!important}}
 .component[data-type="led"].on .bulb,.component[data-type="led"] .bulb.on{background:#ff2b20!important;box-shadow:0 0 18px #ff3025,0 0 32px #ff6a55!important;filter:brightness(1.7)!important}</style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.13</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.14</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn" id="partsBtn">＋ Componentes</button><button class="toolbtn" id="undoBtn">↶ Deshacer</button><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><div class="simtop"><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button></div></div>
 <div class="lab">
 <aside class="panel palette"><h3>Componentes</h3>
@@ -84,7 +84,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.13 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.14 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null;
@@ -101,16 +101,24 @@ function addComponent(type,x,y){
 }
 function makeBoard(el,type){
  el.classList.add('board');if(type==='nano')el.classList.add('nano');
- el.innerHTML=type==='uno'?'<wokwi-arduino-uno></wokwi-arduino-uno>':'<wokwi-arduino-nano></wokwi-arduino-nano>';
- const unoPins=[
- ['AREF',106,9],['GND',115.5,9],['D13',125,9],['D12',134.5,9],['D11',144,9],['D10',153.5,9],['D9',163,9],['D8',173,9],
- ['D7',189,9],['D6',198.5,9],['D5',208,9],['D4',217.5,9],['D3',227,9],['D2',236.5,9],['D1',246,9],['D0',255.5,9],
- ['5V',160,191.5],['GND',169.5,191.5],['GND',179,191.5],['A0',208,191.5],['A1',217.5,191.5],['A2',227,191.5],['A3',236.5,191.5],['A4',246,191.5],['A5',255.5,191.5]
- ];
- customElements.whenDefined(type==='uno'?'wokwi-arduino-uno':'wokwi-arduino-nano').then(()=>requestAnimationFrame(()=>{
-   const pins=type==='uno'?unoPins:(el.querySelector('wokwi-arduino-nano').pinInfo||[]).map(pi=>[pi.name,pi.x,pi.y]);
-   const nw=type==='uno'?266:180,nh=type==='uno'?201:180;
-   pins.forEach(([name,x,y])=>{let logical=String(name);if(/^\d+$/.test(logical))logical='D'+logical;if(logical.startsWith('GND.'))logical='GND';if(!(/^(D\d+|A\d+|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(logical)))return;const pin=document.createElement('span');pin.className='pin';pin.dataset.port=logical;pin.title=logical;pin.style.left=(x/nw*100)+'%';pin.style.top=(y/nh*100)+'%';el.appendChild(pin)});
+ const tag=type==='uno'?'wokwi-arduino-uno':'wokwi-arduino-nano';
+ el.innerHTML='<'+tag+'></'+tag+'>';
+ const boardEl=el.firstElementChild;
+ customElements.whenDefined(tag).then(()=>requestAnimationFrame(()=>{
+   const info=(boardEl.pinInfo||[]).filter(pi=>pi&&Number.isFinite(pi.x)&&Number.isFinite(pi.y));
+   if(!info.length){log('No se pudieron leer los terminales de la placa.','bad');return}
+   const xs=info.map(p=>p.x),ys=info.map(p=>p.y),minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+   info.forEach(pi=>{
+     let logical=String(pi.name);
+     if(/^\d+$/.test(logical))logical='D'+logical;
+     if(logical.startsWith('GND.'))logical='GND';
+     if(logical.endsWith('.2'))return;
+     if(!(/^(D\d+|A\d+|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(logical)))return;
+     const pin=document.createElement('span');pin.className='pin';pin.dataset.port=logical;pin.title=logical;
+     pin.style.left=((pi.x-minX)/(maxX-minX)*94+3)+'%';
+     pin.style.top=((pi.y-minY)/(maxY-minY)*92+4)+'%';
+     el.appendChild(pin);
+   });
    terminals(el);
  }));
 }
@@ -204,7 +212,7 @@ function driveLED(pin,high){
  })}}
 window.stopAVR=()=>{running=false};
 try{
- avr=await import('/vendor/avr8js/dist/index.js');
+ avr=await import('/vendor/avr8js/dist/esm/index.js');
  window.startAVR=async(hex)=>{running=false;await new Promise(r=>setTimeout(r,5));running=true;const {CPU,avrInstruction,AVRIOPort,AVRTimer,PinState,portBConfig,portCConfig,portDConfig,timer0Config,timer1Config,timer2Config}=avr;const program=new Uint16Array(0x8000);loadHex(hex,new Uint8Array(program.buffer));const cpu=new CPU(program);new AVRTimer(cpu,timer0Config);new AVRTimer(cpu,timer1Config);new AVRTimer(cpu,timer2Config);const pb=new AVRIOPort(cpu,portBConfig),pd=new AVRIOPort(cpu,portDConfig);let last13=null;const update=()=>{const now13=pb.pinState(5)===PinState.High;if(now13!==last13){last13=now13;console.debug('D13',now13?'HIGH':'LOW')}for(let p=8;p<=13;p++)driveLED(p,pb.pinState(p-8)===PinState.High);for(let p=0;p<=7;p++)driveLED(p,pd.pinState(p)===PinState.High);const uno=document.querySelector('wokwi-arduino-uno');if(uno)uno.led13=pb.pinState(5)===PinState.High};pb.addListener(update);pd.addListener(update);update();const batch=()=>{if(!running)return;const until=cpu.cycles+50000;while(cpu.cycles<until){avrInstruction(cpu);cpu.tick()}update();setTimeout(batch,0)};batch()};
  window.avrReady=true;
 }catch(e){window.avrReady=false;window.avrLoadError=e;console.error('AVR8js load error',e)}
