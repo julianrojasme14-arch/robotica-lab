@@ -9,7 +9,7 @@ const code=()=>crypto.randomBytes(3).toString("hex").toUpperCase();
 const CLI=process.env.ARDUINO_CLI||"arduino-cli";
 
 app.get("/health",(q,r)=>r.status(200).send("ok"));
-app.get("/api/version",(q,r)=>r.json({version:"V9.33.3",esp32Runtime:true,gpio2Led:true}));
+app.get("/api/version",(q,r)=>r.json({version:"V9.33.4",esp32Runtime:true,gpio2Led:true}));
 app.get("/api/status",(q,r)=>execFile(CLI,["version"],{timeout:10000},(e,o,err)=>r.json({
   online:true,compiler:!e,version:e?null:o.trim(),error:e?(err||e.message):null
 })));
@@ -25,9 +25,9 @@ app.post("/api/compile",(q,r)=>{
   let kind=String(q.body.board||"uno");let board=kind==="nano"?"arduino:avr:nano:cpu=atmega328old":kind==="esp32"?"esp32:esp32:esp32":"arduino:avr:uno";
   let tmp=fs.mkdtempSync(path.join(os.tmpdir(),"rlab-")),dir=path.join(tmp,"Sketch"),build=path.join(tmp,"build");
   fs.mkdirSync(dir);fs.mkdirSync(build);fs.writeFileSync(path.join(dir,"Sketch.ino"),sketch,{encoding:"utf8"});
-  execFile(CLI,["compile","--fqbn",board,"--build-path",build,dir],{timeout:60000,maxBuffer:4e6},(e,out,err)=>{
+  execFile(CLI,["compile","--fqbn",board,"--build-path",build,dir],{timeout:240000,maxBuffer:8e6},(e,out,err)=>{
     try{
-      if(e){const detail=[err,out,e.message].filter(Boolean).join("\n").trim();return r.status(400).json({ok:false,error:detail||"Error de compilación",board});}
+      if(e){const timedOut=e.killed||e.code==="ETIMEDOUT";const detail=timedOut?"La compilación excedió 240 segundos en el servidor.":[err,out,e.message].filter(Boolean).join("\n").trim();return r.status(timedOut?504:400).json({ok:false,error:detail||"Error de compilación",board,timedOut,code:e.code||null,signal:e.signal||null});}
       let files=fs.readdirSync(build);
       if(kind==="esp32"){
         let f=files.find(x=>x.endsWith(".bin")&&!x.includes("bootloader")&&!x.includes("partitions"));
@@ -41,4 +41,4 @@ app.post("/api/compile",(q,r)=>{
   });
 });
 const PORT=process.env.PORT||10000;
-app.listen(PORT,"0.0.0.0",()=>console.log(`Robótica Lab V9.33.3 Online listo en puerto ${PORT} · CLI: ${CLI}`));
+app.listen(PORT,"0.0.0.0",()=>console.log(`Robótica Lab V9.33.4 Online listo en puerto ${PORT} · CLI: ${CLI}`));
