@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.7</title>
+<title>Robótica Lab V9.8</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -46,19 +46,19 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .editor{flex:1 1 auto!important;width:100%!important;height:auto!important;min-height:280px!important}
 .actions,.console{flex:0 0 auto!important}
 
-.board .pin{background:transparent!important;border:0!important;outline:0!important;width:24px!important;height:24px!important;opacity:.015!important;border-radius:50%!important}
-.board .pin:hover,.board .pin.sel{opacity:.9!important;background:#35bdf4!important;box-shadow:0 0 0 3px #fff,0 0 0 5px #1386bb!important}
+.terminal{cursor:crosshair}.board .pin{cursor:crosshair;background:transparent!important;border:0!important;outline:0!important;width:24px!important;height:24px!important;opacity:.015!important;border-radius:50%!important}
+.board .pin:hover,.board .pin.sel,.terminal:hover,.terminal.sel{opacity:1!important;background:#ff1010!important;border-radius:2px!important;box-shadow:0 0 0 2px #fff,0 0 0 3px #333!important}
 .component.selected{filter:drop-shadow(0 0 4px #0d8bd8)}
 .board .pinlabel{display:none!important}
 .simstart.running{background:#18a64a!important;border-color:#18a64a!important}
 
-.lab{grid-template-columns:43% 7px minmax(0,57%)!important}.workspace{overflow:hidden!important}.editorpanel{grid-column:3!important}
-#splitter{grid-column:2;background:#d8e1e7;cursor:col-resize;z-index:30}#splitter:hover{background:#0d8bd8}
+.lab{grid-template-columns:43% 7px minmax(0,57%)!important}.workspace{overflow:hidden!important;flex:0 0 43%;min-width:220px}.editorpanel{flex:1 1 auto!important;min-width:260px!important}
+#splitter{flex:0 0 7px;background:#d8e1e7;cursor:col-resize;z-index:30}#splitter:hover{background:#0d8bd8}
 #world{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0}.fitbtn{position:absolute;left:10px;top:10px;z-index:40;width:38px;height:38px;border:1px solid #ccd7df;background:#fff;border-radius:50%;font-size:22px;cursor:pointer}
 #wireLayer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
 @media(max-width:900px){#splitter{display:none}.lab{display:block!important}.editorpanel{display:flex!important}}
 </style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.7</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.8</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn" id="partsBtn">＋ Componentes</button><button class="toolbtn" id="undoBtn">↶ Deshacer</button><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><div class="simtop"><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button></div></div>
 <div class="lab">
 <aside class="panel palette"><h3>Componentes</h3>
@@ -84,13 +84,13 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.7 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.8 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null;
 const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 function log(s,c=''){$('console').innerHTML+='<span class="'+c+'">'+esc(s)+'</span>\n';$('console').scrollTop=$('console').scrollHeight}
-$('code').value=$('code').value.replace(/\\\\+n/g,String.fromCharCode(10));
+$('code').value=normalizedSketch();
 fetch('/api/status').then(r=>r.json()).then(s=>{ $('status').textContent=s.compiler?'☁ Online · Arduino CLI listo':'☁ Online · compilador no disponible'; if(s.compiler)log('✓ '+s.version,'good');else log('⚠ '+(s.error||'Arduino CLI no detectado'),'warn')}).catch(e=>{$('status').textContent='Servidor no disponible';log('❌ '+e.message,'bad')});
 document.querySelectorAll('.part').forEach(p=>p.addEventListener('dragstart',e=>e.dataTransfer.setData('type',p.dataset.type)));
 ws.addEventListener('dragover',e=>e.preventDefault());ws.addEventListener('drop',e=>{e.preventDefault();let r=ws.getBoundingClientRect();addComponent(e.dataTransfer.getData('type'),e.clientX-r.left,e.clientY-r.top)});
@@ -101,14 +101,20 @@ function addComponent(type,x,y){
 }
 function makeBoard(el,type){
  el.classList.add('board');if(type==='nano')el.classList.add('nano');el.innerHTML=type==='uno'?'<wokwi-arduino-uno></wokwi-arduino-uno>':'<wokwi-arduino-nano></wokwi-arduino-nano>';
- const coords=type==='uno'?{
- 'GND':[245,254],'5V':[221,254],'D2':[311,28],'D3':[288,28],'D4':[265,28],'D5':[242,28],'D6':[219,28],'D7':[196,28],'D8':[173,28],'D9':[150,28],'D10':[127,28],'D11':[104,28],'D12':[81,28],'D13':[58,28],
- 'A0':[286,254],'A1':[309,254],'A2':[332,254],'A3':[355,254],'A4':[378,254],'A5':[401,254]
- }:{
- 'GND':[40,26],'5V':[60,26],'D2':[80,26],'D3':[100,26],'D4':[120,26],'D5':[140,26],'D6':[160,26],'D7':[180,26],'D8':[200,26],'D9':[220,26],'D10':[240,26],'D11':[260,26],'D12':[280,26],'D13':[300,26],
- 'A0':[100,168],'A1':[127,168],'A2':[154,168],'A3':[181,168],'A4':[208,168],'A5':[235,168]
- };
- Object.entries(coords).forEach(([p,xy])=>{let pin=document.createElement('span');pin.className='pin';pin.dataset.port=p;pin.title=p;pin.style.left=xy[0]+'px';pin.style.top=xy[1]+'px';el.append(pin)});
+ const boardEl=el.querySelector(type==='uno'?'wokwi-arduino-uno':'wokwi-arduino-nano');
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{
+   const info=boardEl.pinInfo||[];
+   const br=boardEl.getBoundingClientRect(), er=el.getBoundingClientRect();
+   info.forEach(pi=>{
+     let name=pi.name.replace(/\.\d+$/,'');
+     if(/^\d+$/.test(name)) name='D'+name;
+     if(!(/^(D\d+|A\d+|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(name)))return;
+     const pin=document.createElement('span');pin.className='pin';pin.dataset.port=name;pin.title=name;
+     const sx=br.width/(boardEl.offsetWidth||br.width), sy=br.height/(boardEl.offsetHeight||br.height);
+     pin.style.left=(br.left-er.left+pi.x*sx-10)+'px';pin.style.top=(br.top-er.top+pi.y*sy-10)+'px';
+     el.append(pin);
+   });
+ }));
 }
 function terminals(root){root.querySelectorAll('.pin,.terminal').forEach(t=>t.addEventListener('pointerdown',e=>{e.stopPropagation();selectTerminal(root,t)}))}
 function selectTerminal(root,t){let key=root.dataset.id+':'+t.dataset.port;if(!wireStart){wireStart={key,root,t};t.classList.add('sel');log('Cable iniciado en '+t.dataset.port+'. Selecciona el segundo terminal.','warn')}else{if(wireStart.key!==key){wires.push({a:wireStart,b:{key,root,t}});log('✓ Cable conectado: '+wireStart.key+' → '+key,'good')}wireStart.t.classList.remove('sel');wireStart=null;redraw()}}
@@ -118,7 +124,7 @@ function enableMove(el){let sx,sy,ox,oy,moving=false;el.addEventListener('pointe
 
 $('board').onchange=()=>{let old=world.querySelector('.board');if(old){wires=wires.filter(w=>w.a.root!==old&&w.b.root!==old);old.remove()}addComponent($('board').value,120,260);redraw();log('Placa cambiada a Arduino '+($('board').value==='uno'?'Uno':'Nano')+'.','good')};
 let simRunning=false;
-function normalizedSketch(){let c=$('code').value;return c.replace(/\\\\+n/g,String.fromCharCode(10)).replace(/\\r\\n?/g,String.fromCharCode(10))}
+function normalizedSketch(){let c=$('code').value;for(let i=0;i<4;i++)c=c.replace(/\\+n/g,String.fromCharCode(10));return c.replace(/\\r/g,'')}
 async function compileFirmware(){
  log('⚙ Preparando simulación…');
  let r=await fetch('/api/compile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:normalizedSketch(),board:$('board').value})});
@@ -150,11 +156,11 @@ function initBlockly(){
   {"type":"arduino_delay","message0":"esperar %1 ms","args0":[{"type":"field_number","name":"MS","value":1000,"min":1,"max":60000}],"previousStatement":null,"nextStatement":null,"colour":35}
  ]);
  arduinoGen=new Blockly.Generator('Arduino');
- arduinoGen.forBlock['arduino_setup']=(b,g)=>'void setup() {\\n'+g.statementToCode(b,'DO')+'}\\n\\n';
- arduinoGen.forBlock['arduino_loop']=(b,g)=>'void loop() {\\n'+g.statementToCode(b,'DO')+'}\\n';
- arduinoGen.forBlock['pin_mode']=(b)=>'pinMode('+b.getFieldValue('PIN')+', '+b.getFieldValue('MODE')+');\\n';
- arduinoGen.forBlock['digital_write']=(b)=>'digitalWrite('+b.getFieldValue('PIN')+', '+b.getFieldValue('VALUE')+');\\n';
- arduinoGen.forBlock['arduino_delay']=(b)=>'delay('+b.getFieldValue('MS')+');\\n';
+ arduinoGen.forBlock['arduino_setup']=(b,g)=>'void setup() {\\n'+g.statementToCode(b,'DO')+'}'+String.fromCharCode(10)+String.fromCharCode(10);
+ arduinoGen.forBlock['arduino_loop']=(b,g)=>'void loop() {\\n'+g.statementToCode(b,'DO')+'}'+String.fromCharCode(10);
+ arduinoGen.forBlock['pin_mode']=(b)=>'pinMode('+b.getFieldValue('PIN')+', '+b.getFieldValue('MODE')+');'+String.fromCharCode(10);
+ arduinoGen.forBlock['digital_write']=(b)=>'digitalWrite('+b.getFieldValue('PIN')+', '+b.getFieldValue('VALUE')+');'+String.fromCharCode(10);
+ arduinoGen.forBlock['arduino_delay']=(b)=>'delay('+b.getFieldValue('MS')+');'+String.fromCharCode(10);
  arduinoGen.scrub_=function(block,code,thisOnly){const next=block.nextConnection&&block.nextConnection.targetBlock();return code+(thisOnly?'':this.blockToCode(next));};
  const toolbox={kind:'categoryToolbox',contents:[
   {kind:'category',name:'Control',colour:'#f4a000',contents:[{kind:'block',type:'arduino_setup'},{kind:'block',type:'arduino_loop'},{kind:'block',type:'arduino_delay'}]},
@@ -172,7 +178,7 @@ let view={scale:1,x:0,y:0};
 function applyView(){world.style.transform='translate('+view.x+'px,'+view.y+'px) scale('+view.scale+')';redraw()}
 ws.addEventListener('wheel',e=>{e.preventDefault();const r=ws.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,old=view.scale,n=Math.max(.35,Math.min(2.5,old*(e.deltaY<0?1.12:.89)));view.x=mx-(mx-view.x)*(n/old);view.y=my-(my-view.y)*(n/old);view.scale=n;applyView()},{passive:false});
 $('fitBtn').onclick=()=>{const cs=[...world.querySelectorAll('.component')];if(!cs.length)return;let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;cs.forEach(c=>{let x=c.offsetLeft,y=c.offsetTop,w=c.offsetWidth,h=c.offsetHeight;minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x+w);maxY=Math.max(maxY,y+h)});let ww=ws.clientWidth,wh=ws.clientHeight,pad=55,sc=Math.min((ww-pad*2)/(maxX-minX),(wh-pad*2)/(maxY-minY),1.6);view.scale=Math.max(.35,sc);view.x=(ww-(maxX-minX)*view.scale)/2-minX*view.scale;view.y=(wh-(maxY-minY)*view.scale)/2-minY*view.scale;applyView()};
-let splitting=false;$('splitter').addEventListener('pointerdown',e=>{splitting=true;$('splitter').setPointerCapture(e.pointerId)});$('splitter').addEventListener('pointermove',e=>{if(!splitting)return;let pct=Math.max(25,Math.min(70,e.clientX/window.innerWidth*100));document.querySelector('.lab').style.setProperty('--left',pct+'%');redraw();if(blocklyWorkspace)Blockly.svgResize(blocklyWorkspace)});$('splitter').addEventListener('pointerup',()=>splitting=false);
+let splitting=false;$('splitter').addEventListener('pointerdown',e=>{splitting=true;$('splitter').setPointerCapture(e.pointerId)});$('splitter').addEventListener('pointermove',e=>{if(!splitting)return;let pct=Math.max(25,Math.min(70,e.clientX/window.innerWidth*100));ws.style.flexBasis=pct+'%';redraw();if(blocklyWorkspace)Blockly.svgResize(blocklyWorkspace)});$('splitter').addEventListener('pointerup',()=>splitting=false);
 window.addEventListener('resize',redraw);setTimeout(()=>document.querySelector('.modebtn[data-mode="blocks"]')?.click(),50);addComponent('uno',120,260);addComponent('led',530,130);addComponent('resistor',430,300);
 </script>
 <script type="module">
