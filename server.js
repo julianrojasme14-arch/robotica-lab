@@ -1,6 +1,14 @@
 const express=require("express"),fs=require("fs"),path=require("path"),os=require("os"),crypto=require("crypto");
 const {execFile}=require("child_process");
-const app=express(); app.use(express.json({limit:"256kb"}));
+const esbuild=require("esbuild");
+const app=express();
+try{
+  const vendorDir=path.join(__dirname,"public","vendor");
+  fs.mkdirSync(vendorDir,{recursive:true});
+  esbuild.buildSync({entryPoints:[require.resolve("avr8js")],bundle:true,format:"esm",platform:"browser",target:["es2020"],outfile:path.join(vendorDir,"avr8js.bundle.js")});
+  console.log("AVR8js browser bundle listo");
+}catch(e){console.error("No se pudo generar AVR8js browser bundle:",e);}
+app.use(express.json({limit:"256kb"}));
 app.use("/vendor/avr8js",express.static(path.join(__dirname,"node_modules","avr8js")));
 app.use(express.static(path.join(__dirname,"public")));
 const db={classes:{},sessions:{}};
