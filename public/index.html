@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.19</title>
+<title>Robótica Lab V9.19.1</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -58,10 +58,10 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 #wireLayer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
 @media(max-width:900px){#splitter{display:none}.lab{display:block!important}.editorpanel{display:flex!important}}
 .component[data-type="led"].on .bulb,.component[data-type="led"] .bulb.on{background:#ff2b20!important;box-shadow:0 0 18px #ff3025,0 0 32px #ff6a55!important;filter:brightness(1.7)!important}.board>.pin{width:10px!important;height:10px!important;border:0!important;background:#ff1717!important;opacity:0!important;transform:translate(-50%,-50%)!important;z-index:200!important}.board>.pin:hover,.board>.pin.sel{opacity:1!important;outline:2px solid white!important;box-shadow:0 0 0 3px #222!important}</style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.19</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.19.1</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn" id="partsBtn">＋ Componentes</button><button class="toolbtn" id="undoBtn">↶ Deshacer</button><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><div class="simtop"><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button></div></div>
 <div class="lab">
-<aside class="panel palette"><h3>Componentes</h3>
+<aside class="panel palette" id="partsPalette"><h3>Componentes</h3>
 <div class="part" draggable="true" data-type="uno">🔷 Arduino Uno</div>
 <div class="part" draggable="true" data-type="nano">🔹 Arduino Nano</div>
 <div class="part" draggable="true" data-type="led">💡 LED</div>
@@ -84,7 +84,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.19 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.19.1 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null;
@@ -92,11 +92,12 @@ const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[
 function log(s,c=''){$('console').innerHTML+='<span class="'+c+'">'+esc(s)+'</span>\n';$('console').scrollTop=$('console').scrollHeight}
 $('code').value=normalizedSketch();
 fetch('/api/status').then(r=>r.json()).then(s=>{ $('status').textContent=s.compiler?'☁ Online · Arduino CLI listo':'☁ Online · compilador no disponible'; if(s.compiler)log('✓ '+s.version,'good');else log('⚠ '+(s.error||'Arduino CLI no detectado'),'warn')}).catch(e=>{$('status').textContent='Servidor no disponible';log('❌ '+e.message,'bad')});
+$('partsBtn').onclick=()=>{const p=$('partsPalette');p.style.display=p.style.display==='none'?'block':'none'};
 document.querySelectorAll('.part').forEach(p=>p.addEventListener('dragstart',e=>e.dataTransfer.setData('type',p.dataset.type)));
 ws.addEventListener('dragover',e=>e.preventDefault());ws.addEventListener('drop',e=>{e.preventDefault();let r=ws.getBoundingClientRect();addComponent(e.dataTransfer.getData('type'),e.clientX-r.left,e.clientY-r.top)});
 function addComponent(type,x,y){
  const el=document.createElement('div');el.className='component';el.dataset.id='c'+(++seq);el.dataset.type=type;el.style.left=Math.max(5,x-50)+'px';el.style.top=Math.max(5,y-30)+'px';
- if(type==='uno'||type==='nano') makeBoard(el,type); else if(type==='led') el.dataset.ledColor='#e53935';el.dataset.rotation='0';el.dataset.reversed='0';el.style.setProperty('--led-color',el.dataset.ledColor);el.innerHTML='<div class="ledc"><div class="bulb"></div><div class="leg a"></div><div class="leg k"></div><span class="terminal a" data-port="A" title="Ánodo (+)"></span><span class="terminal k" data-port="K" title="Cátodo (-)"></span><span class="polarity polA">A +</span><span class="polarity polK">K −</span></div>'; else el.innerHTML='<div class="res"><span class="terminal" data-port="1"></span><div class="resline"></div><div class="resbody"><i class="band band1"></i><i class="band band2"></i><i class="band band3"></i><i class="band band4"></i></div><span class="terminal" data-port="2"></span></div>';el.dataset.ohms="1000";
+ if(type==='uno'||type==='nano'){makeBoard(el,type)}else if(type==='led'){el.dataset.ledColor='#e53935';el.dataset.rotation='0';el.dataset.reversed='0';el.style.setProperty('--led-color',el.dataset.ledColor);el.innerHTML='<div class="ledc"><div class="bulb"></div><div class="leg a"></div><div class="leg k"></div><span class="terminal a" data-port="A" title="Ánodo (+)"></span><span class="terminal k" data-port="K" title="Cátodo (-)"></span><span class="polarity polA">A +</span><span class="polarity polK">K −</span></div>'}else el.innerHTML='<div class="res"><span class="terminal" data-port="1"></span><div class="resline"></div><div class="resbody"><i class="band band1"></i><i class="band band2"></i><i class="band band3"></i><i class="band band4"></i></div><span class="terminal" data-port="2"></span></div>';el.dataset.ohms="1000";
  world.appendChild(el); enableMove(el); terminals(el); redraw();
 }
 function makeBoard(el,type){
