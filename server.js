@@ -15,11 +15,12 @@ app.post("/api/compile",(q,r)=>{
   let sketch=String(q.body.code||"");
   // Defensive normalization: Blockly/editor may send escaped newlines (\\n).
   // Convert them to real LF characters before Arduino CLI writes Sketch.ino.
-  sketch = sketch.replace(/\\\\+n/g, "\n").replace(/\\r\\n?/g, "\n");
+  for (let i=0;i<4;i++) sketch = sketch.replace(/\\+n/g, "\n");
+  sketch = sketch.replace(/\\r/g, "");
   if(!sketch||sketch.length>100000)return r.status(400).json({ok:false,error:"Sketch inválido"});
   let board=q.body.board==="nano"?"arduino:avr:nano:cpu=atmega328old":"arduino:avr:uno";
   let tmp=fs.mkdtempSync(path.join(os.tmpdir(),"rlab-")),dir=path.join(tmp,"Sketch"),build=path.join(tmp,"build");
-  fs.mkdirSync(dir);fs.mkdirSync(build);fs.writeFileSync(path.join(dir,"Sketch.ino"),sketch);
+  fs.mkdirSync(dir);fs.mkdirSync(build);fs.writeFileSync(path.join(dir,"Sketch.ino"),sketch,{encoding:"utf8"});
   execFile(CLI,["compile","--fqbn",board,"--build-path",build,dir],{timeout:60000,maxBuffer:4e6},(e,out,err)=>{
     try{
       if(e)return r.status(400).json({ok:false,error:err||out||e.message});
