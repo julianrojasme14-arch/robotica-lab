@@ -476,7 +476,7 @@ try{
      const boardEl=document.querySelector('wokwi-arduino-uno,wokwi-arduino-nano');if(boardEl)boardEl.led13=states[13];
    };
    pb.addListener(update);pd.addListener(update);update();
-   const batch=()=>{if(!running)return;const until=cpu.cycles+800;while(cpu.cycles<until){avrInstruction(cpu);cpu.tick()}update();setTimeout(batch,0)};batch()
+   const batch=()=>{if(!running)return;const until=cpu.cycles+250000;let checkpoint=cpu.cycles+800;while(cpu.cycles<until){avrInstruction(cpu);cpu.tick();if(cpu.cycles>=checkpoint){update();checkpoint+=800}}update();setTimeout(batch,0)};batch()
  };
  window.avrReady=true;
 }catch(e){window.avrReady=false;window.avrLoadError=e;console.error('AVR8js load error',e)}
