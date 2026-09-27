@@ -9,7 +9,7 @@ const code=()=>crypto.randomBytes(3).toString("hex").toUpperCase();
 const CLI=process.env.ARDUINO_CLI||"arduino-cli";
 
 app.get("/health",(q,r)=>r.status(200).send("ok"));
-app.get("/api/version",(q,r)=>r.json({version:"V9.40",esp32Runtime:true,gpio2Led:true}));
+app.get("/api/version",(q,r)=>r.json({version:"V9.41",esp32Runtime:true,gpio2Led:true}));
 app.get("/api/status",(q,r)=>execFile(CLI,["version"],{timeout:10000},(e,o,err)=>r.json({
   online:true,compiler:!e,version:e?null:o.trim(),error:e?(err||e.message):null
 })));
@@ -42,4 +42,4 @@ app.post("/api/compile",(q,r)=>{
   });
 });
 const PORT=process.env.PORT||10000;
-app.listen(PORT,"0.0.0.0",()=>console.log(`Robótica Lab V9.40 Online listo en puerto ${PORT} · CLI: ${CLI}`));
+app.listen(PORT,"0.0.0.0",()=>console.log(`Robótica Lab V9.41 Online listo en puerto ${PORT} · CLI: ${CLI}`));
