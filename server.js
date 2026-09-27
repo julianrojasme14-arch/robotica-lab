@@ -1,6 +1,8 @@
 const express=require("express"),fs=require("fs"),path=require("path"),os=require("os"),crypto=require("crypto");
 const {execFile}=require("child_process");
-const app=express(); app.use(express.json({limit:"256kb"})); app.use(express.static(path.join(__dirname,"public")));
+const app=express(); app.use(express.json({limit:"256kb"}));
+app.use("/vendor/avr8js",express.static(path.join(__dirname,"node_modules","avr8js")));
+app.use(express.static(path.join(__dirname,"public")));
 const db={classes:{},sessions:{}};
 const code=()=>crypto.randomBytes(3).toString("hex").toUpperCase();
 const CLI=process.env.ARDUINO_CLI||"arduino-cli";
