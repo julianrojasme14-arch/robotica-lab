@@ -14,6 +14,9 @@ RUN mkdir -p /opt/arduino-cli/bin \
     && /opt/arduino-cli/bin/arduino-cli config add board_manager.additional_urls https://espressif.github.io/arduino-esp32/package_esp32_index.json \
     && /opt/arduino-cli/bin/arduino-cli core update-index \
     && /opt/arduino-cli/bin/arduino-cli core install esp32:esp32 \
+    && /opt/arduino-cli/bin/arduino-cli config add board_manager.additional_urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json \
+    && /opt/arduino-cli/bin/arduino-cli core update-index \
+    && /opt/arduino-cli/bin/arduino-cli core install rp2040:rp2040 \
     && /opt/arduino-cli/bin/arduino-cli version \
     && /opt/arduino-cli/bin/arduino-cli core list
 
