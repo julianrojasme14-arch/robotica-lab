@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.20</title>
+<title>Robótica Lab V9.21</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -33,7 +33,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .board .pin{position:absolute!important;width:9px!important;height:9px!important;opacity:0!important;background:#ff1515!important;border-radius:1px!important;cursor:crosshair!important;z-index:100!important;transform:translate(-50%,-50%)!important}.board .pinlabel{background:#fff;color:#163247;padding:1px 2px;border-radius:3px;font-weight:bold}
 #blockArea{height:390px!important;padding:0!important}.blocklyToolboxDiv{background:#eef4f8}.blocklyFlyoutBackground{fill:#f7fafc}
 
-.tcbar{height:48px;background:#fff;border-bottom:1px solid #d8e0e6;display:flex;align-items:center;gap:8px;padding:6px 10px}.toolbtn{border:1px solid #d4dde4;background:#fff;border-radius:5px;padding:7px 10px;cursor:pointer}.toolbtn:hover{background:#f1f6f9}.simtop{margin-left:auto}.simstart{background:#0d8bd8;color:#fff;border-color:#0d8bd8;font-weight:bold}
+.tcbar{height:48px;background:#fff;border-bottom:1px solid #d8e0e6;display:flex;align-items:center;gap:8px;padding:6px 10px}.toolbtn{border:1px solid #d4dde4;background:#fff;border-radius:5px;padding:7px 10px;cursor:pointer}.toolbtn:hover{background:#f1f6f9}.iconbtn{font-size:24px;line-height:20px;width:42px;height:36px;padding:3px;color:#314b63}.wirecolor{position:relative;height:36px;min-width:62px;border:1px solid #d4dde4;border-radius:5px;background:#fff;display:flex;align-items:center;gap:8px;padding:5px 8px;cursor:pointer}.wirecolor #wireSwatch{width:20px;height:20px;border-radius:5px;background:#e23b32}.wirecolor .chev{font-size:12px}.wirecolor #wirePalette{display:none;position:absolute;top:40px;left:0;background:#30343a;padding:6px;border-radius:6px;z-index:9999;gap:4px}.wirecolor.open #wirePalette{display:flex}.wirecolor #wirePalette button{width:22px;height:22px;border:1px solid #fff8;border-radius:2px;padding:0}.note{min-width:120px;min-height:55px;background:#fff4a8;border:1px solid #d5bd42;border-radius:4px;padding:8px;cursor:move;box-shadow:0 2px 6px #0002}.note textarea{width:150px;height:65px;border:0;background:transparent;resize:both;outline:none;font:14px Arial}.simtop{margin-left:auto}.simstart{background:#0d8bd8;color:#fff;border-color:#0d8bd8;font-weight:bold}
 .lab{grid-template-columns:minmax(500px,43%) minmax(600px,57%)!important;gap:0!important;padding:0!important;height:calc(100vh - 110px)!important}.palette{position:absolute!important;left:12px;top:126px;width:180px;z-index:20;box-shadow:0 5px 18px #0002;display:none}.palette.open{display:block}.workspace{border-radius:0!important;border-width:0 1px 0 0!important}.panel.editorpanel{border:0!important;border-radius:0!important;display:grid;grid-template-columns:245px 1fr;grid-template-rows:auto 1fr auto;position:relative}.editorHead{grid-column:1/3}.modebar{grid-column:1/3}.field.boardselect{position:absolute;right:8px;top:8px;width:180px!important;margin:0!important;z-index:5}.blocklywrap{grid-column:1/3;min-height:0}.editor{grid-column:1/3;height:100%!important;min-height:0}.actions{grid-column:1/3}.console{grid-column:1/3;height:90px!important}.help{display:none}
 #blockArea{height:calc(100vh - 245px)!important}.component{transform-origin:top left}
 @media(max-width:900px){.lab{display:block!important;height:auto!important}.workspace{height:480px}.panel.editorpanel{display:block}.palette{top:120px}.field.boardselect{position:static;width:calc(100% - 18px)!important;margin:0 9px 8px!important}}
@@ -58,8 +58,8 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 #wireLayer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
 @media(max-width:900px){#splitter{display:none}.lab{display:block!important}.editorpanel{display:flex!important}}
 .component[data-type="led"].on .bulb,.component[data-type="led"] .bulb.on{background:var(--led-color,#e53935)!important;box-shadow:0 0 18px color-mix(in srgb,var(--led-color,#e53935) 75%,transparent),0 0 32px color-mix(in srgb,var(--led-color,#e53935) 50%,transparent)!important;filter:brightness(1.35)!important}.board>.pin{width:10px!important;height:10px!important;border:0!important;background:#ff1717!important;opacity:0!important;transform:translate(-50%,-50%)!important;z-index:200!important}.board>.pin:hover,.board>.pin.sel{opacity:1!important;outline:2px solid white!important;box-shadow:0 0 0 3px #222!important}</style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.20</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
-<div class="tcbar"><button class="toolbtn" id="partsBtn">＋ Componentes</button><button class="toolbtn" id="undoBtn">↶ Deshacer</button><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><div class="simtop"><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button></div></div>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.21</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<div class="tcbar"><button class="toolbtn" id="partsBtn">＋ Componentes</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><div class="simtop"><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button></div></div>
 <div class="lab">
 <aside class="panel palette" id="partsPalette"><h3>Componentes</h3>
 <div class="part" draggable="true" data-type="uno">🔷 Arduino Uno</div>
@@ -84,10 +84,10 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.20 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.21 lista.\n</div>
 </aside></div>
 <script>
-const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null;
+const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[];
 const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 function log(s,c=''){$('console').innerHTML+='<span class="'+c+'">'+esc(s)+'</span>\n';$('console').scrollTop=$('console').scrollHeight}
 $('code').value=normalizedSketch();
@@ -102,32 +102,31 @@ function addComponent(type,x,y){
 }
 function makeBoard(el,type){
  el.classList.add('board');if(type==='nano')el.classList.add('nano');
- const tag=type==='uno'?'wokwi-arduino-uno':'wokwi-arduino-nano';
- el.innerHTML='<'+tag+'></'+tag+'>';
+ const tag=type==='uno'?'wokwi-arduino-uno':'wokwi-arduino-nano';el.innerHTML='<'+tag+'></'+tag+'>';
  const boardEl=el.firstElementChild;
  customElements.whenDefined(tag).then(()=>requestAnimationFrame(()=>{
-   const info=(boardEl.pinInfo||[]).filter(pi=>pi&&!pi.noBreadboard&&Number.isFinite(pi.x)&&Number.isFinite(pi.y));
-   const vb=type==='uno'?{x:-4,w:72.58,h:53.34}:{x:-1.4,w:44.9,h:17.8};
-   const pxPerMm=96/25.4;
-   info.forEach(pi=>{
-     let raw=String(pi.name),logical=raw;
-     if(/^\d+$/.test(logical))logical='D'+logical;
-     if(logical.startsWith('GND.'))logical='GND';
-     if(logical.startsWith('RESET.'))logical='RESET';
-     if(/\.2$/.test(raw)&&type==='uno')return;
-     if(!(/^(D\d+|A\d+|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(logical)))return;
-     const svgX=pi.x/pxPerMm,svgY=pi.y/pxPerMm;
-     const pin=document.createElement('span');pin.className='pin';pin.dataset.port=logical;pin.dataset.rawPort=raw;pin.title=logical;
-     pin.style.left=((svgX-vb.x)/vb.w*100)+'%';pin.style.top=(svgY/vb.h*100)+'%';
-     el.appendChild(pin);
-   });
+   let pins=[];
+   if(type==='uno'){
+     const top1=['A5.2','A4.2','AREF','GND.1','13','12','11','10','9','8'];
+     const top2=['7','6','5','4','3','2','1','0'];
+     const bot1=['IOREF','RESET','3.3V','5V','GND.2','GND.3','VIN','X'];
+     const bot2=['A0','A1','A2','A3','A4','A5'];
+     top1.forEach((n,i)=>pins.push({name:n,x:17.497+1.27+i*2.54,y:1.27+1.27}));
+     top2.forEach((n,i)=>pins.push({name:n,x:44.421+1.27+i*2.54,y:1.27+1.27}));
+     bot1.forEach((n,i)=>pins.push({name:n,x:26.641+1.27+i*2.54,y:49.53+1.27}));
+     bot2.forEach((n,i)=>pins.push({name:n,x:49.501+1.27+i*2.54,y:49.53+1.27}));
+     pins=pins.filter(p=>p.name!=='X').map(p=>({...p,left:(p.x+4)/72.58*100,top:p.y/53.34*100}));
+   }else{
+     pins=(boardEl.pinInfo||[]).filter(p=>Number.isFinite(p.x)&&Number.isFinite(p.y)).map(p=>({...p,left:p.x/169.7*100,top:p.y/67.3*100}));
+   }
+   pins.forEach(pi=>{let raw=String(pi.name),logical=raw;if(/^\d+$/.test(logical))logical='D'+logical;if(logical.startsWith('GND.'))logical='GND';if(logical.startsWith('RESET.'))logical='RESET';if(/\.2$/.test(raw)&&type==='uno')return;if(!(/^(D\d+|A\d+|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(logical)))return;const pin=document.createElement('span');pin.className='pin';pin.dataset.port=logical;pin.dataset.rawPort=raw;pin.title=logical;pin.style.left=pi.left+'%';pin.style.top=pi.top+'%';el.appendChild(pin)});
    terminals(el);redraw();
  }));
 }
 function terminals(root){root.querySelectorAll('.pin,.terminal').forEach(t=>t.addEventListener('pointerdown',e=>{e.stopPropagation();selectTerminal(root,t)}))}
-function selectTerminal(root,t){let key=root.dataset.id+':'+t.dataset.port;if(!wireStart){wireStart={key,root,t};t.classList.add('sel');log('Cable iniciado en '+t.dataset.port+'. Selecciona el segundo terminal.','warn')}else{if(wireStart.key!==key){wires.push({a:wireStart,b:{key,root,t}});log('✓ Cable conectado: '+wireStart.key+' → '+key,'good')}wireStart.t.classList.remove('sel');wireStart=null;redraw()}}
+function selectTerminal(root,t){let key=root.dataset.id+':'+t.dataset.port;if(!wireStart){wireStart={key,root,t};t.classList.add('sel');log('Cable iniciado en '+t.dataset.port+'. Selecciona el segundo terminal.','warn')}else{if(wireStart.key!==key){wires.push({a:wireStart,b:{key,root,t},color:currentWireColor});undoStack.push({type:'wire-add'});redoStack=[];log('✓ Cable conectado: '+wireStart.key+' → '+key,'good')}wireStart.t.classList.remove('sel');wireStart=null;redraw()}}
 function center(o){const a=o.t.getBoundingClientRect(),w=ws.getBoundingClientRect();return [a.left+a.width/2-w.left,a.top+a.height/2-w.top]}
-function redraw(){let svg=$('wireLayer');svg.innerHTML='';wires=wires.filter(w=>document.body.contains(w.a.root)&&document.body.contains(w.b.root));wires.forEach((w,i)=>{let [x1,y1]=center(w.a),[x2,y2]=center(w.b),l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);l.setAttribute('stroke',i%2?'#20252a':'#e23b32');l.setAttribute('stroke-width','5');l.setAttribute('stroke-linecap','round');l.setAttribute('class','wirehit');l.dataset.wire=i;l.addEventListener('pointerdown',e=>{e.stopPropagation();document.querySelectorAll('.wirehit').forEach(x=>x.classList.remove('wireSelected'));l.classList.add('wireSelected');window.selectedWire=i;log('Cable seleccionado. Pulsa Supr/Delete para eliminarlo.','warn')});svg.appendChild(l)})}
+function redraw(){let svg=$('wireLayer');svg.innerHTML='';wires=wires.filter(w=>document.body.contains(w.a.root)&&document.body.contains(w.b.root));wires.forEach((w,i)=>{let [x1,y1]=center(w.a),[x2,y2]=center(w.b),l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);l.setAttribute('stroke',w.color||'#e23b32');l.setAttribute('stroke-width','5');l.setAttribute('stroke-linecap','round');l.setAttribute('class','wirehit');l.dataset.wire=i;l.addEventListener('pointerdown',e=>{e.stopPropagation();document.querySelectorAll('.wirehit').forEach(x=>x.classList.remove('wireSelected'));l.classList.add('wireSelected');window.selectedWire=i;log('Cable seleccionado. Pulsa Supr/Delete para eliminarlo.','warn')});svg.appendChild(l)})}
 function showLedTools(el){
  const box=$('ledTools'),r=el.getBoundingClientRect(),wr=ws.getBoundingClientRect();
  const colors=['#f20d18','#16b43b','#233dff','#ffd51b','#ff8a00','#ffffff','#a600d4','#ff19a8','#32c76b','#18dce5'];
@@ -161,6 +160,14 @@ $('topSim').onclick=startSimulation;
 $('clearBtn').onclick=()=>{clearInterval(timer);wires=[];wireStart=null;world.querySelectorAll('.component').forEach(x=>x.remove());redraw();log('Área de trabajo limpiada.')};
 function deleteSelected(){if(Number.isInteger(window.selectedWire)){wires.splice(window.selectedWire,1);window.selectedWire=null;redraw();log('✓ Cable eliminado.','good');return}if(window.selectedComponent){let el=window.selectedComponent;wires=wires.filter(w=>w.a.root!==el&&w.b.root!==el);el.remove();window.selectedComponent=null;redraw();log('✓ Componente eliminado.','good')}}
 window.addEventListener('keydown',e=>{if(e.key==='Delete'||e.key==='Backspace')deleteSelected()});
+const wireColors=['#e23b32','#24a148','#2855e8','#f5c400','#ff8a00','#111827','#ffffff','#9b2cc1','#ec2f86','#13bfc8'];
+$('wirePalette').innerHTML=wireColors.map(c=>'<button data-c="'+c+'" style="background:'+c+'"></button>').join('');
+$('wireColorBtn').onclick=e=>{e.stopPropagation();$('wireColorBtn').classList.toggle('open')};
+$('wirePalette').querySelectorAll('button').forEach(b=>b.onclick=e=>{e.stopPropagation();currentWireColor=b.dataset.c;$('wireSwatch').style.background=currentWireColor;if(Number.isInteger(window.selectedWire)&&wires[window.selectedWire]){wires[window.selectedWire].color=currentWireColor;redraw()}$('wireColorBtn').classList.remove('open')});
+$('noteBtn').onclick=()=>{const n=document.createElement('div');n.className='component note';n.dataset.id='c'+(++seq);n.dataset.type='note';n.style.left='180px';n.style.top='120px';n.innerHTML='<textarea placeholder="Escribe una nota…"></textarea>';world.appendChild(n);enableMove(n);n.querySelector('textarea').addEventListener('pointerdown',e=>e.stopPropagation())};
+$('undoBtn').onclick=()=>{if(!wires.length)return;redoStack.push(wires.pop());redraw()};
+$('redoBtn').onclick=()=>{if(!redoStack.length)return;wires.push(redoStack.pop());redraw()};
+document.addEventListener('pointerdown',e=>{if(!e.target.closest('#wireColorBtn'))$('wireColorBtn').classList.remove('open')});
 $('deleteBtn').onclick=deleteSelected;$('partsBtn').onclick=()=>document.querySelector('.palette').classList.toggle('open');
 $('topSim').onclick=()=>$('simulateBtn')?$('simulateBtn').click():startSimulation();
 
