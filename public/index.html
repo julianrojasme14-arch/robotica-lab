@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.22</title>
+<title>Robótica Lab V9.22.1</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -59,15 +59,17 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 @media(max-width:900px){#splitter{display:none}.lab{display:block!important}.editorpanel{display:flex!important}}
 .component[data-type="led"].on .bulb,.component[data-type="led"] .bulb.on{background:var(--led-color,#e53935)!important;box-shadow:0 0 18px color-mix(in srgb,var(--led-color,#e53935) 75%,transparent),0 0 32px color-mix(in srgb,var(--led-color,#e53935) 50%,transparent)!important;filter:brightness(1.35)!important}.board>.pin{width:10px!important;height:10px!important;border:0!important;background:#ff1717!important;opacity:0!important;transform:translate(-50%,-50%)!important;z-index:200!important}.board>.pin:hover,.board>.pin.sel{opacity:1!important;outline:2px solid white!important;box-shadow:0 0 0 3px #222!important}
 .partsHead{display:flex;justify-content:space-between;align-items:center;padding:5px 3px 10px}.partsCategory{border:1px solid #d8e0e6;border-radius:4px;padding:8px 10px;display:flex;justify-content:space-between;margin-bottom:8px}.partsSearch{width:100%;padding:8px;border:1px solid #d8e0e6;margin-bottom:9px}.partsGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;overflow:auto;max-height:calc(100vh - 250px)}.partsGrid .part{height:112px;margin:0;padding:8px 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center}.partPic{font-size:34px}.partsGrid small{font-size:11px;color:#425a70}.codebtn{font-weight:600}.lab{display:grid!important;grid-template-columns:220px minmax(420px,1fr) minmax(0,0)!important}.palette{display:block!important;position:relative!important;left:auto!important;top:auto!important;width:auto!important;z-index:5!important;border-radius:0!important;box-shadow:none!important}.editorpanel{display:none!important}.lab.code-open{grid-template-columns:220px minmax(420px,1fr) minmax(500px,42%)!important}.lab.code-open .editorpanel{display:flex!important}.lab:not(.code-open) #splitter{display:none!important}
+
+.thumb{position:relative;display:block;width:64px;height:48px}.resistorThumb:before,.resistorThumb:after{content:"";position:absolute;top:23px;width:16px;height:2px;background:#777}.resistorThumb:before{left:0}.resistorThumb:after{right:0}.resistorThumb i{position:absolute;left:15px;top:17px;width:34px;height:14px;border-radius:6px;background:#d6b36b;border:1px solid #8e713e}.resistorThumb b,.resistorThumb em{position:absolute;top:18px;width:4px;height:12px;background:#8a4b20;z-index:2}.resistorThumb b{left:25px}.resistorThumb em{left:35px;background:#d22}.ledThumb i{position:absolute;left:20px;top:2px;width:27px;height:32px;border-radius:16px 16px 7px 7px;background:#d9343e;border:2px solid #9d1e27;box-shadow:inset 6px 4px 6px #fff6}.ledThumb:before,.ledThumb:after{content:"";position:absolute;top:33px;width:3px;background:#888}.ledThumb:before{left:27px;height:15px}.ledThumb:after{left:39px;height:11px}.unoThumb{width:72px;height:46px;background:#0879ad;border-radius:4px;border:2px solid #075c83;color:white;font-size:10px}.unoThumb b{position:absolute;left:27px;top:18px}.unoThumb i{position:absolute;left:5px;top:5px;width:13px;height:12px;background:#bbb}.nanoThumb{width:70px;height:30px;margin-top:8px;background:#1798a0;border-radius:2px;color:white;font-size:8px}.nanoThumb b{position:absolute;left:24px;top:10px}.nanoThumb:before,.nanoThumb:after{content:"";position:absolute;left:4px;right:4px;height:3px;background:repeating-linear-gradient(90deg,#ddd 0 3px,transparent 3px 7px)}.nanoThumb:before{top:2px}.nanoThumb:after{bottom:2px}
 </style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.22</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.22.1</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
-<div class="part" draggable="true" data-type="resistor"><span class="partPic resistorPic">〰</span><small>Resistencia</small></div>
-<div class="part" draggable="true" data-type="led"><span class="partPic">💡</span><small>LED</small></div>
-<div class="part" draggable="true" data-type="uno"><span class="partPic">🔷</span><small>Arduino Uno</small></div>
-<div class="part" draggable="true" data-type="nano"><span class="partPic">🔹</span><small>Arduino Nano</small></div>
+<div class="part" draggable="true" data-type="resistor"><span class="thumb resistorThumb"><i></i><b></b><em></em></span><small>Resistencia</small></div>
+<div class="part" draggable="true" data-type="led"><span class="thumb ledThumb"><i></i><b></b><em></em></span><small>LED</small></div>
+<div class="part" draggable="true" data-type="uno"><span class="thumb unoThumb"><b>UNO</b><i></i></span><small>Arduino Uno</small></div>
+<div class="part" draggable="true" data-type="nano"><span class="thumb nanoThumb"><b>NANO</b><i></i></span><small>Arduino Nano</small></div>
 </div></aside>
 <main class="panel workspace" id="workspace"><button id="fitBtn" class="fitbtn" title="Ajustar vista">⛶</button><div id="world"><svg id="wireLayer"></svg><div id="ledTools" class="ledtools"></div></div></main><div id="splitter" title="Arrastra para cambiar el tamaño"></div>
 <aside class="panel editorpanel">
@@ -85,7 +87,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.22 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.22.1 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[];
@@ -93,7 +95,6 @@ const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[
 function log(s,c=''){$('console').innerHTML+='<span class="'+c+'">'+esc(s)+'</span>\n';$('console').scrollTop=$('console').scrollHeight}
 $('code').value=normalizedSketch();
 fetch('/api/status').then(r=>r.json()).then(s=>{ $('status').textContent=s.compiler?'☁ Online · Arduino CLI listo':'☁ Online · compilador no disponible'; if(s.compiler)log('✓ '+s.version,'good');else log('⚠ '+(s.error||'Arduino CLI no detectado'),'warn')}).catch(e=>{$('status').textContent='Servidor no disponible';log('❌ '+e.message,'bad')});
-$('partsBtn').onclick=()=>{const p=$('partsPalette');p.style.display=p.style.display==='none'?'block':'none'};
 document.querySelectorAll('.part').forEach(p=>p.addEventListener('dragstart',e=>e.dataTransfer.setData('type',p.dataset.type)));
 ws.addEventListener('dragover',e=>e.preventDefault());ws.addEventListener('drop',e=>{e.preventDefault();let r=ws.getBoundingClientRect();addComponent(e.dataTransfer.getData('type'),e.clientX-r.left,e.clientY-r.top)});
 function addComponent(type,x,y){
