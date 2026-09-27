@@ -11,6 +11,9 @@ RUN mkdir -p /opt/arduino-cli/bin \
     && curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=/opt/arduino-cli/bin sh \
     && /opt/arduino-cli/bin/arduino-cli core update-index \
     && /opt/arduino-cli/bin/arduino-cli core install arduino:avr \
+    && /opt/arduino-cli/bin/arduino-cli config add board_manager.additional_urls https://espressif.github.io/arduino-esp32/package_esp32_index.json \
+    && /opt/arduino-cli/bin/arduino-cli core update-index \
+    && /opt/arduino-cli/bin/arduino-cli core install esp32:esp32 \
     && /opt/arduino-cli/bin/arduino-cli version \
     && /opt/arduino-cli/bin/arduino-cli core list
 

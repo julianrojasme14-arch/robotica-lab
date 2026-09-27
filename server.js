@@ -20,13 +20,19 @@ app.post("/api/compile",(q,r)=>{
   for (let i=0;i<4;i++) sketch = sketch.replace(/\\+n/g, "\n");
   sketch = sketch.replace(/\\r/g, "");
   if(!sketch||sketch.length>100000)return r.status(400).json({ok:false,error:"Sketch inválido"});
-  let board=q.body.board==="nano"?"arduino:avr:nano:cpu=atmega328old":"arduino:avr:uno";
+  let kind=String(q.body.board||"uno");let board=kind==="nano"?"arduino:avr:nano:cpu=atmega328old":kind==="esp32"?"esp32:esp32:esp32doit-devkit-v1":"arduino:avr:uno";
   let tmp=fs.mkdtempSync(path.join(os.tmpdir(),"rlab-")),dir=path.join(tmp,"Sketch"),build=path.join(tmp,"build");
   fs.mkdirSync(dir);fs.mkdirSync(build);fs.writeFileSync(path.join(dir,"Sketch.ino"),sketch,{encoding:"utf8"});
   execFile(CLI,["compile","--fqbn",board,"--build-path",build,dir],{timeout:60000,maxBuffer:4e6},(e,out,err)=>{
     try{
       if(e)return r.status(400).json({ok:false,error:err||out||e.message});
-      let f=fs.readdirSync(build).find(x=>x.endsWith(".hex")&&!x.includes("bootloader"));
+      let files=fs.readdirSync(build);
+      if(kind==="esp32"){
+        let f=files.find(x=>x.endsWith(".bin")&&!x.includes("bootloader")&&!x.includes("partitions"));
+        if(!f)return r.status(500).json({ok:false,error:"No se encontró el firmware BIN del ESP32"});
+        return r.json({ok:true,firmware:fs.readFileSync(path.join(build,f)).toString("base64"),firmwareFormat:"bin-base64",board,output:out});
+      }
+      let f=files.find(x=>x.endsWith(".hex")&&!x.includes("bootloader"));
       if(!f)return r.status(500).json({ok:false,error:"No se encontró el firmware HEX"});
       r.json({ok:true,hex:fs.readFileSync(path.join(build,f),"utf8"),board,output:out});
     }finally{fs.rm(tmp,{recursive:true,force:true},()=>{});}
