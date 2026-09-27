@@ -11,10 +11,10 @@ RUN apt-get update \
 WORKDIR /opt/arduino-cli
 
 RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh \
-    && ./arduino-cli core update-index \
-    && ./arduino-cli core install arduino:avr \
-    && ./arduino-cli version \
-    && ./arduino-cli core list
+    && /opt/arduino-cli/bin/arduino-cli core update-index \
+    && /opt/arduino-cli/bin/arduino-cli core install arduino:avr \
+    && /opt/arduino-cli/bin/arduino-cli version \
+    && /opt/arduino-cli/bin/arduino-cli core list
 
 WORKDIR /app
 COPY package*.json ./
