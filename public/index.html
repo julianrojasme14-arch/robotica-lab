@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.4</title>
+<title>Robótica Lab V9.5</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -45,9 +45,13 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 #blockArea{flex:1 1 auto!important;width:100%!important;height:auto!important;min-height:360px!important}
 .editor{flex:1 1 auto!important;width:100%!important;height:auto!important;min-height:280px!important}
 .actions,.console{flex:0 0 auto!important}
+
+.board .pin{background:transparent!important;border:0!important;outline:0!important;width:16px!important;height:16px!important;opacity:.01!important}
+.board .pinlabel{display:none!important}
+.simstart.running{background:#18a64a!important;border-color:#18a64a!important}
 </style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.4</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
-<div class="tcbar"><button class="toolbtn" id="partsBtn">＋ Componentes</button><button class="toolbtn" id="undoBtn">↶ Deshacer</button><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><div class="simtop"><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><button class="toolbtn" id="topStop">■ Detener</button></div></div>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.5</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<div class="tcbar"><button class="toolbtn" id="partsBtn">＋ Componentes</button><button class="toolbtn" id="undoBtn">↶ Deshacer</button><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><div class="simtop"><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button></div></div>
 <div class="lab">
 <aside class="panel palette"><h3>Componentes</h3>
 <div class="part" draggable="true" data-type="uno">🔷 Arduino Uno</div>
@@ -71,8 +75,8 @@ void loop() {
   digitalWrite(13, LOW);
   delay(1000);
 }</textarea>
-<div class="actions"><button id="compileBtn" class="btn compile">⚙ Compilar online</button><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.4 lista.\n</div>
+<div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.5 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null;
@@ -88,8 +92,14 @@ function addComponent(type,x,y){
 }
 function makeBoard(el,type){
  el.classList.add('board');if(type==='nano')el.classList.add('nano');el.innerHTML=type==='uno'?'<wokwi-arduino-uno></wokwi-arduino-uno>':'<wokwi-arduino-nano></wokwi-arduino-nano>';
- const pins=['GND','5V','D2','D3','D4','D5','D6','D7','D8','D9','D10','D11','D12','D13','A0','A1','A2','A3','A4','A5'];
- pins.forEach((p,i)=>{let pin=document.createElement('span');pin.className='pin';pin.dataset.port=p;let top=i<14?6:(type==='nano'?94:178),left=i<14?48+i*23:90+(i-14)*30;if(type==='nano'){left=i<14?30+i*20:95+(i-14)*27}pin.style.left=left+'px';pin.style.top=top+'px';let lab=document.createElement('span');lab.className='pinlabel';lab.textContent=p;lab.style.left=(left+8)+'px';lab.style.top=(top+(i<14?19:-12))+'px';el.append(pin,lab)});
+ const coords=type==='uno'?{
+ 'GND':[86,30],'5V':[109,30],'D2':[155,30],'D3':[178,30],'D4':[201,30],'D5':[224,30],'D6':[247,30],'D7':[270,30],'D8':[293,30],'D9':[316,30],'D10':[339,30],'D11':[362,30],'D12':[385,30],'D13':[408,30],
+ 'A0':[213,255],'A1':[236,255],'A2':[259,255],'A3':[282,255],'A4':[305,255],'A5':[328,255]
+ }:{
+ 'GND':[40,26],'5V':[60,26],'D2':[80,26],'D3':[100,26],'D4':[120,26],'D5':[140,26],'D6':[160,26],'D7':[180,26],'D8':[200,26],'D9':[220,26],'D10':[240,26],'D11':[260,26],'D12':[280,26],'D13':[300,26],
+ 'A0':[100,168],'A1':[127,168],'A2':[154,168],'A3':[181,168],'A4':[208,168],'A5':[235,168]
+ };
+ Object.entries(coords).forEach(([p,xy])=>{let pin=document.createElement('span');pin.className='pin';pin.dataset.port=p;pin.title=p;pin.style.left=xy[0]+'px';pin.style.top=xy[1]+'px';el.append(pin)});
 }
 function terminals(root){root.querySelectorAll('.pin,.terminal').forEach(t=>t.addEventListener('pointerdown',e=>{e.stopPropagation();selectTerminal(root,t)}))}
 function selectTerminal(root,t){let key=root.dataset.id+':'+t.dataset.port;if(!wireStart){wireStart={key,root,t};t.classList.add('sel');log('Cable: '+key+' → ...')}else{if(wireStart.key!==key){wires.push({a:wireStart,b:{key,root,t}});log('✓ Cable conectado: '+wireStart.key+' → '+key,'good')}wireStart.t.classList.remove('sel');wireStart=null;redraw()}}
@@ -98,14 +108,27 @@ function redraw(){let svg=$('wireLayer');svg.innerHTML='';wires=wires.filter(w=>
 function enableMove(el){let sx,sy,ox,oy,moving=false;el.addEventListener('pointerdown',e=>{if(e.target.matches('.pin,.terminal'))return;moving=true;sx=e.clientX;sy=e.clientY;ox=parseFloat(el.style.left);oy=parseFloat(el.style.top);el.setPointerCapture(e.pointerId)});el.addEventListener('pointermove',e=>{if(!moving)return;el.style.left=Math.max(0,ox+e.clientX-sx)+'px';el.style.top=Math.max(0,oy+e.clientY-sy)+'px';redraw()});el.addEventListener('pointerup',()=>moving=false);el.addEventListener('click',e=>{if(e.target.matches('.pin,.terminal'))return;document.querySelectorAll('.component').forEach(x=>x.style.outline='');el.style.outline='2px solid #0d8bd8';window.selectedComponent=el});el.addEventListener('dblclick',()=>{wires=wires.filter(w=>w.a.root!==el&&w.b.root!==el);el.remove();redraw()})}
 
 $('board').onchange=()=>{let old=ws.querySelector('.board');if(old){wires=wires.filter(w=>w.a.root!==old&&w.b.root!==old);old.remove()}addComponent($('board').value,120,260);redraw();log('Placa cambiada a Arduino '+($('board').value==='uno'?'Uno':'Nano')+'.','good')};
-$('compileBtn').onclick=async()=>{log('⚙ Compilando sketch…');try{let r=await fetch('/api/compile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:$('code').value.replace(/\\\\n/g,'\n'),board:$('board').value})}),d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||'Error de compilación');lastHex=d.hex;log('✓ Firmware HEX generado: '+d.hex.length+' caracteres.','good')}catch(e){log('❌ '+e.message,'bad')}};
-async function startSimulation(){if(!lastHex){log('⚠ Primero debes compilar el sketch.','warn');return}try{await window.startAVR(lastHex);log('▶ ATmega328P virtual ejecutando el firmware HEX.','good')}catch(e){log('❌ No se pudo iniciar AVR8js: '+e.message,'bad')}}
-function stopSimulation(){if(window.stopAVR)window.stopAVR();document.querySelectorAll('.bulb').forEach(x=>x.classList.remove('on'));log('■ Simulación detenida')} $('topStop').onclick=stopSimulation;$('topSim').onclick=startSimulation;
+let simRunning=false;
+function normalizedSketch(){return $('code').value.split('\\\\n').join(String.fromCharCode(10))}
+async function compileFirmware(){
+ log('⚙ Preparando simulación…');
+ let r=await fetch('/api/compile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:normalizedSketch(),board:$('board').value})});
+ let d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||'Error de compilación');lastHex=d.hex;return d.hex;
+}
+async function startSimulation(){
+ if(simRunning){stopSimulation();return}
+ const btn=$('topSim');btn.disabled=true;btn.textContent='⚙ Preparando…';
+ try{const hex=await compileFirmware();await window.startAVR(hex);simRunning=true;btn.classList.add('running');btn.textContent='■ Detener simulación';log('▶ Simulación iniciada.','good')}
+ catch(e){log('❌ '+e.message,'bad');btn.textContent='▶ Iniciar simulación'}
+ finally{btn.disabled=false}
+}
+function stopSimulation(){if(window.stopAVR)window.stopAVR();simRunning=false;document.querySelectorAll('.bulb').forEach(x=>x.classList.remove('on'));let b=$('topSim');b.classList.remove('running');b.textContent='▶ Iniciar simulación';log('■ Simulación detenida')}
+$('topSim').onclick=startSimulation;
 $('clearBtn').onclick=()=>{clearInterval(timer);wires=[];wireStart=null;ws.querySelectorAll('.component').forEach(x=>x.remove());redraw();log('Área de trabajo limpiada.')};
 function deleteSelected(){if(Number.isInteger(window.selectedWire)){wires.splice(window.selectedWire,1);window.selectedWire=null;redraw();log('✓ Cable eliminado.','good');return}if(window.selectedComponent){let el=window.selectedComponent;wires=wires.filter(w=>w.a.root!==el&&w.b.root!==el);el.remove();window.selectedComponent=null;redraw();log('✓ Componente eliminado.','good')}}
 window.addEventListener('keydown',e=>{if(e.key==='Delete'||e.key==='Backspace')deleteSelected()});
 $('deleteBtn').onclick=deleteSelected;$('partsBtn').onclick=()=>document.querySelector('.palette').classList.toggle('open');
-$('topSim').onclick=()=>$('simulateBtn')?$('simulateBtn').click():startSimulation();$('topStop').onclick=()=>{$('stopBtn')?$('stopBtn').click():window.stopAVR?.()};
+$('topSim').onclick=()=>$('simulateBtn')?$('simulateBtn').click():startSimulation();
 
 let blocklyWorkspace=null,arduinoGen=null;
 function initBlockly(){
@@ -131,7 +154,7 @@ function initBlockly(){
  blocklyWorkspace=Blockly.inject('blockArea',{toolbox,trashcan:true,zoom:{controls:true,wheel:true,startScale:.85},grid:{spacing:20,length:3,colour:'#d9e2e8',snap:true}});
  const xml=Blockly.utils.xml.textToDom('<xml><block type="arduino_setup" x="30" y="30"><statement name="DO"><block type="pin_mode"><field name="PIN">13</field><field name="MODE">OUTPUT</field></block></statement></block><block type="arduino_loop" x="30" y="160"><statement name="DO"><block type="digital_write"><field name="PIN">13</field><field name="VALUE">HIGH</field><next><block type="arduino_delay"><field name="MS">1000</field><next><block type="digital_write"><field name="PIN">13</field><field name="VALUE">LOW</field><next><block type="arduino_delay"><field name="MS">1000</field></block></next></block></next></block></next></block></statement></block></xml>');
  Blockly.Xml.domToWorkspace(xml,blocklyWorkspace);
- const sync=()=>{$('code').value=arduinoGen.workspaceToCode(blocklyWorkspace).replace(/\\\\n/g,'\n')};blocklyWorkspace.addChangeListener(sync);sync();
+ const sync=()=>{let generated=arduinoGen.workspaceToCode(blocklyWorkspace);$('code').value=generated.split('\\\\n').join(String.fromCharCode(10))};blocklyWorkspace.addChangeListener(sync);sync();
 }
 document.querySelectorAll('.modebtn').forEach(b=>b.onclick=()=>{document.querySelectorAll('.modebtn').forEach(x=>x.classList.remove('active'));b.classList.add('active');let m=b.dataset.mode;$('blockArea').style.display=m==='code'?'none':'block';$('code').style.display=m==='blocks'?'none':'block';if(blocklyWorkspace)setTimeout(()=>Blockly.svgResize(blocklyWorkspace),20)});
 initBlockly();
