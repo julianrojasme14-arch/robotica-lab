@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.30.1</title>
+<title>Robótica Lab V9.31</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -62,7 +62,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 
 .thumb{position:relative;display:block;width:64px;height:48px}.resistorThumb:before,.resistorThumb:after{content:"";position:absolute;top:23px;width:16px;height:2px;background:#777}.resistorThumb:before{left:0}.resistorThumb:after{right:0}.resistorThumb i{position:absolute;left:15px;top:17px;width:34px;height:14px;border-radius:6px;background:#d6b36b;border:1px solid #8e713e}.resistorThumb b,.resistorThumb em{position:absolute;top:18px;width:4px;height:12px;background:#8a4b20;z-index:2}.resistorThumb b{left:25px}.resistorThumb em{left:35px;background:#d22}.ledThumb i{position:absolute;left:20px;top:2px;width:27px;height:32px;border-radius:16px 16px 7px 7px;background:#d9343e;border:2px solid #9d1e27;box-shadow:inset 6px 4px 6px #fff6}.ledThumb:before,.ledThumb:after{content:"";position:absolute;top:33px;width:3px;background:#888}.ledThumb:before{left:27px;height:15px}.ledThumb:after{left:39px;height:11px}.unoThumb{width:72px;height:46px;background:#0879ad;border-radius:4px;border:2px solid #075c83;color:white;font-size:10px}.unoThumb b{position:absolute;left:27px;top:18px}.unoThumb i{position:absolute;left:5px;top:5px;width:13px;height:12px;background:#bbb}.nanoThumb{width:70px;height:30px;margin-top:8px;background:#1798a0;border-radius:2px;color:white;font-size:8px}.nanoThumb b{position:absolute;left:24px;top:10px}.nanoThumb:before,.nanoThumb:after{content:"";position:absolute;left:4px;right:4px;height:3px;background:repeating-linear-gradient(90deg,#ddd 0 3px,transparent 3px 7px)}.nanoThumb:before{top:2px}.nanoThumb:after{bottom:2px}
 
-/* V9.30.1 authoritative desktop layout */
+/* V9.31 authoritative desktop layout */
 .lab{display:grid!important;grid-template-columns:220px minmax(0,1fr)!important;grid-template-rows:1fr!important;height:calc(100vh - 112px)!important;min-height:0!important}
 .lab>.palette{grid-column:1;grid-row:1;min-width:0!important;width:auto!important;height:100%!important;overflow:hidden!important}
 .lab>.workspace{grid-column:2;grid-row:1;width:auto!important;min-width:0!important;height:100%!important;flex:none!important}
@@ -75,7 +75,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .editorpanel .editorHead{flex:0 0 auto}.editorpanel .editor{flex:1 1 auto!important;min-height:220px!important;width:100%!important}.editorpanel .console{max-height:150px!important}
 @media(max-width:900px){.lab,.lab.code-open{grid-template-columns:190px minmax(0,1fr)!important}.lab.code-open>.editorpanel{position:absolute!important;left:190px;right:0;top:0;bottom:0;z-index:80;min-width:0!important}.lab.code-open>#splitter{display:none!important}}
 
-/* V9.30.1: visual marker fits inside female header; hit target remains classroom-friendly */
+/* V9.31: visual marker fits inside female header; hit target remains classroom-friendly */
 .board>.pin{width:6px!important;height:6px!important;border:1px solid #fff!important;background:#f21d24!important;border-radius:2px!important;transform:translate(-50%,-50%)!important;box-shadow:0 0 0 1px #263746!important;overflow:visible!important}
 .board>.pin::after{content:"";position:absolute;left:50%;top:50%;width:20px;height:20px;transform:translate(-50%,-50%);background:transparent}
 .board>.pin:hover,.board>.pin.sel{opacity:1!important;outline:1px solid #fff!important;box-shadow:0 0 0 2px #263746!important}
@@ -85,7 +85,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .esp32Thumb{width:46px;height:64px;background:#20272d;border-radius:3px;color:#fff;font-size:8px;box-shadow:inset 0 0 0 2px #111}.esp32Thumb b{position:absolute;left:8px;top:27px}.esp32Thumb i{position:absolute;left:9px;top:5px;width:28px;height:18px;background:#c9c9c9;border:1px solid #777}.esp32Thumb:before,.esp32Thumb:after{content:"";position:absolute;top:4px;bottom:4px;width:3px;background:repeating-linear-gradient(180deg,#d7b56d 0 3px,transparent 3px 7px)}.esp32Thumb:before{left:2px}.esp32Thumb:after{right:2px}
 .component.esp32{width:213px;height:401px}.component.esp32 .esp32board{position:absolute;inset:0;background:#1e252b;border:3px solid #151a1e;border-radius:7px;box-shadow:0 0 12px #1597e566;color:#fff}.esp32board .module{position:absolute;left:38px;top:35px;width:137px;height:145px;background:#d3d5d5;border:2px solid #999;border-radius:2px}.esp32board .module:after{content:"ESP-WROOM-32";position:absolute;left:20px;top:74px;font:700 12px Arial;color:#555}.esp32board .usb{position:absolute;left:74px;bottom:-4px;width:64px;height:35px;background:#b9bdc0;border:2px solid #888;border-radius:4px 4px 0 0}.esp32board .chip{position:absolute;left:77px;top:205px;width:60px;height:60px;background:#101214;border-radius:3px}.esp32board .label{position:absolute;left:55px;top:285px;font:700 16px Arial;color:#e9e9e9}.component.esp32>.pin{z-index:8}
 
-/* V9.30.1 realistic educational components */
+/* V9.31 realistic educational components */
 .ledc{width:44px;height:86px;transform-origin:22px 43px}.bulb{left:7px;top:0;width:28px;height:42px;border-radius:16px 16px 7px 7px;border-width:2px}.bulb:after{content:"";position:absolute;left:1px;right:1px;bottom:4px;height:5px;border-radius:50%;border-top:1px solid #7b1f1f88}.leg{top:40px;width:3px;background:linear-gradient(90deg,#777,#e8e8e8,#888)}.leg.a{left:14px;height:42px}.leg.k{left:29px;height:34px}.ledc .terminal.a{left:7px;top:72px}.ledc .terminal.k{left:22px;top:64px}.polarity{font-size:10px}
 .restools{position:absolute;display:none;align-items:center;gap:7px;background:#2d3035;color:white;padding:7px 9px;border-radius:7px;z-index:10000;box-shadow:0 3px 12px #0005;font:12px Arial}.restools.show{display:flex}.restools label{display:flex;align-items:center;gap:5px}.restools input{width:64px;background:#24272b;color:white;border:1px solid #666;border-radius:4px;padding:5px 6px;font:13px Arial}.restools button{height:28px;min-width:30px;border:1px solid #666;border-radius:4px;background:#444;color:white;cursor:pointer;font-size:16px}
 .reswrap{width:130px;height:38px;transform-origin:65px 19px}.component[data-type="resistor"]{width:130px;height:38px}
@@ -97,8 +97,33 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .component.esp32{width:180px;height:330px}.component.esp32 .esp32board{background:#191c1f;border:2px solid #111;border-radius:2px;box-shadow:0 3px 9px #0004}.esp32board .module{left:35px;top:12px;width:110px;height:126px;background:linear-gradient(#555 0 34px,#b9b9b9 34px);border:1px solid #777}.esp32board .module:before{content:"";position:absolute;left:13px;top:5px;width:80px;height:24px;background:repeating-linear-gradient(90deg,#666 0 5px,#444 5px 9px);clip-path:polygon(0 0,100% 0,100% 30%,10% 30%,10% 65%,100% 65%,100% 100%,0 100%)}.esp32board .module:after{content:"ESP32";left:22px;top:58px;font:700 20px Arial;color:#eee}.esp32board .chip{left:65px;top:150px;width:50px;height:50px;background:#111;transform:rotate(45deg)}.esp32board .label{display:none}.esp32board .usb{left:65px;top:auto;bottom:-5px;width:50px;height:32px;background:#d5d5d5;border:1px solid #888}.esp32board:before,.esp32board:after{content:"";position:absolute;top:8px;bottom:8px;width:7px;background:repeating-linear-gradient(180deg,#e3c03f 0 7px,transparent 7px 17px)}.esp32board:before{left:2px}.esp32board:after{right:2px}
 
 .ldrtools{position:absolute;display:none;align-items:center;gap:9px;background:#f8f9fb;border:1px solid #c8cdd3;border-radius:22px;padding:7px 11px;z-index:10001;box-shadow:0 3px 12px #0003;color:#333}.ldrtools.show{display:flex}.ldrtools input{width:180px;accent-color:#555;cursor:pointer}.ldrtools .ldrDim{width:17px;height:17px;border-radius:50%;background:#444}.ldrtools .ldrSun{display:inline-block;font-size:34px;line-height:30px;transform-origin:center;transition:transform .12s,opacity .12s}.ldrtools b{min-width:34px;font:11px Arial;color:#555}
+
+/* V9.31 ESP32 DevKit V1 - detailed educational board */
+.component.esp32{width:190px;height:360px}
+.component.esp32 .esp32board{position:absolute;inset:0;background:#1d1e20;border:2px solid #0b0c0d;border-radius:7px;box-shadow:0 4px 10px #0005;overflow:hidden}
+.esp32board .module{position:absolute;left:35px;top:7px;width:120px;height:150px;background:#aaa;border:2px solid #555;border-radius:2px;box-shadow:inset 0 0 0 3px #888}
+.esp32board .module:before{content:"";position:absolute;left:10px;top:4px;width:100px;height:38px;background:repeating-linear-gradient(90deg,#666 0 5px,#999 5px 9px);clip-path:polygon(0 0,100% 0,100% 24%,14% 24%,14% 47%,100% 47%,100% 70%,14% 70%,14% 100%,0 100%)}
+.esp32board .module:after{content:"ESP32";position:absolute;left:20px;top:54px;color:#f5f5f5;font:700 25px Arial;text-shadow:0 1px #666}
+.esp32board .espressif{position:absolute;left:70px;top:101px;width:48px;height:48px;border:4px double #777;border-radius:50%;opacity:.55}
+.esp32board .espressif:after{content:"◔";position:absolute;left:8px;top:0;font:34px Arial;color:#777}
+.esp32board .mainchip{position:absolute;left:72px;top:207px;width:48px;height:48px;background:#111;border:1px solid #555;box-shadow:0 0 0 2px #252525}
+.esp32board .uart{position:absolute;left:75px;top:163px;width:42px;height:27px;background:#191919;border:1px solid #555}
+.esp32board .regulator{position:absolute;left:132px;top:177px;width:24px;height:32px;background:#151515;border:1px solid #555}
+.esp32board .passives{position:absolute;left:43px;top:160px;width:21px;height:88px;background:repeating-linear-gradient(180deg,#d8b526 0 6px,#ddd 6px 9px,#171717 9px 14px)}
+.esp32board .passives.r{left:127px;top:220px;height:58px}
+.esp32board .btn{position:absolute;bottom:27px;width:27px;height:35px;background:#202124;border:2px solid #777;border-radius:3px}
+.esp32board .btn:after{content:"";position:absolute;left:6px;top:8px;width:13px;height:13px;border-radius:50%;background:#111}
+.esp32board .btn.en{left:23px}.esp32board .btn.boot{right:23px}.esp32board .btnText{position:absolute;bottom:66px;color:#ddd;font:9px Arial}.esp32board .btnText.en{left:27px}.esp32board .btnText.boot{right:19px}
+.esp32board .usb{position:absolute;left:68px;bottom:-5px;width:54px;height:40px;background:linear-gradient(90deg,#aaa,#eee,#aaa);border:1px solid #777;border-radius:4px 4px 0 0}
+.esp32board .usb:after{content:"";position:absolute;left:17px;top:7px;width:20px;height:12px;background:#222;border-radius:2px}
+.esp32board:before,.esp32board:after{content:none!important}
+.esp32board .pinlabel{position:absolute;color:#e6e6e6;font:700 8px Arial;line-height:1;z-index:6;white-space:nowrap}
+.esp32board .pinlabel.left{left:15px;transform:translateY(-50%) rotate(-90deg);transform-origin:left center}
+.esp32board .pinlabel.right{right:15px;transform:translateY(-50%) rotate(90deg);transform-origin:right center}
+.component.esp32>.pin{width:7px!important;height:7px!important;border:1px solid #fff!important;background:#f0cc35!important;border-radius:50%!important;box-shadow:0 0 0 2px #765f0b!important;opacity:.18!important}
+.component.esp32>.pin:hover,.component.esp32>.pin.sel{opacity:1!important;outline:2px solid #50c7ff!important}
 </style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.30.1</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.31</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -126,7 +151,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.30.1 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.31 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,wireDraftPoints=[],wirePointer=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[],dragWirePoint=null;
@@ -148,12 +173,19 @@ function addComponent(type,x,y){
 }
 function makeESP32(el){
  el.classList.add('esp32');
- el.innerHTML='<div class="esp32board"><div class="module"></div><div class="chip"></div><div class="label">ESP32 DEVKIT V1</div><div class="usb"></div></div>';
- const pins=[
-  ['3V3',1.27,3.26],['EN',1.27,5.8],['VP',1.27,10.88],['VN',1.27,8.34],['D34',1.27,13.42],['D35',1.27,15.96],['D32',1.27,18.5],['D33',1.27,21.04],['D25',1.27,23.58],['D26',1.27,26.12],['D27',1.27,28.66],['D14',1.27,31.2],['D12',1.27,33.74],['GND',1.27,36.28],['D13',1.27,38.82],['D9',1.27,41.36],['D10',1.27,43.9],['D11',1.27,46.44],['VIN',1.27,48.98],
-  ['GND',26.8,48.98],['D6',26.8,46.44],['D7',26.8,43.9],['D8',26.8,41.36],['D15',26.8,38.82],['D2',26.8,36.28],['D0',26.8,33.74],['D4',26.8,31.2],['D16',26.8,28.66],['D17',26.8,26.12],['D5',26.8,23.58],['D18',26.8,21.04],['D19',26.8,18.5],['GND',26.8,15.96],['D21',26.8,13.42],['RX0',26.8,10.88],['D22',26.8,8.34],['D23',26.8,5.8]
- ];
- pins.forEach(([name,x,y])=>{const p=document.createElement('span');p.className='pin';p.dataset.port=name;p.title=name;p.style.left=(x/28.2*100)+'%';p.style.top=(y/53*100)+'%';el.appendChild(p)});
+ el.innerHTML='<div class="esp32board"><div class="module"></div><div class="espressif"></div><div class="uart"></div><div class="mainchip"></div><div class="regulator"></div><div class="passives"></div><div class="passives r"></div><div class="btn en"></div><div class="btn boot"></div><span class="btnText en">EN</span><span class="btnText boot">Boot</span><div class="usb"></div></div>';
+ const left=['3V3','EN','VP','VN','34','35','32','33','25','26','27','14','12','GND','13'];
+ const right=['GND','23','22','TX0','RX0','21','GND','19','18','5','17','16','4','2','15'];
+ const board=el.querySelector('.esp32board');
+ const rows=15,top=17,bottom=324,step=(bottom-top)/(rows-1);
+ const logical=n=>/^\d+$/.test(n)?'D'+n:n;
+ left.forEach((name,i)=>addEspPin(name,logical(name),10,top+i*step,'left'));
+ right.forEach((name,i)=>addEspPin(name,logical(name),180,top+i*step,'right'));
+ function addEspPin(label,port,x,y,side){
+   const hole=document.createElement('span');hole.className='espHole';hole.style.cssText='position:absolute;left:'+x+'px;top:'+y+'px;width:10px;height:10px;border-radius:50%;background:#f1cf38;box-shadow:inset 0 0 0 2px #8b7114;transform:translate(-50%,-50%);z-index:4';board.appendChild(hole);
+   const lab=document.createElement('span');lab.className='pinlabel '+side;lab.textContent=label;lab.style.top=y+'px';board.appendChild(lab);
+   const p=document.createElement('span');p.className='pin';p.dataset.port=port;p.title=label+(port!==label?' / GPIO '+label:'');p.style.left=x+'px';p.style.top=y+'px';el.appendChild(p);
+ }
  terminals(el)
 }
 function makeBoard(el,type){
