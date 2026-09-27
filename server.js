@@ -2,12 +2,14 @@ const express=require("express"),fs=require("fs"),path=require("path"),os=requir
 const {execFile}=require("child_process");
 const app=express();
 app.use(express.json({limit:"256kb"}));
-app.use(express.static(path.join(__dirname,"public")));
+app.use((req,res,next)=>{if(req.path==='/'||req.path==='/index.html'){res.set('Cache-Control','no-store, no-cache, must-revalidate, proxy-revalidate');res.set('Pragma','no-cache');res.set('Expires','0')}next()});
+app.use(express.static(path.join(__dirname,"public"),{etag:true,maxAge:0}));
 const db={classes:{},sessions:{}};
 const code=()=>crypto.randomBytes(3).toString("hex").toUpperCase();
 const CLI=process.env.ARDUINO_CLI||"arduino-cli";
 
 app.get("/health",(q,r)=>r.status(200).send("ok"));
+app.get("/api/version",(q,r)=>r.json({version:"V9.33.1",esp32Runtime:true,gpio2Led:true}));
 app.get("/api/status",(q,r)=>execFile(CLI,["version"],{timeout:10000},(e,o,err)=>r.json({
   online:true,compiler:!e,version:e?null:o.trim(),error:e?(err||e.message):null
 })));
@@ -39,4 +41,4 @@ app.post("/api/compile",(q,r)=>{
   });
 });
 const PORT=process.env.PORT||10000;
-app.listen(PORT,"0.0.0.0",()=>console.log(`Robótica Lab V9.1 Online listo en puerto ${PORT} · CLI: ${CLI}`));
+app.listen(PORT,"0.0.0.0",()=>console.log(`Robótica Lab V9.33.1 Online listo en puerto ${PORT} · CLI: ${CLI}`));
