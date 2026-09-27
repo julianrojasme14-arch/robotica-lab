@@ -13,6 +13,10 @@ app.post("/api/classes",(q,r)=>{let join=code();db.classes[join]={join,name:Stri
 app.post("/api/join",(q,r)=>{let c=db.classes[String(q.body.code||"").toUpperCase()];if(!c)return r.status(404).json({error:"Código de clase no encontrado"});let s={id:crypto.randomUUID(),name:String(q.body.name||"Estudiante")};c.students.push(s);r.json({student:s,class:c})});
 app.post("/api/compile",(q,r)=>{
   let sketch=String(q.body.code||"");
+  // Defensive normalization: Blockly/editor may send escaped newlines (\\n).
+  // Convert them to real LF characters before Arduino CLI writes Sketch.ino.
+  while(sketch.includes("\\\\n")) sketch=sketch.split("\\\\n").join("\n");
+  sketch=sketch.replace(/\\r\\n/g,"\n");
   if(!sketch||sketch.length>100000)return r.status(400).json({ok:false,error:"Sketch inválido"});
   let board=q.body.board==="nano"?"arduino:avr:nano:cpu=atmega328old":"arduino:avr:uno";
   let tmp=fs.mkdtempSync(path.join(os.tmpdir(),"rlab-")),dir=path.join(tmp,"Sketch"),build=path.join(tmp,"build");
