@@ -1,4 +1,4 @@
-const express=require("express"),fs=require("fs"),path=require("path"),os=require("os"),crypto=require("crypto");
+const express=require("express"),fs=require("fs"),path=require("path"),os=require("os"),crypto=require("crypto"),http=require("http");
 const {execFile}=require("child_process");
 const app=express();
 app.use(express.json({limit:"256kb"}));
@@ -9,7 +9,7 @@ const code=()=>crypto.randomBytes(3).toString("hex").toUpperCase();
 const CLI=process.env.ARDUINO_CLI||"arduino-cli";
 
 app.get("/health",(q,r)=>r.status(200).send("ok"));
-app.get("/api/version",(q,r)=>r.json({version:"V9.41.1",esp32Runtime:true,gpio2Led:true}));
+app.get("/api/version",(q,r)=>r.json({version:"V9.41.2",esp32Runtime:true,gpio2Led:true}));
 app.get("/api/status",(q,r)=>execFile(CLI,["version"],{timeout:10000},(e,o,err)=>r.json({
   online:true,compiler:!e,version:e?null:o.trim(),error:e?(err||e.message):null
 })));
@@ -41,5 +41,21 @@ app.post("/api/compile",(q,r)=>{
     }finally{fs.rm(tmp,{recursive:true,force:true},()=>{});}
   });
 });
-const PORT=process.env.PORT||10000;
-app.listen(PORT,"0.0.0.0",()=>console.log(`Robótica Lab V9.41.1 Online listo en puerto ${PORT} · CLI: ${CLI}`));
+const rawPort=process.env.PORT;
+const PORT=Number.parseInt(rawPort||"10000",10);
+if(!Number.isInteger(PORT)||PORT<1||PORT>65535){
+  console.error("PORT inválido recibido de Render:",rawPort);
+  process.exit(1);
+}
+const HOST="0.0.0.0";
+const server=http.createServer(app);
+server.on("error",err=>{
+  console.error("ERROR al abrir el puerto HTTP:",err && err.stack ? err.stack : err);
+  process.exit(1);
+});
+server.on("listening",()=>{
+  const addr=server.address();
+  console.log(`Robótica Lab V9.41.2 Online · escuchando en ${HOST}:${addr&&addr.port} · PORT env=${rawPort||"(no definido)"} · CLI=${CLI}`);
+});
+console.log(`Iniciando servidor HTTP en ${HOST}:${PORT}...`);
+server.listen(PORT,HOST);
