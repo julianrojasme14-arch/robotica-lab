@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.16</title>
+<title>Robótica Lab V9.17</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -8,7 +8,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .palette{padding:9px}.palette h3{margin:3px 0 10px}.part{padding:10px;border:1px solid #dbe5ec;border-radius:8px;margin:7px 0;background:#fff;cursor:grab;user-select:none}.part:hover{background:#eef8ff;border-color:#7bbce6}.hint{font-size:11px;color:#657684;line-height:1.35}
 .workspace{position:relative;overflow:hidden;background-color:#fff;background-image:linear-gradient(#e6edf2 1px,transparent 1px),linear-gradient(90deg,#e6edf2 1px,transparent 1px);background-size:20px 20px;touch-action:none}
 #wireLayer{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:2}.wirehit{pointer-events:stroke!important}.component{position:absolute;z-index:3;touch-action:none;user-select:none;cursor:move}
-.board{width:390px;height:295px;background:#087dad;border:4px solid #05618c;border-radius:15px;color:#fff;box-shadow:0 5px 12px #0002}.board.nano{width:330px;height:120px;border-radius:6px}.board>wokwi-arduino-uno,.board>wokwi-arduino-nano{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important}.usb{position:absolute;left:-18px;top:64px;width:58px;height:65px;background:#c3c9cc;border:2px solid #737b80}.nano .usb{top:31px;width:44px;height:48px}.chip{position:absolute;left:135px;top:92px;width:120px;height:32px;background:#161b1f}.nano .chip{left:120px;top:44px;width:85px;height:28px}.boardname{position:absolute;left:125px;top:38px;font-weight:bold;font-size:18px}.nano .boardname{left:100px;top:13px;font-size:14px}
+.board{width:390px;height:286.8px;background:#087dad;border:4px solid #05618c;border-radius:15px;color:#fff;box-shadow:0 5px 12px #0002}.board.nano{width:330px;height:130.8px;border-radius:6px}.board>wokwi-arduino-uno,.board>wokwi-arduino-nano{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;display:block!important}.usb{position:absolute;left:-18px;top:64px;width:58px;height:65px;background:#c3c9cc;border:2px solid #737b80}.nano .usb{top:31px;width:44px;height:48px}.chip{position:absolute;left:135px;top:92px;width:120px;height:32px;background:#161b1f}.nano .chip{left:120px;top:44px;width:85px;height:28px}.boardname{position:absolute;left:125px;top:38px;font-weight:bold;font-size:18px}.nano .boardname{left:100px;top:13px;font-size:14px}
 .pin{position:absolute;width:17px;height:17px;border:3px solid #d4b94d;background:#222;border-radius:50%;z-index:5;cursor:crosshair}.pin:hover,.pin.sel{outline:4px solid #50c7ff}.pinlabel{position:absolute;font-size:9px;color:#fff;transform:translateX(-50%);white-space:nowrap}
 .ledc{width:46px;height:75px}.bulb{position:absolute;left:9px;top:0;width:30px;height:39px;border-radius:18px 18px 7px 7px;background:#d73535;border:2px solid #a92323}.bulb.on{background:#ff3131;box-shadow:0 0 24px 10px #ff313177}.leg{position:absolute;top:37px;width:3px;height:35px;background:#777}.leg.a{left:17px}.leg.k{left:31px}.terminal{position:absolute;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid #333;cursor:crosshair;z-index:5}.ledc .terminal.a{left:11px;top:59px}.ledc .terminal.k{left:25px;top:59px}
 .res{width:130px;height:38px}.resline{position:absolute;left:5px;right:5px;top:18px;height:3px;background:#777}.resbody{position:absolute;left:38px;top:8px;width:55px;height:23px;background:#d6bd80;border-radius:6px;border:1px solid #8d7540}.res .terminal:first-child{left:0;top:12px}.res .terminal:last-child{right:0;top:12px}
@@ -58,7 +58,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 #wireLayer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
 @media(max-width:900px){#splitter{display:none}.lab{display:block!important}.editorpanel{display:flex!important}}
 .component[data-type="led"].on .bulb,.component[data-type="led"] .bulb.on{background:#ff2b20!important;box-shadow:0 0 18px #ff3025,0 0 32px #ff6a55!important;filter:brightness(1.7)!important}.board>.pin{width:10px!important;height:10px!important;border:0!important;background:#ff1717!important;opacity:0!important;transform:translate(-50%,-50%)!important;z-index:200!important}.board>.pin:hover,.board>.pin.sel{opacity:1!important;outline:2px solid white!important;box-shadow:0 0 0 3px #222!important}</style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.16</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.17</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn" id="partsBtn">＋ Componentes</button><button class="toolbtn" id="undoBtn">↶ Deshacer</button><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><div class="simtop"><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button></div></div>
 <div class="lab">
 <aside class="panel palette"><h3>Componentes</h3>
@@ -84,7 +84,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.16 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.17 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null;
@@ -103,20 +103,23 @@ function makeBoard(el,type){
  el.classList.add('board');if(type==='nano')el.classList.add('nano');
  const tag=type==='uno'?'wokwi-arduino-uno':'wokwi-arduino-nano';
  el.innerHTML='<'+tag+'></'+tag+'>';
- const coords=type==='uno'?{
-  'AREF':[174,18],'GND':[188,18],
-  'D13':[203,18],'D12':[217,18],'D11':[232,18],'D10':[246,18],'D9':[261,18],'D8':[275,18],
-  'D7':[299,18],'D6':[313,18],'D5':[328,18],'D4':[342,18],'D3':[357,18],'D2':[371,18],'D1':[385,18],'D0':[399,18],
-  '5V':[235,281],'GND2':[250,281],'A0':[305,281],'A1':[320,281],'A2':[334,281],'A3':[349,281],'A4':[363,281],'A5':[378,281]
- }:{
-  'GND':[40,26],'5V':[60,26],'D2':[80,26],'D3':[100,26],'D4':[120,26],'D5':[140,26],'D6':[160,26],'D7':[180,26],'D8':[200,26],'D9':[220,26],'D10':[240,26],'D11':[260,26],'D12':[280,26],'D13':[300,26]
- };
- Object.entries(coords).forEach(([name,xy])=>{
-   let logical=name==='GND2'?'GND':name;
-   const pin=document.createElement('span');pin.className='pin';pin.dataset.port=logical;pin.title=logical;
-   pin.style.left=xy[0]+'px';pin.style.top=xy[1]+'px';el.appendChild(pin);
- });
- terminals(el);
+ const boardEl=el.firstElementChild;
+ customElements.whenDefined(tag).then(()=>requestAnimationFrame(()=>{
+   const info=(boardEl.pinInfo||[]).filter(pi=>pi&&!pi.noBreadboard&&Number.isFinite(pi.x)&&Number.isFinite(pi.y));
+   const natural=type==='uno'?{w:72.58*96/25.4,h:53.34*96/25.4}:{w:44.9*96/25.4,h:17.8*96/25.4};
+   info.forEach(pi=>{
+     let logical=String(pi.name);
+     if(/^\d+$/.test(logical))logical='D'+logical;
+     if(logical.startsWith('GND.'))logical='GND';
+     if(logical.startsWith('RESET.'))logical='RESET';
+     if(/\.2$/.test(logical))return;
+     if(!(/^(D\d+|A\d+|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(logical)))return;
+     const pin=document.createElement('span');pin.className='pin';pin.dataset.port=logical;pin.title=logical;
+     pin.style.left=(pi.x/natural.w*100)+'%';pin.style.top=(pi.y/natural.h*100)+'%';
+     el.appendChild(pin);
+   });
+   terminals(el);
+ }));
 }
 function terminals(root){root.querySelectorAll('.pin,.terminal').forEach(t=>t.addEventListener('pointerdown',e=>{e.stopPropagation();selectTerminal(root,t)}))}
 function selectTerminal(root,t){let key=root.dataset.id+':'+t.dataset.port;if(!wireStart){wireStart={key,root,t};t.classList.add('sel');log('Cable iniciado en '+t.dataset.port+'. Selecciona el segundo terminal.','warn')}else{if(wireStart.key!==key){wires.push({a:wireStart,b:{key,root,t}});log('✓ Cable conectado: '+wireStart.key+' → '+key,'good')}wireStart.t.classList.remove('sel');wireStart=null;redraw()}}
@@ -208,8 +211,13 @@ function driveLED(pin,high){
  })}}
 window.stopAVR=()=>{running=false};
 try{
- avr=await import('https://cdn.jsdelivr.net/npm/avr8js@0.21.0/+esm');
+ {
+ const sources=['https://esm.unpkg.com/avr8js@0.21.0?target=es2020','https://cdn.jsdelivr.net/npm/avr8js@0.21.0/+esm'];
+ let errors=[];avr=null;
+ for(const src of sources){try{avr=await import(src);if(avr?.CPU&&avr?.AVRIOPort)break;errors.push(src+': exports incompletos');avr=null}catch(err){errors.push(src+': '+err.message)}}
+ if(!avr)throw new Error(errors.join(' | '));
+}
  window.startAVR=async(hex)=>{running=false;await new Promise(r=>setTimeout(r,5));running=true;const {CPU,avrInstruction,AVRIOPort,AVRTimer,PinState,portBConfig,portCConfig,portDConfig,timer0Config,timer1Config,timer2Config}=avr;const program=new Uint16Array(0x8000);loadHex(hex,new Uint8Array(program.buffer));const cpu=new CPU(program);new AVRTimer(cpu,timer0Config);new AVRTimer(cpu,timer1Config);new AVRTimer(cpu,timer2Config);const pb=new AVRIOPort(cpu,portBConfig),pd=new AVRIOPort(cpu,portDConfig);let last13=null;const update=()=>{const now13=pb.pinState(5)===PinState.High;if(now13!==last13){last13=now13;console.debug('D13',now13?'HIGH':'LOW')}for(let p=8;p<=13;p++)driveLED(p,pb.pinState(p-8)===PinState.High);for(let p=0;p<=7;p++)driveLED(p,pd.pinState(p)===PinState.High);const uno=document.querySelector('wokwi-arduino-uno');if(uno)uno.led13=pb.pinState(5)===PinState.High};pb.addListener(update);pd.addListener(update);update();const batch=()=>{if(!running)return;const until=cpu.cycles+50000;while(cpu.cycles<until){avrInstruction(cpu);cpu.tick()}update();setTimeout(batch,0)};batch()};
  window.avrReady=true;
-}catch(e){window.avrReady=false;window.avrLoadError=e;console.error('AVR8js load error',e)}
+}catch(e){window.avrReady=false;window.avrLoadError=e;console.error('AVR8js load error',e);setTimeout(()=>{const box=document.getElementById('console');if(box){const d=document.createElement('div');d.style.color='#ff7b72';d.textContent='AVR detalle: '+e.message;box.appendChild(d)}},0)}
 </script></body></html>
