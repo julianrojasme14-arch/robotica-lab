@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.22.1</title>
+<title>Robótica Lab V9.22.2</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -61,8 +61,21 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .partsHead{display:flex;justify-content:space-between;align-items:center;padding:5px 3px 10px}.partsCategory{border:1px solid #d8e0e6;border-radius:4px;padding:8px 10px;display:flex;justify-content:space-between;margin-bottom:8px}.partsSearch{width:100%;padding:8px;border:1px solid #d8e0e6;margin-bottom:9px}.partsGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;overflow:auto;max-height:calc(100vh - 250px)}.partsGrid .part{height:112px;margin:0;padding:8px 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center}.partPic{font-size:34px}.partsGrid small{font-size:11px;color:#425a70}.codebtn{font-weight:600}.lab{display:grid!important;grid-template-columns:220px minmax(420px,1fr) minmax(0,0)!important}.palette{display:block!important;position:relative!important;left:auto!important;top:auto!important;width:auto!important;z-index:5!important;border-radius:0!important;box-shadow:none!important}.editorpanel{display:none!important}.lab.code-open{grid-template-columns:220px minmax(420px,1fr) minmax(500px,42%)!important}.lab.code-open .editorpanel{display:flex!important}.lab:not(.code-open) #splitter{display:none!important}
 
 .thumb{position:relative;display:block;width:64px;height:48px}.resistorThumb:before,.resistorThumb:after{content:"";position:absolute;top:23px;width:16px;height:2px;background:#777}.resistorThumb:before{left:0}.resistorThumb:after{right:0}.resistorThumb i{position:absolute;left:15px;top:17px;width:34px;height:14px;border-radius:6px;background:#d6b36b;border:1px solid #8e713e}.resistorThumb b,.resistorThumb em{position:absolute;top:18px;width:4px;height:12px;background:#8a4b20;z-index:2}.resistorThumb b{left:25px}.resistorThumb em{left:35px;background:#d22}.ledThumb i{position:absolute;left:20px;top:2px;width:27px;height:32px;border-radius:16px 16px 7px 7px;background:#d9343e;border:2px solid #9d1e27;box-shadow:inset 6px 4px 6px #fff6}.ledThumb:before,.ledThumb:after{content:"";position:absolute;top:33px;width:3px;background:#888}.ledThumb:before{left:27px;height:15px}.ledThumb:after{left:39px;height:11px}.unoThumb{width:72px;height:46px;background:#0879ad;border-radius:4px;border:2px solid #075c83;color:white;font-size:10px}.unoThumb b{position:absolute;left:27px;top:18px}.unoThumb i{position:absolute;left:5px;top:5px;width:13px;height:12px;background:#bbb}.nanoThumb{width:70px;height:30px;margin-top:8px;background:#1798a0;border-radius:2px;color:white;font-size:8px}.nanoThumb b{position:absolute;left:24px;top:10px}.nanoThumb:before,.nanoThumb:after{content:"";position:absolute;left:4px;right:4px;height:3px;background:repeating-linear-gradient(90deg,#ddd 0 3px,transparent 3px 7px)}.nanoThumb:before{top:2px}.nanoThumb:after{bottom:2px}
+
+/* V9.22.2 authoritative desktop layout */
+.lab{display:grid!important;grid-template-columns:220px minmax(0,1fr)!important;grid-template-rows:1fr!important;height:calc(100vh - 112px)!important;min-height:0!important}
+.lab>.palette{grid-column:1;grid-row:1;min-width:0!important;width:auto!important;height:100%!important;overflow:hidden!important}
+.lab>.workspace{grid-column:2;grid-row:1;width:auto!important;min-width:0!important;height:100%!important;flex:none!important}
+.lab>#splitter{display:none!important}
+.lab>.editorpanel{display:none!important;width:auto!important;min-width:0!important;height:100%!important;flex:none!important;overflow:hidden!important}
+.lab.code-open{grid-template-columns:220px minmax(300px,1fr) 8px minmax(420px,42vw)!important}
+.lab.code-open>.workspace{grid-column:2}
+.lab.code-open>#splitter{display:block!important;grid-column:3;grid-row:1;width:8px!important;height:100%!important;cursor:col-resize;background:#aebbc5}
+.lab.code-open>.editorpanel{display:flex!important;grid-column:4;grid-row:1;min-width:420px!important}
+.editorpanel .editorHead{flex:0 0 auto}.editorpanel .editor{flex:1 1 auto!important;min-height:220px!important;width:100%!important}.editorpanel .console{max-height:150px!important}
+@media(max-width:900px){.lab,.lab.code-open{grid-template-columns:190px minmax(0,1fr)!important}.lab.code-open>.editorpanel{position:absolute!important;left:190px;right:0;top:0;bottom:0;z-index:80;min-width:0!important}.lab.code-open>#splitter{display:none!important}}
 </style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.22.1</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.22.2</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -87,7 +100,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.22.1 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.22.2 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[];
@@ -170,7 +183,7 @@ $('noteBtn').onclick=()=>{const n=document.createElement('div');n.className='com
 $('undoBtn').onclick=()=>{if(!wires.length)return;redoStack.push(wires.pop());redraw()};
 $('redoBtn').onclick=()=>{if(!redoStack.length)return;wires.push(redoStack.pop());redraw()};
 document.addEventListener('pointerdown',e=>{if(!e.target.closest('#wireColorBtn'))$('wireColorBtn').classList.remove('open')});
-$('deleteBtn').onclick=deleteSelected;$('codeBtn').onclick=()=>{document.querySelector('.lab').classList.toggle('code-open');setTimeout(()=>{redraw();if(blocklyWorkspace)Blockly.svgResize(blocklyWorkspace)},30)};$('partsSearch').addEventListener('input',e=>{const q=e.target.value.toLowerCase();document.querySelectorAll('.partsGrid .part').forEach(p=>p.style.display=p.textContent.toLowerCase().includes(q)?'flex':'none')});
+$('deleteBtn').onclick=deleteSelected;$('codeBtn').onclick=()=>{const lab=document.querySelector('.lab');lab.classList.toggle('code-open');$('codeBtn').classList.toggle('active',lab.classList.contains('code-open'));setTimeout(()=>{redraw();if(blocklyWorkspace)Blockly.svgResize(blocklyWorkspace)},60)};$('partsSearch').addEventListener('input',e=>{const q=e.target.value.toLowerCase();document.querySelectorAll('.partsGrid .part').forEach(p=>p.style.display=p.textContent.toLowerCase().includes(q)?'flex':'none')});
 $('topSim').onclick=()=>$('simulateBtn')?$('simulateBtn').click():startSimulation();
 
 let blocklyWorkspace=null,arduinoGen=null;
@@ -207,9 +220,7 @@ function applyView(){world.style.transform='translate('+view.x+'px,'+view.y+'px)
 ws.addEventListener('wheel',e=>{e.preventDefault();const r=ws.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,old=view.scale,n=Math.max(.35,Math.min(2.5,old*(e.deltaY<0?1.12:.89)));view.x=mx-(mx-view.x)*(n/old);view.y=my-(my-view.y)*(n/old);view.scale=n;applyView()},{passive:false});
 $('fitBtn').onclick=()=>{const cs=[...world.querySelectorAll('.component')];if(!cs.length)return;let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;cs.forEach(c=>{let x=c.offsetLeft,y=c.offsetTop,w=c.offsetWidth,h=c.offsetHeight;minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x+w);maxY=Math.max(maxY,y+h)});let ww=ws.clientWidth,wh=ws.clientHeight,pad=55,sc=Math.min((ww-pad*2)/(maxX-minX),(wh-pad*2)/(maxY-minY),1.6);view.scale=Math.max(.35,sc);view.x=(ww-(maxX-minX)*view.scale)/2-minX*view.scale;view.y=(wh-(maxY-minY)*view.scale)/2-minY*view.scale;applyView()};
 let splitting=false;
-$('splitter').onpointerdown=e=>{if(!document.querySelector('.lab').classList.contains('code-open'))return;splitting=true;e.preventDefault();document.body.style.cursor='col-resize';document.body.style.userSelect='none'};
-window.addEventListener('pointermove',e=>{if(!splitting)return;const lab=document.querySelector('.lab'),r=lab.getBoundingClientRect();let px=Math.max(260,Math.min(r.width-300,e.clientX-r.left));ws.style.flex='0 0 '+px+'px';redraw();if(blocklyWorkspace)Blockly.svgResize(blocklyWorkspace)});
-window.addEventListener('pointerup',()=>{if(!splitting)return;splitting=false;document.body.style.cursor='';document.body.style.userSelect=''});
+$('splitter').onpointerdown=e=>{if(!document.querySelector('.lab').classList.contains('code-open'))return;splitting=true;e.preventDefault()};window.addEventListener('pointermove',e=>{if(!splitting)return;const lab=document.querySelector('.lab'),r=lab.getBoundingClientRect();let editorW=Math.max(420,Math.min(r.width-520,r.right-e.clientX));lab.style.gridTemplateColumns='220px minmax(300px,1fr) 8px '+editorW+'px';redraw();if(blocklyWorkspace)Blockly.svgResize(blocklyWorkspace)});window.addEventListener('pointerup',()=>splitting=false);
 (()=>{const svg=$('wireLayer');ws.appendChild(svg);svg.style.width='100%';svg.style.height='100%';svg.style.transform='none';svg.setAttribute('viewBox','0 0 '+ws.clientWidth+' '+ws.clientHeight)})();window.addEventListener('resize',()=>{$('wireLayer').setAttribute('viewBox','0 0 '+ws.clientWidth+' '+ws.clientHeight);redraw()});setTimeout(()=>document.querySelector('.modebtn[data-mode="blocks"]')?.click(),50);addComponent('uno',120,260);addComponent('led',530,130);addComponent('resistor',430,300);
 </script>
 <script type="module">
