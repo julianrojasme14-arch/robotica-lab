@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.27</title>
+<title>Robótica Lab V9.28</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -62,7 +62,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 
 .thumb{position:relative;display:block;width:64px;height:48px}.resistorThumb:before,.resistorThumb:after{content:"";position:absolute;top:23px;width:16px;height:2px;background:#777}.resistorThumb:before{left:0}.resistorThumb:after{right:0}.resistorThumb i{position:absolute;left:15px;top:17px;width:34px;height:14px;border-radius:6px;background:#d6b36b;border:1px solid #8e713e}.resistorThumb b,.resistorThumb em{position:absolute;top:18px;width:4px;height:12px;background:#8a4b20;z-index:2}.resistorThumb b{left:25px}.resistorThumb em{left:35px;background:#d22}.ledThumb i{position:absolute;left:20px;top:2px;width:27px;height:32px;border-radius:16px 16px 7px 7px;background:#d9343e;border:2px solid #9d1e27;box-shadow:inset 6px 4px 6px #fff6}.ledThumb:before,.ledThumb:after{content:"";position:absolute;top:33px;width:3px;background:#888}.ledThumb:before{left:27px;height:15px}.ledThumb:after{left:39px;height:11px}.unoThumb{width:72px;height:46px;background:#0879ad;border-radius:4px;border:2px solid #075c83;color:white;font-size:10px}.unoThumb b{position:absolute;left:27px;top:18px}.unoThumb i{position:absolute;left:5px;top:5px;width:13px;height:12px;background:#bbb}.nanoThumb{width:70px;height:30px;margin-top:8px;background:#1798a0;border-radius:2px;color:white;font-size:8px}.nanoThumb b{position:absolute;left:24px;top:10px}.nanoThumb:before,.nanoThumb:after{content:"";position:absolute;left:4px;right:4px;height:3px;background:repeating-linear-gradient(90deg,#ddd 0 3px,transparent 3px 7px)}.nanoThumb:before{top:2px}.nanoThumb:after{bottom:2px}
 
-/* V9.27 authoritative desktop layout */
+/* V9.28 authoritative desktop layout */
 .lab{display:grid!important;grid-template-columns:220px minmax(0,1fr)!important;grid-template-rows:1fr!important;height:calc(100vh - 112px)!important;min-height:0!important}
 .lab>.palette{grid-column:1;grid-row:1;min-width:0!important;width:auto!important;height:100%!important;overflow:hidden!important}
 .lab>.workspace{grid-column:2;grid-row:1;width:auto!important;min-width:0!important;height:100%!important;flex:none!important}
@@ -75,12 +75,14 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .editorpanel .editorHead{flex:0 0 auto}.editorpanel .editor{flex:1 1 auto!important;min-height:220px!important;width:100%!important}.editorpanel .console{max-height:150px!important}
 @media(max-width:900px){.lab,.lab.code-open{grid-template-columns:190px minmax(0,1fr)!important}.lab.code-open>.editorpanel{position:absolute!important;left:190px;right:0;top:0;bottom:0;z-index:80;min-width:0!important}.lab.code-open>#splitter{display:none!important}}
 
-/* V9.27: visual marker fits inside female header; hit target remains classroom-friendly */
+/* V9.28: visual marker fits inside female header; hit target remains classroom-friendly */
 .board>.pin{width:6px!important;height:6px!important;border:1px solid #fff!important;background:#f21d24!important;border-radius:2px!important;transform:translate(-50%,-50%)!important;box-shadow:0 0 0 1px #263746!important;overflow:visible!important}
 .board>.pin::after{content:"";position:absolute;left:50%;top:50%;width:20px;height:20px;transform:translate(-50%,-50%);background:transparent}
 .board>.pin:hover,.board>.pin.sel{opacity:1!important;outline:1px solid #fff!important;box-shadow:0 0 0 2px #263746!important}
+
+.wireVisible{pointer-events:none;fill:none;stroke-linecap:round;stroke-linejoin:round}.wirehit{fill:none;stroke:transparent!important;stroke-width:18!important;pointer-events:stroke!important;cursor:pointer}.wireSelectedVisible{filter:drop-shadow(0 0 2px #1597e5)}.wireHandle{fill:#39ad4a;stroke:#16822b;stroke-width:2;cursor:move;pointer-events:all}.wireHandle:hover{fill:#64cf70}.snapGuide{stroke:#1597e5;stroke-width:1.5;stroke-dasharray:5 4;pointer-events:none}.wirePreview{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:7 5;pointer-events:none}
 </style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.27</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.28</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -105,10 +107,10 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.27 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.28 lista.\n</div>
 </aside></div>
 <script>
-const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[];
+const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,wireDraftPoints=[],wirePointer=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[],dragWirePoint=null;
 const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 function log(s,c=''){$('console').innerHTML+='<span class="'+c+'">'+esc(s)+'</span>\n';$('console').scrollTop=$('console').scrollHeight}
 $('code').value=normalizedSketch();
@@ -156,9 +158,72 @@ function makeBoard(el,type){
  }));
 }
 function terminals(root){root.querySelectorAll('.pin,.terminal').forEach(t=>t.addEventListener('pointerdown',e=>{e.stopPropagation();selectTerminal(root,t)}))}
-function selectTerminal(root,t){let key=root.dataset.id+':'+t.dataset.port;if(!wireStart){wireStart={key,root,t};t.classList.add('sel');log('Cable iniciado en '+t.dataset.port+'. Selecciona el segundo terminal.','warn')}else{if(wireStart.key!==key){wires.push({a:wireStart,b:{key,root,t},color:currentWireColor});undoStack.push({type:'wire-add'});redoStack=[];log('✓ Cable conectado: '+wireStart.key+' → '+key,'good')}wireStart.t.classList.remove('sel');wireStart=null;redraw()}}
+function selectTerminal(root,t){
+ const k=root.dataset.id+':'+t.dataset.port;
+ if(!wireStart){
+   wireStart={key:k,root,t};wireDraftPoints=[];wirePointer=center(wireStart);t.classList.add('sel');
+   log('Cable iniciado en '+t.dataset.port+'. Haz clic en el lienzo para crear curvas o selecciona el terminal final.','warn');redraw();return
+ }
+ if(wireStart.key!==k){
+   wires.push({a:wireStart,b:{key:k,root,t},color:currentWireColor,points:wireDraftPoints.slice()});
+   undoStack.push({type:'wire-add'});redoStack=[];log('✓ Cable conectado: '+wireStart.key+' → '+k,'good')
+ }
+ wireStart.t.classList.remove('sel');wireStart=null;wireDraftPoints=[];wirePointer=null;redraw()
+}
 function center(o){const a=o.t.getBoundingClientRect(),w=ws.getBoundingClientRect();return[a.left+a.width/2-w.left,a.top+a.height/2-w.top]}
-function redraw(){let svg=$('wireLayer');svg.innerHTML='';wires=wires.filter(w=>document.body.contains(w.a.root)&&document.body.contains(w.b.root));wires.forEach((w,i)=>{let [x1,y1]=center(w.a),[x2,y2]=center(w.b),l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);l.setAttribute('stroke',w.color||'#e23b32');l.setAttribute('stroke-width','5');l.setAttribute('stroke-linecap','round');l.setAttribute('class','wirehit');l.dataset.wire=i;l.addEventListener('pointerdown',e=>{e.stopPropagation();document.querySelectorAll('.wirehit').forEach(x=>x.classList.remove('wireSelected'));l.classList.add('wireSelected');window.selectedWire=i;log('Cable seleccionado. Pulsa Supr/Delete para eliminarlo.','warn')});svg.appendChild(l)})}
+function svgEl(n,attrs={}){const e=document.createElementNS('http://www.w3.org/2000/svg',n);Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,v));return e}
+function routePath(points,r=14){
+ if(points.length<2)return'';
+ if(points.length===2)return'M '+points[0][0]+' '+points[0][1]+' L '+points[1][0]+' '+points[1][1];
+ let d='M '+points[0][0]+' '+points[0][1];
+ for(let i=1;i<points.length-1;i++){
+   const p0=points[i-1],p=points[i],p1=points[i+1],d0=Math.hypot(p[0]-p0[0],p[1]-p0[1]),d1=Math.hypot(p1[0]-p[0],p1[1]-p[1]),rr=Math.min(r,d0/2,d1/2);
+   if(!rr){d+=' L '+p[0]+' '+p[1];continue}
+   const a=[p[0]+(p0[0]-p[0])*rr/d0,p[1]+(p0[1]-p[1])*rr/d0],b=[p[0]+(p1[0]-p[0])*rr/d1,p[1]+(p1[1]-p[1])*rr/d1];
+   d+=' L '+a[0]+' '+a[1]+' Q '+p[0]+' '+p[1]+' '+b[0]+' '+b[1]
+ }
+ const e=points[points.length-1];return d+' L '+e[0]+' '+e[1]
+}
+function snapPoint(p,anchor){
+ const threshold=10,q=[p[0],p[1]],guides=[];
+ if(anchor&&Math.abs(p[0]-anchor[0])<threshold){q[0]=anchor[0];guides.push(['v',q[0]])}
+ if(anchor&&Math.abs(p[1]-anchor[1])<threshold){q[1]=anchor[1];guides.push(['h',q[1]])}
+ return{point:q,guides}
+}
+function drawGuides(svg,guides){
+ guides.forEach(g=>{const l=svgEl('line',{class:'snapGuide'});if(g[0]==='v'){l.setAttribute('x1',g[1]);l.setAttribute('x2',g[1]);l.setAttribute('y1',0);l.setAttribute('y2',ws.clientHeight)}else{l.setAttribute('y1',g[1]);l.setAttribute('y2',g[1]);l.setAttribute('x1',0);l.setAttribute('x2',ws.clientWidth)}svg.appendChild(l)})
+}
+function redraw(){
+ const svg=$('wireLayer');svg.innerHTML='';wires=wires.filter(w=>document.body.contains(w.a.root)&&document.body.contains(w.b.root));
+ wires.forEach((w,i)=>{
+   if(!Array.isArray(w.points))w.points=[];
+   const pts=[center(w.a),...w.points,center(w.b)],d=routePath(pts);
+   const visible=svgEl('path',{d,stroke:w.color||'#e23b32','stroke-width':5,class:'wireVisible'+(window.selectedWire===i?' wireSelectedVisible':'')});
+   const hit=svgEl('path',{d,class:'wirehit'});hit.dataset.wire=i;
+   hit.addEventListener('pointerdown',e=>{e.stopPropagation();window.selectedWire=i;window.selectedComponent=null;redraw();log('Cable seleccionado. Doble clic para editar su recorrido.','warn')});
+   hit.addEventListener('dblclick',e=>{e.stopPropagation();window.selectedWire=i;w.editing=!w.editing;if(w.editing&&w.points.length===0){const a=center(w.a),b=center(w.b);w.points.push([(a[0]+b[0])/2,(a[1]+b[1])/2])}redraw()});
+   svg.appendChild(visible);svg.appendChild(hit);
+   if(w.editing){
+     w.points.forEach((p,j)=>{const h=svgEl('circle',{cx:p[0],cy:p[1],r:6,class:'wireHandle'});h.addEventListener('pointerdown',e=>{e.stopPropagation();dragWirePoint={wire:i,index:j};h.setPointerCapture(e.pointerId)});h.addEventListener('dblclick',e=>{e.stopPropagation();w.points.splice(j,1);redraw()});svg.appendChild(h)})
+   }
+ });
+ if(wireStart&&wirePointer){
+   const pts=[center(wireStart),...wireDraftPoints,wirePointer],p=svgEl('path',{d:routePath(pts),stroke:currentWireColor,class:'wirePreview'});svg.appendChild(p)
+ }
+}
+ws.addEventListener('pointermove',e=>{
+ const r=ws.getBoundingClientRect(),raw=[e.clientX-r.left,e.clientY-r.top];
+ if(dragWirePoint){
+   const w=wires[dragWirePoint.wire],prev=dragWirePoint.index? w.points[dragWirePoint.index-1]:center(w.a),sn=snapPoint(raw,prev);w.points[dragWirePoint.index]=sn.point;redraw();drawGuides($('wireLayer'),sn.guides);return
+ }
+ if(wireStart){const anchor=wireDraftPoints.length?wireDraftPoints[wireDraftPoints.length-1]:center(wireStart),sn=snapPoint(raw,anchor);wirePointer=sn.point;redraw();drawGuides($('wireLayer'),sn.guides)}
+});
+ws.addEventListener('pointerup',()=>{dragWirePoint=null});
+ws.addEventListener('click',e=>{
+ if(!wireStart||e.target.closest('.component')||e.target.closest('.wirehit')||e.target.closest('.fitbtn'))return;
+ const r=ws.getBoundingClientRect(),raw=[e.clientX-r.left,e.clientY-r.top],anchor=wireDraftPoints.length?wireDraftPoints[wireDraftPoints.length-1]:center(wireStart),sn=snapPoint(raw,anchor);
+ wireDraftPoints.push(sn.point);wirePointer=sn.point;redraw()
+});
 function showLedTools(el){
  const box=$('ledTools'),r=el.getBoundingClientRect(),wr=ws.getBoundingClientRect();
  const colors=['#f20d18','#16b43b','#233dff','#ffd51b','#ff8a00','#ffffff','#a600d4','#ff19a8','#32c76b','#18dce5'];
@@ -191,7 +256,7 @@ function stopSimulation(){if(window.stopAVR)window.stopAVR();simRunning=false;do
 $('topSim').onclick=startSimulation;
 $('clearBtn').onclick=()=>{clearInterval(timer);wires=[];wireStart=null;world.querySelectorAll('.component').forEach(x=>x.remove());redraw();log('Área de trabajo limpiada.')};
 function deleteSelected(){if(Number.isInteger(window.selectedWire)){wires.splice(window.selectedWire,1);window.selectedWire=null;redraw();log('✓ Cable eliminado.','good');return}if(window.selectedComponent){let el=window.selectedComponent;wires=wires.filter(w=>w.a.root!==el&&w.b.root!==el);el.remove();window.selectedComponent=null;redraw();log('✓ Componente eliminado.','good')}}
-window.addEventListener('keydown',e=>{if(e.key==='Delete'||e.key==='Backspace')deleteSelected()});
+window.addEventListener('keydown',e=>{if((e.key==='Delete'||e.key==='Backspace')&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName))deleteSelected();if(e.key==='Escape'&&wireStart){wireStart.t.classList.remove('sel');wireStart=null;wireDraftPoints=[];wirePointer=null;redraw()}});
 const wireColors=['#e23b32','#24a148','#2855e8','#f5c400','#ff8a00','#111827','#ffffff','#9b2cc1','#ec2f86','#13bfc8'];
 $('wirePalette').innerHTML=wireColors.map(c=>'<button data-c="'+c+'" style="background:'+c+'"></button>').join('');
 $('wireColorBtn').onclick=e=>{e.stopPropagation();$('wireColorBtn').classList.toggle('open')};
