@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.8</title>
+<title>Robótica Lab V9.9</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -30,7 +30,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .board .usb,.board .powerjack,.board .reset,.board .chip,.board .boardname,.board:after{display:none!important}
 .board wokwi-arduino-uno{position:absolute;left:0;top:0;width:430px;height:290px}
 .board wokwi-arduino-nano{position:absolute;left:20px;top:0;width:300px;height:190px}
-.board .pin{opacity:.78}.board .pinlabel{background:#fff;color:#163247;padding:1px 2px;border-radius:3px;font-weight:bold}
+.board .pin{position:absolute!important;width:10px!important;height:10px!important;margin:0!important;opacity:0!important;background:#f00!important;border:0!important;border-radius:2px!important;cursor:crosshair!important;z-index:50!important;transform:translate(-5px,-5px)!important}.board .pinlabel{background:#fff;color:#163247;padding:1px 2px;border-radius:3px;font-weight:bold}
 #blockArea{height:390px!important;padding:0!important}.blocklyToolboxDiv{background:#eef4f8}.blocklyFlyoutBackground{fill:#f7fafc}
 
 .tcbar{height:48px;background:#fff;border-bottom:1px solid #d8e0e6;display:flex;align-items:center;gap:8px;padding:6px 10px}.toolbtn{border:1px solid #d4dde4;background:#fff;border-radius:5px;padding:7px 10px;cursor:pointer}.toolbtn:hover{background:#f1f6f9}.simtop{margin-left:auto}.simstart{background:#0d8bd8;color:#fff;border-color:#0d8bd8;font-weight:bold}
@@ -46,19 +46,19 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .editor{flex:1 1 auto!important;width:100%!important;height:auto!important;min-height:280px!important}
 .actions,.console{flex:0 0 auto!important}
 
-.terminal{cursor:crosshair}.board .pin{cursor:crosshair;background:transparent!important;border:0!important;outline:0!important;width:24px!important;height:24px!important;opacity:.015!important;border-radius:50%!important}
-.board .pin:hover,.board .pin.sel,.terminal:hover,.terminal.sel{opacity:1!important;background:#ff1010!important;border-radius:2px!important;box-shadow:0 0 0 2px #fff,0 0 0 3px #333!important}
+.terminal{cursor:crosshair!important}.board .pin{cursor:crosshair;background:transparent!important;border:0!important;outline:0!important;width:24px!important;height:24px!important;opacity:.015!important;border-radius:50%!important}
+.board .pin:hover,.board .pin.sel,.terminal:hover,.terminal.sel{opacity:1!important;background:#ff1010!important;border-radius:2px!important;box-shadow:0 0 0 1px #fff!important}
 .component.selected{filter:drop-shadow(0 0 4px #0d8bd8)}
 .board .pinlabel{display:none!important}
 .simstart.running{background:#18a64a!important;border-color:#18a64a!important}
 
 .lab{grid-template-columns:43% 7px minmax(0,57%)!important}.workspace{overflow:hidden!important;flex:0 0 43%;min-width:220px}.editorpanel{flex:1 1 auto!important;min-width:260px!important}
-#splitter{flex:0 0 7px;background:#d8e1e7;cursor:col-resize;z-index:30}#splitter:hover{background:#0d8bd8}
-#world{position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0}.fitbtn{position:absolute;left:10px;top:10px;z-index:40;width:38px;height:38px;border:1px solid #ccd7df;background:#fff;border-radius:50%;font-size:22px;cursor:pointer}
+#splitter{flex:0 0 10px;background:#aebbc5;cursor:col-resize;z-index:30}#splitter:hover{background:#0d8bd8}
+#world{position:absolute;left:0;top:0;width:2000px;height:1400px;transform-origin:0 0}.fitbtn{position:absolute;left:10px;top:10px;z-index:40;width:38px;height:38px;border:1px solid #ccd7df;background:#fff;border-radius:50%;font-size:22px;cursor:pointer}
 #wireLayer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
 @media(max-width:900px){#splitter{display:none}.lab{display:block!important}.editorpanel{display:flex!important}}
 </style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.8</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.9</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn" id="partsBtn">＋ Componentes</button><button class="toolbtn" id="undoBtn">↶ Deshacer</button><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><div class="simtop"><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button></div></div>
 <div class="lab">
 <aside class="panel palette"><h3>Componentes</h3>
@@ -84,7 +84,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.8 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.9 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null;
@@ -102,23 +102,28 @@ function addComponent(type,x,y){
 function makeBoard(el,type){
  el.classList.add('board');if(type==='nano')el.classList.add('nano');el.innerHTML=type==='uno'?'<wokwi-arduino-uno></wokwi-arduino-uno>':'<wokwi-arduino-nano></wokwi-arduino-nano>';
  const boardEl=el.querySelector(type==='uno'?'wokwi-arduino-uno':'wokwi-arduino-nano');
- requestAnimationFrame(()=>requestAnimationFrame(()=>{
-   const info=boardEl.pinInfo||[];
-   const br=boardEl.getBoundingClientRect(), er=el.getBoundingClientRect();
-   info.forEach(pi=>{
-     let name=pi.name.replace(/\.\d+$/,'');
-     if(/^\d+$/.test(name)) name='D'+name;
-     if(!(/^(D\d+|A\d+|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(name)))return;
-     const pin=document.createElement('span');pin.className='pin';pin.dataset.port=name;pin.title=name;
-     const sx=br.width/(boardEl.offsetWidth||br.width), sy=br.height/(boardEl.offsetHeight||br.height);
-     pin.style.left=(br.left-er.left+pi.x*sx-10)+'px';pin.style.top=(br.top-er.top+pi.y*sy-10)+'px';
-     el.append(pin);
+ customElements.whenDefined(type==='uno'?'wokwi-arduino-uno':'wokwi-arduino-nano').then(()=>{
+   requestAnimationFrame(()=>{
+     const info=boardEl.pinInfo||[];
+     const bw=boardEl.getBoundingClientRect().width, bh=boardEl.getBoundingClientRect().height;
+     const naturalW=type==='uno'?266:180, naturalH=type==='uno'?201:180;
+     const sx=bw/naturalW, sy=bh/naturalH;
+     info.forEach(pi=>{
+       let logical=pi.name;
+       if(/^\d+$/.test(logical))logical='D'+logical;
+       if(logical.startsWith('GND.'))logical='GND';
+       if(!(/^(D\d+|A\d+(?:\.2)?|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(logical)))return;
+       if(logical.endsWith('.2'))return;
+       const pin=document.createElement('span');pin.className='pin';pin.dataset.port=logical;pin.title=logical;
+       pin.style.left=(pi.x*sx)+'px';pin.style.top=(pi.y*sy)+'px';el.appendChild(pin);
+     });
+     terminals(el);
    });
- }));
+ });
 }
 function terminals(root){root.querySelectorAll('.pin,.terminal').forEach(t=>t.addEventListener('pointerdown',e=>{e.stopPropagation();selectTerminal(root,t)}))}
 function selectTerminal(root,t){let key=root.dataset.id+':'+t.dataset.port;if(!wireStart){wireStart={key,root,t};t.classList.add('sel');log('Cable iniciado en '+t.dataset.port+'. Selecciona el segundo terminal.','warn')}else{if(wireStart.key!==key){wires.push({a:wireStart,b:{key,root,t}});log('✓ Cable conectado: '+wireStart.key+' → '+key,'good')}wireStart.t.classList.remove('sel');wireStart=null;redraw()}}
-function center(o){let a=o.t.getBoundingClientRect(),b=ws.getBoundingClientRect();return [(a.left-b.left+a.width/2-view.x)/view.scale,(a.top-b.top+a.height/2-view.y)/view.scale]}
+function center(o){let a=o.t.getBoundingClientRect(),w=world.getBoundingClientRect();return [(a.left-w.left+a.width/2)/view.scale,(a.top-w.top+a.height/2)/view.scale]}
 function redraw(){let svg=$('wireLayer');svg.innerHTML='';wires=wires.filter(w=>document.body.contains(w.a.root)&&document.body.contains(w.b.root));wires.forEach((w,i)=>{let [x1,y1]=center(w.a),[x2,y2]=center(w.b),l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);l.setAttribute('stroke',i%2?'#20252a':'#e23b32');l.setAttribute('stroke-width','5');l.setAttribute('stroke-linecap','round');l.setAttribute('class','wirehit');l.dataset.wire=i;l.addEventListener('pointerdown',e=>{e.stopPropagation();document.querySelectorAll('.wirehit').forEach(x=>x.classList.remove('wireSelected'));l.classList.add('wireSelected');window.selectedWire=i;log('Cable seleccionado. Pulsa Supr/Delete para eliminarlo.','warn')});svg.appendChild(l)})}
 function enableMove(el){let sx,sy,ox,oy,moving=false;el.addEventListener('pointerdown',e=>{if(e.target.matches('.pin,.terminal'))return;moving=true;sx=e.clientX;sy=e.clientY;ox=parseFloat(el.style.left);oy=parseFloat(el.style.top);el.setPointerCapture(e.pointerId)});el.addEventListener('pointermove',e=>{if(!moving)return;el.style.left=Math.max(0,ox+(e.clientX-sx)/view.scale)+'px';el.style.top=Math.max(0,oy+(e.clientY-sy)/view.scale)+'px';redraw()});el.addEventListener('pointerup',()=>moving=false);el.addEventListener('click',e=>{if(e.target.matches('.pin,.terminal'))return;document.querySelectorAll('.component').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');window.selectedComponent=el});el.addEventListener('dblclick',()=>{wires=wires.filter(w=>w.a.root!==el&&w.b.root!==el);el.remove();redraw()})}
 
@@ -169,16 +174,19 @@ function initBlockly(){
  blocklyWorkspace=Blockly.inject('blockArea',{toolbox,trashcan:true,zoom:{controls:true,wheel:true,startScale:.85},grid:{spacing:20,length:3,colour:'#d9e2e8',snap:true}});
  const xml=Blockly.utils.xml.textToDom('<xml><block type="arduino_setup" x="30" y="30"><statement name="DO"><block type="pin_mode"><field name="PIN">13</field><field name="MODE">OUTPUT</field></block></statement></block><block type="arduino_loop" x="30" y="160"><statement name="DO"><block type="digital_write"><field name="PIN">13</field><field name="VALUE">HIGH</field><next><block type="arduino_delay"><field name="MS">1000</field><next><block type="digital_write"><field name="PIN">13</field><field name="VALUE">LOW</field><next><block type="arduino_delay"><field name="MS">1000</field></block></next></block></next></block></next></block></statement></block></xml>');
  Blockly.Xml.domToWorkspace(xml,blocklyWorkspace);
- const sync=()=>{let generated=arduinoGen.workspaceToCode(blocklyWorkspace);$('code').value=generated.split('\\\\n').join(String.fromCharCode(10))};blocklyWorkspace.addChangeListener(sync);sync();
+ const sync=()=>{let generated=arduinoGen.workspaceToCode(blocklyWorkspace);for(let i=0;i<5;i++)generated=generated.replace(/\\+n/g,String.fromCharCode(10));$('code').value=generated};blocklyWorkspace.addChangeListener(sync);sync();
 }
-document.querySelectorAll('.modebtn').forEach(b=>b.onclick=()=>{document.querySelectorAll('.modebtn').forEach(x=>x.classList.remove('active'));b.classList.add('active');let m=b.dataset.mode;$('blockArea').style.display=m==='code'?'none':'block';$('code').style.display=m==='blocks'?'none':'block';if(blocklyWorkspace)setTimeout(()=>Blockly.svgResize(blocklyWorkspace),20)});
+document.querySelectorAll('.modebtn').forEach(b=>b.onclick=()=>{document.querySelectorAll('.modebtn').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('code').value=normalizedSketch();let m=b.dataset.mode;$('blockArea').style.display=m==='code'?'none':'block';$('code').style.display=m==='blocks'?'none':'block';if(blocklyWorkspace)setTimeout(()=>Blockly.svgResize(blocklyWorkspace),20)});
 initBlockly();
 
 let view={scale:1,x:0,y:0};
 function applyView(){world.style.transform='translate('+view.x+'px,'+view.y+'px) scale('+view.scale+')';redraw()}
 ws.addEventListener('wheel',e=>{e.preventDefault();const r=ws.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,old=view.scale,n=Math.max(.35,Math.min(2.5,old*(e.deltaY<0?1.12:.89)));view.x=mx-(mx-view.x)*(n/old);view.y=my-(my-view.y)*(n/old);view.scale=n;applyView()},{passive:false});
 $('fitBtn').onclick=()=>{const cs=[...world.querySelectorAll('.component')];if(!cs.length)return;let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;cs.forEach(c=>{let x=c.offsetLeft,y=c.offsetTop,w=c.offsetWidth,h=c.offsetHeight;minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x+w);maxY=Math.max(maxY,y+h)});let ww=ws.clientWidth,wh=ws.clientHeight,pad=55,sc=Math.min((ww-pad*2)/(maxX-minX),(wh-pad*2)/(maxY-minY),1.6);view.scale=Math.max(.35,sc);view.x=(ww-(maxX-minX)*view.scale)/2-minX*view.scale;view.y=(wh-(maxY-minY)*view.scale)/2-minY*view.scale;applyView()};
-let splitting=false;$('splitter').addEventListener('pointerdown',e=>{splitting=true;$('splitter').setPointerCapture(e.pointerId)});$('splitter').addEventListener('pointermove',e=>{if(!splitting)return;let pct=Math.max(25,Math.min(70,e.clientX/window.innerWidth*100));ws.style.flexBasis=pct+'%';redraw();if(blocklyWorkspace)Blockly.svgResize(blocklyWorkspace)});$('splitter').addEventListener('pointerup',()=>splitting=false);
+let splitting=false;
+$('splitter').onpointerdown=e=>{splitting=true;e.preventDefault();document.body.style.cursor='col-resize';document.body.style.userSelect='none'};
+window.addEventListener('pointermove',e=>{if(!splitting)return;const lab=document.querySelector('.lab'),r=lab.getBoundingClientRect();let px=Math.max(260,Math.min(r.width-300,e.clientX-r.left));ws.style.flex='0 0 '+px+'px';redraw();if(blocklyWorkspace)Blockly.svgResize(blocklyWorkspace)});
+window.addEventListener('pointerup',()=>{if(!splitting)return;splitting=false;document.body.style.cursor='';document.body.style.userSelect=''});
 window.addEventListener('resize',redraw);setTimeout(()=>document.querySelector('.modebtn[data-mode="blocks"]')?.click(),50);addComponent('uno',120,260);addComponent('led',530,130);addComponent('resistor',430,300);
 </script>
 <script type="module">
