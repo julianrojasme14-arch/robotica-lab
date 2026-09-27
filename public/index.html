@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.14</title>
+<title>Robótica Lab V9.15</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -57,8 +57,8 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 #world{position:absolute;left:0;top:0;width:2000px;height:1400px;transform-origin:0 0}.fitbtn{position:absolute;left:10px;top:10px;z-index:40;width:38px;height:38px;border:1px solid #ccd7df;background:#fff;border-radius:50%;font-size:22px;cursor:pointer}
 #wireLayer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
 @media(max-width:900px){#splitter{display:none}.lab{display:block!important}.editorpanel{display:flex!important}}
-.component[data-type="led"].on .bulb,.component[data-type="led"] .bulb.on{background:#ff2b20!important;box-shadow:0 0 18px #ff3025,0 0 32px #ff6a55!important;filter:brightness(1.7)!important}</style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.14</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+.component[data-type="led"].on .bulb,.component[data-type="led"] .bulb.on{background:#ff2b20!important;box-shadow:0 0 18px #ff3025,0 0 32px #ff6a55!important;filter:brightness(1.7)!important}.board>.pin{width:10px!important;height:10px!important;border:0!important;background:#ff1717!important;opacity:0!important;transform:translate(-50%,-50%)!important;z-index:200!important}.board>.pin:hover,.board>.pin.sel{opacity:1!important;outline:2px solid white!important;box-shadow:0 0 0 3px #222!important}</style></head><body>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.15</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn" id="partsBtn">＋ Componentes</button><button class="toolbtn" id="undoBtn">↶ Deshacer</button><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><div class="simtop"><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button></div></div>
 <div class="lab">
 <aside class="panel palette"><h3>Componentes</h3>
@@ -84,7 +84,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.14 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.15 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null;
@@ -107,7 +107,7 @@ function makeBoard(el,type){
  customElements.whenDefined(tag).then(()=>requestAnimationFrame(()=>{
    const info=(boardEl.pinInfo||[]).filter(pi=>pi&&Number.isFinite(pi.x)&&Number.isFinite(pi.y));
    if(!info.length){log('No se pudieron leer los terminales de la placa.','bad');return}
-   const xs=info.map(p=>p.x),ys=info.map(p=>p.y),minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+   const coordW=type==='uno'?266:180,coordH=type==='uno'?201:180;
    info.forEach(pi=>{
      let logical=String(pi.name);
      if(/^\d+$/.test(logical))logical='D'+logical;
@@ -115,8 +115,8 @@ function makeBoard(el,type){
      if(logical.endsWith('.2'))return;
      if(!(/^(D\d+|A\d+|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(logical)))return;
      const pin=document.createElement('span');pin.className='pin';pin.dataset.port=logical;pin.title=logical;
-     pin.style.left=((pi.x-minX)/(maxX-minX)*94+3)+'%';
-     pin.style.top=((pi.y-minY)/(maxY-minY)*92+4)+'%';
+     pin.style.left=(pi.x/coordW*100)+'%';
+     pin.style.top=(pi.y/coordH*100)+'%';
      el.appendChild(pin);
    });
    terminals(el);
@@ -212,7 +212,7 @@ function driveLED(pin,high){
  })}}
 window.stopAVR=()=>{running=false};
 try{
- avr=await import('/vendor/avr8js/dist/esm/index.js');
+ avr=await import('/vendor/avr8js.bundle.js');
  window.startAVR=async(hex)=>{running=false;await new Promise(r=>setTimeout(r,5));running=true;const {CPU,avrInstruction,AVRIOPort,AVRTimer,PinState,portBConfig,portCConfig,portDConfig,timer0Config,timer1Config,timer2Config}=avr;const program=new Uint16Array(0x8000);loadHex(hex,new Uint8Array(program.buffer));const cpu=new CPU(program);new AVRTimer(cpu,timer0Config);new AVRTimer(cpu,timer1Config);new AVRTimer(cpu,timer2Config);const pb=new AVRIOPort(cpu,portBConfig),pd=new AVRIOPort(cpu,portDConfig);let last13=null;const update=()=>{const now13=pb.pinState(5)===PinState.High;if(now13!==last13){last13=now13;console.debug('D13',now13?'HIGH':'LOW')}for(let p=8;p<=13;p++)driveLED(p,pb.pinState(p-8)===PinState.High);for(let p=0;p<=7;p++)driveLED(p,pd.pinState(p)===PinState.High);const uno=document.querySelector('wokwi-arduino-uno');if(uno)uno.led13=pb.pinState(5)===PinState.High};pb.addListener(update);pd.addListener(update);update();const batch=()=>{if(!running)return;const until=cpu.cycles+50000;while(cpu.cycles<until){avrInstruction(cpu);cpu.tick()}update();setTimeout(batch,0)};batch()};
  window.avrReady=true;
 }catch(e){window.avrReady=false;window.avrLoadError=e;console.error('AVR8js load error',e)}
