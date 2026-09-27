@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.11</title>
+<title>Robótica Lab V9.12</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -57,8 +57,8 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 #world{position:absolute;left:0;top:0;width:2000px;height:1400px;transform-origin:0 0}.fitbtn{position:absolute;left:10px;top:10px;z-index:40;width:38px;height:38px;border:1px solid #ccd7df;background:#fff;border-radius:50%;font-size:22px;cursor:pointer}
 #wireLayer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
 @media(max-width:900px){#splitter{display:none}.lab{display:block!important}.editorpanel{display:flex!important}}
-</style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.11</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+.component[data-type="led"].on .bulb,.component[data-type="led"] .bulb.on{background:#ff2b20!important;box-shadow:0 0 18px #ff3025,0 0 32px #ff6a55!important;filter:brightness(1.7)!important}</style></head><body>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.12</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn" id="partsBtn">＋ Componentes</button><button class="toolbtn" id="undoBtn">↶ Deshacer</button><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><span class="hint">Selecciona terminales para cablear · selecciona cable + Eliminar</span><div class="simtop"><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button></div></div>
 <div class="lab">
 <aside class="panel palette"><h3>Componentes</h3>
@@ -84,7 +84,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.11 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) toca dos terminales para crear un cable; 3) haz clic en un cable para seleccionarlo y pulsa Supr/Delete; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.12 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,lastHex=null,timer=null;
@@ -124,7 +124,7 @@ function makeBoard(el,type){
 }
 function terminals(root){root.querySelectorAll('.pin,.terminal').forEach(t=>t.addEventListener('pointerdown',e=>{e.stopPropagation();selectTerminal(root,t)}))}
 function selectTerminal(root,t){let key=root.dataset.id+':'+t.dataset.port;if(!wireStart){wireStart={key,root,t};t.classList.add('sel');log('Cable iniciado en '+t.dataset.port+'. Selecciona el segundo terminal.','warn')}else{if(wireStart.key!==key){wires.push({a:wireStart,b:{key,root,t}});log('✓ Cable conectado: '+wireStart.key+' → '+key,'good')}wireStart.t.classList.remove('sel');wireStart=null;redraw()}}
-function center(o){let a=o.t.getBoundingClientRect(),w=world.getBoundingClientRect();return [(a.left-w.left+a.width/2)/view.scale,(a.top-w.top+a.height/2)/view.scale]}
+function center(o){const a=o.t.getBoundingClientRect(),svg=$('wireLayer').getBoundingClientRect();return [(a.left+a.width/2-svg.left)/view.scale,(a.top+a.height/2-svg.top)/view.scale]}
 function redraw(){let svg=$('wireLayer');svg.innerHTML='';wires=wires.filter(w=>document.body.contains(w.a.root)&&document.body.contains(w.b.root));wires.forEach((w,i)=>{let [x1,y1]=center(w.a),[x2,y2]=center(w.b),l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',x1);l.setAttribute('y1',y1);l.setAttribute('x2',x2);l.setAttribute('y2',y2);l.setAttribute('stroke',i%2?'#20252a':'#e23b32');l.setAttribute('stroke-width','5');l.setAttribute('stroke-linecap','round');l.setAttribute('class','wirehit');l.dataset.wire=i;l.addEventListener('pointerdown',e=>{e.stopPropagation();document.querySelectorAll('.wirehit').forEach(x=>x.classList.remove('wireSelected'));l.classList.add('wireSelected');window.selectedWire=i;log('Cable seleccionado. Pulsa Supr/Delete para eliminarlo.','warn')});svg.appendChild(l)})}
 function enableMove(el){let sx,sy,ox,oy,moving=false;el.addEventListener('pointerdown',e=>{if(e.target.matches('.pin,.terminal'))return;moving=true;sx=e.clientX;sy=e.clientY;ox=parseFloat(el.style.left);oy=parseFloat(el.style.top);el.setPointerCapture(e.pointerId)});el.addEventListener('pointermove',e=>{if(!moving)return;el.style.left=Math.max(0,ox+(e.clientX-sx)/view.scale)+'px';el.style.top=Math.max(0,oy+(e.clientY-sy)/view.scale)+'px';redraw()});el.addEventListener('pointerup',()=>{moving=false;redraw()});el.addEventListener('click',e=>{if(e.target.matches('.pin,.terminal'))return;document.querySelectorAll('.component').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');window.selectedComponent=el});el.addEventListener('dblclick',()=>{wires=wires.filter(w=>w.a.root!==el&&w.b.root!==el);el.remove();redraw()})}
 
@@ -195,7 +195,21 @@ let running=false,avr=null;
 function loadHex(source,target){for(const line of source.split('\n'))if(line[0]===':'&&line.substr(7,2)==='00'){const n=parseInt(line.substr(1,2),16),a=parseInt(line.substr(3,4),16);for(let i=0;i<n;i++)target[a+i]=parseInt(line.substr(9+i*2,2),16)}}
 function key(root,port){return root.dataset.id+':'+port}
 function connected(start,target){const adj=new Map(),add=(a,b)=>{if(!adj.has(a))adj.set(a,[]);adj.get(a).push(b)};wires.forEach(w=>{add(w.a.key,w.b.key);add(w.b.key,w.a.key)});document.querySelectorAll('.component[data-type="resistor"]').forEach(r=>{add(key(r,'1'),key(r,'2'));add(key(r,'2'),key(r,'1'))});const q=[start],seen=new Set(q);while(q.length){const x=q.shift();if(x===target)return true;for(const y of adj.get(x)||[])if(!seen.has(y)){seen.add(y);q.push(y)}}return false}
-function driveLED(pin,high){const board=document.querySelector('.board');if(!board)return;document.querySelectorAll('.component[data-type="led"]').forEach(l=>{const a=key(l,'A'),k=key(l,'K'),dp=key(board,'D'+pin),g=key(board,'GND');const ok=(connected(a,dp)&&connected(k,g))||(connected(dp,a)&&connected(g,k));const bulb=l.querySelector('.bulb');if(bulb){bulb.classList.toggle('on',!!high&&ok);bulb.style.filter=(high&&ok)?'brightness(1.8) drop-shadow(0 0 10px red)':''}})}
+function driveLED(pin,high){
+ const board=document.querySelector('.board');if(!board)return;
+ const boardId=board.dataset.id;
+ document.querySelectorAll('.component[data-type="led"]').forEach(l=>{
+   const ledId=l.dataset.id;
+   const has=(p1,p2)=>wires.some(w=>(w.a.key===p1&&w.b.key===p2)||(w.a.key===p2&&w.b.key===p1));
+   const data=key(board,'D'+pin),gnd=key(board,'GND'),an=key(l,'A'),kat=key(l,'K');
+   const direct=(has(data,an)&&has(gnd,kat));
+   const graph=connected(data,an)&&connected(gnd,kat);
+   const on=!!high&&(direct||graph);
+   const bulb=l.querySelector('.bulb')||l;
+   bulb.classList.toggle('on',on);
+   if(l.querySelector('.bulb'))l.querySelector('.bulb').style.background=on?'#ff2b20':'';
+   l.style.filter=on?'drop-shadow(0 0 14px #ff3025) brightness(1.35)':'';
+ })}}
 window.stopAVR=()=>{running=false};
 try{
  avr=await import('https://cdn.jsdelivr.net/npm/avr8js@0.21.0/+esm');
