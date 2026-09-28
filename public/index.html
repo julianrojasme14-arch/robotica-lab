@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.52.1</title>
+<title>Robótica Lab V9.52.2</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -25,7 +25,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 /* Raspberry Pi Pico */
 .pico{width:164px;height:410px}.picoboard{position:absolute;inset:0;background:#08783e;border:2px solid #075f34;border-radius:8px;box-shadow:0 5px 12px #0004}.picoboard .picoUsb{position:absolute;left:50%;top:-2px;transform:translateX(-50%);width:58px;height:45px;background:#c8cdd0;border-radius:0 0 6px 6px}.picoboard .picoChip{position:absolute;left:50%;top:175px;transform:translateX(-50%);width:58px;height:58px;background:#26312c;border:1px solid #44534c}.picoboard .picoBoot{position:absolute;left:50%;top:76px;transform:translateX(-50%);width:28px;height:38px;background:#f4f4f0;border-radius:5px;box-shadow:inset 0 0 0 2px #ddd}.picoboard .picoLed{position:absolute;left:34px;top:46px;width:12px;height:12px;border-radius:50%;background:#637044;border:2px solid #b8c28a}.picoboard .picoLed.on{background:#d9ff37;box-shadow:0 0 13px #cfff35,0 0 4px #fff}.picoboard .picoTitle{position:absolute;left:50%;bottom:36px;transform:translateX(-50%);color:#fff;font:bold 11px Arial;white-space:nowrap}.picoboard .picoHole{position:absolute;width:13px;height:13px;border-radius:50%;background:#e7d13d;border:2px solid #9a8520;transform:translate(-50%,-50%)}.picoboard .picoLabel{position:absolute;color:#fff;font:bold 7px Arial;transform:translateY(-50%);white-space:nowrap}.picoboard .picoLabel.left{left:17px}.picoboard .picoLabel.right{right:17px;text-align:right}.pico>.pin{width:9px!important;height:9px!important;opacity:0!important}.pico>.pin:hover,.pico>.pin.sel{opacity:1!important}
 .picoThumb{background:#08783e!important;border-radius:4px!important}.picoThumb b{font-size:7px!important;color:#fff!important}
-/* V9.52.1.1 · Raspberry Pi Pico visual refinement */
+/* V9.52.2.1 · Raspberry Pi Pico visual refinement */
 .pico{width:166px;height:410px}
 .picoboard{position:absolute;inset:0;background:#087b43;border:1px solid #08683a;border-radius:3px;box-shadow:0 3px 8px #0003;overflow:visible}
 .picoboard:before,.picoboard:after{content:"";position:absolute;top:0;bottom:0;width:9px;background:repeating-linear-gradient(to bottom,#b5b6aa 0 8px,#f0d844 8px 13px,#b5b6aa 13px 19.55px);z-index:1}
@@ -48,7 +48,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .picoboard .picoHole{width:10px;height:10px;background:#eee0a5;border:2px solid #81765a;z-index:4}
 .picoboard .picoLabel{font-size:6.5px;z-index:5;text-shadow:0 1px #075d35}.picoboard .picoLabel.left{left:15px}.picoboard .picoLabel.right{right:15px}
 .pico>.pin{z-index:8}
-/* V9.52.1 · Pico: clear GPIO labels and vertical board name */
+/* V9.52.2 · Pico: clear GPIO labels and vertical board name */
 .picoboard .mount.m1{left:30px!important;top:9px!important}
 .picoboard .mount.m2{right:30px!important;top:9px!important}
 .picoboard .mount.m3{left:30px!important;bottom:9px!important}
@@ -62,7 +62,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 }
 .picoboard .picoLabel.left{left:17px!important}
 .picoboard .picoLabel.right{right:17px!important}
-/* V9.52.1 · Pico label legibility */
+/* V9.52.2 · Pico label legibility */
 .picoboard .picoLabel{font-size:6.2px!important;line-height:1!important;letter-spacing:0!important;z-index:6!important}
 .picoboard .picoLabel.left{left:24px!important;text-align:left!important}
 .picoboard .picoLabel.right{right:24px!important;text-align:right!important}
@@ -79,10 +79,10 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .picoboard .mount.m2{right:31px!important;top:9px!important}
 .picoboard .mount.m3{left:31px!important;bottom:9px!important}
 .picoboard .mount.m4{right:31px!important;bottom:9px!important}
-/* V9.52.1 · full usable circuit workspace */
+/* V9.52.2 · full usable circuit workspace */
 .workspace{position:relative!important}
 #world{left:0!important;top:0!important;margin:0!important}
-/* V9.52.1 · BBC micro:bit V2 */
+/* V9.52.2 · BBC micro:bit V2 */
 .microbit{width:270px;height:220px}.microbitBoard{position:absolute;inset:0;background:#16181d;border-radius:12px 12px 8px 8px;box-shadow:0 5px 12px #0005;border:2px solid #090a0c;overflow:visible}
 .microbitBoard .mbLogo{position:absolute;left:50%;top:10px;transform:translateX(-50%);color:#fff;font:bold 12px Arial}.microbitBoard .mbLogo b{color:#f3d338}
 .microbitBoard .mbButton{position:absolute;top:77px;width:31px;height:31px;border-radius:50%;background:#272a30;border:3px solid #555;box-shadow:inset 0 0 0 5px #111;color:#fff;font:bold 10px Arial;display:flex;align-items:center;justify-content:center}.microbitBoard .mbButton.a{left:34px}.microbitBoard .mbButton.b{right:34px}.microbitBoard .mbButton.pressed{background:#555;transform:scale(.94)}
@@ -98,7 +98,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .mbSensorPanel.show{display:block}.mbSensorHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}.mbSensorHead b{font-size:13px}.mbSensorHead span{color:#64748b;font-size:10px}
 .mbSensorGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mbSensorCard{background:#fff;border:1px solid #e2e8f0;border-radius:9px;padding:8px;min-width:0}.mbSensorCard.wide{grid-column:1/-1}.mbSensorCard label{display:flex;justify-content:space-between;gap:5px;font-weight:bold;margin-bottom:5px}.mbSensorCard output{font-variant-numeric:tabular-nums;color:#334155}.mbSensorCard input[type=range]{width:100%;accent-color:#475569}.mbCompass{width:66px;height:66px;border:2px solid #94a3b8;border-radius:50%;margin:3px auto;position:relative;background:linear-gradient(#fff,#f1f5f9)}.mbCompass:before{content:"N";position:absolute;left:50%;top:3px;transform:translateX(-50%);font:bold 9px Arial}.mbNeedle{position:absolute;left:31px;top:10px;width:3px;height:24px;background:#ef4444;transform-origin:50% 23px;border-radius:3px}.mbTilt{width:94px;height:66px;margin:3px auto;border:1px solid #cbd5e1;border-radius:8px;position:relative;background:linear-gradient(90deg,transparent 49%,#e2e8f0 50%,transparent 51%),linear-gradient(transparent 49%,#e2e8f0 50%,transparent 51%)}.mbTiltDot{position:absolute;width:12px;height:12px;border-radius:50%;background:#334155;left:41px;top:27px;transition:left .08s,top .08s}
 
-/* V9.52.1 · micro:bit V2 physical-style visual */
+/* V9.52.2 · micro:bit V2 physical-style visual */
 .microbit{width:340px;height:282px}
 .microbitBoard{width:340px;height:282px;inset:0;background:#17191b;border:0;border-radius:22px 22px 12px 12px;box-shadow:0 4px 10px #0005;overflow:hidden}
 .microbitBoard:before{content:"";position:absolute;left:0;top:0;width:78px;height:78px;background:#ed0a46;clip-path:polygon(0 0,100% 0,0 100%);z-index:1}
@@ -124,7 +124,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .microbitBoard .mbFine{bottom:0;width:4px;height:52px;background:#d8b92f;z-index:2}
 .microbit>.pin{width:22px!important;height:22px!important}
 
-/* V9.52.1 · clean micro:bit face; electrical anchors separated from artwork */
+/* V9.52.2 · clean micro:bit face; electrical anchors separated from artwork */
 .microbit{width:300px!important;height:250px!important}
 .microbitBoard{width:300px!important;height:250px!important;border-radius:18px 18px 8px 8px!important;overflow:hidden!important}
 .microbitBoard:before{width:58px!important;height:58px!important}
@@ -145,7 +145,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .microbitBoard .mbFine{display:none!important}
 .microbit>.pin{opacity:0!important;width:18px!important;height:18px!important}
 
-/* V9.52.1 · SVG micro:bit V2 */
+/* V9.52.2 · SVG micro:bit V2 */
 .microbit{width:300px!important;height:230px!important}
 .microbitBoard{width:300px!important;height:230px!important;background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important}
 .microbitBoard:before,.microbitBoard:after,.microbitBoard>.mbLogo,.microbitBoard>.mbSpeaker,.microbitBoard>.mbTouch,.microbitBoard>.mbMic,.microbitBoard>.mbEdge,.microbitBoard>.mbRing,.microbitBoard>.mbFine{display:none!important}
@@ -161,7 +161,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .mbColorTools{position:absolute;display:none;gap:5px;padding:6px;background:#fff;border:1px solid #cbd5e1;border-radius:8px;box-shadow:0 4px 12px #0002;z-index:80;transform-origin:left top}
 .mbColorTools.show{display:flex}.mbColorTools button{width:23px;height:23px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #94a3b8;cursor:pointer}
 
-/* V9.52.1 · micro:bit reference design */
+/* V9.52.2 · micro:bit reference design */
 .microbitBoard .mbButton{top:94px!important;width:34px!important;height:34px!important;border:0!important;border-radius:2px!important;background:#c9ccce!important;box-shadow:inset 0 0 0 2px #8b9296,0 1px 2px #0008!important}
 .microbitBoard .mbButton:before{content:"";position:absolute;left:7px;top:7px;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#4d5357 0 18%,#292d30 45%,#17191b 72%);box-shadow:0 0 0 2px #555d61}
 .microbitBoard .mbButton:after{display:none!important}
@@ -172,21 +172,41 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .mbColorTools{display:none;flex-direction:column!important;width:205px!important;padding:9px!important;gap:8px!important}
 .mbColorTools.show{display:flex!important}.mbColorRow{display:flex;align-items:center;gap:5px}.mbColorTitle{font:bold 11px Arial;color:#334155;margin-bottom:3px}.mbColorRow button{width:20px!important;height:20px!important}
 
-/* V9.52.1 · micro:bit editors */
+/* V9.52.2 · micro:bit editors */
 .mbAbLabel span{left:50%!important;top:50%!important;transform:translate(-22%,-5%)!important;line-height:1!important}
 .mbAbLabel.b span{transform:translate(-22%,-5%) scaleX(-1)!important}
 .microbitBoard .mbPixel.on{background:#ff1744!important;box-shadow:0 0 5px 2px #ff1744,0 0 13px 5px #ff315f,0 0 24px 7px #ff6b86!important;filter:brightness(1.55)}
 .mbEditModal{position:fixed;inset:0;background:#0007;display:none;align-items:center;justify-content:center;z-index:10000}.mbEditModal.show{display:flex}.mbEditCard{background:#fff;border-radius:12px;padding:16px;box-shadow:0 15px 50px #0005;min-width:300px;color:#1f2937;font:13px Arial}.mbEditHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.mbEditHead b{font-size:16px}.mbGrid5{display:grid;grid-template-columns:repeat(5,38px);gap:6px;justify-content:center}.mbGrid5 button{width:38px;height:38px;border:1px solid #bbb;border-radius:7px;background:#e5e7eb;cursor:pointer}.mbGrid5 button.on{background:#ff3158;box-shadow:0 0 9px #ff3158}.mbEditorActions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}.mbEditorActions button{padding:7px 13px;border:0;border-radius:6px;cursor:pointer}.mbMusicGrid{display:grid;grid-template-columns:34px repeat(8,28px);gap:3px;align-items:center}.mbMusicGrid .note{font-weight:bold;text-align:right;padding-right:4px}.mbMusicGrid button{width:28px;height:24px;border:1px solid #cbd5e1;border-radius:4px;background:#f1f5f9}.mbMusicGrid button.on{background:#1e90ff}.mbBpm{margin-top:12px;display:flex;gap:8px;align-items:center}.mbBpm input{width:70px}
 
-/* V9.52.1 micro:bit visual refinements */
+/* V9.52.2 micro:bit visual refinements */
 .mbAbLabel span{left:50%!important;top:50%!important;transform:translate(-25%,-5%)!important;line-height:1!important}
 .mbAbLabel.b span{transform:translate(-25%,-5%) scaleX(-1)!important}
 .microbitBoard .mbPixel.on{background:#ff1744!important;box-shadow:0 0 5px 2px #ff1744,0 0 13px 5px #ff315f,0 0 24px 7px #ff6b86!important;filter:brightness(1.55)}
 
 .mbEditModal{position:fixed;inset:0;background:#0007;display:none;align-items:center;justify-content:center;z-index:10000}.mbEditModal.show{display:flex}.mbEditCard{background:#fff;border-radius:12px;padding:16px;box-shadow:0 15px 50px #0005;min-width:300px;color:#1f2937;font:13px Arial}.mbEditHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.mbGrid5{display:grid;grid-template-columns:repeat(5,38px);gap:6px;justify-content:center}.mbGrid5 button{width:38px;height:38px;border:1px solid #bbb;border-radius:7px;background:#e5e7eb}.mbGrid5 button.on{background:#ff3158;box-shadow:0 0 9px #ff3158}.mbEditorActions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}.mbMusicGrid{display:grid;grid-template-columns:34px repeat(8,28px);gap:3px;align-items:center}.mbMusicGrid .note{font-weight:bold;text-align:right}.mbMusicGrid button{width:28px;height:24px;border:1px solid #cbd5e1;border-radius:4px;background:#f1f5f9}.mbMusicGrid button.on{background:#1e90ff}.mbBpm{margin-top:12px;display:flex;gap:8px;align-items:center}
 
-/* V9.52.1.1 music sequencer */
+/* V9.52.2.1 music sequencer */
 #mbMusicModal .mbEditCard{min-width:390px}.mbMusicGrid{display:grid!important;grid-template-columns:30px repeat(8,32px)!important;column-gap:5px!important;row-gap:5px!important;align-items:center!important}.mbMusicGrid .note{width:30px!important;padding:0 5px 0 0!important;background:transparent!important;border:0!important;text-align:right!important;font-weight:700!important;color:#334155!important}.mbMusicGrid button{width:32px!important;height:27px!important;margin:0!important;padding:0!important;border:1px solid #b9c8d6!important;border-radius:5px!important;background:#eef3f7!important;box-shadow:none!important}.mbMusicGrid button.on{background:#248df0!important;border-color:#1677d2!important;box-shadow:inset 0 0 0 1px #ffffff55!important}
+
+/* V9.52.2 · micro:bit physical LED glow */
+.microbitBoard .mbPixel{
+  width:6px!important;height:13px!important;
+  background:#55595b!important;
+  border-radius:2px!important;
+  border:1px solid #686c6e!important;
+  box-sizing:border-box!important;
+  box-shadow:inset 0 0 2px #202224!important;
+  filter:none!important;
+}
+.microbitBoard .mbPixel.on{
+  background:#e7192f!important;
+  border-color:#8f1724!important;
+  box-shadow:
+    inset 0 0 0 1px #ff5a68,
+    inset 0 0 4px #ff8a94,
+    0 0 3px 1px rgba(255,28,54,.62)!important;
+  filter:none!important;
+}
 </style><script src="https://unpkg.com/blockly/blockly.min.js"></script>
 <script src="https://unpkg.com/@wokwi/elements@1.9.2/dist/wokwi-elements.bundle.js"></script>
 <style>
@@ -227,7 +247,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 
 .thumb{position:relative;display:block;width:64px;height:48px}.resistorThumb:before,.resistorThumb:after{content:"";position:absolute;top:23px;width:16px;height:2px;background:#777}.resistorThumb:before{left:0}.resistorThumb:after{right:0}.resistorThumb i{position:absolute;left:15px;top:17px;width:34px;height:14px;border-radius:6px;background:#d6b36b;border:1px solid #8e713e}.resistorThumb b,.resistorThumb em{position:absolute;top:18px;width:4px;height:12px;background:#8a4b20;z-index:2}.resistorThumb b{left:25px}.resistorThumb em{left:35px;background:#d22}.ledThumb i{position:absolute;left:20px;top:2px;width:27px;height:32px;border-radius:16px 16px 7px 7px;background:#d9343e;border:2px solid #9d1e27;box-shadow:inset 6px 4px 6px #fff6}.ledThumb:before,.ledThumb:after{content:"";position:absolute;top:33px;width:3px;background:#888}.ledThumb:before{left:27px;height:15px}.ledThumb:after{left:39px;height:11px}.unoThumb{width:72px;height:46px;background:#0879ad;border-radius:4px;border:2px solid #075c83;color:white;font-size:10px}.unoThumb b{position:absolute;left:27px;top:18px}.unoThumb i{position:absolute;left:5px;top:5px;width:13px;height:12px;background:#bbb}.nanoThumb{width:70px;height:30px;margin-top:8px;background:#1798a0;border-radius:2px;color:white;font-size:8px}.nanoThumb b{position:absolute;left:24px;top:10px}.nanoThumb:before,.nanoThumb:after{content:"";position:absolute;left:4px;right:4px;height:3px;background:repeating-linear-gradient(90deg,#ddd 0 3px,transparent 3px 7px)}.nanoThumb:before{top:2px}.nanoThumb:after{bottom:2px}
 
-/* V9.52.1 authoritative desktop layout */
+/* V9.52.2 authoritative desktop layout */
 .lab{display:grid!important;grid-template-columns:220px minmax(0,1fr)!important;grid-template-rows:1fr!important;height:calc(100vh - 112px)!important;min-height:0!important}
 .lab>.palette{grid-column:1;grid-row:1;min-width:0!important;width:auto!important;height:100%!important;overflow:hidden!important}
 .lab>.workspace{grid-column:2;grid-row:1;width:auto!important;min-width:0!important;height:100%!important;flex:none!important}
@@ -240,7 +260,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .editorpanel .editorHead{flex:0 0 auto}.editorpanel .editor{flex:1 1 auto!important;min-height:220px!important;width:100%!important}.editorpanel .console{max-height:150px!important}
 @media(max-width:900px){.lab,.lab.code-open{grid-template-columns:190px minmax(0,1fr)!important}.lab.code-open>.editorpanel{position:absolute!important;left:190px;right:0;top:0;bottom:0;z-index:80;min-width:0!important}.lab.code-open>#splitter{display:none!important}}
 
-/* V9.52.1: visual marker fits inside female header; hit target remains classroom-friendly */
+/* V9.52.2: visual marker fits inside female header; hit target remains classroom-friendly */
 .board>.pin{width:6px!important;height:6px!important;border:1px solid #fff!important;background:#f21d24!important;border-radius:2px!important;transform:translate(-50%,-50%)!important;box-shadow:0 0 0 1px #263746!important;overflow:visible!important}
 .board>.pin::after{content:"";position:absolute;left:50%;top:50%;width:20px;height:20px;transform:translate(-50%,-50%);background:transparent}
 .board>.pin:hover,.board>.pin.sel{opacity:1!important;outline:1px solid #fff!important;box-shadow:0 0 0 2px #263746!important}
@@ -250,7 +270,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .esp32Thumb{width:46px;height:64px;background:#20272d;border-radius:3px;color:#fff;font-size:8px;box-shadow:inset 0 0 0 2px #111}.esp32Thumb b{position:absolute;left:8px;top:27px}.esp32Thumb i{position:absolute;left:9px;top:5px;width:28px;height:18px;background:#c9c9c9;border:1px solid #777}.esp32Thumb:before,.esp32Thumb:after{content:"";position:absolute;top:4px;bottom:4px;width:3px;background:repeating-linear-gradient(180deg,#d7b56d 0 3px,transparent 3px 7px)}.esp32Thumb:before{left:2px}.esp32Thumb:after{right:2px}
 .component.esp32{width:213px;height:401px}.component.esp32 .esp32board{position:absolute;inset:0;background:#1e252b;border:3px solid #151a1e;border-radius:7px;box-shadow:0 0 12px #1597e566;color:#fff}.esp32board .module{position:absolute;left:38px;top:35px;width:137px;height:145px;background:#d3d5d5;border:2px solid #999;border-radius:2px}.esp32board .module:after{content:"ESP-WROOM-32";position:absolute;left:20px;top:74px;font:700 12px Arial;color:#555}.esp32board .usb{position:absolute;left:74px;bottom:-4px;width:64px;height:35px;background:#b9bdc0;border:2px solid #888;border-radius:4px 4px 0 0}.esp32board .chip{position:absolute;left:77px;top:205px;width:60px;height:60px;background:#101214;border-radius:3px}.esp32board .label{position:absolute;left:55px;top:285px;font:700 16px Arial;color:#e9e9e9}.component.esp32>.pin{z-index:8}
 
-/* V9.52.1 realistic educational components */
+/* V9.52.2 realistic educational components */
 .ledc{width:44px;height:86px;transform-origin:22px 43px}.bulb{left:7px;top:0;width:28px;height:42px;border-radius:16px 16px 7px 7px;border-width:2px}.bulb:after{content:"";position:absolute;left:1px;right:1px;bottom:4px;height:5px;border-radius:50%;border-top:1px solid #7b1f1f88}.leg{top:40px;width:3px;background:linear-gradient(90deg,#777,#e8e8e8,#888)}.leg.a{left:14px;height:42px}.leg.k{left:29px;height:34px}.ledc .terminal.a{left:7px;top:72px}.ledc .terminal.k{left:22px;top:64px}.polarity{font-size:10px}
 .restools{position:absolute;display:none;align-items:center;gap:7px;background:#2d3035;color:white;padding:7px 9px;border-radius:7px;z-index:10000;box-shadow:0 3px 12px #0005;font:12px Arial}.restools.show{display:flex}.restools label{display:flex;align-items:center;gap:5px}.restools input{width:64px;background:#24272b;color:white;border:1px solid #666;border-radius:4px;padding:5px 6px;font:13px Arial}.restools button{height:28px;min-width:30px;border:1px solid #666;border-radius:4px;background:#444;color:white;cursor:pointer;font-size:16px}
 .reswrap{width:130px;height:38px;transform-origin:65px 19px}.component[data-type="resistor"]{width:130px;height:38px}
@@ -263,7 +283,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 
 .ldrtools{position:absolute;display:none;align-items:center;gap:9px;background:#f8f9fb;border:1px solid #c8cdd3;border-radius:22px;padding:7px 11px;z-index:10001;box-shadow:0 3px 12px #0003;color:#333}.ldrtools.show{display:flex}.ldrtools input{width:180px;accent-color:#555;cursor:pointer}.ldrtools .ldrDim{width:17px;height:17px;border-radius:50%;background:#444}.ldrtools .ldrSun{display:inline-block;font-size:34px;line-height:30px;transform-origin:center;transition:transform .12s,opacity .12s}.ldrtools b{min-width:34px;font:11px Arial;color:#555}
 
-/* V9.52.1 ESP32 DevKit V1 - detailed educational board */
+/* V9.52.2 ESP32 DevKit V1 - detailed educational board */
 .component.esp32{width:190px;height:360px}
 .component.esp32 .esp32board{position:absolute;inset:0;background:#1d1e20;border:2px solid #0b0c0d;border-radius:7px;box-shadow:0 4px 10px #0005;overflow:hidden}
 .esp32board .module{position:absolute;left:35px;top:7px;width:120px;height:150px;background:#aaa;border:2px solid #555;border-radius:2px;box-shadow:inset 0 0 0 3px #888}
@@ -292,7 +312,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 
 .esp32board .espLed{position:absolute;left:50%;bottom:58px;width:16px;height:16px;border-radius:50%;transform:translateX(-50%);background:#455047;border:2px solid #cfd5d0;box-shadow:inset 0 0 4px #000;z-index:5}.esp32board .espLed.on{background:#39e85a;border-color:#9df5aa;box-shadow:0 0 15px 5px #39e85a88,0 0 5px #fff,inset 0 0 2px #fff}.esp32board .espLedLabel{position:absolute;left:50%;bottom:43px;transform:translateX(-50%);color:#fff;font:bold 7px Arial;z-index:5}
 </style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.52.1</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.52.2</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -334,7 +354,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.52.1 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.52.2 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,wireDraftPoints=[],wirePointer=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[],dragWirePoint=null;
