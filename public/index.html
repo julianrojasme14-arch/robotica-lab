@@ -837,6 +837,8 @@ function initBlockly(){
   {"type":"mb_unplot","message0":"apagar LED x %1 y %2","args0":[{"type":"field_number","name":"X","value":2,"min":0,"max":4},{"type":"field_number","name":"Y","value":2,"min":0,"max":4}],"previousStatement":null,"nextStatement":null,"colour":65},
   {"type":"mb_led_point","message0":"LED x %1 y %2 encendido","args0":[{"type":"field_number","name":"X","value":2,"min":0,"max":4},{"type":"field_number","name":"Y","value":2,"min":0,"max":4}],"output":"Boolean","colour":65},
   {"type":"mb_show_leds_custom","message0":"mostrar LEDs %1","args0":[{"type":"field_input","name":"PATTERN","text":"0000000000000000000000000"}],"previousStatement":null,"nextStatement":null,"colour":190,"tooltip":"Doble clic para dibujar el icono"},
+  {"type":"mb_play_melody","message0":"reproducir melodía %1 a %2 BPM","args0":[{"type":"field_input","name":"MELODY","text":"C4,-,-,-,-,-,-,-"},{"type":"field_number","name":"BPM","value":120,"min":40,"max":240}],"previousStatement":null,"nextStatement":null,"colour":330,"tooltip":"Doble clic para editar la melodía"},
+  {"type":"mb_show_leds_custom","message0":"mostrar LEDs %1","args0":[{"type":"field_input","name":"PATTERN","text":"0000000000000000000000000"}],"previousStatement":null,"nextStatement":null,"colour":190,"tooltip":"Doble clic para dibujar el icono"},
   {"type":"mb_play_melody","message0":"reproducir melodía %1 a %2 BPM","args0":[{"type":"field_input","name":"MELODY","text":"C4,-,-,-,-,-,-,-"},{"type":"field_number","name":"BPM","value":120,"min":40,"max":240}],"previousStatement":null,"nextStatement":null,"colour":330,"tooltip":"Doble clic para editar la melodía"}
  ]);
  arduinoGen=new Blockly.Generator('Arduino');
@@ -869,6 +871,8 @@ function initBlockly(){
  arduinoGen.forBlock['mb_plot']=(b)=>'plot('+b.getFieldValue('X')+','+b.getFieldValue('Y')+');'+NL;
  arduinoGen.forBlock['mb_unplot']=(b)=>'unplot('+b.getFieldValue('X')+','+b.getFieldValue('Y')+');'+NL;
  arduinoGen.forBlock['mb_led_point']=(b)=>['point('+b.getFieldValue('X')+','+b.getFieldValue('Y')+')',0];
+ arduinoGen.forBlock['mb_show_leds_custom']=(b)=>'showLeds("'+b.getFieldValue('PATTERN')+'");'+NL;
+ arduinoGen.forBlock['mb_play_melody']=(b)=>'playMelody("'+b.getFieldValue('MELODY')+'",'+b.getFieldValue('BPM')+');'+NL;
  arduinoGen.forBlock['mb_show_leds_custom']=(b)=>'showLeds("'+b.getFieldValue('PATTERN')+'");'+NL;
  arduinoGen.forBlock['mb_play_melody']=(b)=>'playMelody("'+b.getFieldValue('MELODY')+'",'+b.getFieldValue('BPM')+');'+NL;
  arduinoGen.scrub_=function(block,code,thisOnly){const next=block.nextConnection&&block.nextConnection.targetBlock();return code+(thisOnly?'':this.blockToCode(next));};
