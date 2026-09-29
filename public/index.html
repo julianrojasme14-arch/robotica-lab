@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.68</title>
+<title>Robótica Lab V9.69</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -25,7 +25,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 /* Raspberry Pi Pico */
 .pico{width:164px;height:410px}.picoboard{position:absolute;inset:0;background:#08783e;border:2px solid #075f34;border-radius:8px;box-shadow:0 5px 12px #0004}.picoboard .picoUsb{position:absolute;left:50%;top:-2px;transform:translateX(-50%);width:58px;height:45px;background:#c8cdd0;border-radius:0 0 6px 6px}.picoboard .picoChip{position:absolute;left:50%;top:175px;transform:translateX(-50%);width:58px;height:58px;background:#26312c;border:1px solid #44534c}.picoboard .picoBoot{position:absolute;left:50%;top:76px;transform:translateX(-50%);width:28px;height:38px;background:#f4f4f0;border-radius:5px;box-shadow:inset 0 0 0 2px #ddd}.picoboard .picoLed{position:absolute;left:34px;top:46px;width:12px;height:12px;border-radius:50%;background:#637044;border:2px solid #b8c28a}.picoboard .picoLed.on{background:#d9ff37;box-shadow:0 0 13px #cfff35,0 0 4px #fff}.picoboard .picoTitle{position:absolute;left:50%;bottom:36px;transform:translateX(-50%);color:#fff;font:bold 11px Arial;white-space:nowrap}.picoboard .picoHole{position:absolute;width:13px;height:13px;border-radius:50%;background:#e7d13d;border:2px solid #9a8520;transform:translate(-50%,-50%)}.picoboard .picoLabel{position:absolute;color:#fff;font:bold 7px Arial;transform:translateY(-50%);white-space:nowrap}.picoboard .picoLabel.left{left:17px}.picoboard .picoLabel.right{right:17px;text-align:right}.pico>.pin{width:9px!important;height:9px!important;opacity:0!important}.pico>.pin:hover,.pico>.pin.sel{opacity:1!important}
 .picoThumb{background:#08783e!important;border-radius:4px!important}.picoThumb b{font-size:7px!important;color:#fff!important}
-/* V9.68.1 · Raspberry Pi Pico visual refinement */
+/* V9.69.1 · Raspberry Pi Pico visual refinement */
 .pico{width:166px;height:410px}
 .picoboard{position:absolute;inset:0;background:#087b43;border:1px solid #08683a;border-radius:3px;box-shadow:0 3px 8px #0003;overflow:visible}
 .picoboard:before,.picoboard:after{content:"";position:absolute;top:0;bottom:0;width:9px;background:repeating-linear-gradient(to bottom,#b5b6aa 0 8px,#f0d844 8px 13px,#b5b6aa 13px 19.55px);z-index:1}
@@ -48,7 +48,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .picoboard .picoHole{width:10px;height:10px;background:#eee0a5;border:2px solid #81765a;z-index:4}
 .picoboard .picoLabel{font-size:6.5px;z-index:5;text-shadow:0 1px #075d35}.picoboard .picoLabel.left{left:15px}.picoboard .picoLabel.right{right:15px}
 .pico>.pin{z-index:8}
-/* V9.68 · Pico: clear GPIO labels and vertical board name */
+/* V9.69 · Pico: clear GPIO labels and vertical board name */
 .picoboard .mount.m1{left:30px!important;top:9px!important}
 .picoboard .mount.m2{right:30px!important;top:9px!important}
 .picoboard .mount.m3{left:30px!important;bottom:9px!important}
@@ -62,7 +62,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 }
 .picoboard .picoLabel.left{left:17px!important}
 .picoboard .picoLabel.right{right:17px!important}
-/* V9.68 · Pico label legibility */
+/* V9.69 · Pico label legibility */
 .picoboard .picoLabel{font-size:6.2px!important;line-height:1!important;letter-spacing:0!important;z-index:6!important}
 .picoboard .picoLabel.left{left:24px!important;text-align:left!important}
 .picoboard .picoLabel.right{right:24px!important;text-align:right!important}
@@ -79,10 +79,10 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .picoboard .mount.m2{right:31px!important;top:9px!important}
 .picoboard .mount.m3{left:31px!important;bottom:9px!important}
 .picoboard .mount.m4{right:31px!important;bottom:9px!important}
-/* V9.68 · full usable circuit workspace */
+/* V9.69 · full usable circuit workspace */
 .workspace{position:relative!important}
 #world{left:0!important;top:0!important;margin:0!important}
-/* V9.68 · BBC micro:bit V2 */
+/* V9.69 · BBC micro:bit V2 */
 .microbit{width:270px;height:220px}.microbitBoard{position:absolute;inset:0;background:#16181d;border-radius:12px 12px 8px 8px;box-shadow:0 5px 12px #0005;border:2px solid #090a0c;overflow:visible}
 .microbitBoard .mbLogo{position:absolute;left:50%;top:10px;transform:translateX(-50%);color:#fff;font:bold 12px Arial}.microbitBoard .mbLogo b{color:#f3d338}
 .microbitBoard .mbButton{position:absolute;top:77px;width:31px;height:31px;border-radius:50%;background:#272a30;border:3px solid #555;box-shadow:inset 0 0 0 5px #111;color:#fff;font:bold 10px Arial;display:flex;align-items:center;justify-content:center}.microbitBoard .mbButton.a{left:34px}.microbitBoard .mbButton.b{right:34px}.microbitBoard .mbButton.pressed{background:#555;transform:scale(.94)}
@@ -98,7 +98,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .mbSensorPanel.show{display:block}.mbSensorHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}.mbSensorHead b{font-size:13px}.mbSensorHead span{color:#64748b;font-size:10px}
 .mbSensorGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mbSensorCard{background:#fff;border:1px solid #e2e8f0;border-radius:9px;padding:8px;min-width:0}.mbSensorCard.wide{grid-column:1/-1}.mbSensorCard label{display:flex;justify-content:space-between;gap:5px;font-weight:bold;margin-bottom:5px}.mbSensorCard output{font-variant-numeric:tabular-nums;color:#334155}.mbSensorCard input[type=range]{width:100%;accent-color:#475569}.mbCompass{width:66px;height:66px;border:2px solid #94a3b8;border-radius:50%;margin:3px auto;position:relative;background:linear-gradient(#fff,#f1f5f9)}.mbCompass:before{content:"N";position:absolute;left:50%;top:3px;transform:translateX(-50%);font:bold 9px Arial}.mbNeedle{position:absolute;left:31px;top:10px;width:3px;height:24px;background:#ef4444;transform-origin:50% 23px;border-radius:3px}.mbTilt{width:94px;height:66px;margin:3px auto;border:1px solid #cbd5e1;border-radius:8px;position:relative;background:linear-gradient(90deg,transparent 49%,#e2e8f0 50%,transparent 51%),linear-gradient(transparent 49%,#e2e8f0 50%,transparent 51%)}.mbTiltDot{position:absolute;width:12px;height:12px;border-radius:50%;background:#334155;left:41px;top:27px;transition:left .08s,top .08s}
 
-/* V9.68 · micro:bit V2 physical-style visual */
+/* V9.69 · micro:bit V2 physical-style visual */
 .microbit{width:340px;height:282px}
 .microbitBoard{width:340px;height:282px;inset:0;background:#17191b;border:0;border-radius:22px 22px 12px 12px;box-shadow:0 4px 10px #0005;overflow:hidden}
 .microbitBoard:before{content:"";position:absolute;left:0;top:0;width:78px;height:78px;background:#ed0a46;clip-path:polygon(0 0,100% 0,0 100%);z-index:1}
@@ -124,7 +124,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .microbitBoard .mbFine{bottom:0;width:4px;height:52px;background:#d8b92f;z-index:2}
 .microbit>.pin{width:22px!important;height:22px!important}
 
-/* V9.68 · clean micro:bit face; electrical anchors separated from artwork */
+/* V9.69 · clean micro:bit face; electrical anchors separated from artwork */
 .microbit{width:300px!important;height:250px!important}
 .microbitBoard{width:300px!important;height:250px!important;border-radius:18px 18px 8px 8px!important;overflow:hidden!important}
 .microbitBoard:before{width:58px!important;height:58px!important}
@@ -145,7 +145,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .microbitBoard .mbFine{display:none!important}
 .microbit>.pin{opacity:0!important;width:18px!important;height:18px!important}
 
-/* V9.68 · SVG micro:bit V2 */
+/* V9.69 · SVG micro:bit V2 */
 .microbit{width:300px!important;height:230px!important}
 .microbitBoard{width:300px!important;height:230px!important;background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important}
 .microbitBoard:before,.microbitBoard:after,.microbitBoard>.mbLogo,.microbitBoard>.mbSpeaker,.microbitBoard>.mbTouch,.microbitBoard>.mbMic,.microbitBoard>.mbEdge,.microbitBoard>.mbRing,.microbitBoard>.mbFine{display:none!important}
@@ -161,7 +161,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .mbColorTools{position:absolute;display:none;gap:5px;padding:6px;background:#fff;border:1px solid #cbd5e1;border-radius:8px;box-shadow:0 4px 12px #0002;z-index:80;transform-origin:left top}
 .mbColorTools.show{display:flex}.mbColorTools button{width:23px;height:23px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #94a3b8;cursor:pointer}
 
-/* V9.68 · micro:bit reference design */
+/* V9.69 · micro:bit reference design */
 .microbitBoard .mbButton{top:94px!important;width:34px!important;height:34px!important;border:0!important;border-radius:2px!important;background:#c9ccce!important;box-shadow:inset 0 0 0 2px #8b9296,0 1px 2px #0008!important}
 .microbitBoard .mbButton:before{content:"";position:absolute;left:7px;top:7px;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#4d5357 0 18%,#292d30 45%,#17191b 72%);box-shadow:0 0 0 2px #555d61}
 .microbitBoard .mbButton:after{display:none!important}
@@ -172,23 +172,23 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .mbColorTools{display:none;flex-direction:column!important;width:205px!important;padding:9px!important;gap:8px!important}
 .mbColorTools.show{display:flex!important}.mbColorRow{display:flex;align-items:center;gap:5px}.mbColorTitle{font:bold 11px Arial;color:#334155;margin-bottom:3px}.mbColorRow button{width:20px!important;height:20px!important}
 
-/* V9.68 · micro:bit editors */
+/* V9.69 · micro:bit editors */
 .mbAbLabel span{left:50%!important;top:50%!important;transform:translate(-22%,-5%)!important;line-height:1!important}
 .mbAbLabel.b span{transform:translate(-22%,-5%) scaleX(-1)!important}
 .microbitBoard .mbPixel.on{background:#ff1744!important;box-shadow:0 0 5px 2px #ff1744,0 0 13px 5px #ff315f,0 0 24px 7px #ff6b86!important;filter:brightness(1.55)}
 .mbEditModal{position:fixed;inset:0;background:#0007;display:none;align-items:center;justify-content:center;z-index:10000}.mbEditModal.show{display:flex}.mbEditCard{background:#fff;border-radius:12px;padding:16px;box-shadow:0 15px 50px #0005;min-width:300px;color:#1f2937;font:13px Arial}.mbEditHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.mbEditHead b{font-size:16px}.mbGrid5{display:grid;grid-template-columns:repeat(5,38px);gap:6px;justify-content:center}.mbGrid5 button{width:38px;height:38px;border:1px solid #bbb;border-radius:7px;background:#e5e7eb;cursor:pointer}.mbGrid5 button.on{background:#ff3158;box-shadow:0 0 9px #ff3158}.mbEditorActions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}.mbEditorActions button{padding:7px 13px;border:0;border-radius:6px;cursor:pointer}.mbMusicGrid{display:grid;grid-template-columns:34px repeat(8,28px);gap:3px;align-items:center}.mbMusicGrid .note{font-weight:bold;text-align:right;padding-right:4px}.mbMusicGrid button{width:28px;height:24px;border:1px solid #cbd5e1;border-radius:4px;background:#f1f5f9}.mbMusicGrid button.on{background:#1e90ff}.mbBpm{margin-top:12px;display:flex;gap:8px;align-items:center}.mbBpm input{width:70px}
 
-/* V9.68 micro:bit visual refinements */
+/* V9.69 micro:bit visual refinements */
 .mbAbLabel span{left:50%!important;top:50%!important;transform:translate(-25%,-5%)!important;line-height:1!important}
 .mbAbLabel.b span{transform:translate(-25%,-5%) scaleX(-1)!important}
 .microbitBoard .mbPixel.on{background:#ff1744!important;box-shadow:0 0 5px 2px #ff1744,0 0 13px 5px #ff315f,0 0 24px 7px #ff6b86!important;filter:brightness(1.55)}
 
 .mbEditModal{position:fixed;inset:0;background:#0007;display:none;align-items:center;justify-content:center;z-index:10000}.mbEditModal.show{display:flex}.mbEditCard{background:#fff;border-radius:12px;padding:16px;box-shadow:0 15px 50px #0005;min-width:300px;color:#1f2937;font:13px Arial}.mbEditHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.mbGrid5{display:grid;grid-template-columns:repeat(5,38px);gap:6px;justify-content:center}.mbGrid5 button{width:38px;height:38px;border:1px solid #bbb;border-radius:7px;background:#e5e7eb}.mbGrid5 button.on{background:#ff3158;box-shadow:0 0 9px #ff3158}.mbEditorActions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}.mbMusicGrid{display:grid;grid-template-columns:34px repeat(8,28px);gap:3px;align-items:center}.mbMusicGrid .note{font-weight:bold;text-align:right}.mbMusicGrid button{width:28px;height:24px;border:1px solid #cbd5e1;border-radius:4px;background:#f1f5f9}.mbMusicGrid button.on{background:#1e90ff}.mbBpm{margin-top:12px;display:flex;gap:8px;align-items:center}
 
-/* V9.68.1 music sequencer */
+/* V9.69.1 music sequencer */
 #mbMusicModal .mbEditCard{min-width:390px}.mbMusicGrid{display:grid!important;grid-template-columns:30px repeat(8,32px)!important;column-gap:5px!important;row-gap:5px!important;align-items:center!important}.mbMusicGrid .note{width:30px!important;padding:0 5px 0 0!important;background:transparent!important;border:0!important;text-align:right!important;font-weight:700!important;color:#334155!important}.mbMusicGrid button{width:32px!important;height:27px!important;margin:0!important;padding:0!important;border:1px solid #b9c8d6!important;border-radius:5px!important;background:#eef3f7!important;box-shadow:none!important}.mbMusicGrid button.on{background:#248df0!important;border-color:#1677d2!important;box-shadow:inset 0 0 0 1px #ffffff55!important}
 
-/* V9.68 · micro:bit physical LED glow */
+/* V9.69 · micro:bit physical LED glow */
 .microbitBoard .mbPixel{
   width:6px!important;height:13px!important;
   background:#55595b!important;
@@ -208,13 +208,13 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
   filter:none!important;
 }
 
-/* V9.68 · Blockly dropdowns and circuit navigation */
+/* V9.69 · Blockly dropdowns and circuit navigation */
 .blocklyDropDownDiv{max-height:min(70vh,460px)!important;overflow:visible!important;z-index:10020!important}
 .blocklyDropDownContent{max-height:min(66vh,430px)!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain}
 .blocklyMenu{max-height:min(64vh,410px)!important;overflow-y:auto!important;overflow-x:hidden!important}
 #workspace{cursor:grab}#workspace.panning{cursor:grabbing!important}.component{cursor:move}
 
-/* V9.68.1 · compact editor header and viewport-safe Blockly menus */
+/* V9.69.1 · compact editor header and viewport-safe Blockly menus */
 .panel.editorpanel .editorHead{height:52px!important;min-height:52px!important;padding:7px 9px!important;display:flex!important;align-items:center!important;gap:12px!important;padding-right:9px!important;border-bottom:1px solid #d7e0e6!important}
 .panel.editorpanel .editorHead>b{white-space:nowrap!important;font-size:16px!important}
 .panel.editorpanel .editorHead .boardselect{position:static!important;margin:0 0 0 auto!important;width:180px!important;height:38px!important;padding:6px 9px!important}
@@ -223,7 +223,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .blocklyDropDownContent{overflow:auto!important;overscroll-behavior:contain!important}
 .blocklyDropDownContent .blocklyMenu{overflow-y:auto!important;overflow-x:hidden!important;max-height:none!important}
 
-/* V9.68 · code panel starts at top toolbar line; Blockly dropdown stays inside code canvas */
+/* V9.69 · code panel starts at top toolbar line; Blockly dropdown stays inside code canvas */
 @media(min-width:901px){
  .lab.code-open>.editorpanel{
    position:fixed!important;
@@ -279,7 +279,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 
 .thumb{position:relative;display:block;width:64px;height:48px}.resistorThumb:before,.resistorThumb:after{content:"";position:absolute;top:23px;width:16px;height:2px;background:#777}.resistorThumb:before{left:0}.resistorThumb:after{right:0}.resistorThumb i{position:absolute;left:15px;top:17px;width:34px;height:14px;border-radius:6px;background:#d6b36b;border:1px solid #8e713e}.resistorThumb b,.resistorThumb em{position:absolute;top:18px;width:4px;height:12px;background:#8a4b20;z-index:2}.resistorThumb b{left:25px}.resistorThumb em{left:35px;background:#d22}.ledThumb i{position:absolute;left:20px;top:2px;width:27px;height:32px;border-radius:16px 16px 7px 7px;background:#d9343e;border:2px solid #9d1e27;box-shadow:inset 6px 4px 6px #fff6}.ledThumb:before,.ledThumb:after{content:"";position:absolute;top:33px;width:3px;background:#888}.ledThumb:before{left:27px;height:15px}.ledThumb:after{left:39px;height:11px}.unoThumb{width:72px;height:46px;background:#0879ad;border-radius:4px;border:2px solid #075c83;color:white;font-size:10px}.unoThumb b{position:absolute;left:27px;top:18px}.unoThumb i{position:absolute;left:5px;top:5px;width:13px;height:12px;background:#bbb}.nanoThumb{width:70px;height:30px;margin-top:8px;background:#1798a0;border-radius:2px;color:white;font-size:8px}.nanoThumb b{position:absolute;left:24px;top:10px}.nanoThumb:before,.nanoThumb:after{content:"";position:absolute;left:4px;right:4px;height:3px;background:repeating-linear-gradient(90deg,#ddd 0 3px,transparent 3px 7px)}.nanoThumb:before{top:2px}.nanoThumb:after{bottom:2px}
 
-/* V9.68 authoritative desktop layout */
+/* V9.69 authoritative desktop layout */
 .lab{display:grid!important;grid-template-columns:220px minmax(0,1fr)!important;grid-template-rows:1fr!important;height:calc(100vh - 112px)!important;min-height:0!important}
 .lab>.palette{grid-column:1;grid-row:1;min-width:0!important;width:auto!important;height:100%!important;overflow:hidden!important}
 .lab>.workspace{grid-column:2;grid-row:1;width:auto!important;min-width:0!important;height:100%!important;flex:none!important}
@@ -292,7 +292,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .editorpanel .editorHead{flex:0 0 auto}.editorpanel .editor{flex:1 1 auto!important;min-height:220px!important;width:100%!important}.editorpanel .console{max-height:150px!important}
 @media(max-width:900px){.lab,.lab.code-open{grid-template-columns:190px minmax(0,1fr)!important}.lab.code-open>.editorpanel{position:absolute!important;left:190px;right:0;top:0;bottom:0;z-index:80;min-width:0!important}.lab.code-open>#splitter{display:none!important}}
 
-/* V9.68: visual marker fits inside female header; hit target remains classroom-friendly */
+/* V9.69: visual marker fits inside female header; hit target remains classroom-friendly */
 .board>.pin{width:6px!important;height:6px!important;border:1px solid #fff!important;background:#f21d24!important;border-radius:2px!important;transform:translate(-50%,-50%)!important;box-shadow:0 0 0 1px #263746!important;overflow:visible!important}
 .board>.pin::after{content:"";position:absolute;left:50%;top:50%;width:20px;height:20px;transform:translate(-50%,-50%);background:transparent}
 .board>.pin:hover,.board>.pin.sel{opacity:1!important;outline:1px solid #fff!important;box-shadow:0 0 0 2px #263746!important}
@@ -302,7 +302,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .esp32Thumb{width:46px;height:64px;background:#20272d;border-radius:3px;color:#fff;font-size:8px;box-shadow:inset 0 0 0 2px #111}.esp32Thumb b{position:absolute;left:8px;top:27px}.esp32Thumb i{position:absolute;left:9px;top:5px;width:28px;height:18px;background:#c9c9c9;border:1px solid #777}.esp32Thumb:before,.esp32Thumb:after{content:"";position:absolute;top:4px;bottom:4px;width:3px;background:repeating-linear-gradient(180deg,#d7b56d 0 3px,transparent 3px 7px)}.esp32Thumb:before{left:2px}.esp32Thumb:after{right:2px}
 .component.esp32{width:213px;height:401px}.component.esp32 .esp32board{position:absolute;inset:0;background:#1e252b;border:3px solid #151a1e;border-radius:7px;box-shadow:0 0 12px #1597e566;color:#fff}.esp32board .module{position:absolute;left:38px;top:35px;width:137px;height:145px;background:#d3d5d5;border:2px solid #999;border-radius:2px}.esp32board .module:after{content:"ESP-WROOM-32";position:absolute;left:20px;top:74px;font:700 12px Arial;color:#555}.esp32board .usb{position:absolute;left:74px;bottom:-4px;width:64px;height:35px;background:#b9bdc0;border:2px solid #888;border-radius:4px 4px 0 0}.esp32board .chip{position:absolute;left:77px;top:205px;width:60px;height:60px;background:#101214;border-radius:3px}.esp32board .label{position:absolute;left:55px;top:285px;font:700 16px Arial;color:#e9e9e9}.component.esp32>.pin{z-index:8}
 
-/* V9.68 realistic educational components */
+/* V9.69 realistic educational components */
 .ledc{width:44px;height:86px;transform-origin:22px 43px}.bulb{left:7px;top:0;width:28px;height:42px;border-radius:16px 16px 7px 7px;border-width:2px}.bulb:after{content:"";position:absolute;left:1px;right:1px;bottom:4px;height:5px;border-radius:50%;border-top:1px solid #7b1f1f88}.leg{top:40px;width:3px;background:linear-gradient(90deg,#777,#e8e8e8,#888)}.leg.a{left:14px;height:42px}.leg.k{left:29px;height:34px}.ledc .terminal.a{left:7px;top:72px}.ledc .terminal.k{left:22px;top:64px}.polarity{font-size:10px}
 .restools{position:absolute;display:none;align-items:center;gap:7px;background:#2d3035;color:white;padding:7px 9px;border-radius:7px;z-index:10000;box-shadow:0 3px 12px #0005;font:12px Arial}.restools.show{display:flex}.restools label{display:flex;align-items:center;gap:5px}.restools input{width:64px;background:#24272b;color:white;border:1px solid #666;border-radius:4px;padding:5px 6px;font:13px Arial}.restools button{height:28px;min-width:30px;border:1px solid #666;border-radius:4px;background:#444;color:white;cursor:pointer;font-size:16px}
 .reswrap{width:130px;height:38px;transform-origin:65px 19px}.component[data-type="resistor"]{width:130px;height:38px}
@@ -315,7 +315,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 
 .ldrtools{position:absolute;display:none;align-items:center;gap:9px;background:#f8f9fb;border:1px solid #c8cdd3;border-radius:22px;padding:7px 11px;z-index:10001;box-shadow:0 3px 12px #0003;color:#333}.ldrtools.show{display:flex}.ldrtools input{width:180px;accent-color:#555;cursor:pointer}.ldrtools .ldrDim{width:17px;height:17px;border-radius:50%;background:#444}.ldrtools .ldrSun{display:inline-block;font-size:34px;line-height:30px;transform-origin:center;transition:transform .12s,opacity .12s}.ldrtools b{min-width:34px;font:11px Arial;color:#555}
 
-/* V9.68 ESP32 DevKit V1 - detailed educational board */
+/* V9.69 ESP32 DevKit V1 - detailed educational board */
 .component.esp32{width:190px;height:360px}
 .component.esp32 .esp32board{position:absolute;inset:0;background:#1d1e20;border:2px solid #0b0c0d;border-radius:7px;box-shadow:0 4px 10px #0005;overflow:hidden}
 .esp32board .module{position:absolute;left:35px;top:7px;width:120px;height:150px;background:#aaa;border:2px solid #555;border-radius:2px;box-shadow:inset 0 0 0 3px #888}
@@ -344,7 +344,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 
 .esp32board .espLed{position:absolute;left:50%;bottom:58px;width:16px;height:16px;border-radius:50%;transform:translateX(-50%);background:#455047;border:2px solid #cfd5d0;box-shadow:inset 0 0 4px #000;z-index:5}.esp32board .espLed.on{background:#39e85a;border-color:#9df5aa;box-shadow:0 0 15px 5px #39e85a88,0 0 5px #fff,inset 0 0 2px #fff}.esp32board .espLedLabel{position:absolute;left:50%;bottom:43px;transform:translateX(-50%);color:#fff;font:bold 7px Arial;z-index:5}
 
-/* V9.68 AUTHORITATIVE layout */
+/* V9.69 AUTHORITATIVE layout */
 @media(min-width:901px){
  .lab.code-open>.editorpanel{
   display:flex!important;position:fixed!important;right:0!important;
@@ -358,7 +358,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
  }
 }
 
-/* V9.68 · realistic actuator pack */
+/* V9.69 · realistic actuator pack */
 .actuatorThumb{display:flex!important;align-items:center;justify-content:center;font:bold 22px Arial;border-radius:5px}.servoThumb{background:#1379b5;color:#fff}.sevenThumb{background:#303336;color:#ddd}.ttThumb{background:#f2d000;color:#555}
 .buzzerAct{width:100px;height:125px;position:relative}.buzzerDisk{position:absolute;left:10px;top:5px;width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 43% 38%,#484b4d 0 7%,#292b2d 9% 55%,#1d1f20 70%);border:2px solid #202224;box-shadow:0 3px 5px #0004,inset 0 0 0 2px #3b3e40}.buzzerDisk:before{content:'';position:absolute;left:35px;top:31px;width:12px;height:12px;border-radius:50%;background:#111;box-shadow:inset 0 0 3px #000}.buzzerDisk:after{content:'+';position:absolute;left:11px;top:51px;color:#fff;font:bold 15px Arial}.buzzerAct:before,.buzzerAct:after{content:'';position:absolute;top:84px;width:3px;height:31px;background:#9da3a6}.buzzerAct:before{left:30px}.buzzerAct:after{left:70px}.buzzerAct .terminal{top:108px}.buzzerAct .p{left:30px}.buzzerAct .n{left:70px}
 .servoAct{width:128px;height:180px;position:relative}.servoBody{position:absolute;left:29px;top:54px;width:70px;height:105px;background:linear-gradient(90deg,#126da5,#1889c8 50%,#0e679d);border:2px solid #0b5f92;border-radius:4px;box-shadow:0 3px 5px #0004}.servoBody:before,.servoBody:after{content:'';position:absolute;left:-15px;width:98px;height:15px;background:#167db8;border:2px solid #0d6397}.servoBody:before{top:12px}.servoBody:after{bottom:13px}.servoHorn{position:absolute;left:59px;top:2px;width:12px;height:91px;background:#f3f5f5;border:2px solid #aebbc2;border-radius:8px;transform-origin:6px 72px;transition:transform .25s;z-index:4;box-shadow:0 1px 2px #0003}.servoHorn:before{content:'';position:absolute;left:3px;top:8px;width:4px;height:4px;border-radius:50%;background:#aab2b7;box-shadow:0 13px #aab2b7,0 26px #aab2b7,0 39px #aab2b7}.servoHub{position:absolute;left:50px;top:65px;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle,#d9dfe2 0 25%,#f7f8f8 27% 55%,#b8c2c7 57%);border:2px solid #9daab0;z-index:5}.servoAct .terminal{top:169px}.servoAct .v{left:37px}.servoAct .g{left:64px}.servoAct .s{left:91px}
@@ -368,7 +368,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .ttAct{width:145px;height:205px;position:relative}.ttBody{position:absolute;left:27px;top:7px;width:88px;height:125px;background:linear-gradient(90deg,#f6db00,#ffe51d 48%,#e3c700);border:2px solid #c3a900;border-radius:3px;box-shadow:0 3px 5px #0004}.ttBody:before{content:'';position:absolute;left:-22px;top:24px;width:130px;height:13px;background:#f5d900;border:2px solid #c3aa00}.ttWheel{position:absolute;left:55px;top:38px;width:32px;height:32px;border-radius:50%;border:4px solid #c6aa00;color:#9d8700;text-align:center;line-height:25px;font-size:20px}.ttShaft{position:absolute;left:68px;top:131px;width:12px;height:58px;background:linear-gradient(90deg,#888,#e0e0e0,#888);border:1px solid #777}.ttAct:after{content:'';position:absolute;left:43px;top:135px;width:62px;height:48px;background:linear-gradient(90deg,#aeb4b7,#e3e5e6 45%,#a3aaad);border:2px solid #92999c;z-index:-1}.ttAct.on .ttWheel{animation:spin .3s linear infinite}.ttAct .terminal{top:190px}.ttAct .p{left:55px}.ttAct .n{left:94px}
 @keyframes spin{to{transform:rotate(360deg)}}@keyframes vibrate{25%{transform:translateX(2px) rotate(1deg)}75%{transform:translateX(-2px) rotate(-1deg)}}
 
-/* V9.68 actuator realism pass */
+/* V9.69 actuator realism pass */
 .actSvg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 2px 2px #0003)}
 .buzzerDisk{background:radial-gradient(circle at 50% 44%,#080909 0 9%,#303335 10% 58%,#181a1b 72%)!important}
 .servoBody{background:linear-gradient(90deg,#075d9b,#168bd1 50%,#075487)!important}
@@ -377,7 +377,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .ttBody{background:linear-gradient(90deg,#efcc00,#ffe42b 50%,#d7b900)!important}
 .sevenAct{background:linear-gradient(135deg,#3d4144,#181a1b)!important}
 
-/* V9.68 authoritative actuator geometry */
+/* V9.69 authoritative actuator geometry */
 .v958>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 3px 3px #0003)}
 .buzzerAct.v958{width:120px!important;height:145px!important}.buzzerAct.v958 .terminal{top:128px!important}.buzzerAct.v958 .p{left:38px!important}.buzzerAct.v958 .n{left:82px!important}.buzzerAct.v958 .buzzerDisk{display:none!important}
 .servoAct.v958{width:150px!important;height:190px!important}.servoAct.v958 .servoBody{display:none!important}.servoAct.v958 .servoHorn{left:69px!important;top:0!important;height:92px!important;transform-origin:6px 72px!important}.servoAct.v958 .servoHub{left:59px!important;top:60px!important}.servoAct.v958 .terminal{top:178px!important}.servoAct.v958 .g{left:48px!important}.servoAct.v958 .v{left:75px!important}.servoAct.v958 .s{left:102px!important}
@@ -386,7 +386,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .vibrationAct.v958{width:100px!important;height:135px!important}.vibrationAct.v958 .vibHead{left:25px!important;top:6px!important;width:50px!important;height:50px!important;background:transparent!important;border:0!important;box-shadow:none!important}.vibrationAct.v958 .terminal{top:119px!important}.vibrationAct.v958 .p{left:61px!important}.vibrationAct.v958 .n{left:40px!important}
 .ttAct.v958{width:165px!important;height:220px!important}.ttAct.v958 .ttBody,.ttAct.v958 .ttShaft{display:none!important}.ttAct.v958 .ttWheel{left:72px!important;top:47px!important;color:#a68d00!important;font-size:22px!important}.ttAct.v958 .terminal{top:205px!important}.ttAct.v958 .p{left:59px!important}.ttAct.v958 .n{left:107px!important}
 
-/* V9.68 · actuator proportions matched to supplied Tinkercad reference */
+/* V9.69 · actuator proportions matched to supplied Tinkercad reference */
 .buzzerAct.v958{width:82px!important;height:118px!important}.buzzerAct.v958>svg{filter:none!important}.buzzerAct.v958 svg ellipse:first-of-type{stroke-width:1.5!important}.buzzerAct.v958 .terminal{top:103px!important}.buzzerAct.v958 .p{left:25px!important}.buzzerAct.v958 .n{left:57px!important}
 .servoAct.v958{width:88px!important;height:154px!important}.servoAct.v958>svg{filter:none!important}.servoAct.v958 .servoHorn{left:40px!important;top:-2px!important;width:9px!important;height:78px!important;transform-origin:4.5px 61px!important}.servoAct.v958 .servoHub{left:32px!important;top:51px!important;width:24px!important;height:24px!important}.servoAct.v958 .terminal{top:142px!important}.servoAct.v958 .g{left:24px!important}.servoAct.v958 .v{left:44px!important}.servoAct.v958 .s{left:64px!important}
 .motorAct.v958{width:108px!important;height:92px!important}.motorAct.v958>svg{filter:none!important}.motorAct.v958 .motorRotor{left:39px!important;top:34px!important;color:#e4c629!important;font-size:26px!important}.motorAct.v958 .terminal{top:79px!important}.motorAct.v958 .p{left:39px!important}.motorAct.v958 .n{left:72px!important}
@@ -394,7 +394,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .ttAct.v958{width:88px!important;height:190px!important}.ttAct.v958>svg{filter:none!important}.ttAct.v958 .ttWheel{display:none!important}.ttAct.v958 .terminal{top:176px!important}.ttAct.v958 .p{left:31px!important}.ttAct.v958 .n{left:59px!important}
 .sevenAct.v958{width:58px!important;height:92px!important;box-shadow:none!important;border-radius:2px!important}.sevenAct.v958 .seg.a,.sevenAct.v958 .seg.d,.sevenAct.v958 .seg.g{width:27px!important;height:5px!important;left:16px!important}.sevenAct.v958 .seg.a{top:12px!important}.sevenAct.v958 .seg.g{top:39px!important}.sevenAct.v958 .seg.d{top:66px!important}.sevenAct.v958 .seg.b{left:43px!important;top:17px!important;width:5px!important;height:22px!important}.sevenAct.v958 .seg.c{left:43px!important;top:44px!important;width:5px!important;height:22px!important}.sevenAct.v958 .seg.f{left:10px!important;top:17px!important;width:5px!important;height:22px!important}.sevenAct.v958 .seg.e{left:10px!important;top:44px!important;width:5px!important;height:22px!important}.sevenAct.v958 .segdot{right:6px!important;bottom:13px!important;width:5px!important;height:5px!important}.sevenAct.v958 .terminal{width:8px!important;height:8px!important;top:83px!important}
 
-/* V9.68 · physical terminals */
+/* V9.69 · physical terminals */
 .sevenAct.v960{width:74px!important;height:118px!important;margin-top:14px!important;background:#3b3f42!important;border:2px solid #242729!important;overflow:visible!important}
 .sevenAct.v960 .terminal{width:10px!important;height:10px!important;border:2px solid #222!important;background:#f4f4f4!important;z-index:15!important}
 .sevenAct.v960 .ssTop{top:-17px!important}.sevenAct.v960 .ssBottom{top:123px!important}
@@ -406,7 +406,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 /* TT hotspots sit directly over its black/red motor tabs */
 .ttAct.v958 .terminal{width:12px!important;height:12px!important;left:2px!important}.ttAct.v958 .p{top:143px!important}.ttAct.v958 .n{top:126px!important}
 
-/* V9.68 · uploaded actuator PNG assets are the authoritative visual layer */
+/* V9.69 · uploaded actuator PNG assets are the authoritative visual layer */
 .assetAct{position:relative;background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important}
 .assetAct>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
 .buzzerAsset{width:160px;height:190px}.buzzerAsset .p{left:40px;top:166px}.buzzerAsset .n{left:117px;top:166px}
@@ -416,7 +416,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .vibrationAsset{width:80px;height:170px}.vibrationAsset .p{left:49px;top:151px}.vibrationAsset .n{left:27px;top:151px}.component[data-type="vibration"].on .vibrationAsset{animation:vibrate .08s linear infinite}
 .ttAsset{width:160px;height:310px}.ttAsset .p{left:8px;top:219px}.ttAsset .n{left:8px;top:197px}
 
-/* V9.68.1 · invisible electrical hotspots centered on the connectors already drawn in each PNG */
+/* V9.69.1 · invisible electrical hotspots centered on the connectors already drawn in each PNG */
 .assetAct .terminal{background:transparent!important;border-color:transparent!important;box-shadow:none!important;opacity:0!important;width:20px!important;height:20px!important;z-index:20!important}
 /* buzzer: two lower physical eyelets */
 .buzzerAsset .p{left:27px!important;top:166px!important}.buzzerAsset .n{left:88px!important;top:166px!important}
@@ -433,7 +433,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 /* TT gearmotor: black/red side terminals */
 .ttAsset .n{left:3px!important;top:196px!important}.ttAsset .p{left:3px!important;top:218px!important}
 
-/* V9.68 · functional animation layer over authoritative PNG assets */
+/* V9.69 · functional animation layer over authoritative PNG assets */
 .motorAsset:after{content:'';position:absolute;left:12px;top:62px;width:26px;height:8px;border-radius:4px;background:repeating-linear-gradient(90deg,#777 0 3px,#ddd 3px 6px);opacity:0;transform-origin:center}
 .component[data-type="dcmotor"].on .motorAsset:after{opacity:1;animation:spin .18s linear infinite}
 .component[data-type="dcmotor"].on .motorAsset{filter:drop-shadow(0 0 3px #7776)}
@@ -454,7 +454,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .sevenAsset .seg.f{left:43px!important;top:92px!important}.sevenAsset .seg.b{left:115px!important;top:92px!important}.sevenAsset .seg.e{left:43px!important;top:173px!important}.sevenAsset .seg.c{left:115px!important;top:173px!important}
 .sevenAsset .segdot{right:24px!important;bottom:55px!important;width:18px!important;height:18px!important;border-radius:50%!important}
 
-/* V9.68.1 · cable anchors centered on visible PNG connector rings */
+/* V9.69.1 · cable anchors centered on visible PNG connector rings */
 .assetAct .terminal{margin:0!important;transform:translate(-50%,-50%)!important;opacity:0!important}
 /* buzzer image: lower ring centers */
 .buzzerAsset .p{left:41px!important;top:164px!important}.buzzerAsset .n{left:119px!important;top:164px!important}
@@ -470,7 +470,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 /* TT motor: side black/red terminal ring centers */
 .ttAsset .n{left:13px!important;top:201px!important}.ttAsset .p{left:13px!important;top:223px!important}
 
-/* V9.68 · Tinkercad-like actuator simulation feedback */
+/* V9.69 · Tinkercad-like actuator simulation feedback */
 .rpmLabel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:12px Arial,sans-serif;color:#343434;white-space:nowrap;z-index:12;display:none;pointer-events:none}.component[data-type="dcmotor"].on .rpmLabel,.component[data-type="ttmotor"].on .rpmLabel{display:block}
 .component[data-type="dcmotor"].reverse .motorAsset:after,.component[data-type="ttmotor"].reverse .ttAsset:after{animation-direction:reverse!important}
 .ttShaftAnim{position:absolute;left:20px;top:151px;width:78px;height:8px;opacity:0;pointer-events:none;transform-origin:center;background:linear-gradient(90deg,transparent 0 5%,#f6f6f6 5% 45%,#aaa 45% 55%,#f6f6f6 55% 95%,transparent 95%);border-radius:5px}
@@ -478,7 +478,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 @keyframes ttOsc{0%{transform:rotate(0deg)}25%{transform:rotate(90deg)}50%{transform:rotate(180deg)}75%{transform:rotate(270deg)}100%{transform:rotate(360deg)}}
 .buzzWaves{position:absolute;left:42px;top:57px;width:76px;height:45px;display:none;pointer-events:none;z-index:11}.component[data-type="buzzer"].on .buzzWaves{display:block}.buzzWaves i,.buzzWaves:before,.buzzWaves:after{content:'';position:absolute;top:8px;width:12px;height:28px;border:2px solid #666;border-top-color:transparent;border-bottom-color:transparent;border-radius:50%}.buzzWaves i:nth-child(1){left:0}.buzzWaves i:nth-child(2){left:8px}.buzzWaves i:nth-child(3){right:0}.buzzWaves:before{right:8px}.buzzWaves:after{display:none}
 
-/* V9.68 · actuator motion aligned to supplied PNGs */
+/* V9.69 · actuator motion aligned to supplied PNGs */
 .actTools{position:absolute;left:50%;top:-31px;transform:translateX(-50%);display:none;gap:3px;z-index:40;white-space:nowrap}.component.selected .actTools{display:flex}.actTools button{width:27px;height:25px;border:1px solid #9aa7b2;border-radius:5px;background:#fff;color:#263238;font:bold 15px Arial;cursor:pointer;padding:0}.actTools button:hover{background:#eaf5ff}
 .assetAct .terminal{opacity:0!important}
 .component.polarityReversed .assetAct .terminal{opacity:1!important;background:transparent!important;border-width:3px!important}
@@ -499,7 +499,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .buzzWaves i,.buzzWaves:before{border-color:#777!important;border-top-color:transparent!important;border-bottom-color:transparent!important}
 .buzzWaves i:nth-child(1){left:17px!important}.buzzWaves i:nth-child(2){left:8px!important}.buzzWaves i:nth-child(3){right:17px!important}.buzzWaves:before{right:8px!important}
 
-/* V9.68 · normalized terminal geometry: percentages follow the PNG, not arbitrary pixels */
+/* V9.69 · normalized terminal geometry: percentages follow the PNG, not arbitrary pixels */
 .assetAct>img{width:100%!important;height:100%!important;object-fit:fill!important}
 .assetAct .terminal{position:absolute!important;margin:0!important;transform:translate(-50%,-50%)!important;width:18px!important;height:18px!important;opacity:0!important}
 /* exact connector centers in normalized image coordinates */
@@ -522,7 +522,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 /* buzzer waves centered on the physical disk */
 .buzzWaves{left:19%!important;top:29%!important;width:62%!important;height:34%!important}
 
-/* V9.68 · canonical actuator anchors (same coordinates used by cable geometry) */
+/* V9.69 · canonical actuator anchors (same coordinates used by cable geometry) */
 .buzzerAsset .p{left:74.4%!important;top:87%!important}.buzzerAsset .n{left:25.6%!important;top:87%!important}
 .motorAsset .p{left:38.9%!important;top:88%!important}.motorAsset .n{left:62.8%!important;top:88%!important}
 .ttAsset .p{left:8.1%!important;top:71.9%!important}.ttAsset .n{left:8.1%!important;top:64.8%!important}
@@ -531,15 +531,18 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 /* controls never become drag targets */
 .actTools,.actTools *{touch-action:none}.actTools button{pointer-events:auto}
 
-/* V9.68 · source PNGs are never stretched */
+/* V9.69 · source PNGs are never stretched */
 .assetAct>img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:contain!important}
 /* hotspot coordinates are diagnostic/click targets only; cable geometry uses ACT_ANCHORS */
 .buzzerAsset .p{left:74.4%!important;top:87%!important}.buzzerAsset .n{left:25.6%!important;top:87%!important}
 .motorAsset .p{left:38.9%!important;top:88%!important}.motorAsset .n{left:62.8%!important;top:88%!important}
 .ttAsset .p{left:8.1%!important;top:71.9%!important}.ttAsset .n{left:8.1%!important;top:64.8%!important}
 .servoAsset .g{left:40.8%!important;top:7%!important}.servoAsset .v{left:50.4%!important;top:7%!important}.servoAsset .s{left:60%!important;top:7%!important}
+
+/* V9.69 · DOM terminal is the single source of truth for cable endpoint */
+.assetAct .terminal{position:absolute!important;transform:translate(-50%,-50%)!important;margin:0!important;box-sizing:border-box!important}
 </style></head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.68</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.69</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -586,7 +589,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.68 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.69 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,wireDraftPoints=[],wirePointer=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[],dragWirePoint=null;
@@ -837,23 +840,11 @@ const ACT_ANCHORS={
  sevenseg:{G:[.112,.030],F:[.306,.030],COM1:[.500,.030],A:[.694,.030],B:[.888,.030],E:[.112,.970],D:[.306,.970],COM2:[.500,.970],C:[.694,.970],DP:[.888,.970]}
 };
 function center(o){
- const w=ws.getBoundingClientRect(),root=o.root,type=root?.dataset?.type,anchor=ACT_ANCHORS[type]?.[o.t?.dataset?.port];
- if(anchor){
-   const asset=root.querySelector('.assetAct'),img=asset?.querySelector(':scope>img');
-   if(asset&&img){
-     const ar=asset.getBoundingClientRect(),rot=((Number(root.dataset.rotation)||0)%360+360)%360;
-     const aw=(rot===90||rot===270)?ar.height:ar.width,ah=(rot===90||rot===270)?ar.width:ar.height;
-     /* The .component wrapper has no intrinsic width/height. Its child .assetAct
-        owns the visible geometry. The center of the transformed asset bounding box
-        is invariant for 0/90/180/270 degree rotations and is therefore the correct
-        rotation origin for cable endpoints. */
-     const cx=ar.left+ar.width/2,cy=ar.top+ar.height/2;
-     let x=(anchor[0]-.5)*aw,y=(anchor[1]-.5)*ah,rx=x,ry=y;
-     if(rot===90){rx=-y;ry=x}else if(rot===180){rx=-x;ry=-y}else if(rot===270){rx=y;ry=-x}
-     return[cx+rx-w.left,cy+ry-w.top]
-   }
- }
- const a=o.t.getBoundingClientRect();return[a.left+a.width/2-w.left,a.top+a.height/2-w.top]
+ /* V9.69: the browser is the source of truth for terminal geometry.
+    The terminal lives inside the same transformed asset as the PNG, so its
+    viewport rect already includes move, zoom, native aspect ratio and rotation. */
+ const tr=o.t.getBoundingClientRect(),wr=ws.getBoundingClientRect();
+ return[tr.left+tr.width/2-wr.left,tr.top+tr.height/2-wr.top]
 }
 function screenToWorld(p){return[(p[0]-view.x)/view.scale,(p[1]-view.y)/view.scale]}
 function worldToScreen(p){return[p[0]*view.scale+view.x,p[1]*view.scale+view.y]}
