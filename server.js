@@ -59,3 +59,4 @@ server.on("listening",()=>{
 });
 console.log(`Iniciando servidor HTTP en ${HOST}:${PORT}...`);
 server.listen(PORT,HOST);
+// Render redeploy marker V9.64 · 2026-09-28
