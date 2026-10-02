@@ -872,7 +872,7 @@ function allVoltageSources(){
  const out=[],now=performance.now();
  document.querySelectorAll('.component[data-type="uno"],.component[data-type="nano"],.component[data-type="esp32"],.component[data-type="pico"],.component[data-type="microbit"]').forEach(board=>{
    const type=board.dataset.type;
-   if(type==='uno'||type==='nano'){out.push([board,'5V',5],[board,'3.3V',3.3])}
+   if(type==='uno'||type==='nano'){out.push([board,'5V',5],[board,'3.3V',3.3]);if(window.avrPinStates)for(let p=0;p<=13;p++)if(window.avrPinStates[p])out.push([board,'D'+p,5])}
    else if(type==='esp32'){out.push([board,'5V',5],[board,'3V3',3.3]);ESP32_OUTPUT_PINS?.forEach?.(p=>{if(esp32Runtime?.states?.[p])out.push([board,'D'+p,3.3])})}
    else if(type==='pico'){out.push([board,'VBUS',5],[board,'3V3',3.3]);PICO_OUTPUT_PINS?.forEach?.(p=>{if(picoRuntime?.states?.[p])out.push([board,'D'+p,3.3])})}
    else if(type==='microbit'){out.push([board,'3V',3]);MICROBIT_OUTPUT_PINS?.forEach?.(p=>{if(microbitRuntime?.states?.[p])out.push([board,'D'+p,3])})}
@@ -1750,13 +1750,16 @@ function updateExternalLEDs(states){
      PICO_OUTPUT_PINS.forEach(p=>{if(picoRuntime.states[p])sources.push([board,'D'+p,3.3])});
    }
  });
+ document.querySelectorAll('.component[data-type="battery"]').forEach(b=>sources.push([b,'+',Number(b.dataset.voltage)||9]));
+ document.querySelectorAll('.component[data-type="signalgen"]').forEach(g=>{if(g.dataset.enabled==='1')sources.push([g,'OUT',signalGeneratorVoltage(g)])});
+ const groundRefs=allGroundReferences();
  document.querySelectorAll('.component[data-type="led"]').forEach(l=>{
    const anode=circuitKey(l,'A'),cathode=circuitKey(l,'K');
    let volts=0,grounded=false;
    for(const [board,port,v] of sources)if(circuitConnected(anode,circuitKey(board,port)))volts=Math.max(volts,v);
-   for(const board of boards)if(circuitConnected(cathode,circuitKey(board,'GND'))||circuitConnected(cathode,circuitKey(board,'AGND')))grounded=true;
+   for(const [gr,gp] of groundRefs)if(circuitConnected(cathode,circuitKey(gr,gp)))grounded=true;
    const on=volts>0&&grounded;l.dataset.voltage=on?String(volts):'0';
-   const diode=l.querySelector('wokwi-led');if(diode){diode.value=on;diode.brightness=on?Math.min(1,volts/5):0}
+   const diode=l.querySelector('wokwi-led');if(diode){diode.value=on;diode.brightness=on?Math.min(1,Math.abs(volts)/5):0}
  });
 }
 window.stopAVR=()=>{running=false};
@@ -1768,7 +1771,7 @@ try{
    const program=new Uint16Array(0x8000);loadHex(hex,new Uint8Array(program.buffer));const cpu=new CPU(program);
    new AVRTimer(cpu,timer0Config);new AVRTimer(cpu,timer1Config);new AVRTimer(cpu,timer2Config);
    const adc=new AVRADC(cpu,adcConfig);
-   window.updateLdrADC=()=>{for(let ch=0;ch<6;ch++){let volts=0;const board=document.querySelector('.board');document.querySelectorAll('.component[data-type="ldr"]').forEach(l=>{if(board&&connected(key(l,'A0'),key(board,'A'+ch)))volts=Math.max(volts,Number(l.dataset.light||0)/100*5)});document.querySelectorAll('.component[data-type="mq2"]').forEach(m=>{if(board&&connected(key(m,'AOUT'),key(board,'A'+ch)))volts=Math.max(volts,Number(m.dataset.gas||0)/100*5)});adc.channelValues[ch]=volts}};
+   window.updateLdrADC=()=>{for(let ch=0;ch<6;ch++){let volts=0;const board=document.querySelector('.board');document.querySelectorAll('.component[data-type="ldr"]').forEach(l=>{if(board&&connected(key(l,'A0'),key(board,'A'+ch)))volts=Math.max(volts,Number(l.dataset.light||0)/100*5)});document.querySelectorAll('.component[data-type="mq2"]').forEach(m=>{if(board&&connected(key(m,'AOUT'),key(board,'A'+ch)))volts=Math.max(volts,Number(m.dataset.gas||0)/100*5)});document.querySelectorAll('.component[data-type="battery"]').forEach(b=>{if(board&&connected(key(b,'+'),key(board,'A'+ch)))volts=Math.max(volts,Number(b.dataset.voltage)||9)});document.querySelectorAll('.component[data-type="signalgen"]').forEach(g=>{if(board&&g.dataset.enabled==='1'&&connected(key(g,'OUT'),key(board,'A'+ch)))volts=Math.max(volts,signalGeneratorVoltage(g))});adc.channelValues[ch]=Math.max(0,Math.min(5,volts))}};
    window.updateLdrADC();
    const pb=new AVRIOPort(cpu,portBConfig),pc=new AVRIOPort(cpu,portCConfig),pd=new AVRIOPort(cpu,portDConfig);
    let sonar={trigHigh:false,echoStart:0,echoEnd:0,echoPort:null,echoPin:-1};
@@ -1789,7 +1792,7 @@ try{
    };
    const update=()=>{
      const states={};for(let p=8;p<=13;p++)states[p]=pb.pinState(p-8)===PinState.High;for(let p=0;p<=7;p++)states[p]=pd.pinState(p)===PinState.High;
-     updateExternalLEDs(states);serviceSonar(states);
+     window.avrPinStates=states;window.updateLdrADC&&window.updateLdrADC();updateExternalLEDs(states);serviceSonar(states);updateMultimeters();
      const boardEl=document.querySelector('wokwi-arduino-uno,wokwi-arduino-nano');if(boardEl)boardEl.led13=states[13];
    };
    pb.addListener(update);pd.addListener(update);update();
