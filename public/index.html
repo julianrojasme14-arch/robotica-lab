@@ -736,6 +736,10 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
  opacity:.7
 }
 .component[data-type="led"].breadboardMounted,.component[data-type="resistor"].breadboardMounted{z-index:5}
+
+/* V9.78.1 · authoritative two-pin component footprints */
+.component[data-type="led"]{width:40px!important;height:50px!important}
+.component[data-type="resistor"]{width:58.8px!important;height:12px!important}
 </style></head><body>
 <header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.78</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
@@ -1617,7 +1621,7 @@ function updateExternalLEDs(states){
    for(const [board,port,v] of sources)if(circuitConnected(anode,circuitKey(board,port)))volts=Math.max(volts,v);
    for(const board of boards)if(circuitConnected(cathode,circuitKey(board,'GND'))||circuitConnected(cathode,circuitKey(board,'AGND')))grounded=true;
    const on=volts>0&&grounded;l.dataset.voltage=on?String(volts):'0';
-   const bulb=l.querySelector('.bulb');if(bulb){bulb.classList.toggle('on',on);bulb.style.opacity=on?(volts>=5?'1':'.82'):''}
+   const diode=l.querySelector('wokwi-led');if(diode){diode.value=on;diode.brightness=on?Math.min(1,volts/5):0}
  });
 }
 window.stopAVR=()=>{running=false};
