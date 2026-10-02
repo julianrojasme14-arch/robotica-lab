@@ -878,7 +878,7 @@ function allVoltageSources(){
    else if(type==='microbit'){out.push([board,'3V',3]);MICROBIT_OUTPUT_PINS?.forEach?.(p=>{if(microbitRuntime?.states?.[p])out.push([board,'D'+p,3])})}
  });
  document.querySelectorAll('.component[data-type="battery"]').forEach(b=>out.push([b,'+',Number(b.dataset.voltage)||9]));
- document.querySelectorAll('.component[data-type="signalgen"]').forEach(g=>{if(g.dataset.enabled==='1')out.push([g,'OUT',signalGeneratorVoltage(g,now))});
+ document.querySelectorAll('.component[data-type="signalgen"]').forEach(g=>{if(g.dataset.enabled==='1')out.push([g,'OUT',signalGeneratorVoltage(g,now)]);});
  return out;
 }
 function zeroConnected(start,target,extraAmpMeter=true){
@@ -976,7 +976,7 @@ function refreshCircuitPower(){
    }
  });
  document.querySelectorAll('.component[data-type="battery"]').forEach(b=>sources.push([b,'+',Number(b.dataset.voltage)||9]));
- document.querySelectorAll('.component[data-type="signalgen"]').forEach(g=>{if(g.dataset.enabled==='1')sources.push([g,'OUT',signalGeneratorVoltage(g))});
+ document.querySelectorAll('.component[data-type="signalgen"]').forEach(g=>{if(g.dataset.enabled==='1')sources.push([g,'OUT',signalGeneratorVoltage(g)]);});
  const groundRefs=allGroundReferences();
  document.querySelectorAll('.component[data-type="led"]').forEach(l=>{
    const a=circuitKey(l,'A'),k=circuitKey(l,'K');
