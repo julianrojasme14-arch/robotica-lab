@@ -925,12 +925,63 @@ function simpleSeriesCurrent(k1,k2){
  while(q.length&&steps++<maxSteps){q.sort((a,b)=>a.R-b.R);const cur=q.shift();if(cur.n===t&&Math.abs(cur.E)>.000001){best=cur;break}for(const e of adj.get(cur.n)||[]){if(cur.path.has(e.b))continue;const p=new Set(cur.path);p.add(e.b);q.push({n:e.b,R:cur.R+Math.max(0,e.R),E:cur.E+e.E,path:p})}}
  if(!best)return null;if(best.R<1e-6)return best.E===0?0:Infinity;return best.E/best.R;
 }
+
+function solveLinearSystem(A,b){
+ const n=b.length;if(!n)return[];
+ for(let c=0;c<n;c++){
+  let p=c;for(let r=c+1;r<n;r++)if(Math.abs(A[r][c])>Math.abs(A[p][c]))p=r;
+  if(Math.abs(A[p][c])<1e-10)return null;
+  [A[c],A[p]]=[A[p],A[c]];[b[c],b[p]]=[b[p],b[c]];
+  const q=A[c][c];for(let j=c;j<n;j++)A[c][j]/=q;b[c]/=q;
+  for(let r=0;r<n;r++)if(r!==c){const f=A[r][c];if(Math.abs(f)<1e-15)continue;for(let j=c;j<n;j++)A[r][j]-=f*A[c][j];b[r]-=f*b[c]}
+ }
+ return b;
+}
+function solveDCCircuit(){
+ const parent=new Map(),find=x=>{if(!parent.has(x))parent.set(x,x);let p=parent.get(x);if(p!==x){p=find(p);parent.set(x,p)}return p},unite=(a,b)=>{a=find(a);b=find(b);if(a!==b)parent.set(a,b)};
+ document.querySelectorAll('.component .terminal,.component .pin').forEach(t=>{const r=t.closest('.component');if(r){const k=circuitKey(r,t.dataset.port);if(!parent.has(k))parent.set(k,k)}});
+ wires.forEach(w=>unite(w.a.key,w.b.key));
+ document.querySelectorAll('.component[data-type^="breadboard"]').forEach(bb=>{const nets=new Map();bb.querySelectorAll('.terminal[data-net]').forEach(t=>{const n=t.dataset.net;if(!nets.has(n))nets.set(n,[]);nets.get(n).push(circuitKey(bb,t.dataset.port))});nets.forEach(keys=>{for(let i=1;i<keys.length;i++)unite(keys[i-1],keys[i])})});
+ document.querySelectorAll('.component .terminal[data-mounted-board][data-mounted-port]').forEach(t=>{const root=t.closest('.component'),bb=[...document.querySelectorAll('.component[data-type^="breadboard"]')].find(x=>x.dataset.id===t.dataset.mountedBoard);if(root&&bb)unite(circuitKey(root,t.dataset.port),circuitKey(bb,t.dataset.mountedPort))});
+ const resistors=[];
+ document.querySelectorAll('.component[data-type="resistor"]').forEach(r=>resistors.push({a:find(circuitKey(r,'1')),b:find(circuitKey(r,'2')),R:Math.max(.001,Number(r.dataset.ohms)||1000),kind:'resistor'}));
+ document.querySelectorAll('.component[data-type="multimeter"]').forEach(m=>{const mode=m.dataset.mode||'V';if(mode==='V'||mode==='A')resistors.push({a:find(circuitKey(m,'RED')),b:find(circuitKey(m,'COM')),R:mode==='A'?.02:1e7,kind:'meter',meter:m})});
+ const sources=[];
+ allVoltageSources().forEach(([root,port,V])=>{
+   let gp='GND';if(root.dataset.type==='battery')gp='-';else if(root.dataset.type==='signalgen')gp='GND';
+   sources.push({neg:find(circuitKey(root,gp)),pos:find(circuitKey(root,port)),V:Number(V)||0,root,port});
+ });
+ const links=[...resistors.map(e=>[e.a,e.b]),...sources.map(e=>[e.neg,e.pos])];
+ const adj=new Map(),add=(a,b)=>{if(!adj.has(a))adj.set(a,new Set());adj.get(a).add(b)};
+ links.forEach(([a,b])=>{add(a,b);add(b,a)});
+ const allNodes=[...new Set(links.flat())],seen=new Set(),voltages=new Map(),meterCurrents=new Map();
+ for(const seed of allNodes){
+  if(seen.has(seed))continue;const q=[seed],nodes=[];seen.add(seed);
+  while(q.length){const n=q.shift();nodes.push(n);for(const z of adj.get(n)||[])if(!seen.has(z)){seen.add(z);q.push(z)}}
+  const nodeSet=new Set(nodes),rs=resistors.filter(e=>nodeSet.has(e.a)&&nodeSet.has(e.b)),vs=sources.filter(e=>nodeSet.has(e.neg)&&nodeSet.has(e.pos));
+  const ref=nodes[0],vars=nodes.filter(n=>n!==ref),ni=new Map(vars.map((n,i)=>[n,i])),N=vars.length,M=vs.length,size=N+M;
+  if(size===0){voltages.set(ref,0);continue}
+  const A=Array.from({length:size},()=>Array(size).fill(0)),b=Array(size).fill(0);
+  const stampG=(a,z,g)=>{if(a!==ref){const i=ni.get(a);A[i][i]+=g;if(z!==ref)A[i][ni.get(z)]-=g}};
+  rs.forEach(e=>{const g=1/Math.max(e.R,1e-9);stampG(e.a,e.b,g);stampG(e.b,e.a,g)});
+  vs.forEach((v,j)=>{const k=N+j;if(v.pos!==ref){const i=ni.get(v.pos);A[i][k]+=1;A[k][i]+=1}if(v.neg!==ref){const i=ni.get(v.neg);A[i][k]-=1;A[k][i]-=1}b[k]=v.V});
+  const x=solveLinearSystem(A,b);if(!x)continue;voltages.set(ref,0);vars.forEach((n,i)=>voltages.set(n,x[i]));
+  rs.filter(e=>e.kind==='meter').forEach(e=>{const va=voltages.get(e.a)??0,vb=voltages.get(e.b)??0;meterCurrents.set(e.meter,(va-vb)/e.R)});
+ }
+ return{find,voltages,meterCurrents};
+}
 function updateMultimeters(){
+ const dc=solveDCCircuit();
  document.querySelectorAll('.component[data-type="multimeter"]').forEach(m=>{
-  const mode=m.dataset.mode||'V',disp=m.querySelector('.meterDisplay'),unit=m.querySelector('.meterUnit'),a=circuitKey(m,'RED'),b=circuitKey(m,'COM');let text='----',u=mode==='R'?'Ω':mode;
-  if(mode==='V'){const va=measuredNodeVoltage(a),vb=measuredNodeVoltage(b);if(va!==null&&vb!==null){const v=va-vb;text=(Math.abs(v)>=100?v.toFixed(1):Math.abs(v)>=10?v.toFixed(2):v.toFixed(3));u='V'}else{text='0.000';u='V'}}
-  else if(mode==='R'){const r=equivalentResistance(a,b);if(!Number.isFinite(r)){text='OL'}else if(r>=1e6){text=(r/1e6).toFixed(3);u='MΩ'}else if(r>=1e3){text=(r/1e3).toFixed(3);u='kΩ'}else{text=r.toFixed(2);u='Ω'}}
-  else {const cur=simpleSeriesCurrent(a,b);if(cur===null){text='0.000';u='A'}else if(!Number.isFinite(cur)){text='SHORT';u='A'}else if(Math.abs(cur)<1){text=(cur*1000).toFixed(2);u='mA'}else{text=cur.toFixed(3);u='A'}}
+  const mode=m.dataset.mode||'V',disp=m.querySelector('.meterDisplay'),unit=m.querySelector('.meterUnit'),ka=circuitKey(m,'RED'),kb=circuitKey(m,'COM');let text='----',u=mode==='R'?'Ω':mode;
+  if(mode==='V'){
+   const a=dc.find(ka),b=dc.find(kb),va=dc.voltages.get(a),vb=dc.voltages.get(b);
+   const v=(va??0)-(vb??0);text=Math.abs(v)>=100?v.toFixed(1):Math.abs(v)>=10?v.toFixed(2):v.toFixed(3);u='V';
+  }else if(mode==='R'){
+   const r=equivalentResistance(ka,kb);if(!Number.isFinite(r)){text='OL'}else if(r>=1e6){text=(r/1e6).toFixed(3);u='MΩ'}else if(r>=1e3){text=(r/1e3).toFixed(3);u='kΩ'}else{text=r.toFixed(2);u='Ω'}
+  }else{
+   const cur=dc.meterCurrents.get(m)??0;if(Math.abs(cur)>10){text='SHORT';u='A'}else if(Math.abs(cur)<1){text=(cur*1000).toFixed(2);u='mA'}else{text=cur.toFixed(3);u='A'}
+  }
   if(disp)disp.textContent=text;if(unit)unit.textContent=u;
  });
 }
