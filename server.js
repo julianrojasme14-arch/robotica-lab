@@ -9,7 +9,7 @@ const code=()=>crypto.randomBytes(3).toString("hex").toUpperCase();
 const CLI=process.env.ARDUINO_CLI||"arduino-cli";
 
 app.get("/health",(q,r)=>r.status(200).send("ok"));
-app.get("/api/version",(q,r)=>r.json({version:"V9.87",esp32Runtime:true,gpio2Led:true}));
+app.get("/api/version",(q,r)=>r.json({version:"V9.88",esp32Runtime:true,gpio2Led:true}));
 app.get("/api/status",(q,r)=>execFile(CLI,["version"],{timeout:10000},(e,o,err)=>r.json({
   online:true,compiler:!e,version:e?null:o.trim(),error:e?(err||e.message):null
 })));
@@ -55,8 +55,8 @@ server.on("error",err=>{
 });
 server.on("listening",()=>{
   const addr=server.address();
-  console.log(`Robótica Lab V9.87 Online · escuchando en ${HOST}:${addr&&addr.port} · PORT env=${rawPort||"(no definido)"} · CLI=${CLI}`);
+  console.log(`Robótica Lab V9.88 Online · escuchando en ${HOST}:${addr&&addr.port} · PORT env=${rawPort||"(no definido)"} · CLI=${CLI}`);
 });
 console.log(`Iniciando servidor HTTP en ${HOST}:${PORT}...`);
 server.listen(PORT,HOST);
-// Render redeploy marker V9.87 · 2026-09-28
+// Render redeploy marker V9.88 · 2026-09-28
