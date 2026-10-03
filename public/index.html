@@ -1112,7 +1112,7 @@ function bindInstrumentControls(el){
  if(toggle)toggle.addEventListener('click',()=>{el.dataset.enabled=el.dataset.enabled==='1'?'0':'1';toggle.textContent=el.dataset.enabled==='1'?'ON':'OFF';toggle.classList.toggle('off',el.dataset.enabled!=='1');if(simRunning){refreshCircuitPower();updateMultimeters()}});
  const mm=el.querySelector('[data-inst="meterMode"]');if(mm){mm.addEventListener('pointerdown',()=>prepareContinuityAudio());mm.addEventListener('change',()=>{el.dataset.mode=mm.value;if(mm.value==='CONT')prepareContinuityAudio();if(simRunning){updateMultimeters();refreshCircuitPower()}else resetInstrumentDisplays(false)})}
  if(el.dataset.type==='signalgen')updateSignalGeneratorUI(el);
- const sw=el.querySelector('[data-inst="switchToggle"]');if(sw)sw.addEventListener('click',e=>{e.stopPropagation();el.dataset.closed=el.dataset.closed==='1'?'0':'1';el.classList.toggle('closed',el.dataset.closed==='1');const st=el.querySelector('.switchState');if(st)st.textContent=el.dataset.closed==='1'?'CERRADO':'ABIERTO';refreshCircuitPower();updateMultimeters()});
+ const sw=el.querySelector('[data-inst="switchToggle"]');if(sw)sw.addEventListener('click',e=>{e.stopPropagation();el.dataset.closed=el.dataset.closed==='1'?'0':'1';el.classList.toggle('closed',el.dataset.closed==='1');const st=el.querySelector('.switchState');if(st)st.textContent=el.dataset.closed==='1'?'CERRADO':'ABIERTO';if(simRunning){refreshCircuitPower();updateMultimeters()}});
  const cap=el.querySelector('[data-inst="capacitance"]');if(cap)cap.addEventListener('change',()=>{el.dataset.capacitance=cap.value;updateCapacitorLabel(el)});
 }
 
