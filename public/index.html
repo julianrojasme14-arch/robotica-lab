@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V10.00</title>
+<title>Robótica Lab V10.01</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -1979,19 +1979,18 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .oledV1000.powerOnly .oledScreenV1000{box-shadow:0 0 5px #2d7aa733,inset 0 0 0 1px #343434}
 .oledMount{position:absolute;width:19px;height:19px;border-radius:50%;background:#fff;border:2px solid #c8ceda;box-shadow:inset 0 0 0 1px #eee}
 .oledMount.tl{left:7px;top:7px}.oledMount.trh{right:7px;top:7px}.oledMount.bl{left:7px;bottom:7px}.oledMount.br{right:7px;bottom:7px}
-.oledPad{position:absolute;top:8px;width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid #ecc98a;box-shadow:inset 0 0 0 1px #b07b28}
-.oledPad.pG{left:76px}.oledPad.pV{left:96px}.oledPad.pC{left:116px}.oledPad.pD{left:136px}
+.oledPad{position:absolute!important;top:8px!important;width:16px!important;height:16px!important;border-radius:50%!important;background:#f7f8f6!important;border:3px solid #e9c470!important;box-shadow:inset 0 0 0 2px #56646a,0 1px 2px #0004!important;transform:none!important;opacity:1!important;z-index:45!important;cursor:crosshair!important;box-sizing:border-box!important}
+.oledPad:after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:#24333a;transform:translate(-50%,-50%)}
+.oledPad:hover,.oledPad.sel{background:#ff1515!important;border-color:#fff!important;border-radius:3px!important;box-shadow:0 0 0 2px #222,0 0 10px #ff151588!important}
+.oledPad:hover:after,.oledPad.sel:after{background:#fff}
+.oledPad.pG{left:75px!important}.oledPad.pV{left:95px!important}.oledPad.pC{left:115px!important}.oledPad.pD{left:135px!important}
 .oledHeaderLabels{position:absolute;left:71px;top:23px;width:84px;display:grid;grid-template-columns:repeat(4,20px);gap:0;color:#fff;font:700 7px Arial;text-align:center;letter-spacing:-.2px}
+.oledHeaderLabels:after{content:"I²C";position:absolute;left:88px;top:-18px;color:#d7ebf6;font:700 7px Arial;opacity:.9}
 .oledFlexV1000{position:absolute;left:82px;bottom:3px;width:58px;height:15px;background:linear-gradient(90deg,#9a6525,#cf9447,#8e591e);border-radius:1px;box-shadow:0 -2px #000}
-.oledV1000>.terminal{
- position:absolute!important;width:14px!important;height:14px!important;top:21.5px!important;opacity:.01!important;background:transparent!important;border:0!important;border-radius:1px!important;
- transform:translate(-50%,-50%)!important;z-index:40!important
-}
-.oledV1000>.terminal:hover,.oledV1000>.terminal.sel{opacity:1!important;background:#ff1515!important;border-radius:2px!important;box-shadow:0 0 0 1px #fff,0 0 0 2px #222!important}
-.oledV1000>.gnd{left:87.5px!important}.oledV1000>.vcc{left:107.5px!important}.oledV1000>.scl{left:127.5px!important}.oledV1000>.sda{left:147.5px!important}
-</style><!-- deploy-marker: V10.00 · 2026-10-03 -->
+
+</style><!-- deploy-marker: V10.01 · 2026-10-03 -->
 </head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V10.00</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V10.01</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -2055,7 +2054,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V10.00 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V10.01 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,wireDraftPoints=[],wirePointer=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[],dragWirePoint=null;
@@ -2648,7 +2647,7 @@ function addComponent(type,x,y){
 </div>`}
  else if(type==='potentiometer'){el.dataset.value='50';el.dataset.powered='0';el.dataset.vout='0';el.style.setProperty('--pot-angle','0deg');el.innerHTML='<div class="potV998 potV999"><div class="potBase"></div><div class="potBody"><div class="potTicks"></div><div class="potInner"><div class="potKnob" title="Gira la perilla para cambiar el valor"><i class="potIndicator"></i></div></div></div><i class="potLeg l1"></i><i class="potLeg l2"></i><i class="potLeg l3"></i><span class="potLbl p1l">VCC</span><span class="potLbl p2l">OUT</span><span class="potLbl p3l">GND</span><label class="potCtl instrumentControl">Valor <input data-inst="potValue" type="range" min="0" max="100" value="50"><output data-pot-out>50%</output></label><span class="terminal p1" data-port="VCC" title="VCC"></span><span class="terminal pw" data-port="OUT" title="Wiper / salida"></span><span class="terminal p3" data-port="GND" title="GND"></span></div>'}
  else if(type==='rgbled'){el.dataset.r='0';el.dataset.g='0';el.dataset.b='0';el.innerHTML='<div class="rgbWokwiV1000"><wokwi-rgb-led></wokwi-rgb-led><div class="rgbWokwiLabels"><span>R</span><span>C−</span><span>G</span><span>B</span></div><span class="terminal tr" data-port="R" title="Rojo"></span><span class="terminal tc" data-port="C" title="Común cátodo (-)"></span><span class="terminal tg" data-port="G" title="Verde"></span><span class="terminal tb" data-port="B" title="Azul"></span></div>'}
- else if(type==='oled1306'){el.dataset.address='0x3c';el.dataset.powered='0';el.dataset.i2c='0';el.innerHTML='<div class="oledV1000"><div class="oledBoardV1000"><i class="oledMount tl"></i><i class="oledMount trh"></i><i class="oledMount bl"></i><i class="oledMount br"></i><div class="oledHeaderLabels"><span>GND</span><span>VCC</span><span>SCL</span><span>SDA</span></div><i class="oledPad pG"></i><i class="oledPad pV"></i><i class="oledPad pC"></i><i class="oledPad pD"></i><div class="oledScreenV1000"><canvas class="oledCanvasV1000" width="128" height="64"></canvas></div><div class="oledFlexV1000"></div></div><span class="terminal gnd" data-port="GND" title="GND"></span><span class="terminal vcc" data-port="VCC" title="VCC"></span><span class="terminal scl" data-port="SCL" title="I2C SCL"></span><span class="terminal sda" data-port="SDA" title="I2C SDA"></span></div>'}
+ else if(type==='oled1306'){el.dataset.address='0x3c';el.dataset.powered='0';el.dataset.i2c='0';el.innerHTML='<div class="oledV1000"><div class="oledBoardV1000"><i class="oledMount tl"></i><i class="oledMount trh"></i><i class="oledMount bl"></i><i class="oledMount br"></i><div class="oledHeaderLabels"><span>GND</span><span>VCC</span><span>SCL</span><span>SDA</span></div><i class="oledPad terminal pG" data-port="GND" title="GND · tierra"></i><i class="oledPad terminal pV" data-port="VCC" title="VCC · alimentación"></i><i class="oledPad terminal pC" data-port="SCL" title="SCL · reloj I2C"></i><i class="oledPad terminal pD" data-port="SDA" title="SDA · datos I2C"></i><div class="oledScreenV1000"><canvas class="oledCanvasV1000" width="128" height="64"></canvas></div><div class="oledFlexV1000"></div></div></div>'}
  else if(type==='diode'){el.innerHTML='<div class="diodeV998 diodeV999"><div class="wire"></div><div class="body"><i class="diodeShine"></i><span class="diodeText">1N4007</span><i class="diodeBand"></i></div><span class="mark aLbl">A</span><span class="mark kLbl">K</span><span class="terminal a" data-port="A" title="Ánodo"></span><span class="terminal k" data-port="K" title="Cátodo · banda plateada"></span></div>'}
  else if(type==='dht22'){el.dataset.temperature='24';el.dataset.humidity='50';el.innerHTML='<div class="wokwiSensor dht22Asset"><wokwi-dht22></wokwi-dht22><span class="terminal" style="left:24px;top:184px" data-port="VCC" title="VCC"></span><span class="terminal" style="left:39.2px;top:184px" data-port="SDA" title="DATA"></span><span class="terminal" style="left:54.6px;top:184px" data-port="NC" title="NC"></span><span class="terminal" style="left:70.1px;top:184px" data-port="GND" title="GND"></span></div>'}
  else if(type==='mpu6050'){el.dataset.ax='0';el.dataset.ay='0';el.dataset.az='1';el.innerHTML='<div class="wokwiSensor mpu6050Asset"><wokwi-mpu6050></wokwi-mpu6050>'+[['INT',14.6],['AD0',33.8],['XCL',52.8],['XDA',72],['SDA',91.2],['SCL',110.4],['GND',129.6],['VCC',148.8]].map(p=>'<span class="terminal" style="left:'+p[1]+'px;top:11.6px" data-port="'+p[0]+'" title="'+p[0]+'"></span>').join('')+'</div>'}
@@ -3365,6 +3364,17 @@ function initBlockly(){
   {"type":"var_set_rl","message0":"definir variable %1 en %2","args0":[{"type":"field_input","name":"NAME","text":"valor"},{"type":"input_value","name":"VALUE"}],"previousStatement":null,"nextStatement":null,"colour":285},
   {"type":"var_get_rl","message0":"variable %1","args0":[{"type":"field_input","name":"NAME","text":"valor"}],"output":null,"colour":285},
   {"type":"comment_rl","message0":"nota %1","args0":[{"type":"field_input","name":"TEXT","text":"escribe una nota"}],"previousStatement":null,"nextStatement":null,"colour":0},
+  {"type":"oled_init","message0":"iniciar OLED I2C dirección %1","args0":[{"type":"field_dropdown","name":"ADDR","options":[["0x3C","0x3C"],["0x3D","0x3D"]]}],"previousStatement":null,"nextStatement":null,"colour":200},
+  {"type":"oled_clear","message0":"limpiar pantalla OLED","previousStatement":null,"nextStatement":null,"colour":200},
+  {"type":"oled_cursor","message0":"OLED cursor x %1 y %2","args0":[{"type":"field_number","name":"X","value":0,"min":0,"max":127},{"type":"field_number","name":"Y","value":0,"min":0,"max":63}],"previousStatement":null,"nextStatement":null,"colour":200},
+  {"type":"oled_text_size","message0":"OLED tamaño de texto %1","args0":[{"type":"field_dropdown","name":"SIZE","options":[["1","1"],["2","2"],["3","3"],["4","4"]]}],"previousStatement":null,"nextStatement":null,"colour":200},
+  {"type":"oled_print_text","message0":"OLED escribir texto %1","args0":[{"type":"field_input","name":"TEXT","text":"Hola"}],"previousStatement":null,"nextStatement":null,"colour":200},
+  {"type":"oled_println_text","message0":"OLED escribir línea %1","args0":[{"type":"field_input","name":"TEXT","text":"Robótica Lab"}],"previousStatement":null,"nextStatement":null,"colour":200},
+  {"type":"oled_print_value","message0":"OLED escribir valor %1","args0":[{"type":"input_value","name":"VALUE"}],"previousStatement":null,"nextStatement":null,"colour":200},
+  {"type":"oled_pixel","message0":"OLED punto x %1 y %2","args0":[{"type":"field_number","name":"X","value":64,"min":0,"max":127},{"type":"field_number","name":"Y","value":32,"min":0,"max":63}],"previousStatement":null,"nextStatement":null,"colour":200},
+  {"type":"oled_line","message0":"OLED línea x1 %1 y1 %2 x2 %3 y2 %4","args0":[{"type":"field_number","name":"X1","value":0,"min":0,"max":127},{"type":"field_number","name":"Y1","value":0,"min":0,"max":63},{"type":"field_number","name":"X2","value":127,"min":0,"max":127},{"type":"field_number","name":"Y2","value":63,"min":0,"max":63}],"previousStatement":null,"nextStatement":null,"colour":200},
+  {"type":"oled_rect","message0":"OLED rectángulo x %1 y %2 ancho %3 alto %4 %5","args0":[{"type":"field_number","name":"X","value":10,"min":0,"max":127},{"type":"field_number","name":"Y","value":10,"min":0,"max":63},{"type":"field_number","name":"W","value":40,"min":1,"max":128},{"type":"field_number","name":"H","value":20,"min":1,"max":64},{"type":"field_dropdown","name":"FILL","options":[["contorno","0"],["relleno","1"]]}],"previousStatement":null,"nextStatement":null,"colour":200},
+  {"type":"oled_show","message0":"actualizar pantalla OLED","previousStatement":null,"nextStatement":null,"colour":200},
   {"type":"mb_show_icon","message0":"mostrar icono %1","args0":[{"type":"field_dropdown","name":"ICON","options":[["♥ corazón","HEART"],["☺ sonrisa","SMILE"],["✓ sí","YES"],["✕ no","NO"]]}],"previousStatement":null,"nextStatement":null,"colour":190},
   {"type":"mb_clear","message0":"borrar pantalla","previousStatement":null,"nextStatement":null,"colour":190},
   {"type":"mb_pause","message0":"pausa %1 ms","args0":[{"type":"field_number","name":"MS","value":100,"min":1,"max":60000}],"previousStatement":null,"nextStatement":null,"colour":190},
@@ -3407,6 +3417,17 @@ function initBlockly(){
  arduinoGen.forBlock['var_set_rl']=(b,g)=>'int '+b.getFieldValue('NAME').replace(/\W/g,'_')+' = '+val(g,b,'VALUE')+';'+NL;
  arduinoGen.forBlock['var_get_rl']=(b)=>[b.getFieldValue('NAME').replace(/\W/g,'_'),0];
  arduinoGen.forBlock['comment_rl']=(b)=>'// '+b.getFieldValue('TEXT')+NL;
+ arduinoGen.forBlock['oled_init']=(b)=>'display.begin(SSD1306_SWITCHCAPVCC, '+b.getFieldValue('ADDR')+');'+NL+'display.clearDisplay();'+NL+'display.setTextColor(SSD1306_WHITE);'+NL;
+ arduinoGen.forBlock['oled_clear']=()=> 'display.clearDisplay();'+NL;
+ arduinoGen.forBlock['oled_cursor']=(b)=>'display.setCursor('+b.getFieldValue('X')+','+b.getFieldValue('Y')+');'+NL;
+ arduinoGen.forBlock['oled_text_size']=(b)=>'display.setTextSize('+b.getFieldValue('SIZE')+');'+NL;
+ arduinoGen.forBlock['oled_print_text']=(b)=>'display.print('+JSON.stringify(b.getFieldValue('TEXT')||'')+');'+NL;
+ arduinoGen.forBlock['oled_println_text']=(b)=>'display.println('+JSON.stringify(b.getFieldValue('TEXT')||'')+');'+NL;
+ arduinoGen.forBlock['oled_print_value']=(b,g)=>'display.print('+val(g,b,'VALUE','0')+');'+NL;
+ arduinoGen.forBlock['oled_pixel']=(b)=>'display.drawPixel('+b.getFieldValue('X')+','+b.getFieldValue('Y')+',SSD1306_WHITE);'+NL;
+ arduinoGen.forBlock['oled_line']=(b)=>'display.drawLine('+b.getFieldValue('X1')+','+b.getFieldValue('Y1')+','+b.getFieldValue('X2')+','+b.getFieldValue('Y2')+',SSD1306_WHITE);'+NL;
+ arduinoGen.forBlock['oled_rect']=(b)=> (b.getFieldValue('FILL')==='1'?'display.fillRect(':'display.drawRect(')+b.getFieldValue('X')+','+b.getFieldValue('Y')+','+b.getFieldValue('W')+','+b.getFieldValue('H')+',SSD1306_WHITE);'+NL;
+ arduinoGen.forBlock['oled_show']=()=> 'display.display();'+NL;
  arduinoGen.forBlock['mb_show_icon']=(b)=>'showIcon('+b.getFieldValue('ICON')+');'+NL;
  arduinoGen.forBlock['mb_clear']=()=> 'clearScreen();'+NL;
  arduinoGen.forBlock['mb_pause']=(b)=>'delay('+b.getFieldValue('MS')+');'+NL;
@@ -3429,9 +3450,15 @@ function initBlockly(){
  arduinoGen.forBlock['mb_show_leds_custom']=(b)=>'showLeds("'+b.getFieldValue('PATTERN')+'");'+NL;
  arduinoGen.forBlock['mb_play_melody']=(b)=>'playMelody("'+b.getFieldValue('MELODY')+'",'+b.getFieldValue('BPM')+');'+NL;
  arduinoGen.scrub_=function(block,code,thisOnly){const next=block.nextConnection&&block.nextConnection.targetBlock();return code+(thisOnly?'':this.blockToCode(next));};
+ arduinoGen.finish=function(code){
+   const usesOled=/\bdisplay\./.test(code);
+   if(!usesOled)return code;
+   return '#include <Wire.h>'+NL+'#include <Adafruit_GFX.h>'+NL+'#include <Adafruit_SSD1306.h>'+NL+NL+'Adafruit_SSD1306 display(128, 64, &Wire, -1);'+NL+NL+code;
+ };
  const genericToolbox={kind:'categoryToolbox',contents:[
   {kind:'category',name:'Salida',colour:'#3f8ee8',contents:[{kind:'block',type:'pin_mode'},{kind:'block',type:'digital_write'}]},
   {kind:'category',name:'Entrada',colour:'#32a66b',contents:[{kind:'block',type:'digital_read'},{kind:'block',type:'analog_read'}]},
+  {kind:'category',name:'Pantalla OLED',colour:'#1679a7',contents:[{kind:'block',type:'oled_init'},{kind:'block',type:'oled_clear'},{kind:'block',type:'oled_cursor'},{kind:'block',type:'oled_text_size'},{kind:'block',type:'oled_print_text'},{kind:'block',type:'oled_println_text'},{kind:'block',type:'oled_print_value'},{kind:'block',type:'oled_pixel'},{kind:'block',type:'oled_line'},{kind:'block',type:'oled_rect'},{kind:'block',type:'oled_show'}]},
   {kind:'category',name:'Control',colour:'#f4a000',contents:[{kind:'block',type:'arduino_setup'},{kind:'block',type:'arduino_loop'},{kind:'block',type:'if_else'},{kind:'block',type:'repeat_n'},{kind:'block',type:'arduino_delay'}]},
   {kind:'category',name:'Matemáticas',colour:'#45ad59',contents:[{kind:'block',type:'math_number_rl'},{kind:'block',type:'compare_rl'},{kind:'block',type:'logic_rl'},{kind:'block',type:'not_rl'},{kind:'block',type:'math_arith_rl'}]},
   {kind:'category',name:'Variables',colour:'#b74cc5',contents:[{kind:'block',type:'var_set_rl'},{kind:'block',type:'var_get_rl'}]},
@@ -3440,6 +3467,7 @@ function initBlockly(){
  const microbitToolbox={kind:'categoryToolbox',contents:[
   {kind:'category',name:'Básico',colour:'#1e90ff',contents:[{kind:'block',type:'arduino_setup'},{kind:'block',type:'arduino_loop'},{kind:'block',type:'mb_show_icon'},{kind:'block',type:'mb_show_leds_custom'},{kind:'block',type:'mb_clear'},{kind:'block',type:'mb_pause'}]},
   {kind:'category',name:'Entrada',colour:'#d83b87',contents:[{kind:'block',type:'mb_button'},{kind:'block',type:'mb_temperature'},{kind:'block',type:'mb_light'},{kind:'block',type:'mb_heading'},{kind:'block',type:'mb_tilt'}]},
+  {kind:'category',name:'Pantalla OLED',colour:'#1679a7',contents:[{kind:'block',type:'oled_init'},{kind:'block',type:'oled_clear'},{kind:'block',type:'oled_cursor'},{kind:'block',type:'oled_text_size'},{kind:'block',type:'oled_print_text'},{kind:'block',type:'oled_println_text'},{kind:'block',type:'oled_print_value'},{kind:'block',type:'oled_pixel'},{kind:'block',type:'oled_line'},{kind:'block',type:'oled_rect'},{kind:'block',type:'oled_show'}]},
   {kind:'category',name:'LED',colour:'#5b67d8',contents:[{kind:'block',type:'mb_show_leds_custom'},{kind:'block',type:'mb_plot'},{kind:'block',type:'mb_unplot'},{kind:'block',type:'mb_led_point'}]},
   {kind:'category',name:'Música',colour:'#d83b87',contents:[{kind:'block',type:'mb_play_melody'}]},
   {kind:'category',name:'Pines',colour:'#c62828',contents:[{kind:'block',type:'mb_pin_dread'},{kind:'block',type:'mb_pin_dwrite'},{kind:'block',type:'mb_pin_aread'},{kind:'block',type:'mb_pin_awrite'},{kind:'label',text:'Servo'},{kind:'block',type:'mb_servo_write'},{kind:'block',type:'mb_servo_pulse'}]},
