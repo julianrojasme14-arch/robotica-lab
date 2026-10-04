@@ -2223,7 +2223,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .lampThumbV1004:before,.lampThumbV1004:after,.solarThumbV1004:before,.solarThumbV1004:after{display:none!important}
 </style><!-- deploy-marker: V10.09 · 2026-10-04 -->
 </head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V10.08</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge" id="appVersionBadge">V10.09</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -2862,6 +2862,7 @@ function refreshCircuitPower(){
 }
 
 $('code').value=normalizedSketch();
+fetch('/api/version',{cache:'no-store'}).then(r=>r.json()).then(v=>{if(!v?.version)return;const ver=v.version;const b=document.getElementById('appVersionBadge');if(b)b.textContent=ver;document.title='Robótica Lab '+ver;}).catch(()=>{});
 fetch('/api/status').then(r=>r.json()).then(s=>{ $('status').textContent=s.compiler?'☁ Online · Arduino CLI listo':'☁ Online · compilador no disponible'; if(s.compiler)log('✓ '+s.version,'good');else log('⚠ '+(s.error||'Arduino CLI no detectado'),'warn')}).catch(e=>{$('status').textContent='Servidor no disponible';log('❌ '+e.message,'bad')});
 document.querySelectorAll('.part').forEach(p=>p.addEventListener('dragstart',e=>e.dataTransfer.setData('type',p.dataset.type)));
 ws.addEventListener('dragover',e=>e.preventDefault());ws.addEventListener('drop',e=>{e.preventDefault();const r=ws.getBoundingClientRect(),p=screenToWorld([e.clientX-r.left,e.clientY-r.top]);addComponent(e.dataTransfer.getData('type'),p[0],p[1])});
