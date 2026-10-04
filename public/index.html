@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V10.05</title>
+<title>Robótica Lab V10.06</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -1989,7 +1989,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .oledFlexV1000{position:absolute;left:82px;bottom:3px;width:58px;height:15px;background:linear-gradient(90deg,#9a6525,#cf9447,#8e591e);border-radius:1px;box-shadow:0 -2px #000}
 
 
-/* V10.05 · physical-scale refinement */
+/* V10.06 · physical-scale refinement */
 .component[data-type="oled1306"]{
  width:172px!important;
  height:141px!important;
@@ -2002,7 +2002,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
  transform-origin:0 0!important;
 }
 
-/* V10.05 · Soil sensor, NPN transistor, lamp and solar panel */
+/* V10.06 · Soil sensor, NPN transistor, lamp and solar panel */
 .soilThumbV1004,.npnThumbV1004,.lampThumbV1004,.solarThumbV1004{position:relative;width:58px;height:50px;display:block}
 .soilThumbV1004:before{content:"";position:absolute;left:16px;top:1px;width:28px;height:21px;background:#e52e24;border-radius:2px;box-shadow:inset 0 0 0 1px #b31e18}
 .soilThumbV1004:after{content:"";position:absolute;left:21px;top:21px;width:7px;height:27px;border:2px solid #bbb;border-top:0;box-shadow:14px 0 0 -2px #ddd,14px 0 0 0 #bbb}
@@ -2080,7 +2080,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .solarV1004>.pos{left:146px!important}.solarV1004>.neg{left:121px!important}
 .solarV1004>.terminal:hover,.solarV1004>.terminal.sel{opacity:1!important;background:#ff1515!important;border-radius:2px!important;box-shadow:0 0 0 1px #fff,0 0 0 2px #222!important}
 
-/* V10.05 · Wokwi Relay Module
+/* V10.06 · Wokwi Relay Module
    Artwork adapted from wokwi/wokwi-docs (MIT License, Copyright CodeMagic LTD). */
 .relayThumbV1005{position:relative!important;width:62px!important;height:34px!important;background:#d40000!important;border-radius:1px!important;box-shadow:inset 0 0 0 1px #a30000}
 .relayThumbV1005:before{content:"";position:absolute;left:29px;top:7px;width:24px;height:20px;background:#1989ff;box-shadow:12px 0 0 -6px #1989ff}
@@ -2102,9 +2102,121 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .relayControl{display:none;position:absolute;left:28px;top:99px;width:155px;padding:5px 7px;border-radius:6px;background:#fff;border:1px solid #a9b3ba;box-shadow:0 3px 8px #0002;font:10px Arial;z-index:70}
 .component[data-type="relay"].selected .relayControl{display:flex;align-items:center;gap:6px}
 .relayControl select{min-width:82px;font-size:10px}
-</style><!-- deploy-marker: V10.05 · 2026-10-03 -->
+
+/* V10.06 · exact approved artwork for Soil / NPN / Lamp / Solar */
+.approvedSpriteV1006{
+ position:relative!important;
+ background-image:url('/assets/v1006-components.webp')!important;
+ background-repeat:no-repeat!important;
+ overflow:visible!important;
+ image-rendering:auto!important;
+}
+
+/* NPN: exact approved crop, scaled only to simulator physical size */
+.component[data-type="npn"]{width:65px!important;height:190px!important}
+.npnApprovedV1006{
+ width:90px!important;height:263px!important;
+ background-position:0 -105px!important;
+ transform:scale(.72)!important;transform-origin:0 0!important
+}
+.npnApprovedV1006>.terminal{
+ position:absolute!important;top:226px!important;width:17px!important;height:17px!important;
+ opacity:.01!important;background:transparent!important;border:0!important;border-radius:2px!important;
+ transform:translate(-50%,-50%)!important;z-index:80!important;cursor:crosshair!important
+}
+.npnApprovedV1006>.c{left:23px!important}.npnApprovedV1006>.b{left:48px!important}.npnApprovedV1006>.e{left:75px!important}
+
+/* Lamp: exact approved crop + functional glow without changing the base artwork */
+.component[data-type="lamp"]{width:76px!important;height:193px!important}
+.lampApprovedV1006{
+ width:105px!important;height:268px!important;
+ background-position:-95px -90px!important;
+ transform:scale(.72)!important;transform-origin:0 0!important
+}
+.lampApprovedV1006>.terminal{
+ position:absolute!important;top:226px!important;width:17px!important;height:17px!important;
+ opacity:.01!important;background:transparent!important;border:0!important;border-radius:2px!important;
+ transform:translate(-50%,-50%)!important;z-index:80!important;cursor:crosshair!important
+}
+.lampApprovedV1006>.t1{left:42px!important}.lampApprovedV1006>.t2{left:74px!important}
+.lampGlowV1006{
+ position:absolute;left:19px;top:18px;width:68px;height:92px;border-radius:50%;
+ opacity:0;pointer-events:none;z-index:-1;
+ box-shadow:0 0 24px 12px rgba(255,211,78,.85),0 0 52px 22px rgba(255,197,56,.42)
+}
+.component[data-type="lamp"].on .lampGlowV1006{opacity:var(--lamp-br,.8)}
+.lampApprovedV1006 .lampValue{
+ position:absolute!important;left:26px!important;top:238px!important;width:55px!important;
+ padding:1px 2px!important;background:rgba(247,247,247,.94)!important;color:#1f2c33!important;
+ text-align:center!important;font:700 10px Arial!important;z-index:45!important;pointer-events:none!important
+}
+
+/* Solar: exact approved crop, with functional lead hotspots */
+.component[data-type="solar"]{width:195px!important;height:263px!important}
+.solarApprovedV1006{
+ width:250px!important;height:336px!important;
+ background-position:-205px -28px!important;
+ transform:scale(.78)!important;transform-origin:0 0!important
+}
+.solarApprovedV1006>.terminal{
+ position:absolute!important;top:31px!important;width:18px!important;height:18px!important;
+ opacity:.01!important;background:transparent!important;border:0!important;border-radius:2px!important;
+ transform:translate(-50%,-50%)!important;z-index:80!important;cursor:crosshair!important
+}
+.solarApprovedV1006>.neg{left:116px!important}.solarApprovedV1006>.pos{left:137px!important}
+.solarControlV1006{
+ display:none;position:absolute;left:40px;top:322px;width:180px;padding:6px 8px;
+ border-radius:8px;background:#fff;border:1px solid #a9b3ba;box-shadow:0 4px 10px #0002;
+ font:11px Arial;z-index:90;grid-template-columns:26px 1fr 33px 43px;gap:5px;align-items:center
+}
+.component[data-type="solar"].selected .solarControlV1006{display:grid}
+.solarControlV1006 input{width:100%}.solarControlV1006 output{font-weight:700}.solarControlV1006 .solarReadout{position:static!important;font-weight:700;color:#27343b}
+
+/* Soil moisture: exact approved crop. Keep the approved pill untouched; control appears only while selected. */
+.component[data-type="soil"]{width:119px!important;height:254px!important}
+.soilApprovedV1006{
+ width:165px!important;height:352px!important;
+ background-position:-470px -18px!important;
+ transform:scale(.72)!important;transform-origin:0 0!important
+}
+.soilApprovedV1006>.terminal{
+ position:absolute!important;top:38px!important;width:17px!important;height:17px!important;
+ opacity:.01!important;background:transparent!important;border:0!important;border-radius:2px!important;
+ transform:translate(-50%,-50%)!important;z-index:85!important;cursor:crosshair!important
+}
+.soilApprovedV1006>.vcc{left:70px!important}.soilApprovedV1006>.gnd{left:89px!important}.soilApprovedV1006>.sig{left:108px!important}
+.soilControlV1006{
+ display:none;position:absolute;left:4px;top:348px;width:157px;padding:6px 8px;
+ border-radius:10px;background:#fff;border:1px solid #a9b3ba;box-shadow:0 4px 10px #0002;
+ font:11px Arial;z-index:90;grid-template-columns:48px 1fr 34px;gap:5px;align-items:center
+}
+.component[data-type="soil"].selected .soilControlV1006{display:grid}
+.soilControlV1006 input{width:100%}.soilControlV1006 output{font-weight:700;text-align:right}
+.soilApprovedV1006 .soilReadout{display:none!important}
+
+/* Shared connection feedback: red only on hover/selection, same language as the rest of Robótica Lab */
+.npnApprovedV1006>.terminal:hover,.npnApprovedV1006>.terminal.sel,
+.lampApprovedV1006>.terminal:hover,.lampApprovedV1006>.terminal.sel,
+.solarApprovedV1006>.terminal:hover,.solarApprovedV1006>.terminal.sel,
+.soilApprovedV1006>.terminal:hover,.soilApprovedV1006>.terminal.sel{
+ opacity:1!important;background:#ff1515!important;border-radius:2px!important;
+ box-shadow:0 0 0 1px #fff,0 0 0 2px #222,0 0 8px #ff151588!important
+}
+
+/* Palette previews now use the same approved artwork */
+.soilThumbV1004,.npnThumbV1004,.lampThumbV1004,.solarThumbV1004{
+ background-image:url('/assets/v1006-components.webp')!important;background-repeat:no-repeat!important;
+ box-shadow:none!important;border:0!important
+}
+.npnThumbV1004{width:38px!important;height:48px!important;background-size:270px 165px!important;background-position:0 -44px!important}
+.lampThumbV1004{width:40px!important;height:48px!important;background-size:244px 149px!important;background-position:-36px -34px!important}
+.solarThumbV1004{width:58px!important;height:49px!important;background-size:149px 91px!important;background-position:-48px -7px!important}
+.soilThumbV1004{width:44px!important;height:50px!important;background-size:194px 118px!important;background-position:-142px -5px!important}
+.soilThumbV1004:before,.soilThumbV1004:after,.npnThumbV1004:before,.npnThumbV1004:after,
+.lampThumbV1004:before,.lampThumbV1004:after,.solarThumbV1004:before,.solarThumbV1004:after{display:none!important}
+</style><!-- deploy-marker: V10.06 · 2026-10-03 -->
 </head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V10.05</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V10.06</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -2173,7 +2285,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V10.05 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V10.06 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,wireDraftPoints=[],wirePointer=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[],dragWirePoint=null;
@@ -2832,10 +2944,10 @@ function addComponent(type,x,y){
   <span class="terminal mq96Gnd" data-port="GND" title="GND"></span>
   <span class="terminal mq96Vcc" data-port="VCC" title="VCC"></span>
 </div>`}
- else if(type==='soil'){el.dataset.moisture='50';el.dataset.powered='0';el.dataset.signal='0';el.innerHTML='<div class="soilV1004"><div class="soilBoard"><i class="soilHole h1"></i><i class="soilHole h2"></i><div class="soilTitle">Soil Moisture Sensor</div><div class="soilLogo">●</div><div class="soilLabels"><span>VCC</span><span>GND</span><span>SIG</span></div><i class="soilHeader p1"></i><i class="soilHeader p2"></i><i class="soilHeader p3"></i><div class="soilReadout">50%</div></div><div class="soilFork left"><i></i><b></b></div><div class="soilFork right"><i></i><b></b></div><label class="soilControl instrumentControl">Humedad <input data-inst="soilMoisture" type="range" min="0" max="100" value="50"><output data-soil-out>50%</output></label><span class="terminal vcc" data-port="VCC" title="VCC"></span><span class="terminal gnd" data-port="GND" title="GND"></span><span class="terminal sig" data-port="SIG" title="Salida analógica"></span></div>'}
- else if(type==='npn'){el.dataset.on='0';el.innerHTML='<div class="npnV1004"><div class="npnBody"><span>N</span><i class="npnShine"></i></div><i class="npnLeg c"></i><i class="npnLeg b"></i><i class="npnLeg e"></i><div class="npnLabels"><span>C</span><span>B</span><span>E</span></div><span class="terminal c" data-port="C" title="Colector (C)"></span><span class="terminal b" data-port="B" title="Base (B)"></span><span class="terminal e" data-port="E" title="Emisor (E)"></span></div>'}
- else if(type==='lamp'){el.dataset.voltage='0';el.innerHTML='<div class="lampV1004"><div class="lampGlass"><i class="lampGlow"></i><i class="lampFilament"></i></div><div class="lampBase"><i></i><i></i></div><i class="lampLeg l1"></i><i class="lampLeg l2"></i><span class="lampValue">0.0 V</span><span class="terminal t1" data-port="1" title="Terminal 1"></span><span class="terminal t2" data-port="2" title="Terminal 2"></span></div>'}
- else if(type==='solar'){el.dataset.light='75';el.dataset.maxVoltage='6';el.dataset.vout='0';el.innerHTML='<div class="solarV1004"><div class="solarLead black"></div><div class="solarLead red"></div><div class="solarPanel"><div class="solarCells">'+Array.from({length:32},()=>'<i></i>').join('')+'</div></div><span class="solarPolarity plus">+</span><span class="solarPolarity minus">−</span><span class="solarReadout">— V</span><label class="solarControl instrumentControl">Luz <input data-inst="solarLight" type="range" min="0" max="100" value="75"><output data-solar-out>75%</output></label><span class="terminal pos" data-port="+" title="Positivo (+)"></span><span class="terminal neg" data-port="-" title="Negativo (-)"></span></div>'}
+ else if(type==='soil'){el.dataset.moisture='50';el.dataset.powered='0';el.dataset.signal='0';el.innerHTML='<div class="approvedSpriteV1006 soilApprovedV1006"><span class="terminal vcc" data-port="VCC" title="VCC"></span><span class="terminal gnd" data-port="GND" title="GND"></span><span class="terminal sig" data-port="SIG" title="Salida analógica"></span><label class="soilControlV1006 instrumentControl">Humedad <input data-inst="soilMoisture" type="range" min="0" max="100" value="50"><output data-soil-out>50%</output></label><span class="soilReadout">50%</span></div>'}
+ else if(type==='npn'){el.dataset.on='0';el.innerHTML='<div class="approvedSpriteV1006 npnApprovedV1006"><span class="terminal c" data-port="C" title="Colector (C)"></span><span class="terminal b" data-port="B" title="Base (B)"></span><span class="terminal e" data-port="E" title="Emisor (E)"></span></div>'}
+ else if(type==='lamp'){el.dataset.voltage='0';el.innerHTML='<div class="approvedSpriteV1006 lampApprovedV1006"><i class="lampGlowV1006"></i><span class="lampValue">0.0 V</span><span class="terminal t1" data-port="1" title="Terminal 1"></span><span class="terminal t2" data-port="2" title="Terminal 2"></span></div>'}
+ else if(type==='solar'){el.dataset.light='75';el.dataset.maxVoltage='6';el.dataset.vout='0';el.innerHTML='<div class="approvedSpriteV1006 solarApprovedV1006"><span class="terminal pos" data-port="+" title="Positivo (+)"></span><span class="terminal neg" data-port="-" title="Negativo (-)"></span><label class="solarControlV1006 instrumentControl">Luz <input data-inst="solarLight" type="range" min="0" max="100" value="75"><output data-solar-out>75%</output><span class="solarReadout">— V</span></label></div>'}
  else if(type==='relay'){el.dataset.powered='0';el.dataset.active='0';el.dataset.transistor='npn';el.innerHTML=`<div class="relayWokwiV1005">
   <!-- Wokwi Relay Module artwork adapted from wokwi-docs, MIT License, CodeMagic LTD -->
   <svg class="relayWokwiSvg" viewBox="0 0 33.867 15.409" aria-label="Wokwi Relay Module">
@@ -3173,7 +3285,7 @@ function makeBoard(el,type){
      if(!(/^(D\d+|A\d+|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(logical)))return;
      const p=svg.createSVGPoint();
      if(type==='uno'){
-       /* V10.05 · use the exact female-header centers from Wokwi's Uno SVG.
+       /* V10.06 · use the exact female-header centers from Wokwi's Uno SVG.
           The previous conversion used pinInfo x metadata whose 9.5-unit spacing
           is slightly smaller than the real 2.54 mm header pitch, causing a
           cumulative horizontal drift that was most visible on A0-A5. */
