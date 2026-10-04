@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V9.99</title>
+<title>Robótica Lab V10.00</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -1934,9 +1934,64 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .diodeV999 .a{left:4px!important}.diodeV999 .k{left:134px!important}
 .partThumbDiode:before{left:3px!important;right:3px!important;top:23px!important;height:2px!important;background:#777!important}
 .partThumbDiode:after{left:15px!important;top:13px!important;width:34px!important;height:20px!important;border-radius:5px!important;background:linear-gradient(180deg,#4a4e50,#171a1c 48%,#090b0c 70%,#282c2e)!important;box-shadow:inset -7px 0 0 #d9d9d7,inset 0 2px 2px #fff2!important}
-</style><!-- deploy-marker: V9.99 · 2026-10-03 -->
+
+/* V10.00 · Wokwi RGB LED + 4-pin SSD1306 OLED */
+.partThumbRgb{background:transparent!important}
+.partThumbRgb:before,.partThumbRgb:after{display:none!important}
+.partThumbRgb{
+ width:54px!important;height:52px!important;
+ background:
+  radial-gradient(ellipse at 50% 28%,rgba(255,255,255,.95) 0 12%,rgba(220,225,228,.75) 13% 28%,rgba(180,185,188,.28) 29% 38%,transparent 39%),
+  linear-gradient(90deg,transparent 0 25%,#929292 25% 28%,transparent 28% 40%,#929292 40% 43%,transparent 43% 55%,#929292 55% 58%,transparent 58% 70%,#929292 70% 73%,transparent 73%)!important;
+ background-size:54px 34px,54px 42px!important;background-position:0 0,0 12px!important;background-repeat:no-repeat!important
+}
+.oledThumbV1000{width:62px!important;height:48px!important;position:relative!important;background:#0f4d7c!important;border-radius:1px!important;box-shadow:inset 0 0 0 1px #083657}
+.oledThumbV1000:before{content:"";position:absolute;left:6px;right:6px;top:14px;height:27px;background:#050708;border:2px solid #292929;box-shadow:inset 0 0 0 1px #111}
+.oledThumbV1000:after{content:"";position:absolute;left:22px;top:4px;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:9px 0 #fff,18px 0 #fff,27px 0 #fff}
+
+.component[data-type="rgbled"]{width:84px!important;height:146px!important}
+.rgbWokwiV1000{position:relative;width:84px;height:146px;overflow:visible}
+.rgbWokwiV1000>wokwi-rgb-led{
+ display:block!important;position:absolute!important;left:4px!important;top:2px!important;
+ width:42.129px!important;height:72.582px!important;transform:scale(1.8)!important;transform-origin:0 0!important;pointer-events:none!important
+}
+.rgbWokwiV1000 .terminal{
+ position:absolute!important;width:14px!important;height:14px!important;opacity:.01!important;background:transparent!important;border:0!important;border-radius:1px!important;
+ transform:translate(-50%,-50%)!important;z-index:30!important
+}
+.rgbWokwiV1000 .terminal:hover,.rgbWokwiV1000 .terminal.sel{opacity:1!important;background:#ff1515!important;border-radius:2px!important;box-shadow:0 0 0 1px #fff,0 0 0 2px #222!important}
+.rgbWokwiV1000 .tr{left:19.3px!important;top:81.2px!important}
+.rgbWokwiV1000 .tc{left:36.4px!important;top:99.2px!important}
+.rgbWokwiV1000 .tg{left:51.5px!important;top:81.2px!important}
+.rgbWokwiV1000 .tb{left:68.3px!important;top:81.2px!important}
+.rgbWokwiLabels{position:absolute;left:5px;right:3px;bottom:2px;display:grid;grid-template-columns:repeat(4,1fr);font:700 9px Arial;color:#41515c;text-align:center}
+
+.component[data-type="oled1306"]{width:232px!important;height:190px!important}
+.oledV1000{position:relative;width:232px;height:190px;overflow:visible}
+.oledBoardV1000{
+ position:absolute;left:5px;top:7px;width:222px;height:181px;background:#0f4d7c;
+ border:1px solid #0a3858;box-shadow:0 4px 9px #0003,inset 0 0 0 1px #1b679c;
+ clip-path:polygon(0 0,100% 0,100% 100%,79% 100%,77% 96%,23% 96%,21% 100%,0 100%)
+}
+.oledScreenV1000{position:absolute;left:12px;top:42px;width:198px;height:100px;background:#000;border:3px solid #17191b;box-shadow:inset 0 0 0 1px #343434}
+.oledCanvasV1000{display:block;width:192px;height:96px;background:#050708;image-rendering:pixelated;image-rendering:crisp-edges}
+.oledV1000.active .oledScreenV1000{box-shadow:0 0 9px #4cc6ff55,inset 0 0 0 1px #343434}
+.oledV1000.powerOnly .oledScreenV1000{box-shadow:0 0 5px #2d7aa733,inset 0 0 0 1px #343434}
+.oledMount{position:absolute;width:19px;height:19px;border-radius:50%;background:#fff;border:2px solid #c8ceda;box-shadow:inset 0 0 0 1px #eee}
+.oledMount.tl{left:7px;top:7px}.oledMount.trh{right:7px;top:7px}.oledMount.bl{left:7px;bottom:7px}.oledMount.br{right:7px;bottom:7px}
+.oledPad{position:absolute;top:8px;width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid #ecc98a;box-shadow:inset 0 0 0 1px #b07b28}
+.oledPad.pG{left:76px}.oledPad.pV{left:96px}.oledPad.pC{left:116px}.oledPad.pD{left:136px}
+.oledHeaderLabels{position:absolute;left:71px;top:23px;width:84px;display:grid;grid-template-columns:repeat(4,20px);gap:0;color:#fff;font:700 7px Arial;text-align:center;letter-spacing:-.2px}
+.oledFlexV1000{position:absolute;left:82px;bottom:3px;width:58px;height:15px;background:linear-gradient(90deg,#9a6525,#cf9447,#8e591e);border-radius:1px;box-shadow:0 -2px #000}
+.oledV1000>.terminal{
+ position:absolute!important;width:14px!important;height:14px!important;top:21.5px!important;opacity:.01!important;background:transparent!important;border:0!important;border-radius:1px!important;
+ transform:translate(-50%,-50%)!important;z-index:40!important
+}
+.oledV1000>.terminal:hover,.oledV1000>.terminal.sel{opacity:1!important;background:#ff1515!important;border-radius:2px!important;box-shadow:0 0 0 1px #fff,0 0 0 2px #222!important}
+.oledV1000>.gnd{left:87.5px!important}.oledV1000>.vcc{left:107.5px!important}.oledV1000>.scl{left:127.5px!important}.oledV1000>.sda{left:147.5px!important}
+</style><!-- deploy-marker: V10.00 · 2026-10-03 -->
 </head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.99</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V10.00</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -1957,7 +2012,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 <div class="part" draggable="true" data-type="ttmotor"><span class="thumb actuatorThumb ttThumb">⚙</span><small>Motorreductor TT</small></div>
 <div class="part" draggable="true" data-type="mq2"><span class="thumb sensorThumb mq2"></span><small>MQ2 Gas Sensor</small></div>
 <div class="part" draggable="true" data-type="potentiometer"><span class="thumb partThumbPot"></span><small>Potenciómetro</small></div>
-<div class="part" draggable="true" data-type="rgbled"><span class="thumb partThumbRgb"></span><small>LED RGB</small></div>
+<div class="part" draggable="true" data-type="rgbled"><span class="thumb partThumbRgb"></span><small>LED RGB</small></div><div class="part" draggable="true" data-type="oled1306"><span class="thumb oledThumbV1000"></span><small>OLED SSD1306 128×64</small></div>
 <div class="part" draggable="true" data-type="diode"><span class="thumb partThumbDiode"></span><small>Diodo 1N4007</small></div>
 <div class="part" draggable="true" data-type="dht22"><span class="thumb sensorThumb dht"></span><small>DHT22</small></div>
 <div class="part" draggable="true" data-type="mpu6050"><span class="thumb sensorThumb imu"></span><small>MPU6050 Accelerometer + Gyroscope</small></div>
@@ -2000,7 +2055,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.99 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V10.00 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,wireDraftPoints=[],wirePointer=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[],dragWirePoint=null;
@@ -2049,7 +2104,7 @@ function allVoltageSources(){
  const out=[],now=performance.now();
  document.querySelectorAll('.component[data-type="uno"],.component[data-type="nano"],.component[data-type="esp32"],.component[data-type="pico"],.component[data-type="microbit"]').forEach(board=>{
    const type=board.dataset.type;
-   if(type==='uno'||type==='nano'){out.push([board,'5V',5],[board,'3.3V',3.3]);if(window.avrPinStates)for(let p=0;p<=13;p++)if(window.avrPinStates[p])out.push([board,'D'+p,5])}
+   if(type==='uno'||type==='nano'){out.push([board,'5V',5],[board,'3.3V',3.3]);for(let p=0;p<=13;p++){const pwm=window.avrPwmStates&&window.avrPwmStates[p];if(Number.isFinite(pwm))out.push([board,'D'+p,5*Math.max(0,Math.min(255,pwm))/255]);else if(window.avrPinStates&&window.avrPinStates[p])out.push([board,'D'+p,5])}}
    else if(type==='esp32'){out.push([board,'5V',5],[board,'3V3',3.3]);ESP32_OUTPUT_PINS?.forEach?.(p=>{if(esp32Runtime?.states?.[p])out.push([board,'D'+p,3.3])})}
    else if(type==='pico'){out.push([board,'VBUS',5],[board,'3V3',3.3]);PICO_OUTPUT_PINS?.forEach?.(p=>{if(picoRuntime?.states?.[p])out.push([board,'D'+p,3.3])})}
    else if(type==='microbit'){out.push([board,'3V',3]);MICROBIT_OUTPUT_PINS?.forEach?.(p=>{if(microbitRuntime?.states?.[p])out.push([board,'D'+p,3])})}
@@ -2303,23 +2358,150 @@ function updateCapacitors(){
    el.dataset.vcap=String(v);updateCapacitorLabel(el);
  });
 }
-function ensureInstrumentTicker(){if(instrumentTicker)return;instrumentTicker=setInterval(()=>{if(!simRunning)return;updateCapacitors();if(document.querySelector('.component[data-type="signalgen"][data-enabled="1"]'))refreshCircuitPower();else updateMultimeters()},80)}
+
+let oledParseCache={code:'',ops:[],vars:{},objects:new Set()};
+function oledSketchDetected(code){return /Adafruit_SSD1306|SSD1306_128|SSD1306_SWITCHCAPVCC|\.clearDisplay\s*\(|\.display\s*\(/.test(String(code||''))}
+function parseOledSketch(code){
+ code=String(code||'');
+ if(oledParseCache.code===code)return oledParseCache;
+ const objects=new Set(['display','oled']);
+ for(const m of code.matchAll(/\bAdafruit_SSD1306\s+([A-Za-z_]\w*)/g))objects.add(m[1]);
+ const vars={};
+ for(const m of code.matchAll(/\b(?:const\s+)?(?:int|long|float|double|String|uint\d+_t)\s+([A-Za-z_]\w*)\s*=\s*([^;]+);/g))vars[m[1]]=m[2].trim();
+ for(const m of code.matchAll(/\b([A-Za-z_]\w*)\s*=\s*(analogRead\s*\([^;]+\)|[-+]?\d+(?:\.\d+)?|"[^"]*"|'[^']*')\s*;/g))vars[m[1]]=m[2].trim();
+ const ops=[];
+ const re=/\b([A-Za-z_]\w*)\s*\.\s*(clearDisplay|clearBuffer|setCursor|setTextSize|print|println|drawPixel|drawLine|drawRect|fillRect|drawStr|display|sendBuffer)\s*\(([^;]*)\)\s*;/g;
+ let m;
+ while((m=re.exec(code))){
+  if(!objects.has(m[1])||m[1]==='Serial')continue;
+  ops.push({obj:m[1],method:m[2],args:m[3]});
+ }
+ oledParseCache={code,ops,vars,objects};return oledParseCache;
+}
+function splitOledArgs(src){
+ const out=[];let cur='',quote='',depth=0;
+ for(const ch of String(src||'')){
+  if(quote){cur+=ch;if(ch===quote)quote='';continue}
+  if(ch==='"'||ch==="'"){quote=ch;cur+=ch;continue}
+  if(ch==='(')depth++;if(ch===')')depth=Math.max(0,depth-1);
+  if(ch===','&&depth===0){out.push(cur.trim());cur='';continue}cur+=ch;
+ }
+ if(cur.trim()||src==='')out.push(cur.trim());return out;
+}
+function oledBoardConnection(el){
+ const presets={uno:['A5','A4'],nano:['A5','A4'],esp32:['D22','D21'],pico:['D5','D4'],microbit:['D19','D20']};
+ for(const board of document.querySelectorAll('.component[data-type="uno"],.component[data-type="nano"],.component[data-type="esp32"],.component[data-type="pico"],.component[data-type="microbit"]')){
+  const p=presets[board.dataset.type];if(!p)continue;
+  if(circuitConnected(circuitKey(el,'SCL'),circuitKey(board,p[0]))&&circuitConnected(circuitKey(el,'SDA'),circuitKey(board,p[1])))return board;
+ }
+ return null;
+}
+function oledPowerState(el){
+ let vcc=0;
+ for(const [r,p,v] of allVoltageSources())if(circuitConnected(circuitKey(el,'VCC'),circuitKey(r,p)))vcc=Math.max(vcc,Number(v)||0);
+ const grounded=allGroundReferences().some(([r,p])=>circuitConnected(circuitKey(el,'GND'),circuitKey(r,p)));
+ return{vcc,grounded,on:grounded&&vcc>=2.5};
+}
+function oledExprValue(expr,board,vars,depth=0){
+ if(depth>4)return String(expr||'');
+ expr=String(expr||'').trim();
+ const fw=expr.match(/^F\s*\(\s*(".*")\s*\)$/);if(fw)expr=fw[1];
+ if((expr.startsWith('"')&&expr.endsWith('"'))||(expr.startsWith("'")&&expr.endsWith("'"))){
+  try{return JSON.parse(expr.startsWith("'")?'"'+expr.slice(1,-1).replace(/"/g,'\\\"')+'"':expr)}catch(_){return expr.slice(1,-1)}
+ }
+ if(/^[-+]?\d+(?:\.\d+)?$/.test(expr))return expr;
+ const ar=expr.match(/^analogRead\s*\(\s*(A?\d+)\s*\)$/i);
+ if(ar&&board){
+  let port=ar[1].toUpperCase();
+  if(!port.startsWith('A'))port=board.dataset.type==='uno'||board.dataset.type==='nano'?'A'+port:'D'+port;
+  const v=measuredNodeVoltage(circuitKey(board,port));
+  const maxV=(board.dataset.type==='esp32'||board.dataset.type==='pico'||board.dataset.type==='microbit')?3.3:5;
+  const maxAdc=board.dataset.type==='esp32'?4095:1023;
+  return String(Math.round(Math.max(0,Math.min(maxAdc,(Number(v)||0)/maxV*maxAdc))));
+ }
+ if(vars&&vars[expr]!==undefined)return oledExprValue(vars[expr],board,vars,depth+1);
+ const millis=expr.match(/^millis\s*\(\s*\)$/);if(millis)return String(Math.floor(performance.now()));
+ return expr==='true'?'1':expr==='false'?'0':expr;
+}
+function clearOledCanvas(el){
+ const cv=el.querySelector('.oledCanvasV1000');if(!cv)return;
+ const ctx=cv.getContext('2d');ctx.fillStyle='#050708';ctx.fillRect(0,0,128,64);
+}
+function renderOledCanvas(el,board){
+ const cv=el.querySelector('.oledCanvasV1000');if(!cv)return;
+ const ctx=cv.getContext('2d'),parsed=parseOledSketch(normalizedSketch());
+ ctx.imageSmoothingEnabled=false;ctx.fillStyle='#050708';ctx.fillRect(0,0,128,64);
+ let x=0,y=8,size=1,hasDraw=false;
+ const lineHeight=()=>Math.max(8,8*size),font=()=>{ctx.font=(8*size)+'px monospace';ctx.textBaseline='alphabetic';ctx.fillStyle='#dff7ff'};
+ const num=(v,d=0)=>{const n=Number(oledExprValue(v,board,parsed.vars));return Number.isFinite(n)?n:d};
+ font();
+ for(const op of parsed.ops){
+  const a=splitOledArgs(op.args),m=op.method;
+  if(m==='clearDisplay'||m==='clearBuffer'){ctx.fillStyle='#050708';ctx.fillRect(0,0,128,64);font();x=0;y=8;continue}
+  if(m==='setCursor'){x=num(a[0],0);y=num(a[1],0)+8*size;continue}
+  if(m==='setTextSize'){size=Math.max(1,Math.min(4,num(a[0],1)));font();continue}
+  if(m==='print'||m==='println'){
+   const val=oledExprValue(a[0]||'',board,parsed.vars);font();ctx.fillText(String(val),x,y);hasDraw=true;
+   if(m==='println'){x=0;y+=lineHeight()}else x+=ctx.measureText(String(val)).width;
+   continue
+  }
+  if(m==='drawPixel'){ctx.fillStyle='#dff7ff';ctx.fillRect(num(a[0]),num(a[1]),1,1);hasDraw=true;continue}
+  if(m==='drawLine'){ctx.strokeStyle='#dff7ff';ctx.beginPath();ctx.moveTo(num(a[0]),num(a[1]));ctx.lineTo(num(a[2]),num(a[3]));ctx.stroke();hasDraw=true;continue}
+  if(m==='drawRect'){ctx.strokeStyle='#dff7ff';ctx.strokeRect(num(a[0]),num(a[1]),num(a[2]),num(a[3]));hasDraw=true;continue}
+  if(m==='fillRect'){ctx.fillStyle='#dff7ff';ctx.fillRect(num(a[0]),num(a[1]),num(a[2]),num(a[3]));hasDraw=true;continue}
+  if(m==='drawStr'){font();ctx.fillText(String(oledExprValue(a[2]||'',board,parsed.vars)),num(a[0]),num(a[1]));hasDraw=true;continue}
+ }
+ el.dataset.frame=hasDraw?'1':'0';
+}
+function refreshOledDisplays(){
+ document.querySelectorAll('.component[data-type="oled1306"]').forEach(el=>{
+  const p=oledPowerState(el),board=oledBoardConnection(el),ok=simRunning&&p.on&&!!board;
+  el.dataset.powered=p.on?'1':'0';el.dataset.i2c=board?'1':'0';
+  const box=el.querySelector('.oledV1000');box?.classList.toggle('active',ok);box?.classList.toggle('powerOnly',simRunning&&p.on&&!board);
+  if(ok)renderOledCanvas(el,board);else clearOledCanvas(el);
+ });
+}
+let arduinoOledRuntime={running:false,timers:[]};
+function stopArduinoOledRuntime(){arduinoOledRuntime.running=false;arduinoOledRuntime.timers.forEach(clearTimeout);arduinoOledRuntime.timers=[];window.avrPinStates={};window.avrPwmStates={}}
+function startArduinoOledRuntime(code){
+ stopArduinoOledRuntime();arduinoOledRuntime.running=true;window.avrPinStates={};window.avrPwmStates={};
+ const defs={LED_BUILTIN:13};for(const m of code.matchAll(/(?:#define\s+([A-Za-z_]\w*)\s+(\d+)|(?:const\s+)?int\s+([A-Za-z_]\w*)\s*=\s*(\d+)\s*;)/g))defs[m[1]||m[3]]=Number(m[2]||m[4]);
+ const resolve=v=>/^\d+$/.test(v.trim())?Number(v.trim()):(defs[v.trim()]??NaN);
+ const loop=(code.match(/void\s+loop\s*\(\s*\)\s*\{([\s\S]*)\}\s*$/)||[])[1]||'';
+ const actions=[],re=/(digitalWrite\s*\(\s*([^,]+)\s*,\s*(HIGH|LOW)\s*\)|analogWrite\s*\(\s*([^,]+)\s*,\s*(\d+)\s*\)|delay\s*\(\s*(\d+)\s*\))/g;let m;
+ while((m=re.exec(loop))){
+  if(m[2]){const p=resolve(m[2]);if(Number.isFinite(p))actions.push({t:'write',p,v:m[3]==='HIGH'})}
+  else if(m[4]){const p=resolve(m[4]);if(Number.isFinite(p))actions.push({t:'pwm',p,v:Math.max(0,Math.min(255,Number(m[5])||0))})}
+  else actions.push({t:'delay',ms:Number(m[6])});
+ }
+ const apply=a=>{if(a.t==='write'){window.avrPinStates[a.p]=a.v;delete window.avrPwmStates[a.p];refreshCircuitPower()}else if(a.t==='pwm'){window.avrPwmStates[a.p]=a.v;window.avrPinStates[a.p]=a.v>0;refreshCircuitPower()}};
+ if(!actions.length){refreshCircuitPower();refreshOledDisplays();return}
+ let i=0;const step=()=>{if(!arduinoOledRuntime.running)return;const a=actions[i++%actions.length];if(a.t==='delay'){const id=setTimeout(step,Math.max(1,a.ms));arduinoOledRuntime.timers.push(id)}else{apply(a);setTimeout(step,0)}};step();
+}
+function ensureInstrumentTicker(){if(instrumentTicker)return;instrumentTicker=setInterval(()=>{if(!simRunning)return;updateCapacitors();refreshOledDisplays();if(document.querySelector('.component[data-type="signalgen"][data-enabled="1"]'))refreshCircuitPower();else updateMultimeters()},80)}
 ensureInstrumentTicker();
 function forceAllActuatorsOff(){
  document.querySelectorAll('.component[data-type="led"] wokwi-led').forEach(d=>{d.value=false;d.brightness=0});
  document.querySelectorAll('.esp32board .espLed,.picoboard .picoLed,.microbitBoard .mbPixel').forEach(b=>b.classList.remove('on'));
  document.querySelectorAll('.component[data-type="led"]').forEach(l=>l.dataset.voltage='0');
- document.querySelectorAll('.component[data-type="rgbled"]').forEach(l=>{l.dataset.r='0';l.dataset.g='0';l.dataset.b='0';const v=l.querySelector('.rgbV998');if(v){v.classList.remove('on');v.style.setProperty('--rr','0');v.style.setProperty('--gg','0');v.style.setProperty('--bb','0')}});
+ document.querySelectorAll('.component[data-type="rgbled"]').forEach(l=>{l.dataset.r='0';l.dataset.g='0';l.dataset.b='0';const v=l.querySelector('wokwi-rgb-led');if(v){v.ledRed=0;v.ledGreen=0;v.ledBlue=0}});document.querySelectorAll('.component[data-type="oled1306"]').forEach(o=>{o.dataset.powered='0';o.dataset.i2c='0';o.querySelector('.oledV1000')?.classList.remove('active','powerOnly');clearOledCanvas(o)});
  document.querySelectorAll('.component[data-type="potentiometer"]').forEach(p=>{p.dataset.powered='0';p.dataset.vout='0'});
  document.querySelectorAll('.component[data-type="mq2"]').forEach(m=>{m.dataset.powered='0';m.dataset.dout='0';m.dataset.aout='0';m.classList.remove('powered','detected')});
 document.querySelectorAll('.component[data-type="dcmotor"],.component[data-type="vibration"],.component[data-type="ttmotor"]').forEach(el=>{el.classList.remove('on');el.firstElementChild?.classList.remove('on')});document.querySelectorAll('.sevenAsset .seg,.sevenAsset .segdot').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.servoAssetHorn').forEach(x=>x.style.transform='rotate(0deg)');document.querySelectorAll('.motorAct,.vibrationAct,.ttAct').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.component[data-type="buzzer"],.component[data-type="dcmotor"],.component[data-type="ttmotor"]').forEach(x=>{x.classList.remove('on','reverse');const r=x.querySelector('.rpmLabel');if(r)r.textContent='0 RPM'});document.querySelectorAll('.sevenAct .seg').forEach(x=>x.classList.remove('on'))
 }
 function updateRgbLeds(sources,groundRefs){
  document.querySelectorAll('.component[data-type="rgbled"]').forEach(el=>{
-  const common=circuitKey(el,'C');const grounded=groundRefs.some(([gr,gp])=>circuitConnected(common,circuitKey(gr,gp)));
-  const channel=port=>{let v=0;for(const [r,p,x] of sources)if(circuitConnected(circuitKey(el,port),circuitKey(r,p)))v=Math.max(v,Number(x)||0);return grounded?Math.max(0,Math.min(255,Math.round(v/5*255))):0};
-  const r=channel('R'),g=channel('G'),b=channel('B'),box=el.querySelector('.rgbV998');el.dataset.r=String(r);el.dataset.g=String(g);el.dataset.b=String(b);
-  if(box){box.style.setProperty('--rr',String(r));box.style.setProperty('--gg',String(g));box.style.setProperty('--bb',String(b));box.style.setProperty('--ra',String(.18+r/310));box.style.setProperty('--ga',String(.18+g/310));box.style.setProperty('--ba',String(.18+b/310));box.classList.toggle('on',r+g+b>0)}
+  const common=circuitKey(el,'C');
+  const grounded=groundRefs.some(([gr,gp])=>circuitConnected(common,circuitKey(gr,gp)));
+  const channel=port=>{
+   let v=0;
+   for(const [r,p,x] of sources)if(circuitConnected(circuitKey(el,port),circuitKey(r,p)))v=Math.max(v,Number(x)||0);
+   return grounded?Math.max(0,Math.min(1,v/5)):0;
+  };
+  const r=channel('R'),g=channel('G'),b=channel('B');
+  el.dataset.r=String(Math.round(r*255));el.dataset.g=String(Math.round(g*255));el.dataset.b=String(Math.round(b*255));
+  const led=el.querySelector('wokwi-rgb-led');
+  if(led){led.ledRed=r;led.ledGreen=g;led.ledBlue=b}
  });
 }
 function refreshCircuitPower(){
@@ -2329,7 +2511,7 @@ function refreshCircuitPower(){
  boards.forEach(board=>{
    const type=board.dataset.type;
    if(type==='uno'||type==='nano'){
-     sources.push([board,'5V',5],[board,'3.3V',3.3]);
+     sources.push([board,'5V',5],[board,'3.3V',3.3]);for(let p=0;p<=13;p++){const pwm=window.avrPwmStates&&window.avrPwmStates[p];if(Number.isFinite(pwm))sources.push([board,'D'+p,5*Math.max(0,Math.min(255,pwm))/255]);}
    }else if(type==='esp32'){
      sources.push([board,'5V',5],[board,'3V3',3.3]);
      ESP32_OUTPUT_PINS.forEach(p=>{if(esp32Runtime.states[p])sources.push([board,'D'+p,3.3])});
@@ -2465,7 +2647,8 @@ function addComponent(type,x,y){
   <span class="terminal mq96Vcc" data-port="VCC" title="VCC"></span>
 </div>`}
  else if(type==='potentiometer'){el.dataset.value='50';el.dataset.powered='0';el.dataset.vout='0';el.style.setProperty('--pot-angle','0deg');el.innerHTML='<div class="potV998 potV999"><div class="potBase"></div><div class="potBody"><div class="potTicks"></div><div class="potInner"><div class="potKnob" title="Gira la perilla para cambiar el valor"><i class="potIndicator"></i></div></div></div><i class="potLeg l1"></i><i class="potLeg l2"></i><i class="potLeg l3"></i><span class="potLbl p1l">VCC</span><span class="potLbl p2l">OUT</span><span class="potLbl p3l">GND</span><label class="potCtl instrumentControl">Valor <input data-inst="potValue" type="range" min="0" max="100" value="50"><output data-pot-out>50%</output></label><span class="terminal p1" data-port="VCC" title="VCC"></span><span class="terminal pw" data-port="OUT" title="Wiper / salida"></span><span class="terminal p3" data-port="GND" title="GND"></span></div>'}
- else if(type==='rgbled'){el.dataset.r='0';el.dataset.g='0';el.dataset.b='0';el.innerHTML='<div class="rgbV998 rgbV999"><div class="rgbBulb"><i class="rgbHighlight"></i><i class="rgbDie dieR"></i><i class="rgbDie dieG"></i><i class="rgbDie dieB"></i><i class="rgbCommon"></i></div><div class="rgbCollar"></div><i class="rgbLeg r"></i><i class="rgbLeg c"></i><i class="rgbLeg g"></i><i class="rgbLeg b"></i><div class="rgbName"><span>R</span><span>C−</span><span>G</span><span>B</span></div><span class="terminal tr" data-port="R" title="Rojo"></span><span class="terminal tc" data-port="C" title="Común cátodo (-)"></span><span class="terminal tg" data-port="G" title="Verde"></span><span class="terminal tb" data-port="B" title="Azul"></span></div>'}
+ else if(type==='rgbled'){el.dataset.r='0';el.dataset.g='0';el.dataset.b='0';el.innerHTML='<div class="rgbWokwiV1000"><wokwi-rgb-led></wokwi-rgb-led><div class="rgbWokwiLabels"><span>R</span><span>C−</span><span>G</span><span>B</span></div><span class="terminal tr" data-port="R" title="Rojo"></span><span class="terminal tc" data-port="C" title="Común cátodo (-)"></span><span class="terminal tg" data-port="G" title="Verde"></span><span class="terminal tb" data-port="B" title="Azul"></span></div>'}
+ else if(type==='oled1306'){el.dataset.address='0x3c';el.dataset.powered='0';el.dataset.i2c='0';el.innerHTML='<div class="oledV1000"><div class="oledBoardV1000"><i class="oledMount tl"></i><i class="oledMount trh"></i><i class="oledMount bl"></i><i class="oledMount br"></i><div class="oledHeaderLabels"><span>GND</span><span>VCC</span><span>SCL</span><span>SDA</span></div><i class="oledPad pG"></i><i class="oledPad pV"></i><i class="oledPad pC"></i><i class="oledPad pD"></i><div class="oledScreenV1000"><canvas class="oledCanvasV1000" width="128" height="64"></canvas></div><div class="oledFlexV1000"></div></div><span class="terminal gnd" data-port="GND" title="GND"></span><span class="terminal vcc" data-port="VCC" title="VCC"></span><span class="terminal scl" data-port="SCL" title="I2C SCL"></span><span class="terminal sda" data-port="SDA" title="I2C SDA"></span></div>'}
  else if(type==='diode'){el.innerHTML='<div class="diodeV998 diodeV999"><div class="wire"></div><div class="body"><i class="diodeShine"></i><span class="diodeText">1N4007</span><i class="diodeBand"></i></div><span class="mark aLbl">A</span><span class="mark kLbl">K</span><span class="terminal a" data-port="A" title="Ánodo"></span><span class="terminal k" data-port="K" title="Cátodo · banda plateada"></span></div>'}
  else if(type==='dht22'){el.dataset.temperature='24';el.dataset.humidity='50';el.innerHTML='<div class="wokwiSensor dht22Asset"><wokwi-dht22></wokwi-dht22><span class="terminal" style="left:24px;top:184px" data-port="VCC" title="VCC"></span><span class="terminal" style="left:39.2px;top:184px" data-port="SDA" title="DATA"></span><span class="terminal" style="left:54.6px;top:184px" data-port="NC" title="NC"></span><span class="terminal" style="left:70.1px;top:184px" data-port="GND" title="GND"></span></div>'}
  else if(type==='mpu6050'){el.dataset.ax='0';el.dataset.ay='0';el.dataset.az='1';el.innerHTML='<div class="wokwiSensor mpu6050Asset"><wokwi-mpu6050></wokwi-mpu6050>'+[['INT',14.6],['AD0',33.8],['XCL',52.8],['XDA',72],['SDA',91.2],['SCL',110.4],['GND',129.6],['VCC',148.8]].map(p=>'<span class="terminal" style="left:'+p[1]+'px;top:11.6px" data-port="'+p[0]+'" title="'+p[0]+'"></span>').join('')+'</div>'}
@@ -3113,12 +3296,17 @@ async function startSimulation(){
    }catch(e){stopESP32Runtime();stopPicoRuntime();stopMicrobitRuntime();simRunning=false;log('❌ '+e.message,'bad');btn.textContent='▶ Iniciar simulación'}
    finally{btn.disabled=false}return;
  }
- const btn=$('topSim');btn.disabled=true;simRunning=true;refreshCircuitPower();updateMultimeters();btn.classList.add('running');btn.textContent='■ Detener simulación · preparando Arduino…';
+ const btn=$('topSim');btn.disabled=true;
+ const unoCode=normalizedSketch();
+ if(oledSketchDetected(unoCode)){
+   simRunning=true;startArduinoOledRuntime(unoCode);refreshCircuitPower();refreshOledDisplays();updateMultimeters();btn.classList.add('running');btn.textContent='■ Detener simulación';log('▶ Arduino iniciado en modo educativo OLED/I2C. GPIO, PWM y SSD1306 activos.','good');btn.disabled=false;return;
+ }
+ simRunning=true;refreshCircuitPower();updateMultimeters();btn.classList.add('running');btn.textContent='■ Detener simulación · preparando Arduino…';
  try{const hex=await compileFirmware();if(typeof window.startAVR!=='function')throw Error('AVR8js no pudo cargarse: '+(window.avrLoadError?.message||'módulo no disponible'));await window.startAVR(hex);refreshCircuitPower();btn.textContent='■ Detener simulación';log('▶ Simulación iniciada. Instrumentos activos y Arduino ejecutándose.','good')}
  catch(e){log('⚠ Los instrumentos quedaron activos, pero Arduino no pudo iniciar: '+e.message,'warn');btn.textContent='■ Detener simulación'}
  finally{btn.disabled=false}
 }
-function stopSimulation(){if(window.rlBuzzerOsc){try{window.rlBuzzerOsc.stop()}catch(e){}window.rlBuzzerOsc=null}if(window.stopAVR)window.stopAVR();stopESP32Runtime();stopPicoRuntime();stopMicrobitRuntime();simRunning=false;forceAllActuatorsOff();resetInstrumentDisplays(true);hideLdrTools();hideHcsrTools();hideMicrobitSensorPanel();let b=$('topSim');b.classList.remove('running');b.textContent='▶ Iniciar simulación';log('■ Simulación detenida')}
+function stopSimulation(){if(window.rlBuzzerOsc){try{window.rlBuzzerOsc.stop()}catch(e){}window.rlBuzzerOsc=null}if(window.stopAVR)window.stopAVR();stopArduinoOledRuntime();stopESP32Runtime();stopPicoRuntime();stopMicrobitRuntime();simRunning=false;forceAllActuatorsOff();resetInstrumentDisplays(true);hideLdrTools();hideHcsrTools();hideMicrobitSensorPanel();let b=$('topSim');b.classList.remove('running');b.textContent='▶ Iniciar simulación';log('■ Simulación detenida')}
 $('topSim').onclick=startSimulation;
 $('clearBtn').onclick=()=>{clearInterval(timer);wires=[];wireStart=null;world.querySelectorAll('.component').forEach(x=>x.remove());redraw();refreshCircuitPower();log('Área de trabajo limpiada.')};
 function deleteSelected(){if(Number.isInteger(window.selectedWire)){wires.splice(window.selectedWire,1);window.selectedWire=null;redraw();log('✓ Cable eliminado.','good');return}if(window.selectedComponent){let el=window.selectedComponent;wires=wires.filter(w=>w.a.root!==el&&w.b.root!==el);el.remove();window.selectedComponent=null;redraw();refreshCircuitPower();log('✓ Componente eliminado.','good')}}
@@ -3339,7 +3527,7 @@ function updateExternalLEDs(states){
  boards.forEach(board=>{
    const type=board.dataset.type;
    if(type==='uno'||type==='nano'){
-     sources.push([board,'5V',5],[board,'3.3V',3.3]);
+     sources.push([board,'5V',5],[board,'3.3V',3.3]);for(let p=0;p<=13;p++){const pwm=window.avrPwmStates&&window.avrPwmStates[p];if(Number.isFinite(pwm))sources.push([board,'D'+p,5*Math.max(0,Math.min(255,pwm))/255]);}
      if(board===active)for(let p=0;p<=13;p++)if(states[p])sources.push([board,'D'+p,5]);
    }else if(type==='esp32'){
      sources.push([board,'5V',5],[board,'3V3',3.3]);
