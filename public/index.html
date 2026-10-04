@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V10.04</title>
+<title>Robótica Lab V10.05</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -1989,7 +1989,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .oledFlexV1000{position:absolute;left:82px;bottom:3px;width:58px;height:15px;background:linear-gradient(90deg,#9a6525,#cf9447,#8e591e);border-radius:1px;box-shadow:0 -2px #000}
 
 
-/* V10.04 · physical-scale refinement */
+/* V10.05 · physical-scale refinement */
 .component[data-type="oled1306"]{
  width:172px!important;
  height:141px!important;
@@ -2002,7 +2002,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
  transform-origin:0 0!important;
 }
 
-/* V10.04 · Soil sensor, NPN transistor, lamp and solar panel */
+/* V10.05 · Soil sensor, NPN transistor, lamp and solar panel */
 .soilThumbV1004,.npnThumbV1004,.lampThumbV1004,.solarThumbV1004{position:relative;width:58px;height:50px;display:block}
 .soilThumbV1004:before{content:"";position:absolute;left:16px;top:1px;width:28px;height:21px;background:#e52e24;border-radius:2px;box-shadow:inset 0 0 0 1px #b31e18}
 .soilThumbV1004:after{content:"";position:absolute;left:21px;top:21px;width:7px;height:27px;border:2px solid #bbb;border-top:0;box-shadow:14px 0 0 -2px #ddd,14px 0 0 0 #bbb}
@@ -2079,9 +2079,32 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .solarV1004>.terminal{position:absolute!important;width:14px!important;height:14px!important;top:1px!important;opacity:.01!important;background:transparent!important;border:0!important;transform:translate(-50%,-50%)!important;z-index:40!important}
 .solarV1004>.pos{left:146px!important}.solarV1004>.neg{left:121px!important}
 .solarV1004>.terminal:hover,.solarV1004>.terminal.sel{opacity:1!important;background:#ff1515!important;border-radius:2px!important;box-shadow:0 0 0 1px #fff,0 0 0 2px #222!important}
-</style><!-- deploy-marker: V10.04 · 2026-10-03 -->
+
+/* V10.05 · Wokwi Relay Module
+   Artwork adapted from wokwi/wokwi-docs (MIT License, Copyright CodeMagic LTD). */
+.relayThumbV1005{position:relative!important;width:62px!important;height:34px!important;background:#d40000!important;border-radius:1px!important;box-shadow:inset 0 0 0 1px #a30000}
+.relayThumbV1005:before{content:"";position:absolute;left:29px;top:7px;width:24px;height:20px;background:#1989ff;box-shadow:12px 0 0 -6px #1989ff}
+.relayThumbV1005:after{content:"";position:absolute;left:2px;top:9px;width:13px;height:3px;background:#aaa;box-shadow:0 7px #aaa,0 14px #aaa}
+
+.component[data-type="relay"]{width:210px!important;height:126px!important}
+.relayWokwiV1005{position:relative;width:210px;height:126px;overflow:visible}
+.relayWokwiSvg{position:absolute;left:2px;top:2px;width:205px;height:93px;display:block;filter:drop-shadow(0 3px 4px #0003)}
+.relayWokwiV1005>.terminal{position:absolute!important;width:15px!important;height:15px!important;opacity:.015!important;background:transparent!important;border:0!important;border-radius:2px!important;transform:translate(-50%,-50%)!important;z-index:60!important;cursor:crosshair!important}
+.relayWokwiV1005>.terminal:hover,.relayWokwiV1005>.terminal.sel{opacity:1!important;background:#ff1515!important;box-shadow:0 0 0 1px #fff,0 0 0 2px #222!important}
+.relayWokwiV1005>.vcc{left:2px!important;top:34px!important}.relayWokwiV1005>.gnd{left:2px!important;top:49px!important}.relayWokwiV1005>.in{left:2px!important;top:65px!important}
+.relayWokwiV1005>.nc{left:184px!important;top:34px!important}.relayWokwiV1005>.com{left:184px!important;top:50px!important}.relayWokwiV1005>.no{left:184px!important;top:65px!important}
+.relayLed{position:absolute;width:10px;height:10px;border-radius:50%;opacity:.14;z-index:20;pointer-events:none}
+.relayPwrLed{left:40px;top:7px;background:#ff3158}.relayActLed{left:40px;top:80px;background:#38ff54}
+.component[data-type="relay"].powered .relayPwrLed{opacity:1;box-shadow:0 0 8px 3px #ff355e}
+.component[data-type="relay"].active .relayActLed{opacity:1;box-shadow:0 0 8px 3px #42ff5c}
+.relayState{position:absolute;left:91px;top:73px;z-index:22;padding:2px 5px;border-radius:8px;background:#ffffffd9;color:#23313b;font:700 9px Arial;pointer-events:none}
+.component[data-type="relay"].active .relayState{background:#d7ffe0;color:#176b28}
+.relayControl{display:none;position:absolute;left:28px;top:99px;width:155px;padding:5px 7px;border-radius:6px;background:#fff;border:1px solid #a9b3ba;box-shadow:0 3px 8px #0002;font:10px Arial;z-index:70}
+.component[data-type="relay"].selected .relayControl{display:flex;align-items:center;gap:6px}
+.relayControl select{min-width:82px;font-size:10px}
+</style><!-- deploy-marker: V10.05 · 2026-10-03 -->
 </head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V10.04</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V10.05</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -2105,6 +2128,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 <div class="part" draggable="true" data-type="npn"><span class="thumb npnThumbV1004"></span><small>Transistor NPN</small></div>
 <div class="part" draggable="true" data-type="lamp"><span class="thumb lampThumbV1004"></span><small>Bombillo</small></div>
 <div class="part" draggable="true" data-type="solar"><span class="thumb solarThumbV1004"></span><small>Panel solar</small></div>
+<div class="part" draggable="true" data-type="relay"><span class="thumb relayThumbV1005"></span><small>Relay Module (Wokwi)</small></div>
 <div class="part" draggable="true" data-type="potentiometer"><span class="thumb partThumbPot"></span><small>Potenciómetro</small></div>
 <div class="part" draggable="true" data-type="rgbled"><span class="thumb partThumbRgb"></span><small>LED RGB</small></div><div class="part" draggable="true" data-type="oled1306"><span class="thumb oledThumbV1000"></span><small>OLED SSD1306 128×64</small></div>
 <div class="part" draggable="true" data-type="diode"><span class="thumb partThumbDiode"></span><small>Diodo 1N4007</small></div>
@@ -2149,7 +2173,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V10.04 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V10.05 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,wireDraftPoints=[],wirePointer=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[],dragWirePoint=null;
@@ -2162,6 +2186,7 @@ function circuitConnected(start,target){
  document.querySelectorAll('.component[data-type="resistor"]').forEach(r=>{add(circuitKey(r,'1'),circuitKey(r,'2'));add(circuitKey(r,'2'),circuitKey(r,'1'))});
  document.querySelectorAll('.component[data-type="switch"][data-closed="1"]').forEach(sw=>{add(circuitKey(sw,'1'),circuitKey(sw,'2'));add(circuitKey(sw,'2'),circuitKey(sw,'1'))});
  document.querySelectorAll('.component[data-type="npn"][data-on="1"]').forEach(t=>{add(circuitKey(t,'C'),circuitKey(t,'E'));add(circuitKey(t,'E'),circuitKey(t,'C'))});
+ document.querySelectorAll('.component[data-type="relay"]').forEach(r=>{const other=r.dataset.active==='1'?'NO':'NC',a=circuitKey(r,'COM'),b=circuitKey(r,other);add(a,b);add(b,a)});
  document.querySelectorAll('.component[data-type^="breadboard"]').forEach(bb=>{
    const nets=new Map();
    bb.querySelectorAll('.terminal[data-net]').forEach(t=>{const n=t.dataset.net;if(!nets.has(n))nets.set(n,[]);nets.get(n).push(circuitKey(bb,t.dataset.port))});
@@ -2217,6 +2242,7 @@ function zeroConnected(start,target,extraAmpMeter=true){
  wires.forEach(w=>{add(w.a.key,w.b.key);add(w.b.key,w.a.key)});
  document.querySelectorAll('.component[data-type="switch"][data-closed="1"]').forEach(sw=>{add(circuitKey(sw,'1'),circuitKey(sw,'2'));add(circuitKey(sw,'2'),circuitKey(sw,'1'))});
  document.querySelectorAll('.component[data-type="npn"][data-on="1"]').forEach(t=>{add(circuitKey(t,'C'),circuitKey(t,'E'));add(circuitKey(t,'E'),circuitKey(t,'C'))});
+ document.querySelectorAll('.component[data-type="relay"]').forEach(r=>{const other=r.dataset.active==='1'?'NO':'NC',a=circuitKey(r,'COM'),b=circuitKey(r,other);add(a,b);add(b,a)});
  document.querySelectorAll('.component[data-type^="breadboard"]').forEach(bb=>{const nets=new Map();bb.querySelectorAll('.terminal[data-net]').forEach(t=>{const n=t.dataset.net;if(!nets.has(n))nets.set(n,[]);nets.get(n).push(circuitKey(bb,t.dataset.port))});nets.forEach(keys=>{for(let i=1;i<keys.length;i++){add(keys[i-1],keys[i]);add(keys[i],keys[i-1])}})});
  document.querySelectorAll('.component .terminal[data-mounted-board][data-mounted-port]').forEach(t=>{const root=t.closest('.component'),bb=[...document.querySelectorAll('.component[data-type^="breadboard"]')].find(x=>x.dataset.id===t.dataset.mountedBoard);if(root&&bb){add(circuitKey(root,t.dataset.port),circuitKey(bb,t.dataset.mountedPort));add(circuitKey(bb,t.dataset.mountedPort),circuitKey(root,t.dataset.port))}});
  if(extraAmpMeter)document.querySelectorAll('.component[data-type="multimeter"][data-mode="ADC"],.component[data-type="multimeter"][data-mode="AAC"]').forEach(m=>{add(circuitKey(m,'RED'),circuitKey(m,'COM'));add(circuitKey(m,'COM'),circuitKey(m,'RED'))});
@@ -2234,6 +2260,7 @@ function buildResistiveNetwork(includeSources=false){
  wires.forEach(w=>unite(w.a.key,w.b.key));
  document.querySelectorAll('.component[data-type="switch"][data-closed="1"]').forEach(sw=>unite(circuitKey(sw,'1'),circuitKey(sw,'2')));
  document.querySelectorAll('.component[data-type="npn"][data-on="1"]').forEach(t=>unite(circuitKey(t,'C'),circuitKey(t,'E')));
+ document.querySelectorAll('.component[data-type="relay"]').forEach(r=>unite(circuitKey(r,'COM'),circuitKey(r,r.dataset.active==='1'?'NO':'NC')));
  document.querySelectorAll('.component[data-type^="breadboard"]').forEach(bb=>{const nets=new Map();bb.querySelectorAll('.terminal[data-net]').forEach(t=>{const n=t.dataset.net;if(!nets.has(n))nets.set(n,[]);nets.get(n).push(circuitKey(bb,t.dataset.port))});nets.forEach(keys=>{for(let i=1;i<keys.length;i++)unite(keys[i-1],keys[i])})});
  document.querySelectorAll('.component .terminal[data-mounted-board][data-mounted-port]').forEach(t=>{const root=t.closest('.component'),bb=[...document.querySelectorAll('.component[data-type^="breadboard"]')].find(x=>x.dataset.id===t.dataset.mountedBoard);if(root&&bb)unite(circuitKey(root,t.dataset.port),circuitKey(bb,t.dataset.mountedPort))});
  const edges=[];
@@ -2425,6 +2452,7 @@ function bindInstrumentControls(el){
  }
  if(el.dataset.type==='signalgen')updateSignalGeneratorUI(el);
  const sw=el.querySelector('[data-inst="switchToggle"]');if(sw)sw.addEventListener('click',e=>{e.stopPropagation();el.dataset.closed=el.dataset.closed==='1'?'0':'1';el.classList.toggle('closed',el.dataset.closed==='1');const st=el.querySelector('.switchState');if(st)st.textContent=el.dataset.closed==='1'?'CERRADO':'ABIERTO';if(simRunning){refreshCircuitPower();updateMultimeters()}});
+ const relayMode=el.querySelector('[data-inst="relayTransistor"]');if(relayMode)relayMode.addEventListener('change',()=>{el.dataset.transistor=relayMode.value;if(simRunning){refreshCircuitPower();updateMultimeters()}});
  const cap=el.querySelector('[data-inst="capacitance"]');if(cap)cap.addEventListener('change',()=>{el.dataset.capacitance=cap.value;const p=el.querySelector('.capPrint');if(p)p.textContent=cap.options[cap.selectedIndex].text;updateCapacitorLabel(el)});
 }
 
@@ -2569,9 +2597,9 @@ function refreshOledDisplays(){
  });
 }
 let arduinoOledRuntime={running:false,timers:[]};
-function stopArduinoOledRuntime(){arduinoOledRuntime.running=false;arduinoOledRuntime.timers.forEach(clearTimeout);arduinoOledRuntime.timers=[];window.avrPinStates={};window.avrPwmStates={}}
+function stopArduinoOledRuntime(){arduinoOledRuntime.running=false;arduinoOledRuntime.timers.forEach(clearTimeout);arduinoOledRuntime.timers=[];window.avrPinStates={};window.avrPinLowStates={};window.avrPwmStates={}}
 function startArduinoOledRuntime(code){
- stopArduinoOledRuntime();arduinoOledRuntime.running=true;window.avrPinStates={};window.avrPwmStates={};
+ stopArduinoOledRuntime();arduinoOledRuntime.running=true;window.avrPinStates={};window.avrPinLowStates={};window.avrPwmStates={};
  const defs={LED_BUILTIN:13};for(const m of code.matchAll(/(?:#define\s+([A-Za-z_]\w*)\s+(\d+)|(?:const\s+)?int\s+([A-Za-z_]\w*)\s*=\s*(\d+)\s*;)/g))defs[m[1]||m[3]]=Number(m[2]||m[4]);
  const resolve=v=>/^\d+$/.test(v.trim())?Number(v.trim()):(defs[v.trim()]??NaN);
  const loop=(code.match(/void\s+loop\s*\(\s*\)\s*\{([\s\S]*)\}\s*$/)||[])[1]||'';
@@ -2581,7 +2609,7 @@ function startArduinoOledRuntime(code){
   else if(m[4]){const p=resolve(m[4]);if(Number.isFinite(p))actions.push({t:'pwm',p,v:Math.max(0,Math.min(255,Number(m[5])||0))})}
   else actions.push({t:'delay',ms:Number(m[6])});
  }
- const apply=a=>{if(a.t==='write'){window.avrPinStates[a.p]=a.v;delete window.avrPwmStates[a.p];refreshCircuitPower()}else if(a.t==='pwm'){window.avrPwmStates[a.p]=a.v;window.avrPinStates[a.p]=a.v>0;refreshCircuitPower()}};
+ const apply=a=>{if(a.t==='write'){window.avrPinStates[a.p]=a.v;window.avrPinLowStates[a.p]=!a.v;delete window.avrPwmStates[a.p];refreshCircuitPower()}else if(a.t==='pwm'){window.avrPwmStates[a.p]=a.v;window.avrPinStates[a.p]=a.v>0;window.avrPinLowStates[a.p]=a.v<=0;refreshCircuitPower()}};
  if(!actions.length){refreshCircuitPower();refreshOledDisplays();return}
  let i=0;const step=()=>{if(!arduinoOledRuntime.running)return;const a=actions[i++%actions.length];if(a.t==='delay'){const id=setTimeout(step,Math.max(1,a.ms));arduinoOledRuntime.timers.push(id)}else{apply(a);setTimeout(step,0)}};step();
 }
@@ -2598,6 +2626,7 @@ function forceAllActuatorsOff(){
  document.querySelectorAll('.component[data-type="npn"]').forEach(x=>{x.dataset.on='0';x.classList.remove('on')});
  document.querySelectorAll('.component[data-type="lamp"]').forEach(x=>{x.dataset.voltage='0';x.classList.remove('on');x.style.setProperty('--lamp-br','0');const v=x.querySelector('.lampValue');if(v)v.textContent='0.0 V'});
  document.querySelectorAll('.component[data-type="solar"]').forEach(x=>{x.dataset.vout='0';const v=x.querySelector('.solarReadout');if(v)v.textContent='— V'});
+ document.querySelectorAll('.component[data-type="relay"]').forEach(r=>{r.dataset.powered='0';r.dataset.active='0';r.classList.remove('powered','active')});
 document.querySelectorAll('.component[data-type="dcmotor"],.component[data-type="vibration"],.component[data-type="ttmotor"]').forEach(el=>{el.classList.remove('on');el.firstElementChild?.classList.remove('on')});document.querySelectorAll('.sevenAsset .seg,.sevenAsset .segdot').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.servoAssetHorn').forEach(x=>x.style.transform='rotate(0deg)');document.querySelectorAll('.motorAct,.vibrationAct,.ttAct').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.component[data-type="buzzer"],.component[data-type="dcmotor"],.component[data-type="ttmotor"]').forEach(x=>{x.classList.remove('on','reverse');const r=x.querySelector('.rpmLabel');if(r)r.textContent='0 RPM'});document.querySelectorAll('.sevenAct .seg').forEach(x=>x.classList.remove('on'))
 }
 function updateRgbLeds(sources,groundRefs){
@@ -2638,6 +2667,38 @@ function refreshCircuitPower(){
  document.querySelectorAll('.component[data-type="signalgen"]').forEach(g=>{if(g.dataset.enabled==='1')sources.push([g,'OUT',signalGeneratorVoltage(g)]);});
  document.querySelectorAll('.component[data-type="solar"]').forEach(p=>{const light=Math.max(0,Math.min(100,Number(p.dataset.light)||0)),maxV=Math.max(0,Number(p.dataset.maxVoltage)||6),v=maxV*light/100;p.dataset.vout=String(v);sources.push([p,'+',v]);const r=p.querySelector('.solarReadout');if(r)r.textContent=v.toFixed(2)+' V'});
  const groundRefs=allGroundReferences();
+ const relayDigitalLow=(relay)=>{
+   const key=circuitKey(relay,'IN');
+   for(const board of boards){
+     const type=board.dataset.type;
+     const max=type==='microbit'?20:type==='esp32'?39:type==='pico'?29:13;
+     for(let p=0;p<=max;p++){
+       if(!circuitConnected(key,circuitKey(board,'D'+p)))continue;
+       if(type==='uno'||type==='nano'){
+         const pwm=window.avrPwmStates||{},low=window.avrPinLowStates||{};
+         if(Object.prototype.hasOwnProperty.call(pwm,p)&&Number(pwm[p])<=0)return true;
+         if(low[p]===true)return true;
+       }else if(type==='esp32'&&Object.prototype.hasOwnProperty.call(esp32Runtime.states,p)&&esp32Runtime.states[p]===false)return true;
+       else if(type==='pico'&&Object.prototype.hasOwnProperty.call(picoRuntime.states,p)&&picoRuntime.states[p]===false)return true;
+       else if(type==='microbit'&&Object.prototype.hasOwnProperty.call(microbitRuntime.states,p)&&microbitRuntime.states[p]===false)return true;
+     }
+   }
+   return false;
+ };
+ document.querySelectorAll('.component[data-type="relay"]').forEach(r=>{
+   let vcc=0,inHigh=0;
+   for(const [src,port,v] of sources){
+     if(circuitConnected(circuitKey(r,'VCC'),circuitKey(src,port)))vcc=Math.max(vcc,Number(v)||0);
+     if(circuitConnected(circuitKey(r,'IN'),circuitKey(src,port)))inHigh=Math.max(inHigh,Number(v)||0);
+   }
+   const gnd=groundRefs.some(([gr,gp])=>circuitConnected(circuitKey(r,'GND'),circuitKey(gr,gp)));
+   const inGround=groundRefs.some(([gr,gp])=>circuitConnected(circuitKey(r,'IN'),circuitKey(gr,gp)))||relayDigitalLow(r);
+   const powered=gnd&&vcc>=2.5,mode=r.dataset.transistor||'npn';
+   const active=powered&&(mode==='pnp'?inHigh>=1.5:inGround);
+   r.dataset.powered=powered?'1':'0';r.dataset.active=active?'1':'0';
+   r.classList.toggle('powered',powered);r.classList.toggle('active',active);
+   const state=r.querySelector('.relayState');if(state)state.textContent=active?'NO':'NC';
+ });
  document.querySelectorAll('.component[data-type="led"]').forEach(l=>{
    const a=circuitKey(l,'A'),k=circuitKey(l,'K');
    let volts=0,grounded=false;
@@ -2775,6 +2836,31 @@ function addComponent(type,x,y){
  else if(type==='npn'){el.dataset.on='0';el.innerHTML='<div class="npnV1004"><div class="npnBody"><span>N</span><i class="npnShine"></i></div><i class="npnLeg c"></i><i class="npnLeg b"></i><i class="npnLeg e"></i><div class="npnLabels"><span>C</span><span>B</span><span>E</span></div><span class="terminal c" data-port="C" title="Colector (C)"></span><span class="terminal b" data-port="B" title="Base (B)"></span><span class="terminal e" data-port="E" title="Emisor (E)"></span></div>'}
  else if(type==='lamp'){el.dataset.voltage='0';el.innerHTML='<div class="lampV1004"><div class="lampGlass"><i class="lampGlow"></i><i class="lampFilament"></i></div><div class="lampBase"><i></i><i></i></div><i class="lampLeg l1"></i><i class="lampLeg l2"></i><span class="lampValue">0.0 V</span><span class="terminal t1" data-port="1" title="Terminal 1"></span><span class="terminal t2" data-port="2" title="Terminal 2"></span></div>'}
  else if(type==='solar'){el.dataset.light='75';el.dataset.maxVoltage='6';el.dataset.vout='0';el.innerHTML='<div class="solarV1004"><div class="solarLead black"></div><div class="solarLead red"></div><div class="solarPanel"><div class="solarCells">'+Array.from({length:32},()=>'<i></i>').join('')+'</div></div><span class="solarPolarity plus">+</span><span class="solarPolarity minus">−</span><span class="solarReadout">— V</span><label class="solarControl instrumentControl">Luz <input data-inst="solarLight" type="range" min="0" max="100" value="75"><output data-solar-out>75%</output></label><span class="terminal pos" data-port="+" title="Positivo (+)"></span><span class="terminal neg" data-port="-" title="Negativo (-)"></span></div>'}
+ else if(type==='relay'){el.dataset.powered='0';el.dataset.active='0';el.dataset.transistor='npn';el.innerHTML=`<div class="relayWokwiV1005">
+  <!-- Wokwi Relay Module artwork adapted from wokwi-docs, MIT License, CodeMagic LTD -->
+  <svg class="relayWokwiSvg" viewBox="0 0 33.867 15.409" aria-label="Wokwi Relay Module">
+    <path fill="#d40000" d="M4.016 0h29.851v15.409H4.016z"/>
+    <path fill="#1989ff" d="M15.439 2.88h12.475v9.939H15.439zM28.599 3.86h3.098v7.941h-3.098z"/>
+    <circle cx="30.089" cy="5.33" r=".857" fill="#a8a8a8" stroke="#454545" stroke-width=".285"/>
+    <circle cx="30.089" cy="7.87" r=".857" fill="#a8a8a8" stroke="#454545" stroke-width=".285"/>
+    <circle cx="30.189" cy="10.41" r=".857" fill="#a8a8a8" stroke="#454545" stroke-width=".285"/>
+    <g fill="#fff" font-family="Arial">
+      <text x="8.887" y="5.526" font-size="1.008">VCC</text><text x="8.887" y="8.066" font-size="1.008">GND</text><text x="8.941" y="10.552" font-size="1.008">IN</text>
+      <text x="27.55" y="5.7" font-size=".92" text-anchor="end">NC</text><text x="27.55" y="8.35" font-size=".82" text-anchor="end">COM</text><text x="27.55" y="10.95" font-size=".92" text-anchor="end">NO</text>
+      <text x="18.2" y="7.9" font-size="2.55">Relay</text><text x="18.4" y="9.35" font-size="1.2">Module</text>
+    </g>
+    <path d="M8.193 11.3V3.737h-2.22V11.3z" fill="#1c2546" stroke="#fff" stroke-width=".238"/>
+    <g fill="#29261c"><path d="M7.95 5.816V4.082H6.216v1.734zM7.95 8.388V6.654H6.216v1.734zM7.95 10.965V9.231H6.216v1.734z"/></g>
+    <g fill="#9f9f9f"><path d="M7.03 5.33a.38.38 0 0 0 0-.763H.114a.112.112 0 0 0-.112.112v.539c0 .062.05.112.112.112H7.03zM7.03 7.903a.38.38 0 0 0 0-.763H.114a.112.112 0 0 0-.112.112v.539c0 .061.05.112.112.112H7.03zM7.03 10.48a.38.38 0 0 0 0-.763H.114a.112.112 0 0 0-.112.112v.538c0 .062.05.112.112.112H7.03z"/></g>
+    <g fill="#dae3eb"><rect x="4.982" y="12.627" width="4.42" height="1.46"/><rect x="5.046" y="1.097" width="4.42" height="1.46"/></g>
+    <g fill="#fff" font-family="Arial" font-size="1.05"><text x="6.05" y="13.78">LED1</text><text x="6.05" y="2.25">PWR</text></g>
+  </svg>
+  <i class="relayLed relayPwrLed"></i><i class="relayLed relayActLed"></i>
+  <span class="relayState">NC</span>
+  <label class="relayControl instrumentControl">Entrada <select data-inst="relayTransistor"><option value="npn" selected>LOW (NPN)</option><option value="pnp">HIGH (PNP)</option></select></label>
+  <span class="terminal vcc" data-port="VCC" title="VCC"></span><span class="terminal gnd" data-port="GND" title="GND"></span><span class="terminal in" data-port="IN" title="IN · control"></span>
+  <span class="terminal nc" data-port="NC" title="NC · normalmente cerrado"></span><span class="terminal com" data-port="COM" title="COM · común"></span><span class="terminal no" data-port="NO" title="NO · normalmente abierto"></span>
+ </div>`}
  else if(type==='potentiometer'){el.dataset.value='50';el.dataset.powered='0';el.dataset.vout='0';el.style.setProperty('--pot-angle','0deg');el.innerHTML='<div class="potV998 potV999"><div class="potBase"></div><div class="potBody"><div class="potTicks"></div><div class="potInner"><div class="potKnob" title="Gira la perilla para cambiar el valor"><i class="potIndicator"></i></div></div></div><i class="potLeg l1"></i><i class="potLeg l2"></i><i class="potLeg l3"></i><span class="potLbl p1l">VCC</span><span class="potLbl p2l">OUT</span><span class="potLbl p3l">GND</span><label class="potCtl instrumentControl">Valor <input data-inst="potValue" type="range" min="0" max="100" value="50"><output data-pot-out>50%</output></label><span class="terminal p1" data-port="VCC" title="VCC"></span><span class="terminal pw" data-port="OUT" title="Wiper / salida"></span><span class="terminal p3" data-port="GND" title="GND"></span></div>'}
  else if(type==='rgbled'){el.dataset.r='0';el.dataset.g='0';el.dataset.b='0';el.innerHTML='<div class="rgbWokwiV1000"><wokwi-rgb-led></wokwi-rgb-led><div class="rgbWokwiLabels"><span>R</span><span>C−</span><span>G</span><span>B</span></div><span class="terminal tr" data-port="R" title="Rojo"></span><span class="terminal tc" data-port="C" title="Común cátodo (-)"></span><span class="terminal tg" data-port="G" title="Verde"></span><span class="terminal tb" data-port="B" title="Azul"></span></div>'}
  else if(type==='oled1306'){el.dataset.address='0x3c';el.dataset.powered='0';el.dataset.i2c='0';el.innerHTML='<div class="oledV1000"><div class="oledBoardV1000"><i class="oledMount tl"></i><i class="oledMount trh"></i><i class="oledMount bl"></i><i class="oledMount br"></i><div class="oledHeaderLabels"><span>GND</span><span>VCC</span><span>SCL</span><span>SDA</span></div><i class="oledPad terminal pG" data-port="GND" title="GND · tierra"></i><i class="oledPad terminal pV" data-port="VCC" title="VCC · alimentación"></i><i class="oledPad terminal pC" data-port="SCL" title="SCL · reloj I2C"></i><i class="oledPad terminal pD" data-port="SDA" title="SDA · datos I2C"></i><div class="oledScreenV1000"><canvas class="oledCanvasV1000" width="512" height="256"></canvas></div><div class="oledFlexV1000"></div></div></div>'}
@@ -3087,7 +3173,7 @@ function makeBoard(el,type){
      if(!(/^(D\d+|A\d+|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(logical)))return;
      const p=svg.createSVGPoint();
      if(type==='uno'){
-       /* V10.04 · use the exact female-header centers from Wokwi's Uno SVG.
+       /* V10.05 · use the exact female-header centers from Wokwi's Uno SVG.
           The previous conversion used pinInfo x metadata whose 9.5-unit spacing
           is slightly smaller than the real 2.54 mm header pitch, causing a
           cumulative horizontal drift that was most visible on A0-A5. */
@@ -3772,9 +3858,13 @@ try{
      Object.entries(desired).forEach(([ps,high])=>{const p=Number(ps);if(mqDigitalLevels[p]===high)return;mqDigitalLevels[p]=high;if(p<=7)pd.setPin(p,high);else pb.setPin(p-8,high)});
    };
    const update=()=>{
-     const states={};for(let p=8;p<=13;p++)states[p]=pb.pinState(p-8)===PinState.High;for(let p=0;p<=7;p++)states[p]=pd.pinState(p)===PinState.High;
+     const states={},lowStates={};
+     for(let p=8;p<=13;p++){const st=pb.pinState(p-8);states[p]=st===PinState.High;lowStates[p]=st===PinState.Low}
+     for(let p=0;p<=7;p++){const st=pd.pinState(p);states[p]=st===PinState.High;lowStates[p]=st===PinState.Low}
+     const prev=window.avrPinStates||{},prevLow=window.avrPinLowStates||{};
+     const powerChanged=Object.keys(states).some(p=>states[p]!==prev[p]||lowStates[p]!==prevLow[p]);
      serviceMQ2Digital();
-     window.avrPinStates=states;window.updateLdrADC&&window.updateLdrADC();updateExternalLEDs(states);serviceSonar(states);updateMultimeters();
+     window.avrPinStates=states;window.avrPinLowStates=lowStates;window.updateLdrADC&&window.updateLdrADC();updateExternalLEDs(states);serviceSonar(states);if(powerChanged)refreshCircuitPower();updateMultimeters();
      const boardEl=document.querySelector('wokwi-arduino-uno,wokwi-arduino-nano');if(boardEl)boardEl.led13=states[13];
    };
    pb.addListener(update);pd.addListener(update);update();
