@@ -2597,9 +2597,9 @@ function refreshOledDisplays(){
  });
 }
 let arduinoOledRuntime={running:false,timers:[]};
-function stopArduinoOledRuntime(){arduinoOledRuntime.running=false;arduinoOledRuntime.timers.forEach(clearTimeout);arduinoOledRuntime.timers=[];window.avrPinStates={};window.avrPwmStates={}}
+function stopArduinoOledRuntime(){arduinoOledRuntime.running=false;arduinoOledRuntime.timers.forEach(clearTimeout);arduinoOledRuntime.timers=[];window.avrPinStates={};window.avrPinLowStates={};window.avrPwmStates={}}
 function startArduinoOledRuntime(code){
- stopArduinoOledRuntime();arduinoOledRuntime.running=true;window.avrPinStates={};window.avrPwmStates={};
+ stopArduinoOledRuntime();arduinoOledRuntime.running=true;window.avrPinStates={};window.avrPinLowStates={};window.avrPwmStates={};
  const defs={LED_BUILTIN:13};for(const m of code.matchAll(/(?:#define\s+([A-Za-z_]\w*)\s+(\d+)|(?:const\s+)?int\s+([A-Za-z_]\w*)\s*=\s*(\d+)\s*;)/g))defs[m[1]||m[3]]=Number(m[2]||m[4]);
  const resolve=v=>/^\d+$/.test(v.trim())?Number(v.trim()):(defs[v.trim()]??NaN);
  const loop=(code.match(/void\s+loop\s*\(\s*\)\s*\{([\s\S]*)\}\s*$/)||[])[1]||'';
@@ -2609,7 +2609,7 @@ function startArduinoOledRuntime(code){
   else if(m[4]){const p=resolve(m[4]);if(Number.isFinite(p))actions.push({t:'pwm',p,v:Math.max(0,Math.min(255,Number(m[5])||0))})}
   else actions.push({t:'delay',ms:Number(m[6])});
  }
- const apply=a=>{if(a.t==='write'){window.avrPinStates[a.p]=a.v;delete window.avrPwmStates[a.p];refreshCircuitPower()}else if(a.t==='pwm'){window.avrPwmStates[a.p]=a.v;window.avrPinStates[a.p]=a.v>0;refreshCircuitPower()}};
+ const apply=a=>{if(a.t==='write'){window.avrPinStates[a.p]=a.v;window.avrPinLowStates[a.p]=!a.v;delete window.avrPwmStates[a.p];refreshCircuitPower()}else if(a.t==='pwm'){window.avrPwmStates[a.p]=a.v;window.avrPinStates[a.p]=a.v>0;window.avrPinLowStates[a.p]=a.v<=0;refreshCircuitPower()}};
  if(!actions.length){refreshCircuitPower();refreshOledDisplays();return}
  let i=0;const step=()=>{if(!arduinoOledRuntime.running)return;const a=actions[i++%actions.length];if(a.t==='delay'){const id=setTimeout(step,Math.max(1,a.ms));arduinoOledRuntime.timers.push(id)}else{apply(a);setTimeout(step,0)}};step();
 }
@@ -2675,9 +2675,9 @@ function refreshCircuitPower(){
      for(let p=0;p<=max;p++){
        if(!circuitConnected(key,circuitKey(board,'D'+p)))continue;
        if(type==='uno'||type==='nano'){
-         const pwm=window.avrPwmStates||{},dig=window.avrPinStates||{};
+         const pwm=window.avrPwmStates||{},low=window.avrPinLowStates||{};
          if(Object.prototype.hasOwnProperty.call(pwm,p)&&Number(pwm[p])<=0)return true;
-         if(Object.prototype.hasOwnProperty.call(dig,p)&&dig[p]===false)return true;
+         if(low[p]===true)return true;
        }else if(type==='esp32'&&Object.prototype.hasOwnProperty.call(esp32Runtime.states,p)&&esp32Runtime.states[p]===false)return true;
        else if(type==='pico'&&Object.prototype.hasOwnProperty.call(picoRuntime.states,p)&&picoRuntime.states[p]===false)return true;
        else if(type==='microbit'&&Object.prototype.hasOwnProperty.call(microbitRuntime.states,p)&&microbitRuntime.states[p]===false)return true;
@@ -3858,9 +3858,13 @@ try{
      Object.entries(desired).forEach(([ps,high])=>{const p=Number(ps);if(mqDigitalLevels[p]===high)return;mqDigitalLevels[p]=high;if(p<=7)pd.setPin(p,high);else pb.setPin(p-8,high)});
    };
    const update=()=>{
-     const states={};for(let p=8;p<=13;p++)states[p]=pb.pinState(p-8)===PinState.High;for(let p=0;p<=7;p++)states[p]=pd.pinState(p)===PinState.High;
+     const states={},lowStates={};
+     for(let p=8;p<=13;p++){const st=pb.pinState(p-8);states[p]=st===PinState.High;lowStates[p]=st===PinState.Low}
+     for(let p=0;p<=7;p++){const st=pd.pinState(p);states[p]=st===PinState.High;lowStates[p]=st===PinState.Low}
+     const prev=window.avrPinStates||{},prevLow=window.avrPinLowStates||{};
+     const powerChanged=Object.keys(states).some(p=>states[p]!==prev[p]||lowStates[p]!==prevLow[p]);
      serviceMQ2Digital();
-     window.avrPinStates=states;window.updateLdrADC&&window.updateLdrADC();updateExternalLEDs(states);serviceSonar(states);updateMultimeters();
+     window.avrPinStates=states;window.avrPinLowStates=lowStates;window.updateLdrADC&&window.updateLdrADC();updateExternalLEDs(states);serviceSonar(states);if(powerChanged)refreshCircuitPower();updateMultimeters();
      const boardEl=document.querySelector('wokwi-arduino-uno,wokwi-arduino-nano');if(boardEl)boardEl.led13=states[13];
    };
    pb.addListener(update);pd.addListener(update);update();
