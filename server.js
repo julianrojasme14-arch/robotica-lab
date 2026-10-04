@@ -2,8 +2,8 @@ const express=require("express"),fs=require("fs"),path=require("path"),os=requir
 const {execFile}=require("child_process");
 const app=express();
 app.use(express.json({limit:"256kb"}));
-app.use((req,res,next)=>{if(req.path==='/'||req.path==='/index.html'){res.set('Cache-Control','no-store, no-cache, must-revalidate, proxy-revalidate');res.set('Pragma','no-cache');res.set('Expires','0')}next()});
-app.use(express.static(path.join(__dirname,"public"),{etag:true,maxAge:0}));
+app.use((req,res,next)=>{res.set('Cache-Control','no-store, no-cache, must-revalidate, proxy-revalidate');res.set('Pragma','no-cache');res.set('Expires','0');res.set('Surrogate-Control','no-store');next()});
+app.use(express.static(path.join(__dirname,"public"),{etag:false,maxAge:0,lastModified:false}));
 const db={classes:{},sessions:{}};
 const code=()=>crypto.randomBytes(3).toString("hex").toUpperCase();
 const CLI=process.env.ARDUINO_CLI||"arduino-cli";
