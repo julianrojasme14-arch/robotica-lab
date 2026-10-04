@@ -2511,7 +2511,7 @@ function refreshCircuitPower(){
  boards.forEach(board=>{
    const type=board.dataset.type;
    if(type==='uno'||type==='nano'){
-     sources.push([board,'5V',5],[board,'3.3V',3.3]);for(let p=0;p<=13;p++){const pwm=window.avrPwmStates&&window.avrPwmStates[p];if(Number.isFinite(pwm))sources.push([board,'D'+p,5*Math.max(0,Math.min(255,pwm))/255]);}
+     sources.push([board,'5V',5],[board,'3.3V',3.3]);for(let p=0;p<=13;p++){const pwm=window.avrPwmStates&&window.avrPwmStates[p];if(Number.isFinite(pwm))sources.push([board,'D'+p,5*Math.max(0,Math.min(255,pwm))/255]);else if(window.avrPinStates&&window.avrPinStates[p])sources.push([board,'D'+p,5]);}
    }else if(type==='esp32'){
      sources.push([board,'5V',5],[board,'3V3',3.3]);
      ESP32_OUTPUT_PINS.forEach(p=>{if(esp32Runtime.states[p])sources.push([board,'D'+p,3.3])});
