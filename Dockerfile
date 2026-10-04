@@ -17,8 +17,12 @@ RUN mkdir -p /opt/arduino-cli/bin \
     && /opt/arduino-cli/bin/arduino-cli config add board_manager.additional_urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json \
     && /opt/arduino-cli/bin/arduino-cli core update-index \
     && /opt/arduino-cli/bin/arduino-cli core install rp2040:rp2040 \
+    && /opt/arduino-cli/bin/arduino-cli lib update-index \
+    && /opt/arduino-cli/bin/arduino-cli lib install "Adafruit GFX Library" \
+    && /opt/arduino-cli/bin/arduino-cli lib install "Adafruit SSD1306" \
     && /opt/arduino-cli/bin/arduino-cli version \
-    && /opt/arduino-cli/bin/arduino-cli core list
+    && /opt/arduino-cli/bin/arduino-cli core list \
+    && /opt/arduino-cli/bin/arduino-cli lib list
 
 ENV PATH="/opt/arduino-cli/bin:${PATH}"
 ENV ARDUINO_CLI="/opt/arduino-cli/bin/arduino-cli"
