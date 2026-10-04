@@ -55,8 +55,8 @@ server.on("error",err=>{
 });
 server.on("listening",()=>{
   const addr=server.address();
-  console.log(`Robótica Lab V10.06 Online · escuchando en ${HOST}:${addr&&addr.port} · PORT env=${rawPort||"(no definido)"} · CLI=${CLI}`);
+  console.log(`Robótica Lab V10.11 Online · escuchando en ${HOST}:${addr&&addr.port} · PORT env=${rawPort||"(no definido)"} · CLI=${CLI}`);
 });
 console.log(`Iniciando servidor HTTP en ${HOST}:${PORT}...`);
 server.listen(PORT,HOST);
-// Render redeploy marker V10.06 · 2026-10-03
+// Render redeploy marker V10.11 · 2026-10-04
