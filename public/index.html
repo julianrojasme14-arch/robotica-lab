@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V10.09</title>
+<title>Robótica Lab V10.10</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -2201,6 +2201,13 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 
 /* V10.09 · approved realistic artwork rendered directly from sprite; no synthetic fallback drawings */
 
+/* V10.10 · independent stable assets */
+.approvedSpriteV1006{background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;background-color:transparent!important}
+.npnApprovedV1006{background-image:url('/assets/npn-bc547-realistic.svg')!important}
+.lampApprovedV1006{background-image:url('/assets/lamp-realistic.svg')!important}
+.solarApprovedV1006{background-image:url('/assets/solar-realistic.svg')!important}
+.soilApprovedV1006{background-image:url('/assets/soil-fc28-realistic.svg')!important}
+
 /* Shared connection feedback: red only on hover/selection, same language as the rest of Robótica Lab */
 .npnApprovedV1006>.terminal:hover,.npnApprovedV1006>.terminal.sel,
 .lampApprovedV1006>.terminal:hover,.lampApprovedV1006>.terminal.sel,
@@ -2221,9 +2228,9 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .soilThumbV1004{width:44px!important;height:50px!important;background-size:194px 118px!important;background-position:-142px -5px!important}
 .soilThumbV1004:before,.soilThumbV1004:after,.npnThumbV1004:before,.npnThumbV1004:after,
 .lampThumbV1004:before,.lampThumbV1004:after,.solarThumbV1004:before,.solarThumbV1004:after{display:none!important}
-</style><!-- deploy-marker: V10.09 · 2026-10-04 -->
+</style><!-- deploy-marker: V10.10 · 2026-10-04 -->
 </head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge" id="appVersionBadge">V10.09</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge" id="appVersionBadge">V10.10</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -2292,7 +2299,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V10.09 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V10.10 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,wireDraftPoints=[],wirePointer=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[],dragWirePoint=null;
