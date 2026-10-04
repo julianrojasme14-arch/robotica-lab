@@ -2053,7 +2053,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .lampV1004{position:relative;width:94px;height:128px;overflow:visible}
 .lampGlass{position:absolute;left:20px;top:1px;width:54px;height:67px;border-radius:48% 48% 42% 42%;background:radial-gradient(circle at 38% 30%,#fff 0 9%,#fffef1b8 10% 32%,#e6e5d05c 50%,#bdbda633 78%);border:1.5px solid #aaa;box-shadow:inset 6px 3px 8px #fff9}
 .lampFilament{position:absolute;left:18px;top:34px;width:18px;height:12px;border:2px solid #777;border-top:0;border-radius:0 0 9px 9px}
-.lampGlow{position:absolute;inset:10px;border-radius:50%;background:#ffd65c;opacity:calc(var(--lamp-br,0)*.75);box-shadow:0 0 22px #ffd65c;transition:opacity .08s}
+.lampGlow{position:absolute;inset:10px;border-radius:50%;background:#ffd65c;opacity:var(--lamp-br,0);box-shadow:0 0 22px #ffd65c;transition:opacity .08s}
 .lampBase{position:absolute;left:28px;top:63px;width:38px;height:31px;border-radius:5px 5px 9px 9px;background:linear-gradient(90deg,#151718,#383b3c 47%,#111314);box-shadow:inset 0 3px #555}
 .lampBase i{position:absolute;left:3px;right:3px;height:2px;background:#777}.lampBase i:first-child{top:10px}.lampBase i:last-child{top:18px}
 .lampLeg{position:absolute;top:91px;width:3px;height:24px;background:linear-gradient(90deg,#777,#ddd,#777)}
@@ -2062,7 +2062,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .lampV1004>.terminal{position:absolute!important;width:13px!important;height:13px!important;top:115px!important;opacity:.01!important;background:transparent!important;border:0!important;transform:translate(-50%,-50%)!important}
 .lampV1004>.t1{left:39px!important}.lampV1004>.t2{left:55px!important}
 .lampV1004>.terminal:hover,.lampV1004>.terminal.sel{opacity:1!important;background:#ff1515!important;border-radius:2px!important;box-shadow:0 0 0 1px #fff,0 0 0 2px #222!important}
-.component[data-type="lamp"].on .lampGlass{background:radial-gradient(circle,#fff9c7 0 22%,#ffe16b88 42%,#fff8d14d 72%);box-shadow:0 0 calc(8px + 20px*var(--lamp-br,0)) #ffd75b88,inset 6px 3px 8px #fff}
+.component[data-type="lamp"].on .lampGlass{background:radial-gradient(circle,#fff9c7 0 22%,#ffe16b88 42%,#fff8d14d 72%);box-shadow:0 0 26px #ffd75b88,inset 6px 3px 8px #fff}
 
 .component[data-type="solar"]{width:278px!important;height:226px!important}
 .solarV1004{position:relative;width:278px;height:226px;overflow:visible}
