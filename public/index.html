@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V10.02</title>
+<title>Robótica Lab V10.03</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -1988,9 +1988,22 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .oledHeaderLabels:after{content:"I²C";position:absolute;left:88px;top:-18px;color:#d7ebf6;font:700 7px Arial;opacity:.9}
 .oledFlexV1000{position:absolute;left:82px;bottom:3px;width:58px;height:15px;background:linear-gradient(90deg,#9a6525,#cf9447,#8e591e);border-radius:1px;box-shadow:0 -2px #000}
 
-</style><!-- deploy-marker: V10.02 · 2026-10-04 -->
+
+/* V10.03 · physical-scale refinement */
+.component[data-type="oled1306"]{
+ width:172px!important;
+ height:141px!important;
+ z-index:12!important;
+}
+.component[data-type="oled1306"] .oledV1000{
+ width:232px!important;
+ height:190px!important;
+ transform:scale(.74)!important;
+ transform-origin:0 0!important;
+}
+</style><!-- deploy-marker: V10.03 · 2026-10-04 -->
 </head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V10.02</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V10.03</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -2054,7 +2067,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V10.02 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V10.03 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,wireDraftPoints=[],wirePointer=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[],dragWirePoint=null;
@@ -2950,10 +2963,22 @@ function makeBoard(el,type){
      if(!(/^(D\d+|A\d+|GND|5V|3\.3V|VIN|AREF|RESET)$/.test(logical)))return;
      const p=svg.createSVGPoint();
      if(type==='uno'){
-       /* X mapping from Wokwi pinInfo is accurate after 0.254 conversion.
-          Y is snapped to the actual physical female-header centers in the SVG. */
-       p.x=pi.x*0.254-2.54;
-       p.y=pi.y<100?2.54:50.80;
+       /* V10.03 · use the exact female-header centers from Wokwi's Uno SVG.
+          The previous conversion used pinInfo x metadata whose 9.5-unit spacing
+          is slightly smaller than the real 2.54 mm header pitch, causing a
+          cumulative horizontal drift that was most visible on A0-A5. */
+       const topPower=['A5.2','A4.2','AREF','GND.1','13','12','11','10','9','8'];
+       const topDigital=['7','6','5','4','3','2','1','0'];
+       const bottomPower=['IOREF','RESET','3.3V','5V','GND.2','GND.3','VIN'];
+       const bottomAnalog=['A0','A1','A2','A3','A4','A5'];
+       let group=null,startX=0,startY=0;
+       if(topPower.includes(raw)){group=topPower;startX=17.497;startY=1.27}
+       else if(topDigital.includes(raw)){group=topDigital;startX=44.421;startY=1.27}
+       else if(bottomPower.includes(raw)){group=bottomPower;startX=26.641;startY=49.53}
+       else if(bottomAnalog.includes(raw)){group=bottomAnalog;startX=49.501;startY=49.53}
+       if(!group)return;
+       p.x=startX+1.27+group.indexOf(raw)*2.54;
+       p.y=startY+1.27;
      }else{
        /* Nano: use the actual SVG through-hole centers.
           The SVG starts its two 15-pin headers at x=2.54 mm and each hole
