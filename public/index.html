@@ -1800,10 +1800,18 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
  background:repeating-linear-gradient(0deg,#d7bb53 0 3px,transparent 3px 7px)
 }
 
+
+/* V9.98 · potentiometer, common-cathode RGB LED and rectifier diode */
+.partThumbPot{width:54px;height:48px;position:relative}.partThumbPot:before{content:"";position:absolute;left:10px;top:2px;width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 42% 38%,#75a7cf 0 38%,#244b65 40% 58%,#183445 60%);box-shadow:0 0 0 3px #234b63}.partThumbPot:after{content:"";position:absolute;left:19px;bottom:0;width:3px;height:14px;background:#888;box-shadow:8px 0 #888,16px 0 #888}
+.partThumbRgb{width:54px;height:48px;position:relative}.partThumbRgb:before{content:"";position:absolute;left:14px;top:1px;width:28px;height:32px;border-radius:16px 16px 7px 7px;background:linear-gradient(135deg,#ffffffdd,#e7edf0aa 45%,#aab6bd88);border:2px solid #aab2b7}.partThumbRgb:after{content:"";position:absolute;left:20px;top:32px;width:2px;height:16px;background:#888;box-shadow:6px 0 #888,12px 0 #888,18px 0 #888}
+.partThumbDiode{width:62px;height:48px;position:relative}.partThumbDiode:before{content:"";position:absolute;left:6px;right:6px;top:23px;height:2px;background:#777}.partThumbDiode:after{content:"";position:absolute;left:19px;top:16px;width:25px;height:16px;border-radius:3px;background:linear-gradient(90deg,#242629 0 72%,#c8c8c8 72% 82%,#242629 82%);box-shadow:inset 0 1px 2px #fff2}
+.component[data-type="potentiometer"]{width:92px!important;height:112px!important}.potV998{position:relative;width:92px;height:112px;overflow:visible}.potV998 .potBody{position:absolute;left:14px;top:8px;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 42% 36%,#77a9d1 0 38%,#2b5a79 39% 61%,#173b52 62% 100%);border:2px solid #17394d;box-shadow:0 3px 6px #0003,inset 0 0 0 4px #ffffff14}.potV998 .potKnob{position:absolute;left:27px;top:21px;width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#6d7880,#303940 68%,#1f2529);border:2px solid #1d252a;transform:rotate(var(--pot-angle,0deg));box-shadow:inset 0 2px 3px #fff2}.potV998 .potKnob:after{content:"";position:absolute;left:17px;top:2px;width:3px;height:14px;border-radius:2px;background:#d9e0e3}.potV998 .potLeg{position:absolute;top:66px;width:3px;height:28px;background:linear-gradient(90deg,#777,#ececec,#8a8a8a)}.potV998 .l1{left:25px}.potV998 .l2{left:45px;height:34px}.potV998 .l3{left:65px}.potV998 .potLbl{position:absolute;top:98px;font:700 8px Arial;color:#40515c;transform:translateX(-50%)}.potV998 .p1l{left:25px}.potV998 .p2l{left:45px}.potV998 .p3l{left:65px}.potV998 .terminal{position:absolute!important;top:94px!important;width:15px!important;height:15px!important;opacity:.01!important;background:transparent!important;border:0!important;transform:translate(-50%,-50%)!important;z-index:20!important}.potV998 .p1{left:25px!important}.potV998 .pw{left:45px!important;top:100px!important}.potV998 .p3{left:65px!important}.potV998 .terminal:hover,.potV998 .terminal.sel{opacity:1!important;background:#ff1515!important;border-radius:2px!important;box-shadow:0 0 0 1px #fff,0 0 0 2px #222!important}.potCtl{position:absolute;left:-12px;top:-38px;width:116px;display:none;align-items:center;gap:5px;padding:5px 7px;border-radius:7px;background:#fff;border:1px solid #bcc7ce;box-shadow:0 2px 8px #0002;font:9px Arial;z-index:40}.component[data-type="potentiometer"].selected .potCtl{display:flex}.potCtl input{width:72px}.potCtl output{min-width:27px;text-align:right;font-weight:700}
+.component[data-type="rgbled"]{width:72px!important;height:112px!important}.rgbV998{position:relative;width:72px;height:112px;overflow:visible}.rgbV998 .rgbBulb{position:absolute;left:16px;top:3px;width:40px;height:49px;border-radius:22px 22px 10px 10px;background:linear-gradient(135deg,#fff,#d9e2e688 55%,#b6c0c688);border:2px solid #a9b3b8;box-shadow:inset 7px 5px 9px #fff8;transition:background .08s,box-shadow .08s}.rgbV998.on .rgbBulb{background:rgb(var(--rr,0),var(--gg,0),var(--bb,0));box-shadow:0 0 18px rgba(var(--rr,0),var(--gg,0),var(--bb,0),.72),inset 5px 4px 7px #fff5}.rgbV998 .rgbLeg{position:absolute;top:51px;width:3px;background:linear-gradient(90deg,#777,#efefef,#888)}.rgbV998 .r{left:17px;height:47px}.rgbV998 .c{left:30px;height:56px}.rgbV998 .g{left:43px;height:50px}.rgbV998 .b{left:56px;height:45px}.rgbV998 .rgbName{position:absolute;left:2px;right:2px;bottom:0;text-align:center;font:700 8px Arial;color:#46545c}.rgbV998 .terminal{position:absolute!important;width:14px!important;height:14px!important;opacity:.01!important;background:transparent!important;border:0!important;transform:translate(-50%,-50%)!important;z-index:20!important}.rgbV998 .tr{left:17px!important;top:98px!important}.rgbV998 .tc{left:30px!important;top:107px!important}.rgbV998 .tg{left:43px!important;top:101px!important}.rgbV998 .tb{left:56px!important;top:96px!important}.rgbV998 .terminal:hover,.rgbV998 .terminal.sel{opacity:1!important;background:#ff1515!important;border-radius:2px!important;box-shadow:0 0 0 1px #fff,0 0 0 2px #222!important}
+.component[data-type="diode"]{width:112px!important;height:46px!important}.diodeV998{position:relative;width:112px;height:46px;overflow:visible}.diodeV998 .wire{position:absolute;left:4px;right:4px;top:22px;height:2px;background:linear-gradient(90deg,#777,#ddd,#777)}.diodeV998 .body{position:absolute;left:35px;top:13px;width:42px;height:20px;border-radius:4px;background:linear-gradient(90deg,#25282a 0 70%,#d8d8d8 70% 80%,#202326 80%);border:1px solid #17191b;box-shadow:inset 0 2px 3px #fff1,0 1px 3px #0003}.diodeV998 .body:after{content:"1N4007";position:absolute;left:5px;top:5px;font:700 6px Arial;color:#d4d7d8;letter-spacing:.3px}.diodeV998 .mark{position:absolute;top:34px;font:700 8px Arial;color:#46545c}.diodeV998 .aLbl{left:4px}.diodeV998 .kLbl{right:3px}.diodeV998 .terminal{position:absolute!important;top:23px!important;width:16px!important;height:16px!important;opacity:.01!important;background:transparent!important;border:0!important;transform:translate(-50%,-50%)!important;z-index:20!important}.diodeV998 .a{left:4px!important}.diodeV998 .k{left:108px!important}.diodeV998 .terminal:hover,.diodeV998 .terminal.sel{opacity:1!important;background:#ff1515!important;border-radius:2px!important;box-shadow:0 0 0 1px #fff,0 0 0 2px #222!important}
 /* V9.97 · MQ2 layout: D0 LED moved away from capsule; header block raised 10px */
-</style><!-- deploy-marker: V9.97 · 2026-10-03 -->
+</style><!-- deploy-marker: V9.98 · 2026-10-03 -->
 </head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.97</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge">V9.98</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -1823,6 +1831,9 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 <div class="part" draggable="true" data-type="vibration"><span class="thumb actuatorThumb vibrationThumb">●</span><small>Motor vibrador</small></div>
 <div class="part" draggable="true" data-type="ttmotor"><span class="thumb actuatorThumb ttThumb">⚙</span><small>Motorreductor TT</small></div>
 <div class="part" draggable="true" data-type="mq2"><span class="thumb sensorThumb mq2"></span><small>MQ2 Gas Sensor</small></div>
+<div class="part" draggable="true" data-type="potentiometer"><span class="thumb partThumbPot"></span><small>Potenciómetro</small></div>
+<div class="part" draggable="true" data-type="rgbled"><span class="thumb partThumbRgb"></span><small>LED RGB</small></div>
+<div class="part" draggable="true" data-type="diode"><span class="thumb partThumbDiode"></span><small>Diodo 1N4007</small></div>
 <div class="part" draggable="true" data-type="dht22"><span class="thumb sensorThumb dht"></span><small>DHT22</small></div>
 <div class="part" draggable="true" data-type="mpu6050"><span class="thumb sensorThumb imu"></span><small>MPU6050 Accelerometer + Gyroscope</small></div>
 <div class="part" draggable="true" data-type="bmp180"><span class="thumb sensorThumb bmp"></span><small>BMP180 Barometric Pressure Sensor</small></div>
@@ -1864,7 +1875,7 @@ void loop() {
   delay(1000);
 }</textarea>
 <div class="actions"><button id="clearBtn" class="btn clear">Limpiar</button></div>
-<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.97 lista.\n</div>
+<div class="help"><b>Cómo usar:</b> 1) arrastra los componentes; 2) inicia un cable y haz clic en el lienzo para crear curvas; 3) doble clic en un cable para editar sus puntos; doble clic en una bolita para quitarla; 4) programa; 5) Compilar online; 6) Simular.</div><div id="console" class="console">Robótica Lab V9.98 lista.\n</div>
 </aside></div>
 <script>
 const $=id=>document.getElementById(id), ws=$('workspace'), world=$('world'); let seq=0,wires=[],wireStart=null,wireDraftPoints=[],wirePointer=null,lastHex=null,timer=null,currentWireColor='#e23b32',undoStack=[],redoStack=[],dragWirePoint=null;
@@ -1881,6 +1892,8 @@ function circuitConnected(start,target){
    bb.querySelectorAll('.terminal[data-net]').forEach(t=>{const n=t.dataset.net;if(!nets.has(n))nets.set(n,[]);nets.get(n).push(circuitKey(bb,t.dataset.port))});
    nets.forEach(keys=>{for(let i=1;i<keys.length;i++){add(keys[i-1],keys[i]);add(keys[i],keys[i-1])}})
  });
+ let targetIsGround=false;try{targetIsGround=allGroundReferences().some(([gr,gp])=>circuitKey(gr,gp)===target)}catch(_){ }
+ document.querySelectorAll('.component[data-type="diode"]').forEach(d=>{const a=circuitKey(d,'A'),k=circuitKey(d,'K');if(targetIsGround)add(a,k);else add(k,a)});
  document.querySelectorAll('.component .terminal[data-mounted-board][data-mounted-port]').forEach(t=>{
    const root=t.closest('.component'),bb=[...document.querySelectorAll('.component[data-type^="breadboard"]')].find(x=>x.dataset.id===t.dataset.mountedBoard);
    if(!root||!bb)return;
@@ -1918,6 +1931,7 @@ function allVoltageSources(){
  });
  document.querySelectorAll('.component[data-type="battery"]').forEach(b=>out.push([b,'+',Number(b.dataset.voltage)||9]));
  document.querySelectorAll('.component[data-type="signalgen"]').forEach(g=>{if(g.dataset.enabled==='1')out.push([g,'OUT',signalGeneratorVoltage(g,now)]);});
+ document.querySelectorAll('.component[data-type="potentiometer"][data-powered="1"]').forEach(p=>out.push([p,'OUT',Number(p.dataset.vout)||0]));
  return out;
 }
 function zeroConnected(start,target,extraAmpMeter=true){
@@ -2107,6 +2121,8 @@ function bindInstrumentControls(el){
  const mqGas=el.querySelector('[data-inst="mqGas"]'),mqThreshold=el.querySelector('[data-inst="mqThreshold"]');
  const syncMq=()=>{if(mqGas){el.dataset.gas=mqGas.value;const o=el.querySelector('[data-mq-gas]');if(o)o.textContent=mqGas.value+'%'}if(mqThreshold){el.dataset.threshold=mqThreshold.value;const o=el.querySelector('[data-mq-threshold]');if(o)o.textContent=mqThreshold.value+'%'}if(simRunning)refreshCircuitPower();window.updateLdrADC&&window.updateLdrADC()};
  [mqGas,mqThreshold].filter(Boolean).forEach(c=>c.addEventListener('input',syncMq));
+ const pot=el.querySelector('[data-inst="potValue"]');
+ if(pot){const syncPot=()=>{const v=Math.max(0,Math.min(100,Number(pot.value)||0));el.dataset.value=String(v);el.style.setProperty('--pot-angle',(-135+v*2.7)+'deg');const o=el.querySelector('[data-pot-out]');if(o)o.textContent=Math.round(v)+'%';if(simRunning){refreshCircuitPower();window.updateLdrADC&&window.updateLdrADC();updateMultimeters()}};pot.addEventListener('input',syncPot);syncPot()}
  if(el.dataset.type==='signalgen')updateSignalGeneratorUI(el);
  const sw=el.querySelector('[data-inst="switchToggle"]');if(sw)sw.addEventListener('click',e=>{e.stopPropagation();el.dataset.closed=el.dataset.closed==='1'?'0':'1';el.classList.toggle('closed',el.dataset.closed==='1');const st=el.querySelector('.switchState');if(st)st.textContent=el.dataset.closed==='1'?'CERRADO':'ABIERTO';if(simRunning){refreshCircuitPower();updateMultimeters()}});
  const cap=el.querySelector('[data-inst="capacitance"]');if(cap)cap.addEventListener('change',()=>{el.dataset.capacitance=cap.value;const p=el.querySelector('.capPrint');if(p)p.textContent=cap.options[cap.selectedIndex].text;updateCapacitorLabel(el)});
@@ -2152,8 +2168,18 @@ function forceAllActuatorsOff(){
  document.querySelectorAll('.component[data-type="led"] wokwi-led').forEach(d=>{d.value=false;d.brightness=0});
  document.querySelectorAll('.esp32board .espLed,.picoboard .picoLed,.microbitBoard .mbPixel').forEach(b=>b.classList.remove('on'));
  document.querySelectorAll('.component[data-type="led"]').forEach(l=>l.dataset.voltage='0');
+ document.querySelectorAll('.component[data-type="rgbled"]').forEach(l=>{l.dataset.r='0';l.dataset.g='0';l.dataset.b='0';const v=l.querySelector('.rgbV998');if(v){v.classList.remove('on');v.style.setProperty('--rr','0');v.style.setProperty('--gg','0');v.style.setProperty('--bb','0')}});
+ document.querySelectorAll('.component[data-type="potentiometer"]').forEach(p=>{p.dataset.powered='0';p.dataset.vout='0'});
  document.querySelectorAll('.component[data-type="mq2"]').forEach(m=>{m.dataset.powered='0';m.dataset.dout='0';m.dataset.aout='0';m.classList.remove('powered','detected')});
 document.querySelectorAll('.component[data-type="dcmotor"],.component[data-type="vibration"],.component[data-type="ttmotor"]').forEach(el=>{el.classList.remove('on');el.firstElementChild?.classList.remove('on')});document.querySelectorAll('.sevenAsset .seg,.sevenAsset .segdot').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.servoAssetHorn').forEach(x=>x.style.transform='rotate(0deg)');document.querySelectorAll('.motorAct,.vibrationAct,.ttAct').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.component[data-type="buzzer"],.component[data-type="dcmotor"],.component[data-type="ttmotor"]').forEach(x=>{x.classList.remove('on','reverse');const r=x.querySelector('.rpmLabel');if(r)r.textContent='0 RPM'});document.querySelectorAll('.sevenAct .seg').forEach(x=>x.classList.remove('on'))
+}
+function updateRgbLeds(sources,groundRefs){
+ document.querySelectorAll('.component[data-type="rgbled"]').forEach(el=>{
+  const common=circuitKey(el,'C');const grounded=groundRefs.some(([gr,gp])=>circuitConnected(common,circuitKey(gr,gp)));
+  const channel=port=>{let v=0;for(const [r,p,x] of sources)if(circuitConnected(circuitKey(el,port),circuitKey(r,p)))v=Math.max(v,Number(x)||0);return grounded?Math.max(0,Math.min(255,Math.round(v/5*255))):0};
+  const r=channel('R'),g=channel('G'),b=channel('B'),box=el.querySelector('.rgbV998');el.dataset.r=String(r);el.dataset.g=String(g);el.dataset.b=String(b);
+  if(box){box.style.setProperty('--rr',String(r));box.style.setProperty('--gg',String(g));box.style.setProperty('--bb',String(b));box.classList.toggle('on',r+g+b>0)}
+ });
 }
 function refreshCircuitPower(){
  if(!simRunning){forceAllActuatorsOff();resetInstrumentDisplays(false);return}
@@ -2187,6 +2213,8 @@ function refreshCircuitPower(){
  });
  const terminalVoltage=(el,port)=>{let best=0;for(const [b,p,v] of sources)if(circuitConnected(circuitKey(el,port),circuitKey(b,p)))best=Math.max(best,v);for(const [gr,gp] of groundRefs)if(circuitConnected(circuitKey(el,port),circuitKey(gr,gp)))return 0;return best};
  const isGrounded=(el,port)=>groundRefs.some(([gr,gp])=>circuitConnected(circuitKey(el,port),circuitKey(gr,gp)));
+ document.querySelectorAll('.component[data-type="potentiometer"]').forEach(p=>{const vcc=terminalVoltage(p,'VCC'),gnd=isGrounded(p,'GND'),pct=Math.max(0,Math.min(100,Number(p.dataset.value)||0)),on=gnd&&vcc>0;p.dataset.powered=on?'1':'0';p.dataset.vout=on?String(vcc*pct/100):'0';if(on)sources.push([p,'OUT',Number(p.dataset.vout)||0])});
+ updateRgbLeds(sources,groundRefs);
  document.querySelectorAll('.component[data-type="mq2"]').forEach(m=>{
    const vcc=terminalVoltage(m,'VCC'),grounded=isGrounded(m,'GND'),on=grounded&&vcc>=2.5;
    const gas=Math.max(0,Math.min(100,Number(m.dataset.gas)||0)),threshold=Math.max(0,Math.min(100,Number(m.dataset.threshold)||50));
@@ -2295,6 +2323,9 @@ function addComponent(type,x,y){
   <span class="terminal mq96Gnd" data-port="GND" title="GND"></span>
   <span class="terminal mq96Vcc" data-port="VCC" title="VCC"></span>
 </div>`}
+ else if(type==='potentiometer'){el.dataset.value='50';el.dataset.powered='0';el.dataset.vout='0';el.style.setProperty('--pot-angle','0deg');el.innerHTML='<div class="potV998"><div class="potBody"></div><div class="potKnob"></div><i class="potLeg l1"></i><i class="potLeg l2"></i><i class="potLeg l3"></i><span class="potLbl p1l">VCC</span><span class="potLbl p2l">OUT</span><span class="potLbl p3l">GND</span><label class="potCtl instrumentControl">Valor <input data-inst="potValue" type="range" min="0" max="100" value="50"><output data-pot-out>50%</output></label><span class="terminal p1" data-port="VCC" title="VCC"></span><span class="terminal pw" data-port="OUT" title="Wiper / salida"></span><span class="terminal p3" data-port="GND" title="GND"></span></div>'}
+ else if(type==='rgbled'){el.dataset.r='0';el.dataset.g='0';el.dataset.b='0';el.innerHTML='<div class="rgbV998"><div class="rgbBulb"></div><i class="rgbLeg r"></i><i class="rgbLeg c"></i><i class="rgbLeg g"></i><i class="rgbLeg b"></i><div class="rgbName">R · C− · G · B</div><span class="terminal tr" data-port="R" title="Rojo"></span><span class="terminal tc" data-port="C" title="Común cátodo (-)"></span><span class="terminal tg" data-port="G" title="Verde"></span><span class="terminal tb" data-port="B" title="Azul"></span></div>'}
+ else if(type==='diode'){el.innerHTML='<div class="diodeV998"><div class="wire"></div><div class="body"></div><span class="mark aLbl">A</span><span class="mark kLbl">K</span><span class="terminal a" data-port="A" title="Ánodo"></span><span class="terminal k" data-port="K" title="Cátodo · banda"></span></div>'}
  else if(type==='dht22'){el.dataset.temperature='24';el.dataset.humidity='50';el.innerHTML='<div class="wokwiSensor dht22Asset"><wokwi-dht22></wokwi-dht22><span class="terminal" style="left:24px;top:184px" data-port="VCC" title="VCC"></span><span class="terminal" style="left:39.2px;top:184px" data-port="SDA" title="DATA"></span><span class="terminal" style="left:54.6px;top:184px" data-port="NC" title="NC"></span><span class="terminal" style="left:70.1px;top:184px" data-port="GND" title="GND"></span></div>'}
  else if(type==='mpu6050'){el.dataset.ax='0';el.dataset.ay='0';el.dataset.az='1';el.innerHTML='<div class="wokwiSensor mpu6050Asset"><wokwi-mpu6050></wokwi-mpu6050>'+[['INT',14.6],['AD0',33.8],['XCL',52.8],['XDA',72],['SDA',91.2],['SCL',110.4],['GND',129.6],['VCC',148.8]].map(p=>'<span class="terminal" style="left:'+p[1]+'px;top:11.6px" data-port="'+p[0]+'" title="'+p[0]+'"></span>').join('')+'</div>'}
  else if(type==='bmp180'){el.dataset.pressure='1013.25';el.dataset.temperature='24';el.innerHTML='<div class="wokwiSensor bmp180Asset"><div class="bmpSensor"><i></i></div><div class="bmpChip"></div><div class="bmpSmd s1"></div><div class="bmpSmd s2"></div><div class="bmpSmd s3"></div><div class="bmpHole"></div><div class="bmpText">BMP180</div><div class="bmpPinLabels"><span>VIN</span><span>GND</span><span>SCL</span><span>SDA</span></div><span class="terminal" style="left:118px;top:14px" data-port="VCC" title="VIN / VCC"></span><span class="terminal" style="left:118px;top:31px" data-port="GND" title="GND"></span><span class="terminal" style="left:118px;top:48px" data-port="SCL" title="SCL"></span><span class="terminal" style="left:118px;top:65px" data-port="SDA" title="SDA"></span></div>'}
@@ -3180,6 +3211,7 @@ function updateExternalLEDs(states){
  document.querySelectorAll('.component[data-type="battery"]').forEach(b=>sources.push([b,'+',Number(b.dataset.voltage)||9]));
  document.querySelectorAll('.component[data-type="signalgen"]').forEach(g=>{if(g.dataset.enabled==='1')sources.push([g,'OUT',signalGeneratorVoltage(g)])});
  const groundRefs=allGroundReferences();
+ document.querySelectorAll('.component[data-type="potentiometer"]').forEach(p=>{let vcc=0,gnd=false;for(const [r,port,v] of sources)if(circuitConnected(circuitKey(p,'VCC'),circuitKey(r,port)))vcc=Math.max(vcc,Number(v)||0);for(const [gr,gp] of groundRefs)if(circuitConnected(circuitKey(p,'GND'),circuitKey(gr,gp)))gnd=true;const on=gnd&&vcc>0,pct=Math.max(0,Math.min(100,Number(p.dataset.value)||0));p.dataset.powered=on?'1':'0';p.dataset.vout=on?String(vcc*pct/100):'0';if(on)sources.push([p,'OUT',Number(p.dataset.vout)||0])});
  document.querySelectorAll('.component[data-type="led"]').forEach(l=>{
    const anode=circuitKey(l,'A'),cathode=circuitKey(l,'K');
    let volts=0,grounded=false;
@@ -3188,6 +3220,7 @@ function updateExternalLEDs(states){
    const on=volts>0&&grounded;l.dataset.voltage=on?String(volts):'0';
    const diode=l.querySelector('wokwi-led');if(diode){diode.value=on;diode.brightness=on?Math.min(1,Math.abs(volts)/5):0}
  });
+ updateRgbLeds(sources,groundRefs);
 }
 window.stopAVR=()=>{running=false};
 try{
@@ -3198,7 +3231,7 @@ try{
    const program=new Uint16Array(0x8000);loadHex(hex,new Uint8Array(program.buffer));const cpu=new CPU(program);
    new AVRTimer(cpu,timer0Config);new AVRTimer(cpu,timer1Config);new AVRTimer(cpu,timer2Config);
    const adc=new AVRADC(cpu,adcConfig);
-   window.updateLdrADC=()=>{for(let ch=0;ch<6;ch++){let volts=0;const board=document.querySelector('.board');document.querySelectorAll('.component[data-type="ldr"]').forEach(l=>{if(board&&connected(key(l,'A0'),key(board,'A'+ch)))volts=Math.max(volts,Number(l.dataset.light||0)/100*5)});document.querySelectorAll('.component[data-type="mq2"]').forEach(m=>{if(board&&m.dataset.powered==='1'&&connected(key(m,'AOUT'),key(board,'A'+ch)))volts=Math.max(volts,Number(m.dataset.aout)||0)});document.querySelectorAll('.component[data-type="battery"]').forEach(b=>{if(board&&connected(key(b,'+'),key(board,'A'+ch)))volts=Math.max(volts,Number(b.dataset.voltage)||9)});document.querySelectorAll('.component[data-type="signalgen"]').forEach(g=>{if(board&&g.dataset.enabled==='1'&&connected(key(g,'OUT'),key(board,'A'+ch)))volts=Math.max(volts,signalGeneratorVoltage(g))});adc.channelValues[ch]=Math.max(0,Math.min(5,volts))}};
+   window.updateLdrADC=()=>{for(let ch=0;ch<6;ch++){let volts=0;const board=document.querySelector('.board');document.querySelectorAll('.component[data-type="ldr"]').forEach(l=>{if(board&&connected(key(l,'A0'),key(board,'A'+ch)))volts=Math.max(volts,Number(l.dataset.light||0)/100*5)});document.querySelectorAll('.component[data-type="mq2"]').forEach(m=>{if(board&&m.dataset.powered==='1'&&connected(key(m,'AOUT'),key(board,'A'+ch)))volts=Math.max(volts,Number(m.dataset.aout)||0)});document.querySelectorAll('.component[data-type="potentiometer"]').forEach(p=>{if(board&&p.dataset.powered==='1'&&connected(key(p,'OUT'),key(board,'A'+ch)))volts=Math.max(volts,Number(p.dataset.vout)||0)});document.querySelectorAll('.component[data-type="battery"]').forEach(b=>{if(board&&connected(key(b,'+'),key(board,'A'+ch)))volts=Math.max(volts,Number(b.dataset.voltage)||9)});document.querySelectorAll('.component[data-type="signalgen"]').forEach(g=>{if(board&&g.dataset.enabled==='1'&&connected(key(g,'OUT'),key(board,'A'+ch)))volts=Math.max(volts,signalGeneratorVoltage(g))});adc.channelValues[ch]=Math.max(0,Math.min(5,volts))}};
    window.updateLdrADC();
    const pb=new AVRIOPort(cpu,portBConfig),pc=new AVRIOPort(cpu,portCConfig),pd=new AVRIOPort(cpu,portDConfig);
    let sonar={trigHigh:false,echoStart:0,echoEnd:0,echoPort:null,echoPin:-1};
