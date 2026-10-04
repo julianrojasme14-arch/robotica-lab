@@ -1885,9 +1885,9 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
  position:absolute;width:9px;height:8px;border-radius:2px;bottom:11px;
  box-shadow:0 0 0 1px #66757d55;transition:opacity .08s,box-shadow .08s
 }
-.rgbV999 .dieR{left:9px;background:#ff2a31;opacity:calc(.18 + var(--rr,0)/310);box-shadow:0 0 calc(var(--rr,0)*.035px) #ff2633}
-.rgbV999 .dieG{left:21px;background:#27d957;opacity:calc(.18 + var(--gg,0)/310);box-shadow:0 0 calc(var(--gg,0)*.035px) #2bdd5c}
-.rgbV999 .dieB{left:33px;background:#2d68ff;opacity:calc(.18 + var(--bb,0)/310);box-shadow:0 0 calc(var(--bb,0)*.035px) #3975ff}
+.rgbV999 .dieR{left:9px;background:#ff2a31;opacity:var(--ra,.18);box-shadow:0 0 7px #ff263355}
+.rgbV999 .dieG{left:21px;background:#27d957;opacity:var(--ga,.18);box-shadow:0 0 7px #2bdd5c55}
+.rgbV999 .dieB{left:33px;background:#2d68ff;opacity:var(--ba,.18);box-shadow:0 0 7px #3975ff55}
 .rgbV999 .rgbCommon{position:absolute;left:19px;bottom:3px;width:14px;height:4px;border-radius:2px;background:#aeb6ba}
 .rgbV999.on .rgbBulb{
  background:
@@ -2319,7 +2319,7 @@ function updateRgbLeds(sources,groundRefs){
   const common=circuitKey(el,'C');const grounded=groundRefs.some(([gr,gp])=>circuitConnected(common,circuitKey(gr,gp)));
   const channel=port=>{let v=0;for(const [r,p,x] of sources)if(circuitConnected(circuitKey(el,port),circuitKey(r,p)))v=Math.max(v,Number(x)||0);return grounded?Math.max(0,Math.min(255,Math.round(v/5*255))):0};
   const r=channel('R'),g=channel('G'),b=channel('B'),box=el.querySelector('.rgbV998');el.dataset.r=String(r);el.dataset.g=String(g);el.dataset.b=String(b);
-  if(box){box.style.setProperty('--rr',String(r));box.style.setProperty('--gg',String(g));box.style.setProperty('--bb',String(b));box.classList.toggle('on',r+g+b>0)}
+  if(box){box.style.setProperty('--rr',String(r));box.style.setProperty('--gg',String(g));box.style.setProperty('--bb',String(b));box.style.setProperty('--ra',String(.18+r/310));box.style.setProperty('--ga',String(.18+g/310));box.style.setProperty('--ba',String(.18+b/310));box.classList.toggle('on',r+g+b>0)}
  });
 }
 function refreshCircuitPower(){
