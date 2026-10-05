@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V10.17</title>
+<title>Robótica Lab V10.18</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -2252,6 +2252,63 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .soilThumbV1004{width:44px!important;height:50px!important;background-size:194px 118px!important;background-position:-142px -5px!important}
 .soilThumbV1004:before,.soilThumbV1004:after,.npnThumbV1004:before,.npnThumbV1004:after,
 .lampThumbV1004:before,.lampThumbV1004:after,.solarThumbV1004:before,.solarThumbV1004:after{display:none!important}
+
+/* V10.18 · stable geometry for lamp, NPN and solar: artwork and terminals rotate as one unit */
+.partToolsV1018{display:none;position:absolute;right:1px;top:-30px;z-index:180}
+.component.selected>.partToolsV1018{display:flex}
+.partToolsV1018 button,.solarTools button{width:26px!important;height:24px!important;padding:0!important;border:1px solid #8297a5!important;border-radius:5px!important;background:#fff!important;box-shadow:0 2px 5px #0002!important;cursor:pointer!important}
+.partRotorV1018{position:absolute;transition:transform .16s ease;transform-origin:50% 50%}
+
+/* NPN: real TO-92 scale, 2.54 mm-style 10px pitch so C/B/E can enter three breadboard holes */
+.component[data-type="npn"]{width:96px!important;height:96px!important}
+.npnRotorV1018{left:23px;top:0;width:50px;height:96px}
+.npnApprovedV1006,.npnApprovedV1006[data-model]{
+ width:50px!important;height:96px!important;transform:none!important;
+ background-image:url('/assets/npn-to92-breadboard-v1018.svg')!important;
+ background-position:center!important;background-size:50px 96px!important
+}
+.npnApprovedV1006>.terminal{top:82px!important;width:12px!important;height:12px!important;opacity:.01!important}
+.npnApprovedV1006>.c{left:15px!important}.npnApprovedV1006>.b{left:25px!important}.npnApprovedV1006>.e{left:35px!important}
+.npnModelLabel{left:6px!important;top:29px!important;width:38px!important;font:700 5.5px Arial!important;letter-spacing:0!important;color:#f0f0f0!important;text-shadow:0 1px 1px #000!important}
+.npnTypeControl{left:100px!important;top:23px!important;width:122px!important;padding:6px!important;font-size:10px!important}
+.component[data-type="npn"].breadboardMounted .npnApprovedV1006>.terminal{opacity:.05!important}
+
+/* Lamp: fuller glass capsule, shorter leads and connection hotspots exactly at lead ends */
+.component[data-type="lamp"]{width:128px!important;height:128px!important}
+.lampRotorV1018{left:16px;top:0;width:96px;height:128px}
+.lampApprovedV1006{
+ width:96px!important;height:128px!important;transform:none!important;
+ background-image:url('/assets/lamp-realistic-v1018.svg')!important;
+ background-position:center!important;background-size:96px 128px!important
+}
+.lampApprovedV1006>.terminal{top:122px!important;width:13px!important;height:13px!important;opacity:.01!important}
+.lampApprovedV1006>.t1{left:38px!important}.lampApprovedV1006>.t2{left:58px!important}
+.lampGlowV1006{left:12px!important;top:7px!important;width:72px!important;height:72px!important;border-radius:50%!important;z-index:0!important}
+.component[data-type="lamp"].on .lampApprovedV1006{filter:drop-shadow(0 0 6px rgba(255,207,75,.65)) drop-shadow(0 0 13px rgba(255,187,50,.34))}
+.component[data-type="lamp"].breadboardMounted .lampApprovedV1006>.terminal{opacity:.05!important}
+
+/* Solar: square rotation frame. Panel, +/− leads and electrical hotspots are one rigid body. */
+.component[data-type="solar"]{width:263px!important;height:263px!important}
+.solarRotorV1018{left:34px;top:0;width:195px;height:263px}
+.solarApprovedV1006{
+ width:250px!important;height:336px!important;transform:scale(.78)!important;transform-origin:0 0!important;
+ background-image:url('/assets/solar-realistic.svg')!important;background-position:center!important;background-size:250px 336px!important
+}
+.solarApprovedV1006>.terminal{top:327px!important;width:16px!important;height:16px!important;opacity:.01!important;background:transparent!important;border:0!important}
+.solarApprovedV1006>.pos{left:88.5px!important}.solarApprovedV1006>.neg{left:161.5px!important}
+.component[data-type="solar"][data-rotation="90"],.component[data-type="solar"][data-rotation="270"]{width:263px!important;height:263px!important}
+.component[data-type="solar"][data-rotation="90"] .solarApprovedV1006,.component[data-type="solar"][data-rotation="270"] .solarApprovedV1006{width:250px!important;height:336px!important}
+.solarPanelVisual{display:none!important}
+.solarTools{right:4px!important;top:-29px!important}
+.solarControlV1011,.component[data-type="solar"][data-rotation="90"] .solarControlV1011,.component[data-type="solar"][data-rotation="270"] .solarControlV1011{left:270px!important;top:54px!important}
+
+/* connection feedback remains compact */
+.npnApprovedV1006>.terminal:hover,.npnApprovedV1006>.terminal.sel,
+.lampApprovedV1006>.terminal:hover,.lampApprovedV1006>.terminal.sel,
+.solarApprovedV1006>.terminal:hover,.solarApprovedV1006>.terminal.sel{
+ opacity:1!important;background:#ff1515!important;border:0!important;border-radius:2px!important;
+ box-shadow:0 0 0 1px #fff,0 0 0 2px #222,0 0 7px #ff151577!important
+}
 </style><!-- deploy-marker: V10.17 · 2026-10-04 -->
 </head><body>
 <header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge" id="appVersionBadge">V10.17</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
@@ -2984,9 +3041,9 @@ function addComponent(type,x,y){
   <span class="terminal mq96Vcc" data-port="VCC" title="VCC"></span>
 </div>`}
  else if(type==='soil'){el.dataset.moisture='50';el.dataset.powered='0';el.dataset.signal='0';el.innerHTML='<div class="approvedSpriteV1006 soilApprovedV1006"><span class="terminal vcc" data-port="VCC" title="VCC"></span><span class="terminal gnd" data-port="GND" title="GND"></span><span class="terminal sig" data-port="SIG" title="Salida analógica A0"></span><div class="soilControlV1011 instrumentControl"><b>💧 Humedad del suelo</b><input data-inst="soilMoisture" type="range" min="0" max="100" value="50"><output data-soil-out>50%</output><div class="waterDrop" data-water-drop><i></i><span>💧</span></div></div><span class="soilReadout">50%</span></div>'}
- else if(type==='npn'){el.dataset.on='0';el.dataset.npnType='BC547';el.innerHTML='<div class="approvedSpriteV1006 npnApprovedV1006" data-model="BC547"><span class="npnModelLabel">BC547</span><span class="terminal c" data-port="C" title="Colector (C)"></span><span class="terminal b" data-port="B" title="Base (B)"></span><span class="terminal e" data-port="E" title="Emisor (E)"></span><label class="npnTypeControl instrumentControl">Tipo <select data-inst="npnType"><option>BC547</option><option>2N2222</option><option>2N3904</option><option>BC337</option></select></label></div>'}
- else if(type==='lamp'){el.dataset.voltage='0';el.innerHTML='<div class="approvedSpriteV1006 lampApprovedV1006"><i class="lampGlowV1006"></i><span class="terminal t1" data-port="1" title="Terminal 1"></span><span class="terminal t2" data-port="2" title="Terminal 2"></span></div>'}
- else if(type==='solar'){el.dataset.light='75';el.dataset.maxVoltage='6';el.dataset.maxCurrent='0.5';el.dataset.vout='0';el.dataset.rotation='0';el.dataset.reversed='0';el.innerHTML='<div class="approvedSpriteV1006 solarApprovedV1006"><div class="solarTools"><button class="solarRot" title="Girar 90°">↻</button><button class="solarInv" title="Invertir polaridad">±</button></div><span class="terminal pos" data-port="+" title="Positivo (+)"></span><span class="terminal neg" data-port="-" title="Negativo (-)"></span><div class="solarControlV1011 instrumentControl"><div class="sunRow"><span class="solarSun" data-solar-sun>☀️</span> <b>Luz solar</b><input data-inst="solarLight" type="range" min="0" max="100" value="75"><output data-solar-out>75%</output></div><div class="sunPresets"><button data-sun="0">☁️ 0%</button><button data-sun="25">🌤️ 25%</button><button data-sun="50">☀️ 50%</button><button data-sun="75">☀️ 75%</button><button data-sun="100">☀️ 100%</button></div><label>Voltaje (V) <input data-inst="solarVoltage" type="number" min="0" max="48" step="0.1" value="6"></label><label>Corriente (A) <input data-inst="solarCurrent" type="number" min="0" max="20" step="0.05" value="0.5"></label><span class="solarReadout">— V</span></div></div>'}
+ else if(type==='npn'){el.dataset.on='0';el.dataset.npnType='BC547';el.dataset.rotation='0';el.innerHTML='<div class="partToolsV1018 npnToolsV1018"><button class="npnRotV1018" title="Girar 90°">↻</button></div><div class="partRotorV1018 npnRotorV1018"><div class="approvedSpriteV1006 npnApprovedV1006" data-model="BC547"><span class="npnModelLabel">BC547</span><span class="terminal c" data-port="C" title="Colector (C)"></span><span class="terminal b" data-port="B" title="Base (B)"></span><span class="terminal e" data-port="E" title="Emisor (E)"></span></div></div><label class="npnTypeControl instrumentControl">Tipo <select data-inst="npnType"><option>BC547</option><option>2N2222</option><option>2N3904</option><option>BC337</option></select></label>'}
+ else if(type==='lamp'){el.dataset.voltage='0';el.dataset.rotation='0';el.innerHTML='<div class="partToolsV1018 lampToolsV1018"><button class="lampRotV1018" title="Girar 90°">↻</button></div><div class="partRotorV1018 lampRotorV1018"><div class="approvedSpriteV1006 lampApprovedV1006"><i class="lampGlowV1006"></i><span class="terminal t1" data-port="1" title="Terminal 1"></span><span class="terminal t2" data-port="2" title="Terminal 2"></span></div></div>'}
+ else if(type==='solar'){el.dataset.light='75';el.dataset.maxVoltage='6';el.dataset.maxCurrent='0.5';el.dataset.vout='0';el.dataset.rotation='0';el.dataset.reversed='0';el.innerHTML='<div class="solarTools"><button class="solarRot" title="Girar 90°">↻</button><button class="solarInv" title="Invertir polaridad">±</button></div><div class="partRotorV1018 solarRotorV1018"><div class="approvedSpriteV1006 solarApprovedV1006"><span class="terminal pos" data-port="+" title="Positivo (+)"></span><span class="terminal neg" data-port="-" title="Negativo (-)"></span></div></div><div class="solarControlV1011 instrumentControl"><div class="sunRow"><span class="solarSun" data-solar-sun>☀️</span> <b>Luz solar</b><input data-inst="solarLight" type="range" min="0" max="100" value="75"><output data-solar-out>75%</output></div><div class="sunPresets"><button data-sun="0">☁️ 0%</button><button data-sun="25">🌤️ 25%</button><button data-sun="50">☀️ 50%</button><button data-sun="75">☀️ 75%</button><button data-sun="100">☀️ 100%</button></div><label>Voltaje (V) <input data-inst="solarVoltage" type="number" min="0" max="48" step="0.1" value="6"></label><label>Corriente (A) <input data-inst="solarCurrent" type="number" min="0" max="20" step="0.05" value="0.5"></label><span class="solarReadout">— V</span></div>'}
  else if(type==='relay'){el.dataset.powered='0';el.dataset.active='0';el.dataset.transistor='npn';el.innerHTML=`<div class="relayWokwiV1005">
   <!-- Wokwi Relay Module artwork adapted from wokwi-docs, MIT License, CodeMagic LTD -->
   <svg class="relayWokwiSvg" viewBox="0 0 33.867 15.409" aria-label="Wokwi Relay Module">
@@ -3179,15 +3236,23 @@ function addComponent(type,x,y){
    const input=el.querySelector('[data-inst="solarLight"]'),out=el.querySelector('[data-solar-out]'),vol=el.querySelector('[data-inst="solarVoltage"]'),cur=el.querySelector('[data-inst="solarCurrent"]'),sun=el.querySelector('[data-solar-sun]');
    const sync=()=>{const v=Math.max(0,Math.min(100,Number(input?.value)||0));el.dataset.light=String(v);el.dataset.maxVoltage=String(Math.max(0,Number(vol?.value)||0));el.dataset.maxCurrent=String(Math.max(0,Number(cur?.value)||0));if(out)out.textContent=Math.round(v)+'%';if(sun){sun.style.transform='scale('+(0.65+v*0.0065)+')';sun.style.filter='drop-shadow(0 0 '+Math.round(v/8)+'px rgba(255,184,0,.9))'}el.querySelectorAll('[data-sun]').forEach(b=>b.classList.toggle('active',Number(b.dataset.sun)===Math.round(v)));if(simRunning){refreshCircuitPower();updateMultimeters()}};
    input?.addEventListener('input',sync);vol?.addEventListener('input',sync);cur?.addEventListener('input',sync);
-   el.querySelectorAll('[data-sun]').forEach(b=>{b.addEventListener('pointerdown',e=>e.stopPropagation());b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();input.value=String(b.dataset.sun);input.dispatchEvent(new Event('input',{bubbles:true}))})});sync();const rot=el.querySelector('.solarRot'),inv=el.querySelector('.solarInv'),body=el.querySelector('.solarApprovedV1006');let visual=null;if(body){visual=document.createElement('div');visual.className='solarPanelVisual';visual.style.backgroundImage=getComputedStyle(body).backgroundImage;visual.style.backgroundRepeat='no-repeat';visual.style.backgroundPosition='center';body.style.backgroundImage='none';body.prepend(visual)}
-   const syncSolarGeometry=()=>{const r=Number(el.dataset.rotation||0),rev=el.dataset.reversed==='1',side=(r===90||r===270);el.dataset.rotation=String(r);if(visual)visual.style.transform='rotate('+r+'deg)';const p=el.querySelector('.pos'),n=el.querySelector('.neg');if(p&&n){const coords=side?(r===90?{p:[320,105],n:[320,188]}:{p:[16,188],n:[16,105]}):r===180?{p:[145,16],n:[62,16]}:{p:[105,320],n:[188,320]};const a=rev?coords.n:coords.p,b=rev?coords.p:coords.n;p.style.left=a[0]+'px';p.style.top=a[1]+'px';n.style.left=b[0]+'px';n.style.top=b[1]+'px';p.dataset.port=rev?'-':'+';n.dataset.port=rev?'+':'-';p.title=rev?'Negativo (-)':'Positivo (+)';n.title=rev?'Positivo (+)':'Negativo (-)'}el.classList.toggle('polarityReversed',rev);requestAnimationFrame(redraw)};
-   rot?.addEventListener('pointerdown',e=>e.stopPropagation());inv?.addEventListener('pointerdown',e=>e.stopPropagation());rot?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();el.dataset.rotation=String((Number(el.dataset.rotation||0)+90)%360);syncSolarGeometry()});inv?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();el.dataset.reversed=el.dataset.reversed==='1'?'0':'1';syncSolarGeometry();refreshCircuitPower()});syncSolarGeometry();
+   el.querySelectorAll('[data-sun]').forEach(b=>{b.addEventListener('pointerdown',e=>e.stopPropagation());b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();input.value=String(b.dataset.sun);input.dispatchEvent(new Event('input',{bubbles:true}))})});sync();const rot=el.querySelector('.solarRot'),inv=el.querySelector('.solarInv'),rotor=el.querySelector('.solarRotorV1018');
+   const syncSolarGeometry=()=>{const r=((Number(el.dataset.rotation||0)%360)+360)%360,rev=el.dataset.reversed==='1';el.dataset.rotation=String(r);if(rotor)rotor.style.transform='rotate('+r+'deg)';const p=el.querySelector('.pos'),n=el.querySelector('.neg');if(p&&n){p.dataset.port=rev?'-':'+';n.dataset.port=rev?'+':'-';p.title=rev?'Negativo (-)':'Positivo (+)';n.title=rev?'Positivo (+)':'Negativo (-)'}el.classList.toggle('polarityReversed',rev);requestAnimationFrame(redraw)};
+   rot?.addEventListener('pointerdown',e=>e.stopPropagation());inv?.addEventListener('pointerdown',e=>e.stopPropagation());rot?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();el.dataset.rotation=String((Number(el.dataset.rotation||0)+90)%360);syncSolarGeometry()});inv?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();el.dataset.reversed=el.dataset.reversed==='1'?'0':'1';syncSolarGeometry();wires.forEach(w=>{[w.a,w.b].forEach(ep=>{if(ep.root===el)ep.key=circuitKey(el,ep.t.dataset.port)})});refreshCircuitPower();redraw()});syncSolarGeometry();
  }
  if(type==='npn'){
    const sel=el.querySelector('[data-inst="npnType"]'),body=el.querySelector('.npnApprovedV1006'),lab=el.querySelector('.npnModelLabel');
    const specs={BC547:{pins:'C-B-E',vce:'45 V',ic:'100 mA'},BC337:{pins:'C-B-E',vce:'45 V',ic:'800 mA'},'2N3904':{pins:'E-B-C',vce:'40 V',ic:'200 mA'},'2N2222':{pins:'E-B-C*',vce:'40 V',ic:'600 mA'}};
    const syncNpn=()=>{const v=sel?.value||'BC547',sp=specs[v]||specs.BC547;el.dataset.npnType=v;el.dataset.npnPins=sp.pins;el.dataset.npnVce=sp.vce;el.dataset.npnIc=sp.ic;if(body)body.dataset.model=v;if(lab)lab.textContent=v};
    sel?.addEventListener('pointerdown',e=>e.stopPropagation());sel?.addEventListener('change',syncNpn);syncNpn();
+   const rot=el.querySelector('.npnRotV1018'),rotor=el.querySelector('.npnRotorV1018');
+   rot?.addEventListener('pointerdown',e=>e.stopPropagation());
+   rot?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();clearBreadboardMount(el);el.dataset.rotation=String((Number(el.dataset.rotation||0)+90)%360);if(rotor)rotor.style.transform='rotate('+el.dataset.rotation+'deg)';requestAnimationFrame(redraw)});
+ }
+ if(type==='lamp'){
+   const rot=el.querySelector('.lampRotV1018'),rotor=el.querySelector('.lampRotorV1018');
+   rot?.addEventListener('pointerdown',e=>e.stopPropagation());
+   rot?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();clearBreadboardMount(el);el.dataset.rotation=String((Number(el.dataset.rotation||0)+90)%360);if(rotor)rotor.style.transform='rotate('+el.dataset.rotation+'deg)';requestAnimationFrame(redraw)});
  }
  const assetImg=el.querySelector('.assetAct>img');
  if(assetImg){
@@ -3543,8 +3608,8 @@ function clearBreadboardMount(el){
  el.querySelectorAll('.terminal').forEach(t=>{delete t.dataset.mountedBoard;delete t.dataset.mountedPort});
 }
 function snapTwoPinPartToBreadboard(el){
- if(!el||!['resistor','led','capacitor','capacitor-polar'].includes(el.dataset.type))return false;
- const selector=el.dataset.type==='resistor'?'.wokwiResWrap .terminal':el.dataset.type==='led'?'.wokwiLedWrap .terminal':'.capAsset .terminal';
+ if(!el||!['resistor','led','capacitor','capacitor-polar','lamp'].includes(el.dataset.type))return false;
+ const selector=el.dataset.type==='resistor'?'.wokwiResWrap .terminal':el.dataset.type==='led'?'.wokwiLedWrap .terminal':el.dataset.type==='lamp'?'.lampApprovedV1006 .terminal':'.capAsset .terminal';
  const pins=[...el.querySelectorAll(selector)];
  if(pins.length!==2)return false;
  const boards=[...document.querySelectorAll('.component[data-type^="breadboard"]')];
@@ -3562,7 +3627,7 @@ function snapTwoPinPartToBreadboard(el){
      const d1={x:h1.x-pc[0].x,y:h1.y-pc[0].y},d2={x:h2.x-pc[1].x,y:h2.y-pc[1].y};
      const mismatch=Math.hypot(d1.x-d2.x,d1.y-d2.y);
      const travel=(Math.hypot(d1.x,d1.y)+Math.hypot(d2.x,d2.y))/2;
-     const mismatchLimit=(el.dataset.type==='led'?3.2:(el.dataset.type==='capacitor'||el.dataset.type==='capacitor-polar'?2.8:4.5))*Math.max(.7,view.scale);
+     const mismatchLimit=(el.dataset.type==='led'||el.dataset.type==='lamp'?3.2:(el.dataset.type==='capacitor'||el.dataset.type==='capacitor-polar'?2.8:4.5))*Math.max(.7,view.scale);
      if(mismatch>mismatchLimit)continue;
      const score=mismatch*4+travel;
      if(!best||score<best.score)best={bb,h1,h2,dx:(d1.x+d2.x)/2,dy:(d1.y+d2.y)/2,score};
@@ -3576,7 +3641,34 @@ function snapTwoPinPartToBreadboard(el){
  redraw();refreshCircuitPower();
  return true
 }
-function enableMove(el){let sx,sy,ox,oy,moving=false;el.addEventListener('pointerdown',e=>{if(e.target.matches('.pin,.terminal')||e.target.closest('input,select,button,label'))return;if(['resistor','led','capacitor','capacitor-polar'].includes(el.dataset.type))clearBreadboardMount(el);moving=true;sx=e.clientX;sy=e.clientY;ox=parseFloat(el.style.left);oy=parseFloat(el.style.top);el.setPointerCapture(e.pointerId)});el.addEventListener('pointermove',e=>{if(!moving)return;el.style.left=(ox+(e.clientX-sx)/view.scale)+'px';el.style.top=(oy+(e.clientY-sy)/view.scale)+'px';redraw();if(el.dataset.type==='led')showLedTools(el);if(el.dataset.type==='resistor')showResTools(el);if(el.dataset.type==='hcsr04'&&simRunning&&activeHcsr===el)showHcsrTools(el);if(el.dataset.type==='microbit'){showMicrobitColorTools(el);if(simRunning&&activeMicrobit===el)showMicrobitSensorPanel(el)}});el.addEventListener('pointerup',()=>{if(!moving)return;moving=false;if(['resistor','led','capacitor','capacitor-polar'].includes(el.dataset.type))snapTwoPinPartToBreadboard(el);redraw();refreshCircuitPower()});el.addEventListener('click',e=>{if(e.target.matches('.pin,.terminal')||e.target.closest('input,select,button,label'))return;document.querySelectorAll('.component').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');window.selectedComponent=el;if(el.dataset.type==='led'){showLedTools(el);hideResTools()}else if(el.dataset.type==='resistor'){showResTools(el);hideLedTools();hideLdrTools()}else if(el.dataset.type==='ldr'&&simRunning){showLdrTools(el);hideLedTools();hideResTools();hideHcsrTools()}else if(el.dataset.type==='hcsr04'&&simRunning){showHcsrTools(el);hideLedTools();hideResTools();hideLdrTools();hideMicrobitSensorPanel()}else if(el.dataset.type==='microbit'){showMicrobitColorTools(el);if(simRunning)showMicrobitSensorPanel(el);hideLedTools();hideResTools();hideLdrTools();hideHcsrTools()}else{hideLedTools();hideResTools();hideLdrTools();hideHcsrTools();hideMicrobitSensorPanel();hideMicrobitColorTools()}});el.addEventListener('dblclick',()=>{wires=wires.filter(w=>w.a.root!==el&&w.b.root!==el);el.remove();redraw()})}
+function snapNpnToBreadboard(el){
+ if(!el||el.dataset.type!=='npn')return false;
+ const rot=((Number(el.dataset.rotation||0)%360)+360)%360;
+ if(rot===90||rot===270){clearBreadboardMount(el);return false}
+ const pins=[...el.querySelectorAll('.npnApprovedV1006 .terminal')];
+ if(pins.length!==3)return false;
+ const boards=[...document.querySelectorAll('.component[data-type^="breadboard"]')];if(!boards.length)return false;
+ const pc=pins.map(t=>{const r=t.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2,t}});
+ let best=null;
+ boards.forEach(bb=>{
+  const holes=[...bb.querySelectorAll('.breadboardShell .terminal[data-port]')].map(t=>{const r=t.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2,t}});
+  const near=pc.map(p=>holes.filter(h=>Math.hypot(h.x-p.x,h.y-p.y)<=18*Math.max(.7,view.scale)).sort((a,b)=>Math.hypot(a.x-p.x,a.y-p.y)-Math.hypot(b.x-p.x,b.y-p.y)).slice(0,8));
+  for(const h1 of near[0])for(const h2 of near[1])for(const h3 of near[2]){
+   if(h1.t===h2.t||h1.t===h3.t||h2.t===h3.t)continue;
+   const ds=[{x:h1.x-pc[0].x,y:h1.y-pc[0].y},{x:h2.x-pc[1].x,y:h2.y-pc[1].y},{x:h3.x-pc[2].x,y:h3.y-pc[2].y}];
+   const dx=(ds[0].x+ds[1].x+ds[2].x)/3,dy=(ds[0].y+ds[1].y+ds[2].y)/3;
+   const mismatch=Math.max(...ds.map(d=>Math.hypot(d.x-dx,d.y-dy)));
+   if(mismatch>2.7*Math.max(.7,view.scale))continue;
+   const travel=Math.hypot(dx,dy),score=mismatch*8+travel;
+   if(!best||score<best.score)best={bb,holes:[h1.t,h2.t,h3.t],dx,dy,score};
+  }
+ });
+ if(!best){clearBreadboardMount(el);return false}
+ el.style.left=(parseFloat(el.style.left)+best.dx/view.scale)+'px';el.style.top=(parseFloat(el.style.top)+best.dy/view.scale)+'px';
+ pins.forEach((p,i)=>{p.dataset.mountedBoard=best.bb.dataset.id;p.dataset.mountedPort=best.holes[i].dataset.port});
+ el.classList.add('breadboardMounted');redraw();refreshCircuitPower();return true
+}
+function enableMove(el){let sx,sy,ox,oy,moving=false;el.addEventListener('pointerdown',e=>{if(e.target.matches('.pin,.terminal')||e.target.closest('input,select,button,label'))return;if(['resistor','led','capacitor','capacitor-polar','lamp','npn'].includes(el.dataset.type))clearBreadboardMount(el);moving=true;sx=e.clientX;sy=e.clientY;ox=parseFloat(el.style.left);oy=parseFloat(el.style.top);el.setPointerCapture(e.pointerId)});el.addEventListener('pointermove',e=>{if(!moving)return;el.style.left=(ox+(e.clientX-sx)/view.scale)+'px';el.style.top=(oy+(e.clientY-sy)/view.scale)+'px';redraw();if(el.dataset.type==='led')showLedTools(el);if(el.dataset.type==='resistor')showResTools(el);if(el.dataset.type==='hcsr04'&&simRunning&&activeHcsr===el)showHcsrTools(el);if(el.dataset.type==='microbit'){showMicrobitColorTools(el);if(simRunning&&activeMicrobit===el)showMicrobitSensorPanel(el)}});el.addEventListener('pointerup',()=>{if(!moving)return;moving=false;if(['resistor','led','capacitor','capacitor-polar','lamp'].includes(el.dataset.type))snapTwoPinPartToBreadboard(el);else if(el.dataset.type==='npn')snapNpnToBreadboard(el);redraw();refreshCircuitPower()});el.addEventListener('click',e=>{if(e.target.matches('.pin,.terminal')||e.target.closest('input,select,button,label'))return;document.querySelectorAll('.component').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');window.selectedComponent=el;if(el.dataset.type==='led'){showLedTools(el);hideResTools()}else if(el.dataset.type==='resistor'){showResTools(el);hideLedTools();hideLdrTools()}else if(el.dataset.type==='ldr'&&simRunning){showLdrTools(el);hideLedTools();hideResTools();hideHcsrTools()}else if(el.dataset.type==='hcsr04'&&simRunning){showHcsrTools(el);hideLedTools();hideResTools();hideLdrTools();hideMicrobitSensorPanel()}else if(el.dataset.type==='microbit'){showMicrobitColorTools(el);if(simRunning)showMicrobitSensorPanel(el);hideLedTools();hideResTools();hideLdrTools();hideHcsrTools()}else{hideLedTools();hideResTools();hideLdrTools();hideHcsrTools();hideMicrobitSensorPanel();hideMicrobitColorTools()}});el.addEventListener('dblclick',()=>{wires=wires.filter(w=>w.a.root!==el&&w.b.root!==el);el.remove();redraw()})}
 
 $('board').onchange=()=>{if(blocklyWorkspace&&window.roboticaToolboxes){blocklyWorkspace.updateToolbox($('board').value==='microbit'?window.roboticaToolboxes.microbit:window.roboticaToolboxes.generic);Blockly.getMainWorkspace().getToolbox()?.clearSelection();}let old=world.querySelector('.component[data-type="uno"],.component[data-type="nano"],.component[data-type="esp32"],.component[data-type="pico"],.component[data-type="microbit"]');if(old){wires=wires.filter(w=>w.a.root!==old&&w.b.root!==old);old.remove()}addComponent($('board').value,120,260);if(blocklyWorkspace){blocklyWorkspace.getAllBlocks(false).forEach(b=>{const f=b.getField('PIN');if(f&&f instanceof Blockly.FieldDropdown)f.getOptions(false)});}if($('board').value==='esp32')$('code').value='void setup() {\n  pinMode(2, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(2, HIGH);\n  delay(1000);\n  digitalWrite(2, LOW);\n  delay(1000);\n}';if($('board').value==='pico')$('code').value='void setup() {\n  pinMode(25, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(25, HIGH);\n  delay(1000);\n  digitalWrite(25, LOW);\n  delay(1000);\n}';if($('board').value==='microbit')$('code').value='void setup() {\n  pinMode(0, OUTPUT);\n}\n\nvoid loop() {\n  digitalWrite(0, HIGH);\n  delay(500);\n  digitalWrite(0, LOW);\n  delay(500);\n}';redraw();log('Placa cambiada a '+($('board').value==='uno'?'Arduino Uno':$('board').value==='nano'?'Arduino Nano':$('board').value==='esp32'?'ESP32 DevKit V1':$('board').value==='pico'?'Raspberry Pi Pico':'BBC micro:bit V2')+'.','good')};
 let simRunning=false;
