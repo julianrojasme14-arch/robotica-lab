@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V10.16</title>
+<title>Robótica Lab V10.17</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -2252,9 +2252,9 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .soilThumbV1004{width:44px!important;height:50px!important;background-size:194px 118px!important;background-position:-142px -5px!important}
 .soilThumbV1004:before,.soilThumbV1004:after,.npnThumbV1004:before,.npnThumbV1004:after,
 .lampThumbV1004:before,.lampThumbV1004:after,.solarThumbV1004:before,.solarThumbV1004:after{display:none!important}
-</style><!-- deploy-marker: V10.16 · 2026-10-04 -->
+</style><!-- deploy-marker: V10.17 · 2026-10-04 -->
 </head><body>
-<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge" id="appVersionBadge">V10.16</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
+<header><div>🤖</div><div><div class="brand">Robótica Lab <span class="badge" id="appVersionBadge">V10.17</span></div><div style="font-size:10px">Laboratorio online · arrastra, conecta y programa</div></div><div class="status" id="status">☁ comprobando servidor…</div></header>
 <div class="tcbar"><button class="toolbtn codebtn" id="codeBtn">⌨ Código</button><button class="toolbtn iconbtn" id="undoBtn" title="Deshacer">↶</button><button class="toolbtn iconbtn" id="redoBtn" title="Rehacer">↷</button><button class="toolbtn iconbtn" id="noteBtn" title="Agregar nota">▤</button><div class="wirecolor" id="wireColorBtn" title="Color del cable"><span id="wireSwatch"></span><span class="chev">▾</span><div id="wirePalette"></div></div><button class="toolbtn" id="deleteBtn">🗑 Eliminar</button><button class="toolbtn simstart" id="topSim">▶ Iniciar simulación</button><div class="simtop"></div></div>
 <div class="lab">
 <aside class="panel palette open" id="partsPalette"><div class="partsHead"><b>Componentes</b><span>▦</span></div><div class="partsCategory">Básico <span>▾</span></div><input id="partsSearch" class="partsSearch" placeholder="Buscar componentes"><div class="partsGrid">
@@ -3181,7 +3181,7 @@ function addComponent(type,x,y){
    input?.addEventListener('input',sync);vol?.addEventListener('input',sync);cur?.addEventListener('input',sync);
    el.querySelectorAll('[data-sun]').forEach(b=>{b.addEventListener('pointerdown',e=>e.stopPropagation());b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();input.value=String(b.dataset.sun);input.dispatchEvent(new Event('input',{bubbles:true}))})});sync();const rot=el.querySelector('.solarRot'),inv=el.querySelector('.solarInv'),body=el.querySelector('.solarApprovedV1006');let visual=null;if(body){visual=document.createElement('div');visual.className='solarPanelVisual';visual.style.backgroundImage=getComputedStyle(body).backgroundImage;visual.style.backgroundRepeat='no-repeat';visual.style.backgroundPosition='center';body.style.backgroundImage='none';body.prepend(visual)}
    const syncSolarGeometry=()=>{const r=Number(el.dataset.rotation||0),rev=el.dataset.reversed==='1',side=(r===90||r===270);el.dataset.rotation=String(r);if(visual)visual.style.transform='rotate('+r+'deg)';const p=el.querySelector('.pos'),n=el.querySelector('.neg');if(p&&n){const coords=side?(r===90?{p:[320,105],n:[320,188]}:{p:[16,188],n:[16,105]}):r===180?{p:[145,16],n:[62,16]}:{p:[105,320],n:[188,320]};const a=rev?coords.n:coords.p,b=rev?coords.p:coords.n;p.style.left=a[0]+'px';p.style.top=a[1]+'px';n.style.left=b[0]+'px';n.style.top=b[1]+'px';p.dataset.port=rev?'-':'+';n.dataset.port=rev?'+':'-';p.title=rev?'Negativo (-)':'Positivo (+)';n.title=rev?'Positivo (+)':'Negativo (-)'}el.classList.toggle('polarityReversed',rev);requestAnimationFrame(redraw)};
-   rot?.addEventListener('pointerdown',e=>e.stopPropagation());inv?.addEventListener('pointerdown',e=>e.stopPropagation());rot?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();el.dataset.rotation=String((Number(el.dataset.rotation||0)+90)%360);syncSolarGeometry()});inv?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();el.dataset.reversed=el.dataset.reversed==='1'?'0':'1';syncSolarGeometry();refreshCircuitPower()});syncSolarGeometry();refreshCircuitPower()});syncSolarGeometry();
+   rot?.addEventListener('pointerdown',e=>e.stopPropagation());inv?.addEventListener('pointerdown',e=>e.stopPropagation());rot?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();el.dataset.rotation=String((Number(el.dataset.rotation||0)+90)%360);syncSolarGeometry()});inv?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();el.dataset.reversed=el.dataset.reversed==='1'?'0':'1';syncSolarGeometry();refreshCircuitPower()});syncSolarGeometry();
  }
  if(type==='npn'){
    const sel=el.querySelector('[data-inst="npnType"]'),body=el.querySelector('.npnApprovedV1006'),lab=el.querySelector('.npnModelLabel');
