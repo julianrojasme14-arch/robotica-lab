@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robótica Lab V10.18</title>
+<title>Robótica Lab V10.19</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#edf3f7;color:#172638}button,textarea,select{font:inherit}
 header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff;padding:9px 16px;display:flex;align-items:center;gap:10px}.brand{font-size:22px;font-weight:800}.badge{font-size:11px;background:#19a6ee;padding:4px 8px;border-radius:12px}.status{margin-left:auto;font-size:12px}
@@ -239,6 +239,11 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
  .lab.code-open>#splitter{position:fixed!important;right:42vw!important;top:78px!important;bottom:0!important;height:auto!important;z-index:61!important}
 }
 .blocklyDropDownDiv{position:fixed!important;z-index:2147483000!important;overflow:hidden!important}
+
+/* V10.19 · Preserve approved photographic artwork, improve electrical hit targets. */
+.approvedSpriteV1006>.terminal{touch-action:none!important;cursor:crosshair!important}
+.component[data-type="soil"] .soilApprovedV1006>.terminal,.component[data-type="solar"] .solarApprovedV1006>.terminal,.component[data-type="npn"] .npnApprovedV1006>.terminal,.component[data-type="lamp"] .lampApprovedV1006>.terminal{pointer-events:auto!important}
+.approvedSpriteV1006>.terminal:hover,.approvedSpriteV1006>.terminal.sel{opacity:1!important;background:#ff1515!important;border:0!important;border-radius:2px!important;box-shadow:0 0 0 1px #fff,0 0 0 2px #222!important}
 </style><script src="https://unpkg.com/blockly/blockly.min.js"></script>
 <script src="https://unpkg.com/@wokwi/elements@1.9.2/dist/wokwi-elements.bundle.js"></script>
 <style>
@@ -2253,7 +2258,7 @@ header{height:62px;background:linear-gradient(110deg,#075797,#087bc8);color:#fff
 .soilThumbV1004:before,.soilThumbV1004:after,.npnThumbV1004:before,.npnThumbV1004:after,
 .lampThumbV1004:before,.lampThumbV1004:after,.solarThumbV1004:before,.solarThumbV1004:after{display:none!important}
 
-/* V10.18 · stable geometry for lamp, NPN and solar: artwork and terminals rotate as one unit */
+/* V10.19 · stable geometry for lamp, NPN and solar: artwork and terminals rotate as one unit */
 .partToolsV1018{display:none;position:absolute;right:1px;top:-30px;z-index:180}
 .component.selected>.partToolsV1018{display:flex}
 .partToolsV1018 button,.solarTools button{width:26px!important;height:24px!important;padding:0!important;border:1px solid #8297a5!important;border-radius:5px!important;background:#fff!important;box-shadow:0 2px 5px #0002!important;cursor:pointer!important}
